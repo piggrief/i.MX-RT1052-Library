@@ -1,0 +1,218 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="itcm_txt_ram_debug|Win32">
+      <Configuration>itcm_txt_ram_debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="itcm_txt_sdram_debug|Win32">
+      <Configuration>itcm_txt_sdram_debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="sdram_txt_ram_debug|Win32">
+      <Configuration>sdram_txt_ram_debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="nor_itcm_txt_ram|Win32">
+      <Configuration>nor_itcm_txt_ram</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="nor_sdram_txt_sdram|Win32">
+      <Configuration>nor_sdram_txt_sdram</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\user\board.c">
+    </ClCompile>
+    <ClCompile Include="..\..\..\user\clock_config.c">
+    </ClCompile>
+    <ClCompile Include="..\..\..\user\peripherals.c">
+    </ClCompile>
+    <ClCompile Include="..\..\..\user\pin_mux.c">
+    </ClCompile>
+    <ClCompile Include="..\..\..\libraries\system_MIMXRT1052.c">
+    </ClCompile>
+    <ClCompile Include="..\..\..\libraries\drivers\fsl_clock.c">
+    </ClCompile>
+    <ClCompile Include="..\..\..\libraries\drivers\fsl_common.c">
+    </ClCompile>
+    <ClCompile Include="..\..\..\libraries\drivers\fsl_flexspi.c">
+    </ClCompile>
+    <ClCompile Include="..\..\..\libraries\drivers\fsl_gpio.c">
+    </ClCompile>
+    <ClCompile Include="..\..\..\libraries\drivers\fsl_lpspi.c">
+    </ClCompile>
+    <ClCompile Include="..\..\..\libraries\drivers\fsl_lpuart.c">
+    </ClCompile>
+    <ClCompile Include="..\..\..\libraries\drivers\fsl_pit.c">
+    </ClCompile>
+    <ClCompile Include="..\..\..\user\Pig_SPI.c">
+    </ClCompile>
+    <ClCompile Include="..\..\..\user\Pig_UART.c">
+    </ClCompile>
+    <ClCompile Include="..\..\..\user\Pig_PIT.c">
+    </ClCompile>
+    <ClCompile Include="..\..\..\user\main.c">
+    </ClCompile>
+    <ClCompile Include="..\..\..\user\TFTDriver.c">
+    </ClCompile>
+    <ClCompile Include="..\..\..\libraries\utilities\fsl_assert.c">
+    </ClCompile>
+    <ClCompile Include="..\..\..\libraries\utilities\fsl_debug_console.c">
+    </ClCompile>
+    <ClCompile Include="..\..\..\libraries\utilities\io\fsl_io.c">
+    </ClCompile>
+    <ClCompile Include="..\..\..\libraries\utilities\log\fsl_log.c">
+    </ClCompile>
+    <ClCompile Include="..\..\..\libraries\utilities\fsl_notifier.c">
+    </ClCompile>
+    <ClCompile Include="..\..\..\libraries\utilities\fsl_sbrk.c">
+    </ClCompile>
+    <ClCompile Include="..\..\..\libraries\utilities\fsl_shell.c">
+    </ClCompile>
+    <ClCompile Include="..\..\..\libraries\utilities\str\fsl_str.c">
+    </ClCompile>
+    <ClCompile Include="..\..\..\user\xip\fire_imxrt1052_sdram_ini_dcd.c">
+    </ClCompile>
+    <ClCompile Include="..\..\..\user\xip\fire_imxrt1052_spiflash_config.c">
+    </ClCompile>
+    <ClCompile Include="..\..\..\user\xip\fsl_flexspi_nor_boot.c">
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\user\clock_config.h">
+    </ClInclude>
+    <ClInclude Include="..\..\..\user\peripherals.h">
+    </ClInclude>
+    <ClInclude Include="..\..\..\user\pin_mux.h">
+    </ClInclude>
+    <ClInclude Include="..\..\..\libraries\system_MIMXRT1052.h">
+    </ClInclude>
+    <ClInclude Include="..\..\..\libraries\drivers\fsl_iomuxc.h">
+    </ClInclude>
+    <ClInclude Include="..\..\..\libraries\drivers\fsl_lpspi.h">
+    </ClInclude>
+    <ClInclude Include="..\..\..\libraries\drivers\fsl_pit.h">
+    </ClInclude>
+    <ClInclude Include="..\..\..\user\Pig_SPI.h">
+    </ClInclude>
+    <ClInclude Include="..\..\..\user\Pig_UART.h">
+    </ClInclude>
+    <ClInclude Include="..\..\..\user\Pig_PIT.h">
+    </ClInclude>
+    <ClInclude Include="..\..\..\user\include.h">
+    </ClInclude>
+    <ClInclude Include="..\..\..\user\TFTDriver.h">
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\doc\必读说明.txt">
+    </None>
+    <None Include="..\startup_MIMXRT1052.s">
+    </None>
+    <None Include="..\startup_MIMXRT1052_ram_vector.s">
+    </None>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{64193BD7-37B1-4E3A-5244-FFC3EA6C80BD}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>YH-RT1052</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='itcm_txt_ram_debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>..\..\..\libraries;..\..\..\libraries\CMSIS\Include;..\..\..\libraries\drivers;..\..\..\libraries\utilities;..\..\..\libraries\utilities\str;..\..\..\libraries\utilities\log;..\..\..\libraries\utilities\io;..\..\..\libraries\xip;..\..\..\user;..\..\..\user\bsp</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='itcm_txt_sdram_debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>..\..\..\libraries;..\..\..\libraries\CMSIS\Include;..\..\..\libraries\drivers;..\..\..\libraries\utilities;..\..\..\libraries\utilities\str;..\..\..\libraries\utilities\log;..\..\..\libraries\utilities\io;..\..\..\libraries\xip;..\..\..\user;..\..\..\user\bsp</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='sdram_txt_ram_debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>..\..\..\libraries;..\..\..\libraries\CMSIS\Include;..\..\..\libraries\drivers;..\..\..\libraries\utilities;..\..\..\libraries\utilities\str;..\..\..\libraries\utilities\log;..\..\..\libraries\utilities\io;..\..\..\libraries\xip;..\..\..\user;..\..\..\user\bsp</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='nor_itcm_txt_ram|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>..\..\..\libraries;..\..\..\libraries\CMSIS\Include;..\..\..\libraries\drivers;..\..\..\libraries\utilities;..\..\..\libraries\utilities\str;..\..\..\libraries\utilities\log;..\..\..\libraries\utilities\io;..\..\..\libraries\xip;..\..\..\user;..\..\..\user\bsp</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='nor_sdram_txt_sdram|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>..\..\..\libraries;..\..\..\libraries\CMSIS\Include;..\..\..\libraries\drivers;..\..\..\libraries\utilities;..\..\..\libraries\utilities\str;..\..\..\libraries\utilities\log;..\..\..\libraries\utilities\io;..\..\..\libraries\xip;..\..\..\user;..\..\..\user\bsp</IncludePath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='itcm_txt_ram_debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>CPU_MIMXRT1052DVL6B;PRINTF_FLOAT_ENABLE=1;SCANF_FLOAT_ENABLE=1;PRINTF_ADVANCED_ENABLE=1;SCANF_ADVANCED_ENABLE=1</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>
+      </SubSystem>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='itcm_txt_sdram_debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>CPU_MIMXRT1052DVL6B;SKIP_SYSCLK_INIT;PRINTF_FLOAT_ENABLE=1;SCANF_FLOAT_ENABLE=1;PRINTF_ADVANCED_ENABLE=1;SCANF_ADVANCED_ENABLE=1</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>
+      </SubSystem>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='sdram_txt_ram_debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>CPU_MIMXRT1052DVL6B;SKIP_SYSCLK_INIT;PRINTF_FLOAT_ENABLE=1;SCANF_FLOAT_ENABLE=1;PRINTF_ADVANCED_ENABLE=1;SCANF_ADVANCED_ENABLE=1</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>
+      </SubSystem>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='nor_itcm_txt_ram|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>CPU_MIMXRT1052DVL6B;XIP_EXTERNAL_FLASH=1;XIP_BOOT_HEADER_ENABLE=1;XIP_BOOT_HEADER_DCD_ENABLE=1;PRINTF_FLOAT_ENABLE=1;SCANF_FLOAT_ENABLE=1;PRINTF_ADVANCED_ENABLE=1;SCANF_ADVANCED_ENABLE=1;USE_RAM_VECTOR_TABLE</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>
+      </SubSystem>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='nor_sdram_txt_sdram|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>CPU_MIMXRT1052DVL6B;XIP_EXTERNAL_FLASH=1;XIP_BOOT_HEADER_ENABLE=1;XIP_BOOT_HEADER_DCD_ENABLE=1;PRINTF_FLOAT_ENABLE=1;SCANF_FLOAT_ENABLE=1;PRINTF_ADVANCED_ENABLE=1;SCANF_ADVANCED_ENABLE=1;USE_RAM_VECTOR_TABLE</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>
+      </SubSystem>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props">
+  </Import>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props">
+  </Import>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets">
+  </Import>
+</Project>

@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	<ItemGroup>
+		<Filter Include="源文件\board">
+			<UniqueIdentifier>{cf824b56-6629-412d-5f7f-f84baad6cea1}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="源文件\CMSIS">
+			<UniqueIdentifier>{b241f9c2-f7eb-4713-6db8-74a41349e14d}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="源文件\doc">
+			<UniqueIdentifier>{eab097dd-34d4-4b07-7c3c-b8120b062fc0}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="源文件\drivers">
+			<UniqueIdentifier>{c1193dba-6629-47b7-70f0-97f9a6cf2310}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="源文件\drivers\fsl_lpspi">
+			<UniqueIdentifier>{eb364096-5512-4b76-6b0c-cffabd7f65cd}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="源文件\drivers\fsl_lpuart">
+			<UniqueIdentifier>{1d9d8adc-76cf-4e9c-5aa0-f01289ccfaf3}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="源文件\drivers\fsl_pit">
+			<UniqueIdentifier>{2ae75050-b066-4bf9-5a86-0649ca43d64f}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="源文件\PigDrive">
+			<UniqueIdentifier>{b8836cd7-4c25-4d54-4383-04ff0557d94b}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="源文件\PigDrive\LPSPI">
+			<UniqueIdentifier>{85bfe1cb-cd07-4707-480a-a416a70b5326}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="源文件\PigDrive\LPUART">
+			<UniqueIdentifier>{4f2080cc-64e6-48ea-53de-b5b0fd6e3f8e}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="源文件\PigDrive\PIT">
+			<UniqueIdentifier>{433626a9-596f-41af-62bb-48f05a24dae9}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="源文件\startup">
+			<UniqueIdentifier>{aedf969d-7d4f-456d-6c6d-c816ff56b128}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="源文件\user">
+			<UniqueIdentifier>{70f6520f-3f72-477f-5eb3-f3b9578f6815}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="源文件\user\TFT">
+			<UniqueIdentifier>{4d29c85b-9e38-4ffb-4997-f723cf1b3468}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="源文件\utilities">
+			<UniqueIdentifier>{2626a933-d93c-4080-5aa8-a0a11d909c5d}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="源文件\xip">
+			<UniqueIdentifier>{36b48528-42f3-493a-716d-c2d89da79f78}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="源文件">
+			<UniqueIdentifier>{409dee1a-7cd4-4da7-530e-52dc7e154cc1}</UniqueIdentifier>
+		</Filter>
+	</ItemGroup>
+	<ItemGroup>
+		<ClCompile Include="..\..\..\user\board.c">
+			<Filter>源文件\board</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\user\clock_config.c">
+			<Filter>源文件\board</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\user\peripherals.c">
+			<Filter>源文件\board</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\user\pin_mux.c">
+			<Filter>源文件\board</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\libraries\system_MIMXRT1052.c">
+			<Filter>源文件\CMSIS</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\libraries\drivers\fsl_clock.c">
+			<Filter>源文件\drivers</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\libraries\drivers\fsl_common.c">
+			<Filter>源文件\drivers</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\libraries\drivers\fsl_flexspi.c">
+			<Filter>源文件\drivers</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\libraries\drivers\fsl_gpio.c">
+			<Filter>源文件\drivers</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\libraries\drivers\fsl_lpspi.c">
+			<Filter>源文件\drivers\fsl_lpspi</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\libraries\drivers\fsl_lpuart.c">
+			<Filter>源文件\drivers\fsl_lpuart</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\libraries\drivers\fsl_pit.c">
+			<Filter>源文件\drivers\fsl_pit</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\user\Pig_SPI.c">
+			<Filter>源文件\PigDrive\LPSPI</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\user\Pig_UART.c">
+			<Filter>源文件\PigDrive\LPUART</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\user\Pig_PIT.c">
+			<Filter>源文件\PigDrive\PIT</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\user\main.c">
+			<Filter>源文件\user</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\user\TFTDriver.c">
+			<Filter>源文件\user\TFT</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\libraries\utilities\fsl_assert.c">
+			<Filter>源文件\utilities</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\libraries\utilities\fsl_debug_console.c">
+			<Filter>源文件\utilities</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\libraries\utilities\io\fsl_io.c">
+			<Filter>源文件\utilities</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\libraries\utilities\log\fsl_log.c">
+			<Filter>源文件\utilities</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\libraries\utilities\fsl_notifier.c">
+			<Filter>源文件\utilities</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\libraries\utilities\fsl_sbrk.c">
+			<Filter>源文件\utilities</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\libraries\utilities\fsl_shell.c">
+			<Filter>源文件\utilities</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\libraries\utilities\str\fsl_str.c">
+			<Filter>源文件\utilities</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\user\xip\fire_imxrt1052_sdram_ini_dcd.c">
+			<Filter>源文件\xip</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\user\xip\fire_imxrt1052_spiflash_config.c">
+			<Filter>源文件\xip</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\user\xip\fsl_flexspi_nor_boot.c">
+			<Filter>源文件\xip</Filter>
+		</ClCompile>
+	</ItemGroup>
+	<ItemGroup>
+		<ClInclude Include="..\..\..\user\clock_config.h">
+			<Filter>源文件\board</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\user\peripherals.h">
+			<Filter>源文件\board</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\user\pin_mux.h">
+			<Filter>源文件\board</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\libraries\system_MIMXRT1052.h">
+			<Filter>源文件\CMSIS</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\libraries\drivers\fsl_iomuxc.h">
+			<Filter>源文件\drivers</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\libraries\drivers\fsl_lpspi.h">
+			<Filter>源文件\drivers\fsl_lpspi</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\libraries\drivers\fsl_pit.h">
+			<Filter>源文件\drivers\fsl_pit</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\user\Pig_SPI.h">
+			<Filter>源文件\PigDrive\LPSPI</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\user\Pig_UART.h">
+			<Filter>源文件\PigDrive\LPUART</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\user\Pig_PIT.h">
+			<Filter>源文件\PigDrive\PIT</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\user\include.h">
+			<Filter>源文件\user</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\user\TFTDriver.h">
+			<Filter>源文件\user\TFT</Filter>
+		</ClInclude>
+	</ItemGroup>
+	<ItemGroup>
+		<None Include="..\..\..\doc\必读说明.txt">
+			<Filter>源文件\doc</Filter>
+		</None>
+		<None Include="..\startup_MIMXRT1052.s">
+			<Filter>源文件\startup</Filter>
+		</None>
+		<None Include="..\startup_MIMXRT1052_ram_vector.s">
+			<Filter>源文件\startup</Filter>
+		</None>
+	</ItemGroup>
+</Project>

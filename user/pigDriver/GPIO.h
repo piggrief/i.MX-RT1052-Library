@@ -1,0 +1,27 @@
+# ifndef _GPIO_H_
+# define _GPIO_H_
+
+# define PTA(Ax) GPIO1, ((Ax)U)
+# define PTB(Bx) GPIO2, ((Bx)U)
+# define PTC(Cx) GPIO3, ((Cx)U)
+
+typedef enum
+{
+	    /*  PTA??    */ //0~31
+    PTA0,  PTA1,  PTA2,  PTA3,  PTA4,  PTA5,  PTA6,  PTA7,  PTA8,  PTA9,  PTA10, PTA11, PTA12, PTA13, PTA14, PTA15,
+    PTA16, PTA17, PTA18, PTA19, PTA20, PTA21, PTA22, PTA23, PTA24, PTA25, PTA26, PTA27, PTA28, PTA29, PTA30, PTA31,
+
+    /*  PTB??    */ //32~63
+    PTB0,  PTB1,  PTB2,  PTB3,  PTB4,  PTB5,  PTB6,  PTB7,  PTB8,  PTB9,  PTB10, PTB11, PTB12, PTB13, PTB14, PTB15,
+    PTB16, PTB17, PTB18, PTB19, PTB20, PTB21, PTB22, PTB23, PTB24, PTB25, PTB26, PTB27, PTB28, PTB29, PTB30, PTB31,
+
+    /*  PTC??    */
+    PTC0,  PTC1,  PTC2,  PTC3,  PTC4,  PTC5,  PTC6,  PTC7,  PTC8,  PTC9,  PTC10, PTC11, PTC12, PTC13, PTC14, PTC15,
+    PTC16, PTC17
+
+}PTXn_e;
+
+#define PTX(PTxn)           ((PTxn)>>5)
+//#define IOMUXC_GPIO0_       
+
+# endif

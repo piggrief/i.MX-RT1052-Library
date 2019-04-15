@@ -1,0 +1,32 @@
+--cpu Cortex-M7.fp.dp --scatter "./RTE/Device/MIMXRT1052DVL6B/MIMXRT1052xxxxx_ram.scf"
+".\nor_txt_ram\objects\system_mimxrt1052.o"
+".\nor_txt_ram\objects\startup_mimxrt1052.o"
+".\nor_txt_ram\objects\fsl_clock.o"
+".\nor_txt_ram\objects\fsl_gpio.o"
+".\nor_txt_ram\objects\fsl_lpuart.o"
+".\nor_txt_ram\objects\fsl_common.o"
+".\nor_txt_ram\objects\fsl_lpspi.o"
+".\nor_txt_ram\objects\fsl_assert.o"
+".\nor_txt_ram\objects\fsl_notifier.o"
+".\nor_txt_ram\objects\fsl_shell.o"
+".\nor_txt_ram\objects\fsl_sbrk.o"
+".\nor_txt_ram\objects\fsl_debug_console.o"
+".\nor_txt_ram\objects\fsl_str.o"
+".\nor_txt_ram\objects\fsl_log.o"
+".\nor_txt_ram\objects\fsl_io.o"
+".\nor_txt_ram\objects\board.o"
+".\nor_txt_ram\objects\clock_config.o"
+".\nor_txt_ram\objects\pin_mux.o"
+".\nor_txt_ram\objects\main.o"
+".\nor_txt_ram\objects\tftdriver.o"
+".\nor_txt_ram\objects\peripherals.o"
+".\nor_txt_ram\objects\fire_imxrt1052_sdram_ini_dcd.o"
+".\nor_txt_ram\objects\fire_imxrt1052_spiflash_config.o"
+".\nor_txt_ram\objects\fsl_flexspi_nor_boot.o"
+".\nor_txt_ram\objects\gpio.o"
+--library_type=microlib --diag_suppress 6314 --strict --scatter ".\MIMXRT1052xxxxx_flexspi_nor.scf"
+
+--keep=*(.boot_hdr.conf)
+--keep=*(.boot_hdr.ivt) --summary_stderr --info summarysizes --map --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list ".\nor_txt_ram\Listings\YH-RT1052.map" -o .\nor_txt_ram\Objects\YH-RT1052.axf

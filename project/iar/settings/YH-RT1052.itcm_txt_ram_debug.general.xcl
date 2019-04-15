@@ -1,0 +1,19 @@
+"D:\software\IAR Systems\Embedded Workbench 8.1\arm\bin\armproc.dll" 
+
+"D:\software\IAR Systems\Embedded Workbench 8.1\arm\bin\armJET.dll" 
+
+"D:\智能车\麦轮信标\程序\RT1052\PIT库\project\iar\itcm_txt_ram_debug\Exe\YH-RT1052.out" 
+
+--plugin="D:\software\IAR Systems\Embedded Workbench 8.1\arm\bin\armbat.dll" 
+
+--device_macro="D:\software\IAR Systems\Embedded Workbench 8.1\arm\config\debugger\NXP\iMXRT.dmac" 
+
+--device_macro="D:\software\IAR Systems\Embedded Workbench 8.1\arm\config\debugger\NXP\iMXRT_Trace.dmac" 
+
+--macro="D:\智能车\麦轮信标\程序\RT1052\PIT库\project\iar\evkbimxrt1050.mac" 
+
+--flash_loader="D:\software\IAR Systems\Embedded Workbench 8.1\arm\config\flashloader\NXP\FlashIMXRT1050_EVK_FlexSPI.board" 
+
+
+
+

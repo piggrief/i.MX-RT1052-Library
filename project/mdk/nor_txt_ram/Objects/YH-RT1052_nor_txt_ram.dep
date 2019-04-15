@@ -1,0 +1,440 @@
+Dependencies for Project 'YH-RT1052', Target 'nor_txt_ram': (DO NOT MODIFY !)
+F (..\..\libraries\system_MIMXRT1052.c)(0x5ACC3784)(--c99 -c --cpu Cortex-M7.fp.dp -D__MICROLIB -g -O2 --apcs=interwork --split_sections -I..\..\libraries\CMSIS\Include -I..\..\libraries\drivers -I..\..\libraries\utilities -I..\..\libraries\utilities\str -I..\..\libraries\utilities\log -I..\..\libraries\utilities\io -I..\..\libraries\xip -I..\..\user -I..\..\user\bsp -I..\..\user\pigDriver --library_interface=armcc --library_type=standardlib --diag_suppress=66,1296,186  -I D:\智能车\麦轮信标\程序\RT1052\固件库学习\project\mdk\RTE-I D:\software\Keil_v5\ARM\PACK\NXP\MIMXRT1052_DFP\10.0.1-I D:\software\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DCPU_MIMXRT1052DVL6B -DCPU_MIMXRT1052DVL6B -DXIP_EXTERNAL_FLASH="1" -DXIP_BOOT_HEADER_ENABLE="1" -DXIP_BOOT_HEADER_DCD_ENABLE="1" -DPRINTF_FLOAT_ENABLE="1" -DSCANF_FLOAT_ENABLE="1" -DPRINTF_ADVANCED_ENABLE="1" -DSCANF_ADVANCED_ENABLE="1"-o .\nor_txt_ram\objects\system_mimxrt1052.o --depend .\nor_txt_ram\objects\system_mimxrt1052.d)
+I (D:\software\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (..\..\libraries\fsl_device_registers.h)(0x5AC901F8)
+I (..\..\libraries\MIMXRT1052.h)(0x5AC901F8)
+I (..\..\libraries\CMSIS\Include\core_cm7.h)(0x5AC901F8)
+I (..\..\libraries\CMSIS\Include\cmsis_version.h)(0x5AC901F8)
+I (..\..\libraries\CMSIS\Include\cmsis_compiler.h)(0x5AC901F8)
+I (..\..\libraries\CMSIS\Include\cmsis_armcc.h)(0x5AC901F8)
+I (..\..\libraries\CMSIS\Include\mpu_armv7.h)(0x5AC901F8)
+I (..\..\libraries\system_MIMXRT1052.h)(0x5AC901F8)
+I (..\..\libraries\MIMXRT1052_features.h)(0x5AC901F8)
+F (..\..\libraries\system_MIMXRT1052.h)(0x5AC901F8)()
+F (.\startup_MIMXRT1052.s)(0x5AC901F8)(--cpu Cortex-M7.fp.dp -g --apcs=interwork --pd "__MICROLIB SETA 1"-I D:\智能车\麦轮信标\程序\RT1052\固件库学习\project\mdk\RTE-I D:\software\Keil_v5\ARM\PACK\NXP\MIMXRT1052_DFP\10.0.1-I D:\software\Keil_v5\ARM\CMSIS\Include--pd "__UVISION_VERSION SETA 514" --pd "CPU_MIMXRT1052DVL6B SETA 1" --pd "__STARTUP_INITIALIZE_NONCACHEDATA SETA 1"--list .\nor_txt_ram\listings\startup_mimxrt1052.lst --xref -o .\nor_txt_ram\objects\startup_mimxrt1052.o --depend .\nor_txt_ram\objects\startup_mimxrt1052.d)
+F (..\..\libraries\drivers\fsl_clock.c)(0x5AC901F8)(--c99 -c --cpu Cortex-M7.fp.dp -D__MICROLIB -g -O2 --apcs=interwork --split_sections -I..\..\libraries\CMSIS\Include -I..\..\libraries\drivers -I..\..\libraries\utilities -I..\..\libraries\utilities\str -I..\..\libraries\utilities\log -I..\..\libraries\utilities\io -I..\..\libraries\xip -I..\..\user -I..\..\user\bsp -I..\..\user\pigDriver --library_interface=armcc --library_type=standardlib --diag_suppress=66,1296,186  -I D:\智能车\麦轮信标\程序\RT1052\固件库学习\project\mdk\RTE-I D:\software\Keil_v5\ARM\PACK\NXP\MIMXRT1052_DFP\10.0.1-I D:\software\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DCPU_MIMXRT1052DVL6B -DCPU_MIMXRT1052DVL6B -DXIP_EXTERNAL_FLASH="1" -DXIP_BOOT_HEADER_ENABLE="1" -DXIP_BOOT_HEADER_DCD_ENABLE="1" -DPRINTF_FLOAT_ENABLE="1" -DSCANF_FLOAT_ENABLE="1" -DPRINTF_ADVANCED_ENABLE="1" -DSCANF_ADVANCED_ENABLE="1"-o .\nor_txt_ram\objects\fsl_clock.o --depend .\nor_txt_ram\objects\fsl_clock.d)
+I (..\..\libraries\drivers\fsl_common.h)(0x5C9F83B1)
+I (D:\software\Keil_v5\ARM\ARMCC\include\assert.h)(0x5475F300)
+I (D:\software\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x5475F300)
+I (D:\software\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (D:\software\Keil_v5\ARM\ARMCC\include\string.h)(0x5475F300)
+I (D:\software\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5475F300)
+I (D:\software\Keil_v5\ARM\PACK\NXP\MIMXRT1052_DFP\10.0.1\fsl_device_registers.h)(0x5ABC318C)
+I (D:\software\Keil_v5\ARM\PACK\NXP\MIMXRT1052_DFP\10.0.1\MIMXRT1052.h)(0x5ABC318C)
+I (..\..\libraries\CMSIS\Include\core_cm7.h)(0x5AC901F8)
+I (..\..\libraries\CMSIS\Include\cmsis_version.h)(0x5AC901F8)
+I (..\..\libraries\CMSIS\Include\cmsis_compiler.h)(0x5AC901F8)
+I (..\..\libraries\CMSIS\Include\cmsis_armcc.h)(0x5AC901F8)
+I (..\..\libraries\CMSIS\Include\mpu_armv7.h)(0x5AC901F8)
+I (D:\software\Keil_v5\ARM\PACK\NXP\MIMXRT1052_DFP\10.0.1\system_MIMXRT1052.h)(0x5ABC318C)
+I (D:\software\Keil_v5\ARM\PACK\NXP\MIMXRT1052_DFP\10.0.1\MIMXRT1052_features.h)(0x5ABC318C)
+I (..\..\libraries\drivers\fsl_clock.h)(0x5AC901F8)
+F (..\..\libraries\drivers\fsl_gpio.c)(0x5AC901F8)(--c99 -c --cpu Cortex-M7.fp.dp -D__MICROLIB -g -O2 --apcs=interwork --split_sections -I..\..\libraries\CMSIS\Include -I..\..\libraries\drivers -I..\..\libraries\utilities -I..\..\libraries\utilities\str -I..\..\libraries\utilities\log -I..\..\libraries\utilities\io -I..\..\libraries\xip -I..\..\user -I..\..\user\bsp -I..\..\user\pigDriver --library_interface=armcc --library_type=standardlib --diag_suppress=66,1296,186  -I D:\智能车\麦轮信标\程序\RT1052\固件库学习\project\mdk\RTE-I D:\software\Keil_v5\ARM\PACK\NXP\MIMXRT1052_DFP\10.0.1-I D:\software\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DCPU_MIMXRT1052DVL6B -DCPU_MIMXRT1052DVL6B -DXIP_EXTERNAL_FLASH="1" -DXIP_BOOT_HEADER_ENABLE="1" -DXIP_BOOT_HEADER_DCD_ENABLE="1" -DPRINTF_FLOAT_ENABLE="1" -DSCANF_FLOAT_ENABLE="1" -DPRINTF_ADVANCED_ENABLE="1" -DSCANF_ADVANCED_ENABLE="1"-o .\nor_txt_ram\objects\fsl_gpio.o --depend .\nor_txt_ram\objects\fsl_gpio.d)
+I (..\..\libraries\drivers\fsl_gpio.h)(0x5AC901F8)
+I (..\..\libraries\drivers\fsl_common.h)(0x5C9F83B1)
+I (D:\software\Keil_v5\ARM\ARMCC\include\assert.h)(0x5475F300)
+I (D:\software\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x5475F300)
+I (D:\software\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (D:\software\Keil_v5\ARM\ARMCC\include\string.h)(0x5475F300)
+I (D:\software\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5475F300)
+I (D:\software\Keil_v5\ARM\PACK\NXP\MIMXRT1052_DFP\10.0.1\fsl_device_registers.h)(0x5ABC318C)
+I (D:\software\Keil_v5\ARM\PACK\NXP\MIMXRT1052_DFP\10.0.1\MIMXRT1052.h)(0x5ABC318C)
+I (..\..\libraries\CMSIS\Include\core_cm7.h)(0x5AC901F8)
+I (..\..\libraries\CMSIS\Include\cmsis_version.h)(0x5AC901F8)
+I (..\..\libraries\CMSIS\Include\cmsis_compiler.h)(0x5AC901F8)
+I (..\..\libraries\CMSIS\Include\cmsis_armcc.h)(0x5AC901F8)
+I (..\..\libraries\CMSIS\Include\mpu_armv7.h)(0x5AC901F8)
+I (D:\software\Keil_v5\ARM\PACK\NXP\MIMXRT1052_DFP\10.0.1\system_MIMXRT1052.h)(0x5ABC318C)
+I (D:\software\Keil_v5\ARM\PACK\NXP\MIMXRT1052_DFP\10.0.1\MIMXRT1052_features.h)(0x5ABC318C)
+I (..\..\libraries\drivers\fsl_clock.h)(0x5AC901F8)
+F (..\..\libraries\drivers\fsl_lpuart.c)(0x5AC901F8)(--c99 -c --cpu Cortex-M7.fp.dp -D__MICROLIB -g -O2 --apcs=interwork --split_sections -I..\..\libraries\CMSIS\Include -I..\..\libraries\drivers -I..\..\libraries\utilities -I..\..\libraries\utilities\str -I..\..\libraries\utilities\log -I..\..\libraries\utilities\io -I..\..\libraries\xip -I..\..\user -I..\..\user\bsp -I..\..\user\pigDriver --library_interface=armcc --library_type=standardlib --diag_suppress=66,1296,186  -I D:\智能车\麦轮信标\程序\RT1052\固件库学习\project\mdk\RTE-I D:\software\Keil_v5\ARM\PACK\NXP\MIMXRT1052_DFP\10.0.1-I D:\software\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DCPU_MIMXRT1052DVL6B -DCPU_MIMXRT1052DVL6B -DXIP_EXTERNAL_FLASH="1" -DXIP_BOOT_HEADER_ENABLE="1" -DXIP_BOOT_HEADER_DCD_ENABLE="1" -DPRINTF_FLOAT_ENABLE="1" -DSCANF_FLOAT_ENABLE="1" -DPRINTF_ADVANCED_ENABLE="1" -DSCANF_ADVANCED_ENABLE="1"-o .\nor_txt_ram\objects\fsl_lpuart.o --depend .\nor_txt_ram\objects\fsl_lpuart.d)
+I (..\..\libraries\drivers\fsl_lpuart.h)(0x5AC901F8)
+I (..\..\libraries\drivers\fsl_common.h)(0x5C9F83B1)
+I (D:\software\Keil_v5\ARM\ARMCC\include\assert.h)(0x5475F300)
+I (D:\software\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x5475F300)
+I (D:\software\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (D:\software\Keil_v5\ARM\ARMCC\include\string.h)(0x5475F300)
+I (D:\software\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5475F300)
+I (D:\software\Keil_v5\ARM\PACK\NXP\MIMXRT1052_DFP\10.0.1\fsl_device_registers.h)(0x5ABC318C)
+I (D:\software\Keil_v5\ARM\PACK\NXP\MIMXRT1052_DFP\10.0.1\MIMXRT1052.h)(0x5ABC318C)
+I (..\..\libraries\CMSIS\Include\core_cm7.h)(0x5AC901F8)
+I (..\..\libraries\CMSIS\Include\cmsis_version.h)(0x5AC901F8)
+I (..\..\libraries\CMSIS\Include\cmsis_compiler.h)(0x5AC901F8)
+I (..\..\libraries\CMSIS\Include\cmsis_armcc.h)(0x5AC901F8)
+I (..\..\libraries\CMSIS\Include\mpu_armv7.h)(0x5AC901F8)
+I (D:\software\Keil_v5\ARM\PACK\NXP\MIMXRT1052_DFP\10.0.1\system_MIMXRT1052.h)(0x5ABC318C)
+I (D:\software\Keil_v5\ARM\PACK\NXP\MIMXRT1052_DFP\10.0.1\MIMXRT1052_features.h)(0x5ABC318C)
+I (..\..\libraries\drivers\fsl_clock.h)(0x5AC901F8)
+F (..\..\libraries\drivers\fsl_common.c)(0x5AC901F8)(--c99 -c --cpu Cortex-M7.fp.dp -D__MICROLIB -g -O2 --apcs=interwork --split_sections -I..\..\libraries\CMSIS\Include -I..\..\libraries\drivers -I..\..\libraries\utilities -I..\..\libraries\utilities\str -I..\..\libraries\utilities\log -I..\..\libraries\utilities\io -I..\..\libraries\xip -I..\..\user -I..\..\user\bsp -I..\..\user\pigDriver --library_interface=armcc --library_type=standardlib --diag_suppress=66,1296,186  -I D:\智能车\麦轮信标\程序\RT1052\固件库学习\project\mdk\RTE-I D:\software\Keil_v5\ARM\PACK\NXP\MIMXRT1052_DFP\10.0.1-I D:\software\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DCPU_MIMXRT1052DVL6B -DCPU_MIMXRT1052DVL6B -DXIP_EXTERNAL_FLASH="1" -DXIP_BOOT_HEADER_ENABLE="1" -DXIP_BOOT_HEADER_DCD_ENABLE="1" -DPRINTF_FLOAT_ENABLE="1" -DSCANF_FLOAT_ENABLE="1" -DPRINTF_ADVANCED_ENABLE="1" -DSCANF_ADVANCED_ENABLE="1"-o .\nor_txt_ram\objects\fsl_common.o --depend .\nor_txt_ram\objects\fsl_common.d)
+I (..\..\libraries\drivers\fsl_common.h)(0x5C9F83B1)
+I (D:\software\Keil_v5\ARM\ARMCC\include\assert.h)(0x5475F300)
+I (D:\software\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x5475F300)
+I (D:\software\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (D:\software\Keil_v5\ARM\ARMCC\include\string.h)(0x5475F300)
+I (D:\software\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5475F300)
+I (D:\software\Keil_v5\ARM\PACK\NXP\MIMXRT1052_DFP\10.0.1\fsl_device_registers.h)(0x5ABC318C)
+I (D:\software\Keil_v5\ARM\PACK\NXP\MIMXRT1052_DFP\10.0.1\MIMXRT1052.h)(0x5ABC318C)
+I (..\..\libraries\CMSIS\Include\core_cm7.h)(0x5AC901F8)
+I (..\..\libraries\CMSIS\Include\cmsis_version.h)(0x5AC901F8)
+I (..\..\libraries\CMSIS\Include\cmsis_compiler.h)(0x5AC901F8)
+I (..\..\libraries\CMSIS\Include\cmsis_armcc.h)(0x5AC901F8)
+I (..\..\libraries\CMSIS\Include\mpu_armv7.h)(0x5AC901F8)
+I (D:\software\Keil_v5\ARM\PACK\NXP\MIMXRT1052_DFP\10.0.1\system_MIMXRT1052.h)(0x5ABC318C)
+I (D:\software\Keil_v5\ARM\PACK\NXP\MIMXRT1052_DFP\10.0.1\MIMXRT1052_features.h)(0x5ABC318C)
+I (..\..\libraries\drivers\fsl_clock.h)(0x5AC901F8)
+F (..\..\libraries\drivers\fsl_iomuxc.h)(0x5AC901F8)()
+F (..\..\libraries\drivers\fsl_lpspi.c)(0x5AC901F8)(--c99 -c --cpu Cortex-M7.fp.dp -D__MICROLIB -g -O2 --apcs=interwork --split_sections -I..\..\libraries\CMSIS\Include -I..\..\libraries\drivers -I..\..\libraries\utilities -I..\..\libraries\utilities\str -I..\..\libraries\utilities\log -I..\..\libraries\utilities\io -I..\..\libraries\xip -I..\..\user -I..\..\user\bsp -I..\..\user\pigDriver --library_interface=armcc --library_type=standardlib --diag_suppress=66,1296,186  -I D:\智能车\麦轮信标\程序\RT1052\固件库学习\project\mdk\RTE-I D:\software\Keil_v5\ARM\PACK\NXP\MIMXRT1052_DFP\10.0.1-I D:\software\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DCPU_MIMXRT1052DVL6B -DCPU_MIMXRT1052DVL6B -DXIP_EXTERNAL_FLASH="1" -DXIP_BOOT_HEADER_ENABLE="1" -DXIP_BOOT_HEADER_DCD_ENABLE="1" -DPRINTF_FLOAT_ENABLE="1" -DSCANF_FLOAT_ENABLE="1" -DPRINTF_ADVANCED_ENABLE="1" -DSCANF_ADVANCED_ENABLE="1"-o .\nor_txt_ram\objects\fsl_lpspi.o --depend .\nor_txt_ram\objects\fsl_lpspi.d)
+I (..\..\libraries\drivers\fsl_lpspi.h)(0x5CAC89C4)
+I (..\..\libraries\drivers\fsl_common.h)(0x5C9F83B1)
+I (D:\software\Keil_v5\ARM\ARMCC\include\assert.h)(0x5475F300)
+I (D:\software\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x5475F300)
+I (D:\software\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (D:\software\Keil_v5\ARM\ARMCC\include\string.h)(0x5475F300)
+I (D:\software\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5475F300)
+I (D:\software\Keil_v5\ARM\PACK\NXP\MIMXRT1052_DFP\10.0.1\fsl_device_registers.h)(0x5ABC318C)
+I (D:\software\Keil_v5\ARM\PACK\NXP\MIMXRT1052_DFP\10.0.1\MIMXRT1052.h)(0x5ABC318C)
+I (..\..\libraries\CMSIS\Include\core_cm7.h)(0x5AC901F8)
+I (..\..\libraries\CMSIS\Include\cmsis_version.h)(0x5AC901F8)
+I (..\..\libraries\CMSIS\Include\cmsis_compiler.h)(0x5AC901F8)
+I (..\..\libraries\CMSIS\Include\cmsis_armcc.h)(0x5AC901F8)
+I (..\..\libraries\CMSIS\Include\mpu_armv7.h)(0x5AC901F8)
+I (D:\software\Keil_v5\ARM\PACK\NXP\MIMXRT1052_DFP\10.0.1\system_MIMXRT1052.h)(0x5ABC318C)
+I (D:\software\Keil_v5\ARM\PACK\NXP\MIMXRT1052_DFP\10.0.1\MIMXRT1052_features.h)(0x5ABC318C)
+I (..\..\libraries\drivers\fsl_clock.h)(0x5AC901F8)
+F (..\..\libraries\utilities\fsl_assert.c)(0x5AC901F8)(--c99 -c --cpu Cortex-M7.fp.dp -D__MICROLIB -g -O2 --apcs=interwork --split_sections -I..\..\libraries\CMSIS\Include -I..\..\libraries\drivers -I..\..\libraries\utilities -I..\..\libraries\utilities\str -I..\..\libraries\utilities\log -I..\..\libraries\utilities\io -I..\..\libraries\xip -I..\..\user -I..\..\user\bsp -I..\..\user\pigDriver --library_interface=armcc --library_type=standardlib --diag_suppress=66,1296,186  -I D:\智能车\麦轮信标\程序\RT1052\固件库学习\project\mdk\RTE-I D:\software\Keil_v5\ARM\PACK\NXP\MIMXRT1052_DFP\10.0.1-I D:\software\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DCPU_MIMXRT1052DVL6B -DCPU_MIMXRT1052DVL6B -DXIP_EXTERNAL_FLASH="1" -DXIP_BOOT_HEADER_ENABLE="1" -DXIP_BOOT_HEADER_DCD_ENABLE="1" -DPRINTF_FLOAT_ENABLE="1" -DSCANF_FLOAT_ENABLE="1" -DPRINTF_ADVANCED_ENABLE="1" -DSCANF_ADVANCED_ENABLE="1"-o .\nor_txt_ram\objects\fsl_assert.o --depend .\nor_txt_ram\objects\fsl_assert.d)
+I (..\..\libraries\drivers\fsl_common.h)(0x5C9F83B1)
+I (D:\software\Keil_v5\ARM\ARMCC\include\assert.h)(0x5475F300)
+I (D:\software\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x5475F300)
+I (D:\software\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (D:\software\Keil_v5\ARM\ARMCC\include\string.h)(0x5475F300)
+I (D:\software\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5475F300)
+I (D:\software\Keil_v5\ARM\PACK\NXP\MIMXRT1052_DFP\10.0.1\fsl_device_registers.h)(0x5ABC318C)
+I (D:\software\Keil_v5\ARM\PACK\NXP\MIMXRT1052_DFP\10.0.1\MIMXRT1052.h)(0x5ABC318C)
+I (..\..\libraries\CMSIS\Include\core_cm7.h)(0x5AC901F8)
+I (..\..\libraries\CMSIS\Include\cmsis_version.h)(0x5AC901F8)
+I (..\..\libraries\CMSIS\Include\cmsis_compiler.h)(0x5AC901F8)
+I (..\..\libraries\CMSIS\Include\cmsis_armcc.h)(0x5AC901F8)
+I (..\..\libraries\CMSIS\Include\mpu_armv7.h)(0x5AC901F8)
+I (D:\software\Keil_v5\ARM\PACK\NXP\MIMXRT1052_DFP\10.0.1\system_MIMXRT1052.h)(0x5ABC318C)
+I (D:\software\Keil_v5\ARM\PACK\NXP\MIMXRT1052_DFP\10.0.1\MIMXRT1052_features.h)(0x5ABC318C)
+I (..\..\libraries\drivers\fsl_clock.h)(0x5AC901F8)
+I (..\..\libraries\utilities\fsl_debug_console.h)(0x5AC901F8)
+F (..\..\libraries\utilities\fsl_notifier.c)(0x5AC901F8)(--c99 -c --cpu Cortex-M7.fp.dp -D__MICROLIB -g -O2 --apcs=interwork --split_sections -I..\..\libraries\CMSIS\Include -I..\..\libraries\drivers -I..\..\libraries\utilities -I..\..\libraries\utilities\str -I..\..\libraries\utilities\log -I..\..\libraries\utilities\io -I..\..\libraries\xip -I..\..\user -I..\..\user\bsp -I..\..\user\pigDriver --library_interface=armcc --library_type=standardlib --diag_suppress=66,1296,186  -I D:\智能车\麦轮信标\程序\RT1052\固件库学习\project\mdk\RTE-I D:\software\Keil_v5\ARM\PACK\NXP\MIMXRT1052_DFP\10.0.1-I D:\software\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DCPU_MIMXRT1052DVL6B -DCPU_MIMXRT1052DVL6B -DXIP_EXTERNAL_FLASH="1" -DXIP_BOOT_HEADER_ENABLE="1" -DXIP_BOOT_HEADER_DCD_ENABLE="1" -DPRINTF_FLOAT_ENABLE="1" -DSCANF_FLOAT_ENABLE="1" -DPRINTF_ADVANCED_ENABLE="1" -DSCANF_ADVANCED_ENABLE="1"-o .\nor_txt_ram\objects\fsl_notifier.o --depend .\nor_txt_ram\objects\fsl_notifier.d)
+I (..\..\libraries\utilities\fsl_notifier.h)(0x5AC901F8)
+I (..\..\libraries\drivers\fsl_common.h)(0x5C9F83B1)
+I (D:\software\Keil_v5\ARM\ARMCC\include\assert.h)(0x5475F300)
+I (D:\software\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x5475F300)
+I (D:\software\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (D:\software\Keil_v5\ARM\ARMCC\include\string.h)(0x5475F300)
+I (D:\software\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5475F300)
+I (D:\software\Keil_v5\ARM\PACK\NXP\MIMXRT1052_DFP\10.0.1\fsl_device_registers.h)(0x5ABC318C)
+I (D:\software\Keil_v5\ARM\PACK\NXP\MIMXRT1052_DFP\10.0.1\MIMXRT1052.h)(0x5ABC318C)
+I (..\..\libraries\CMSIS\Include\core_cm7.h)(0x5AC901F8)
+I (..\..\libraries\CMSIS\Include\cmsis_version.h)(0x5AC901F8)
+I (..\..\libraries\CMSIS\Include\cmsis_compiler.h)(0x5AC901F8)
+I (..\..\libraries\CMSIS\Include\cmsis_armcc.h)(0x5AC901F8)
+I (..\..\libraries\CMSIS\Include\mpu_armv7.h)(0x5AC901F8)
+I (D:\software\Keil_v5\ARM\PACK\NXP\MIMXRT1052_DFP\10.0.1\system_MIMXRT1052.h)(0x5ABC318C)
+I (D:\software\Keil_v5\ARM\PACK\NXP\MIMXRT1052_DFP\10.0.1\MIMXRT1052_features.h)(0x5ABC318C)
+I (..\..\libraries\drivers\fsl_clock.h)(0x5AC901F8)
+F (..\..\libraries\utilities\fsl_shell.c)(0x5AC901F8)(--c99 -c --cpu Cortex-M7.fp.dp -D__MICROLIB -g -O2 --apcs=interwork --split_sections -I..\..\libraries\CMSIS\Include -I..\..\libraries\drivers -I..\..\libraries\utilities -I..\..\libraries\utilities\str -I..\..\libraries\utilities\log -I..\..\libraries\utilities\io -I..\..\libraries\xip -I..\..\user -I..\..\user\bsp -I..\..\user\pigDriver --library_interface=armcc --library_type=standardlib --diag_suppress=66,1296,186  -I D:\智能车\麦轮信标\程序\RT1052\固件库学习\project\mdk\RTE-I D:\software\Keil_v5\ARM\PACK\NXP\MIMXRT1052_DFP\10.0.1-I D:\software\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DCPU_MIMXRT1052DVL6B -DCPU_MIMXRT1052DVL6B -DXIP_EXTERNAL_FLASH="1" -DXIP_BOOT_HEADER_ENABLE="1" -DXIP_BOOT_HEADER_DCD_ENABLE="1" -DPRINTF_FLOAT_ENABLE="1" -DSCANF_FLOAT_ENABLE="1" -DPRINTF_ADVANCED_ENABLE="1" -DSCANF_ADVANCED_ENABLE="1"-o .\nor_txt_ram\objects\fsl_shell.o --depend .\nor_txt_ram\objects\fsl_shell.d)
+I (D:\software\Keil_v5\ARM\ARMCC\include\assert.h)(0x5475F300)
+I (..\..\libraries\utilities\fsl_shell.h)(0x5AC901F8)
+I (..\..\libraries\drivers\fsl_common.h)(0x5C9F83B1)
+I (D:\software\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x5475F300)
+I (D:\software\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (D:\software\Keil_v5\ARM\ARMCC\include\string.h)(0x5475F300)
+I (D:\software\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5475F300)
+I (D:\software\Keil_v5\ARM\PACK\NXP\MIMXRT1052_DFP\10.0.1\fsl_device_registers.h)(0x5ABC318C)
+I (D:\software\Keil_v5\ARM\PACK\NXP\MIMXRT1052_DFP\10.0.1\MIMXRT1052.h)(0x5ABC318C)
+I (..\..\libraries\CMSIS\Include\core_cm7.h)(0x5AC901F8)
+I (..\..\libraries\CMSIS\Include\cmsis_version.h)(0x5AC901F8)
+I (..\..\libraries\CMSIS\Include\cmsis_compiler.h)(0x5AC901F8)
+I (..\..\libraries\CMSIS\Include\cmsis_armcc.h)(0x5AC901F8)
+I (..\..\libraries\CMSIS\Include\mpu_armv7.h)(0x5AC901F8)
+I (D:\software\Keil_v5\ARM\PACK\NXP\MIMXRT1052_DFP\10.0.1\system_MIMXRT1052.h)(0x5ABC318C)
+I (D:\software\Keil_v5\ARM\PACK\NXP\MIMXRT1052_DFP\10.0.1\MIMXRT1052_features.h)(0x5ABC318C)
+I (..\..\libraries\drivers\fsl_clock.h)(0x5AC901F8)
+F (..\..\libraries\utilities\fsl_sbrk.c)(0x5AC901F8)(--c99 -c --cpu Cortex-M7.fp.dp -D__MICROLIB -g -O2 --apcs=interwork --split_sections -I..\..\libraries\CMSIS\Include -I..\..\libraries\drivers -I..\..\libraries\utilities -I..\..\libraries\utilities\str -I..\..\libraries\utilities\log -I..\..\libraries\utilities\io -I..\..\libraries\xip -I..\..\user -I..\..\user\bsp -I..\..\user\pigDriver --library_interface=armcc --library_type=standardlib --diag_suppress=66,1296,186  -I D:\智能车\麦轮信标\程序\RT1052\固件库学习\project\mdk\RTE-I D:\software\Keil_v5\ARM\PACK\NXP\MIMXRT1052_DFP\10.0.1-I D:\software\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DCPU_MIMXRT1052DVL6B -DCPU_MIMXRT1052DVL6B -DXIP_EXTERNAL_FLASH="1" -DXIP_BOOT_HEADER_ENABLE="1" -DXIP_BOOT_HEADER_DCD_ENABLE="1" -DPRINTF_FLOAT_ENABLE="1" -DSCANF_FLOAT_ENABLE="1" -DPRINTF_ADVANCED_ENABLE="1" -DSCANF_ADVANCED_ENABLE="1"-o .\nor_txt_ram\objects\fsl_sbrk.o --depend .\nor_txt_ram\objects\fsl_sbrk.d)
+F (..\..\libraries\utilities\fsl_debug_console.c)(0x5AC901F8)(--c99 -c --cpu Cortex-M7.fp.dp -D__MICROLIB -g -O2 --apcs=interwork --split_sections -I..\..\libraries\CMSIS\Include -I..\..\libraries\drivers -I..\..\libraries\utilities -I..\..\libraries\utilities\str -I..\..\libraries\utilities\log -I..\..\libraries\utilities\io -I..\..\libraries\xip -I..\..\user -I..\..\user\bsp -I..\..\user\pigDriver --library_interface=armcc --library_type=standardlib --diag_suppress=66,1296,186  -I D:\智能车\麦轮信标\程序\RT1052\固件库学习\project\mdk\RTE-I D:\software\Keil_v5\ARM\PACK\NXP\MIMXRT1052_DFP\10.0.1-I D:\software\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DCPU_MIMXRT1052DVL6B -DCPU_MIMXRT1052DVL6B -DXIP_EXTERNAL_FLASH="1" -DXIP_BOOT_HEADER_ENABLE="1" -DXIP_BOOT_HEADER_DCD_ENABLE="1" -DPRINTF_FLOAT_ENABLE="1" -DSCANF_FLOAT_ENABLE="1" -DPRINTF_ADVANCED_ENABLE="1" -DSCANF_ADVANCED_ENABLE="1"-o .\nor_txt_ram\objects\fsl_debug_console.o --depend .\nor_txt_ram\objects\fsl_debug_console.d)
+I (D:\software\Keil_v5\ARM\ARMCC\include\stdarg.h)(0x5475F2FA)
+I (D:\software\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5475F300)
+I (D:\software\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5475F300)
+I (..\..\libraries\utilities\fsl_debug_console.h)(0x5AC901F8)
+I (..\..\libraries\drivers\fsl_common.h)(0x5C9F83B1)
+I (D:\software\Keil_v5\ARM\ARMCC\include\assert.h)(0x5475F300)
+I (D:\software\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x5475F300)
+I (D:\software\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (D:\software\Keil_v5\ARM\ARMCC\include\string.h)(0x5475F300)
+I (D:\software\Keil_v5\ARM\PACK\NXP\MIMXRT1052_DFP\10.0.1\fsl_device_registers.h)(0x5ABC318C)
+I (D:\software\Keil_v5\ARM\PACK\NXP\MIMXRT1052_DFP\10.0.1\MIMXRT1052.h)(0x5ABC318C)
+I (..\..\libraries\CMSIS\Include\core_cm7.h)(0x5AC901F8)
+I (..\..\libraries\CMSIS\Include\cmsis_version.h)(0x5AC901F8)
+I (..\..\libraries\CMSIS\Include\cmsis_compiler.h)(0x5AC901F8)
+I (..\..\libraries\CMSIS\Include\cmsis_armcc.h)(0x5AC901F8)
+I (..\..\libraries\CMSIS\Include\mpu_armv7.h)(0x5AC901F8)
+I (D:\software\Keil_v5\ARM\PACK\NXP\MIMXRT1052_DFP\10.0.1\system_MIMXRT1052.h)(0x5ABC318C)
+I (D:\software\Keil_v5\ARM\PACK\NXP\MIMXRT1052_DFP\10.0.1\MIMXRT1052_features.h)(0x5ABC318C)
+I (..\..\libraries\drivers\fsl_clock.h)(0x5AC901F8)
+I (..\..\libraries\utilities\fsl_debug_console_conf.h)(0x5AC901F8)
+I (..\..\libraries\utilities\log\fsl_log.h)(0x5AC901F8)
+I (..\..\libraries\utilities\str\fsl_str.h)(0x5AC901F8)
+F (..\..\libraries\utilities\str\fsl_str.c)(0x5AC901F8)(--c99 -c --cpu Cortex-M7.fp.dp -D__MICROLIB -g -O2 --apcs=interwork --split_sections -I..\..\libraries\CMSIS\Include -I..\..\libraries\drivers -I..\..\libraries\utilities -I..\..\libraries\utilities\str -I..\..\libraries\utilities\log -I..\..\libraries\utilities\io -I..\..\libraries\xip -I..\..\user -I..\..\user\bsp -I..\..\user\pigDriver --library_interface=armcc --library_type=standardlib --diag_suppress=66,1296,186  -I D:\智能车\麦轮信标\程序\RT1052\固件库学习\project\mdk\RTE-I D:\software\Keil_v5\ARM\PACK\NXP\MIMXRT1052_DFP\10.0.1-I D:\software\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DCPU_MIMXRT1052DVL6B -DCPU_MIMXRT1052DVL6B -DXIP_EXTERNAL_FLASH="1" -DXIP_BOOT_HEADER_ENABLE="1" -DXIP_BOOT_HEADER_DCD_ENABLE="1" -DPRINTF_FLOAT_ENABLE="1" -DSCANF_FLOAT_ENABLE="1" -DPRINTF_ADVANCED_ENABLE="1" -DSCANF_ADVANCED_ENABLE="1"-o .\nor_txt_ram\objects\fsl_str.o --depend .\nor_txt_ram\objects\fsl_str.d)
+I (D:\software\Keil_v5\ARM\ARMCC\include\math.h)(0x5475F2FE)
+I (D:\software\Keil_v5\ARM\ARMCC\include\stdarg.h)(0x5475F2FA)
+I (D:\software\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5475F300)
+I (..\..\libraries\utilities\str\fsl_str.h)(0x5AC901F8)
+I (..\..\libraries\drivers\fsl_common.h)(0x5C9F83B1)
+I (D:\software\Keil_v5\ARM\ARMCC\include\assert.h)(0x5475F300)
+I (D:\software\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x5475F300)
+I (D:\software\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (D:\software\Keil_v5\ARM\ARMCC\include\string.h)(0x5475F300)
+I (D:\software\Keil_v5\ARM\PACK\NXP\MIMXRT1052_DFP\10.0.1\fsl_device_registers.h)(0x5ABC318C)
+I (D:\software\Keil_v5\ARM\PACK\NXP\MIMXRT1052_DFP\10.0.1\MIMXRT1052.h)(0x5ABC318C)
+I (..\..\libraries\CMSIS\Include\core_cm7.h)(0x5AC901F8)
+I (..\..\libraries\CMSIS\Include\cmsis_version.h)(0x5AC901F8)
+I (..\..\libraries\CMSIS\Include\cmsis_compiler.h)(0x5AC901F8)
+I (..\..\libraries\CMSIS\Include\cmsis_armcc.h)(0x5AC901F8)
+I (..\..\libraries\CMSIS\Include\mpu_armv7.h)(0x5AC901F8)
+I (D:\software\Keil_v5\ARM\PACK\NXP\MIMXRT1052_DFP\10.0.1\system_MIMXRT1052.h)(0x5ABC318C)
+I (D:\software\Keil_v5\ARM\PACK\NXP\MIMXRT1052_DFP\10.0.1\MIMXRT1052_features.h)(0x5ABC318C)
+I (..\..\libraries\drivers\fsl_clock.h)(0x5AC901F8)
+I (..\..\libraries\utilities\fsl_debug_console_conf.h)(0x5AC901F8)
+F (..\..\libraries\utilities\log\fsl_log.c)(0x5AC901F8)(--c99 -c --cpu Cortex-M7.fp.dp -D__MICROLIB -g -O2 --apcs=interwork --split_sections -I..\..\libraries\CMSIS\Include -I..\..\libraries\drivers -I..\..\libraries\utilities -I..\..\libraries\utilities\str -I..\..\libraries\utilities\log -I..\..\libraries\utilities\io -I..\..\libraries\xip -I..\..\user -I..\..\user\bsp -I..\..\user\pigDriver --library_interface=armcc --library_type=standardlib --diag_suppress=66,1296,186  -I D:\智能车\麦轮信标\程序\RT1052\固件库学习\project\mdk\RTE-I D:\software\Keil_v5\ARM\PACK\NXP\MIMXRT1052_DFP\10.0.1-I D:\software\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DCPU_MIMXRT1052DVL6B -DCPU_MIMXRT1052DVL6B -DXIP_EXTERNAL_FLASH="1" -DXIP_BOOT_HEADER_ENABLE="1" -DXIP_BOOT_HEADER_DCD_ENABLE="1" -DPRINTF_FLOAT_ENABLE="1" -DSCANF_FLOAT_ENABLE="1" -DPRINTF_ADVANCED_ENABLE="1" -DSCANF_ADVANCED_ENABLE="1"-o .\nor_txt_ram\objects\fsl_log.o --depend .\nor_txt_ram\objects\fsl_log.d)
+I (..\..\libraries\utilities\log\fsl_log.h)(0x5AC901F8)
+I (..\..\libraries\drivers\fsl_common.h)(0x5C9F83B1)
+I (D:\software\Keil_v5\ARM\ARMCC\include\assert.h)(0x5475F300)
+I (D:\software\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x5475F300)
+I (D:\software\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (D:\software\Keil_v5\ARM\ARMCC\include\string.h)(0x5475F300)
+I (D:\software\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5475F300)
+I (D:\software\Keil_v5\ARM\PACK\NXP\MIMXRT1052_DFP\10.0.1\fsl_device_registers.h)(0x5ABC318C)
+I (D:\software\Keil_v5\ARM\PACK\NXP\MIMXRT1052_DFP\10.0.1\MIMXRT1052.h)(0x5ABC318C)
+I (..\..\libraries\CMSIS\Include\core_cm7.h)(0x5AC901F8)
+I (..\..\libraries\CMSIS\Include\cmsis_version.h)(0x5AC901F8)
+I (..\..\libraries\CMSIS\Include\cmsis_compiler.h)(0x5AC901F8)
+I (..\..\libraries\CMSIS\Include\cmsis_armcc.h)(0x5AC901F8)
+I (..\..\libraries\CMSIS\Include\mpu_armv7.h)(0x5AC901F8)
+I (D:\software\Keil_v5\ARM\PACK\NXP\MIMXRT1052_DFP\10.0.1\system_MIMXRT1052.h)(0x5ABC318C)
+I (D:\software\Keil_v5\ARM\PACK\NXP\MIMXRT1052_DFP\10.0.1\MIMXRT1052_features.h)(0x5ABC318C)
+I (..\..\libraries\drivers\fsl_clock.h)(0x5AC901F8)
+I (..\..\libraries\utilities\fsl_debug_console_conf.h)(0x5AC901F8)
+I (..\..\libraries\utilities\io\fsl_io.h)(0x5AC901F8)
+F (..\..\libraries\utilities\io\fsl_io.c)(0x5AC901F8)(--c99 -c --cpu Cortex-M7.fp.dp -D__MICROLIB -g -O2 --apcs=interwork --split_sections -I..\..\libraries\CMSIS\Include -I..\..\libraries\drivers -I..\..\libraries\utilities -I..\..\libraries\utilities\str -I..\..\libraries\utilities\log -I..\..\libraries\utilities\io -I..\..\libraries\xip -I..\..\user -I..\..\user\bsp -I..\..\user\pigDriver --library_interface=armcc --library_type=standardlib --diag_suppress=66,1296,186  -I D:\智能车\麦轮信标\程序\RT1052\固件库学习\project\mdk\RTE-I D:\software\Keil_v5\ARM\PACK\NXP\MIMXRT1052_DFP\10.0.1-I D:\software\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DCPU_MIMXRT1052DVL6B -DCPU_MIMXRT1052DVL6B -DXIP_EXTERNAL_FLASH="1" -DXIP_BOOT_HEADER_ENABLE="1" -DXIP_BOOT_HEADER_DCD_ENABLE="1" -DPRINTF_FLOAT_ENABLE="1" -DSCANF_FLOAT_ENABLE="1" -DPRINTF_ADVANCED_ENABLE="1" -DSCANF_ADVANCED_ENABLE="1"-o .\nor_txt_ram\objects\fsl_io.o --depend .\nor_txt_ram\objects\fsl_io.d)
+I (..\..\libraries\utilities\io\fsl_io.h)(0x5AC901F8)
+I (..\..\libraries\drivers\fsl_common.h)(0x5C9F83B1)
+I (D:\software\Keil_v5\ARM\ARMCC\include\assert.h)(0x5475F300)
+I (D:\software\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x5475F300)
+I (D:\software\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (D:\software\Keil_v5\ARM\ARMCC\include\string.h)(0x5475F300)
+I (D:\software\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5475F300)
+I (D:\software\Keil_v5\ARM\PACK\NXP\MIMXRT1052_DFP\10.0.1\fsl_device_registers.h)(0x5ABC318C)
+I (D:\software\Keil_v5\ARM\PACK\NXP\MIMXRT1052_DFP\10.0.1\MIMXRT1052.h)(0x5ABC318C)
+I (..\..\libraries\CMSIS\Include\core_cm7.h)(0x5AC901F8)
+I (..\..\libraries\CMSIS\Include\cmsis_version.h)(0x5AC901F8)
+I (..\..\libraries\CMSIS\Include\cmsis_compiler.h)(0x5AC901F8)
+I (..\..\libraries\CMSIS\Include\cmsis_armcc.h)(0x5AC901F8)
+I (..\..\libraries\CMSIS\Include\mpu_armv7.h)(0x5AC901F8)
+I (D:\software\Keil_v5\ARM\PACK\NXP\MIMXRT1052_DFP\10.0.1\system_MIMXRT1052.h)(0x5ABC318C)
+I (D:\software\Keil_v5\ARM\PACK\NXP\MIMXRT1052_DFP\10.0.1\MIMXRT1052_features.h)(0x5ABC318C)
+I (..\..\libraries\drivers\fsl_clock.h)(0x5AC901F8)
+I (..\..\libraries\utilities\fsl_debug_console_conf.h)(0x5AC901F8)
+I (..\..\libraries\drivers\fsl_lpuart.h)(0x5AC901F8)
+F (..\..\user\board.c)(0x5AC901F8)(--c99 -c --cpu Cortex-M7.fp.dp -D__MICROLIB -g -O2 --apcs=interwork --split_sections -I..\..\libraries\CMSIS\Include -I..\..\libraries\drivers -I..\..\libraries\utilities -I..\..\libraries\utilities\str -I..\..\libraries\utilities\log -I..\..\libraries\utilities\io -I..\..\libraries\xip -I..\..\user -I..\..\user\bsp -I..\..\user\pigDriver --library_interface=armcc --library_type=standardlib --diag_suppress=66,1296,186  -I D:\智能车\麦轮信标\程序\RT1052\固件库学习\project\mdk\RTE-I D:\software\Keil_v5\ARM\PACK\NXP\MIMXRT1052_DFP\10.0.1-I D:\software\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DCPU_MIMXRT1052DVL6B -DCPU_MIMXRT1052DVL6B -DXIP_EXTERNAL_FLASH="1" -DXIP_BOOT_HEADER_ENABLE="1" -DXIP_BOOT_HEADER_DCD_ENABLE="1" -DPRINTF_FLOAT_ENABLE="1" -DSCANF_FLOAT_ENABLE="1" -DPRINTF_ADVANCED_ENABLE="1" -DSCANF_ADVANCED_ENABLE="1"-o .\nor_txt_ram\objects\board.o --depend .\nor_txt_ram\objects\board.d)
+I (..\..\libraries\drivers\fsl_common.h)(0x5C9F83B1)
+I (D:\software\Keil_v5\ARM\ARMCC\include\assert.h)(0x5475F300)
+I (D:\software\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x5475F300)
+I (D:\software\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (D:\software\Keil_v5\ARM\ARMCC\include\string.h)(0x5475F300)
+I (D:\software\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5475F300)
+I (D:\software\Keil_v5\ARM\PACK\NXP\MIMXRT1052_DFP\10.0.1\fsl_device_registers.h)(0x5ABC318C)
+I (D:\software\Keil_v5\ARM\PACK\NXP\MIMXRT1052_DFP\10.0.1\MIMXRT1052.h)(0x5ABC318C)
+I (..\..\libraries\CMSIS\Include\core_cm7.h)(0x5AC901F8)
+I (..\..\libraries\CMSIS\Include\cmsis_version.h)(0x5AC901F8)
+I (..\..\libraries\CMSIS\Include\cmsis_compiler.h)(0x5AC901F8)
+I (..\..\libraries\CMSIS\Include\cmsis_armcc.h)(0x5AC901F8)
+I (..\..\libraries\CMSIS\Include\mpu_armv7.h)(0x5AC901F8)
+I (D:\software\Keil_v5\ARM\PACK\NXP\MIMXRT1052_DFP\10.0.1\system_MIMXRT1052.h)(0x5ABC318C)
+I (D:\software\Keil_v5\ARM\PACK\NXP\MIMXRT1052_DFP\10.0.1\MIMXRT1052_features.h)(0x5ABC318C)
+I (..\..\libraries\drivers\fsl_clock.h)(0x5AC901F8)
+I (..\..\libraries\utilities\fsl_debug_console.h)(0x5AC901F8)
+I (..\..\user\board.h)(0x5AE29BE3)
+I (..\..\user\clock_config.h)(0x5CAC7A78)
+I (..\..\libraries\drivers\fsl_gpio.h)(0x5AC901F8)
+F (..\..\user\board.h)(0x5AE29BE3)()
+F (..\..\user\clock_config.c)(0x5CAC7C80)(--c99 -c --cpu Cortex-M7.fp.dp -D__MICROLIB -g -O2 --apcs=interwork --split_sections -I..\..\libraries\CMSIS\Include -I..\..\libraries\drivers -I..\..\libraries\utilities -I..\..\libraries\utilities\str -I..\..\libraries\utilities\log -I..\..\libraries\utilities\io -I..\..\libraries\xip -I..\..\user -I..\..\user\bsp -I..\..\user\pigDriver --library_interface=armcc --library_type=standardlib --diag_suppress=66,1296,186  -I D:\智能车\麦轮信标\程序\RT1052\固件库学习\project\mdk\RTE-I D:\software\Keil_v5\ARM\PACK\NXP\MIMXRT1052_DFP\10.0.1-I D:\software\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DCPU_MIMXRT1052DVL6B -DCPU_MIMXRT1052DVL6B -DXIP_EXTERNAL_FLASH="1" -DXIP_BOOT_HEADER_ENABLE="1" -DXIP_BOOT_HEADER_DCD_ENABLE="1" -DPRINTF_FLOAT_ENABLE="1" -DSCANF_FLOAT_ENABLE="1" -DPRINTF_ADVANCED_ENABLE="1" -DSCANF_ADVANCED_ENABLE="1"-o .\nor_txt_ram\objects\clock_config.o --depend .\nor_txt_ram\objects\clock_config.d)
+I (..\..\user\clock_config.h)(0x5CAC7A78)
+I (..\..\libraries\drivers\fsl_common.h)(0x5C9F83B1)
+I (D:\software\Keil_v5\ARM\ARMCC\include\assert.h)(0x5475F300)
+I (D:\software\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x5475F300)
+I (D:\software\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (D:\software\Keil_v5\ARM\ARMCC\include\string.h)(0x5475F300)
+I (D:\software\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5475F300)
+I (D:\software\Keil_v5\ARM\PACK\NXP\MIMXRT1052_DFP\10.0.1\fsl_device_registers.h)(0x5ABC318C)
+I (D:\software\Keil_v5\ARM\PACK\NXP\MIMXRT1052_DFP\10.0.1\MIMXRT1052.h)(0x5ABC318C)
+I (..\..\libraries\CMSIS\Include\core_cm7.h)(0x5AC901F8)
+I (..\..\libraries\CMSIS\Include\cmsis_version.h)(0x5AC901F8)
+I (..\..\libraries\CMSIS\Include\cmsis_compiler.h)(0x5AC901F8)
+I (..\..\libraries\CMSIS\Include\cmsis_armcc.h)(0x5AC901F8)
+I (..\..\libraries\CMSIS\Include\mpu_armv7.h)(0x5AC901F8)
+I (D:\software\Keil_v5\ARM\PACK\NXP\MIMXRT1052_DFP\10.0.1\system_MIMXRT1052.h)(0x5ABC318C)
+I (D:\software\Keil_v5\ARM\PACK\NXP\MIMXRT1052_DFP\10.0.1\MIMXRT1052_features.h)(0x5ABC318C)
+I (..\..\libraries\drivers\fsl_clock.h)(0x5AC901F8)
+I (..\..\libraries\drivers\fsl_iomuxc.h)(0x5AC901F8)
+F (..\..\user\clock_config.h)(0x5CAC7A78)()
+F (..\..\user\pin_mux.c)(0x5CAC7A6C)(--c99 -c --cpu Cortex-M7.fp.dp -D__MICROLIB -g -O2 --apcs=interwork --split_sections -I..\..\libraries\CMSIS\Include -I..\..\libraries\drivers -I..\..\libraries\utilities -I..\..\libraries\utilities\str -I..\..\libraries\utilities\log -I..\..\libraries\utilities\io -I..\..\libraries\xip -I..\..\user -I..\..\user\bsp -I..\..\user\pigDriver --library_interface=armcc --library_type=standardlib --diag_suppress=66,1296,186  -I D:\智能车\麦轮信标\程序\RT1052\固件库学习\project\mdk\RTE-I D:\software\Keil_v5\ARM\PACK\NXP\MIMXRT1052_DFP\10.0.1-I D:\software\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DCPU_MIMXRT1052DVL6B -DCPU_MIMXRT1052DVL6B -DXIP_EXTERNAL_FLASH="1" -DXIP_BOOT_HEADER_ENABLE="1" -DXIP_BOOT_HEADER_DCD_ENABLE="1" -DPRINTF_FLOAT_ENABLE="1" -DSCANF_FLOAT_ENABLE="1" -DPRINTF_ADVANCED_ENABLE="1" -DSCANF_ADVANCED_ENABLE="1"-o .\nor_txt_ram\objects\pin_mux.o --depend .\nor_txt_ram\objects\pin_mux.d)
+I (..\..\libraries\drivers\fsl_common.h)(0x5C9F83B1)
+I (D:\software\Keil_v5\ARM\ARMCC\include\assert.h)(0x5475F300)
+I (D:\software\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x5475F300)
+I (D:\software\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (D:\software\Keil_v5\ARM\ARMCC\include\string.h)(0x5475F300)
+I (D:\software\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5475F300)
+I (D:\software\Keil_v5\ARM\PACK\NXP\MIMXRT1052_DFP\10.0.1\fsl_device_registers.h)(0x5ABC318C)
+I (D:\software\Keil_v5\ARM\PACK\NXP\MIMXRT1052_DFP\10.0.1\MIMXRT1052.h)(0x5ABC318C)
+I (..\..\libraries\CMSIS\Include\core_cm7.h)(0x5AC901F8)
+I (..\..\libraries\CMSIS\Include\cmsis_version.h)(0x5AC901F8)
+I (..\..\libraries\CMSIS\Include\cmsis_compiler.h)(0x5AC901F8)
+I (..\..\libraries\CMSIS\Include\cmsis_armcc.h)(0x5AC901F8)
+I (..\..\libraries\CMSIS\Include\mpu_armv7.h)(0x5AC901F8)
+I (D:\software\Keil_v5\ARM\PACK\NXP\MIMXRT1052_DFP\10.0.1\system_MIMXRT1052.h)(0x5ABC318C)
+I (D:\software\Keil_v5\ARM\PACK\NXP\MIMXRT1052_DFP\10.0.1\MIMXRT1052_features.h)(0x5ABC318C)
+I (..\..\libraries\drivers\fsl_clock.h)(0x5AC901F8)
+I (..\..\libraries\drivers\fsl_iomuxc.h)(0x5AC901F8)
+I (..\..\libraries\drivers\fsl_gpio.h)(0x5AC901F8)
+I (..\..\user\pin_mux.h)(0x5CAC7A6C)
+F (..\..\user\pin_mux.h)(0x5CAC7A6C)()
+F (..\..\user\main.c)(0x5CAC8B0D)(--c99 -c --cpu Cortex-M7.fp.dp -D__MICROLIB -g -O2 --apcs=interwork --split_sections -I..\..\libraries\CMSIS\Include -I..\..\libraries\drivers -I..\..\libraries\utilities -I..\..\libraries\utilities\str -I..\..\libraries\utilities\log -I..\..\libraries\utilities\io -I..\..\libraries\xip -I..\..\user -I..\..\user\bsp -I..\..\user\pigDriver --library_interface=armcc --library_type=standardlib --diag_suppress=66,1296,186  -I D:\智能车\麦轮信标\程序\RT1052\固件库学习\project\mdk\RTE-I D:\software\Keil_v5\ARM\PACK\NXP\MIMXRT1052_DFP\10.0.1-I D:\software\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DCPU_MIMXRT1052DVL6B -DCPU_MIMXRT1052DVL6B -DXIP_EXTERNAL_FLASH="1" -DXIP_BOOT_HEADER_ENABLE="1" -DXIP_BOOT_HEADER_DCD_ENABLE="1" -DPRINTF_FLOAT_ENABLE="1" -DSCANF_FLOAT_ENABLE="1" -DPRINTF_ADVANCED_ENABLE="1" -DSCANF_ADVANCED_ENABLE="1"-o .\nor_txt_ram\objects\main.o --depend .\nor_txt_ram\objects\main.d)
+I (..\..\user\include.h)(0x5CAC8A31)
+I (..\..\libraries\utilities\fsl_debug_console.h)(0x5AC901F8)
+I (..\..\libraries\drivers\fsl_common.h)(0x5C9F83B1)
+I (D:\software\Keil_v5\ARM\ARMCC\include\assert.h)(0x5475F300)
+I (D:\software\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x5475F300)
+I (D:\software\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (D:\software\Keil_v5\ARM\ARMCC\include\string.h)(0x5475F300)
+I (D:\software\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5475F300)
+I (D:\software\Keil_v5\ARM\PACK\NXP\MIMXRT1052_DFP\10.0.1\fsl_device_registers.h)(0x5ABC318C)
+I (D:\software\Keil_v5\ARM\PACK\NXP\MIMXRT1052_DFP\10.0.1\MIMXRT1052.h)(0x5ABC318C)
+I (..\..\libraries\CMSIS\Include\core_cm7.h)(0x5AC901F8)
+I (..\..\libraries\CMSIS\Include\cmsis_version.h)(0x5AC901F8)
+I (..\..\libraries\CMSIS\Include\cmsis_compiler.h)(0x5AC901F8)
+I (..\..\libraries\CMSIS\Include\cmsis_armcc.h)(0x5AC901F8)
+I (..\..\libraries\CMSIS\Include\mpu_armv7.h)(0x5AC901F8)
+I (D:\software\Keil_v5\ARM\PACK\NXP\MIMXRT1052_DFP\10.0.1\system_MIMXRT1052.h)(0x5ABC318C)
+I (D:\software\Keil_v5\ARM\PACK\NXP\MIMXRT1052_DFP\10.0.1\MIMXRT1052_features.h)(0x5ABC318C)
+I (..\..\libraries\drivers\fsl_clock.h)(0x5AC901F8)
+I (..\..\user\board.h)(0x5AE29BE3)
+I (..\..\user\clock_config.h)(0x5CAC7A78)
+I (..\..\libraries\drivers\fsl_gpio.h)(0x5AC901F8)
+I (..\..\user\pin_mux.h)(0x5CAC7A6C)
+I (..\..\user\peripherals.h)(0x5CAC7A63)
+I (..\..\libraries\drivers\fsl_lpspi.h)(0x5CAC89C4)
+I (..\..\libraries\drivers\fsl_iomuxc.h)(0x5AC901F8)
+I (..\..\user\TFTDriver.h)(0x5CAC86E6)
+F (..\..\user\TFTDriver.c)(0x5CAC8D0C)(--c99 -c --cpu Cortex-M7.fp.dp -D__MICROLIB -g -O2 --apcs=interwork --split_sections -I..\..\libraries\CMSIS\Include -I..\..\libraries\drivers -I..\..\libraries\utilities -I..\..\libraries\utilities\str -I..\..\libraries\utilities\log -I..\..\libraries\utilities\io -I..\..\libraries\xip -I..\..\user -I..\..\user\bsp -I..\..\user\pigDriver --library_interface=armcc --library_type=standardlib --diag_suppress=66,1296,186  -I D:\智能车\麦轮信标\程序\RT1052\固件库学习\project\mdk\RTE-I D:\software\Keil_v5\ARM\PACK\NXP\MIMXRT1052_DFP\10.0.1-I D:\software\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DCPU_MIMXRT1052DVL6B -DCPU_MIMXRT1052DVL6B -DXIP_EXTERNAL_FLASH="1" -DXIP_BOOT_HEADER_ENABLE="1" -DXIP_BOOT_HEADER_DCD_ENABLE="1" -DPRINTF_FLOAT_ENABLE="1" -DSCANF_FLOAT_ENABLE="1" -DPRINTF_ADVANCED_ENABLE="1" -DSCANF_ADVANCED_ENABLE="1"-o .\nor_txt_ram\objects\tftdriver.o --depend .\nor_txt_ram\objects\tftdriver.d)
+I (..\..\user\include.h)(0x5CAC8A31)
+I (..\..\libraries\utilities\fsl_debug_console.h)(0x5AC901F8)
+I (..\..\libraries\drivers\fsl_common.h)(0x5C9F83B1)
+I (D:\software\Keil_v5\ARM\ARMCC\include\assert.h)(0x5475F300)
+I (D:\software\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x5475F300)
+I (D:\software\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (D:\software\Keil_v5\ARM\ARMCC\include\string.h)(0x5475F300)
+I (D:\software\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5475F300)
+I (D:\software\Keil_v5\ARM\PACK\NXP\MIMXRT1052_DFP\10.0.1\fsl_device_registers.h)(0x5ABC318C)
+I (D:\software\Keil_v5\ARM\PACK\NXP\MIMXRT1052_DFP\10.0.1\MIMXRT1052.h)(0x5ABC318C)
+I (..\..\libraries\CMSIS\Include\core_cm7.h)(0x5AC901F8)
+I (..\..\libraries\CMSIS\Include\cmsis_version.h)(0x5AC901F8)
+I (..\..\libraries\CMSIS\Include\cmsis_compiler.h)(0x5AC901F8)
+I (..\..\libraries\CMSIS\Include\cmsis_armcc.h)(0x5AC901F8)
+I (..\..\libraries\CMSIS\Include\mpu_armv7.h)(0x5AC901F8)
+I (D:\software\Keil_v5\ARM\PACK\NXP\MIMXRT1052_DFP\10.0.1\system_MIMXRT1052.h)(0x5ABC318C)
+I (D:\software\Keil_v5\ARM\PACK\NXP\MIMXRT1052_DFP\10.0.1\MIMXRT1052_features.h)(0x5ABC318C)
+I (..\..\libraries\drivers\fsl_clock.h)(0x5AC901F8)
+I (..\..\user\board.h)(0x5AE29BE3)
+I (..\..\user\clock_config.h)(0x5CAC7A78)
+I (..\..\libraries\drivers\fsl_gpio.h)(0x5AC901F8)
+I (..\..\user\pin_mux.h)(0x5CAC7A6C)
+I (..\..\user\peripherals.h)(0x5CAC7A63)
+I (..\..\libraries\drivers\fsl_lpspi.h)(0x5CAC89C4)
+I (..\..\libraries\drivers\fsl_iomuxc.h)(0x5AC901F8)
+I (..\..\user\TFTDriver.h)(0x5CAC86E6)
+F (..\..\user\peripherals.c)(0x5CAC7A63)(--c99 -c --cpu Cortex-M7.fp.dp -D__MICROLIB -g -O2 --apcs=interwork --split_sections -I..\..\libraries\CMSIS\Include -I..\..\libraries\drivers -I..\..\libraries\utilities -I..\..\libraries\utilities\str -I..\..\libraries\utilities\log -I..\..\libraries\utilities\io -I..\..\libraries\xip -I..\..\user -I..\..\user\bsp -I..\..\user\pigDriver --library_interface=armcc --library_type=standardlib --diag_suppress=66,1296,186  -I D:\智能车\麦轮信标\程序\RT1052\固件库学习\project\mdk\RTE-I D:\software\Keil_v5\ARM\PACK\NXP\MIMXRT1052_DFP\10.0.1-I D:\software\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DCPU_MIMXRT1052DVL6B -DCPU_MIMXRT1052DVL6B -DXIP_EXTERNAL_FLASH="1" -DXIP_BOOT_HEADER_ENABLE="1" -DXIP_BOOT_HEADER_DCD_ENABLE="1" -DPRINTF_FLOAT_ENABLE="1" -DSCANF_FLOAT_ENABLE="1" -DPRINTF_ADVANCED_ENABLE="1" -DSCANF_ADVANCED_ENABLE="1"-o .\nor_txt_ram\objects\peripherals.o --depend .\nor_txt_ram\objects\peripherals.d)
+I (..\..\user\peripherals.h)(0x5CAC7A63)
+I (..\..\libraries\drivers\fsl_common.h)(0x5C9F83B1)
+I (D:\software\Keil_v5\ARM\ARMCC\include\assert.h)(0x5475F300)
+I (D:\software\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x5475F300)
+I (D:\software\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (D:\software\Keil_v5\ARM\ARMCC\include\string.h)(0x5475F300)
+I (D:\software\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5475F300)
+I (D:\software\Keil_v5\ARM\PACK\NXP\MIMXRT1052_DFP\10.0.1\fsl_device_registers.h)(0x5ABC318C)
+I (D:\software\Keil_v5\ARM\PACK\NXP\MIMXRT1052_DFP\10.0.1\MIMXRT1052.h)(0x5ABC318C)
+I (..\..\libraries\CMSIS\Include\core_cm7.h)(0x5AC901F8)
+I (..\..\libraries\CMSIS\Include\cmsis_version.h)(0x5AC901F8)
+I (..\..\libraries\CMSIS\Include\cmsis_compiler.h)(0x5AC901F8)
+I (..\..\libraries\CMSIS\Include\cmsis_armcc.h)(0x5AC901F8)
+I (..\..\libraries\CMSIS\Include\mpu_armv7.h)(0x5AC901F8)
+I (D:\software\Keil_v5\ARM\PACK\NXP\MIMXRT1052_DFP\10.0.1\system_MIMXRT1052.h)(0x5ABC318C)
+I (D:\software\Keil_v5\ARM\PACK\NXP\MIMXRT1052_DFP\10.0.1\MIMXRT1052_features.h)(0x5ABC318C)
+I (..\..\libraries\drivers\fsl_clock.h)(0x5AC901F8)
+I (..\..\libraries\drivers\fsl_lpspi.h)(0x5CAC89C4)
+F (..\..\user\xip\fire_imxrt1052_sdram_ini_dcd.c)(0x5AD855AD)(--c99 -c --cpu Cortex-M7.fp.dp -D__MICROLIB -g -O2 --apcs=interwork --split_sections -I..\..\libraries\CMSIS\Include -I..\..\libraries\drivers -I..\..\libraries\utilities -I..\..\libraries\utilities\str -I..\..\libraries\utilities\log -I..\..\libraries\utilities\io -I..\..\libraries\xip -I..\..\user -I..\..\user\bsp -I..\..\user\pigDriver --library_interface=armcc --library_type=standardlib --diag_suppress=66,1296,186  -I D:\智能车\麦轮信标\程序\RT1052\固件库学习\project\mdk\RTE-I D:\software\Keil_v5\ARM\PACK\NXP\MIMXRT1052_DFP\10.0.1-I D:\software\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DCPU_MIMXRT1052DVL6B -DCPU_MIMXRT1052DVL6B -DXIP_EXTERNAL_FLASH="1" -DXIP_BOOT_HEADER_ENABLE="1" -DXIP_BOOT_HEADER_DCD_ENABLE="1" -DPRINTF_FLOAT_ENABLE="1" -DSCANF_FLOAT_ENABLE="1" -DPRINTF_ADVANCED_ENABLE="1" -DSCANF_ADVANCED_ENABLE="1"-o .\nor_txt_ram\objects\fire_imxrt1052_sdram_ini_dcd.o --depend .\nor_txt_ram\objects\fire_imxrt1052_sdram_ini_dcd.d)
+I (..\..\user\xip\fire_imxrt1052_sdram_ini_dcd.h)(0x5AC901F8)
+I (D:\software\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5475F300)
+F (..\..\user\xip\fire_imxrt1052_spiflash_config.c)(0x5B35D668)(--c99 -c --cpu Cortex-M7.fp.dp -D__MICROLIB -g -O2 --apcs=interwork --split_sections -I..\..\libraries\CMSIS\Include -I..\..\libraries\drivers -I..\..\libraries\utilities -I..\..\libraries\utilities\str -I..\..\libraries\utilities\log -I..\..\libraries\utilities\io -I..\..\libraries\xip -I..\..\user -I..\..\user\bsp -I..\..\user\pigDriver --library_interface=armcc --library_type=standardlib --diag_suppress=66,1296,186  -I D:\智能车\麦轮信标\程序\RT1052\固件库学习\project\mdk\RTE-I D:\software\Keil_v5\ARM\PACK\NXP\MIMXRT1052_DFP\10.0.1-I D:\software\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DCPU_MIMXRT1052DVL6B -DCPU_MIMXRT1052DVL6B -DXIP_EXTERNAL_FLASH="1" -DXIP_BOOT_HEADER_ENABLE="1" -DXIP_BOOT_HEADER_DCD_ENABLE="1" -DPRINTF_FLOAT_ENABLE="1" -DSCANF_FLOAT_ENABLE="1" -DPRINTF_ADVANCED_ENABLE="1" -DSCANF_ADVANCED_ENABLE="1"-o .\nor_txt_ram\objects\fire_imxrt1052_spiflash_config.o --depend .\nor_txt_ram\objects\fire_imxrt1052_spiflash_config.d)
+I (..\..\user\xip\fire_imxrt1052_spiflash_config.h)(0x5AE28971)
+I (D:\software\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (D:\software\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x5475F300)
+I (..\..\libraries\drivers\fsl_common.h)(0x5C9F83B1)
+I (D:\software\Keil_v5\ARM\ARMCC\include\assert.h)(0x5475F300)
+I (D:\software\Keil_v5\ARM\ARMCC\include\string.h)(0x5475F300)
+I (D:\software\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5475F300)
+I (D:\software\Keil_v5\ARM\PACK\NXP\MIMXRT1052_DFP\10.0.1\fsl_device_registers.h)(0x5ABC318C)
+I (D:\software\Keil_v5\ARM\PACK\NXP\MIMXRT1052_DFP\10.0.1\MIMXRT1052.h)(0x5ABC318C)
+I (..\..\libraries\CMSIS\Include\core_cm7.h)(0x5AC901F8)
+I (..\..\libraries\CMSIS\Include\cmsis_version.h)(0x5AC901F8)
+I (..\..\libraries\CMSIS\Include\cmsis_compiler.h)(0x5AC901F8)
+I (..\..\libraries\CMSIS\Include\cmsis_armcc.h)(0x5AC901F8)
+I (..\..\libraries\CMSIS\Include\mpu_armv7.h)(0x5AC901F8)
+I (D:\software\Keil_v5\ARM\PACK\NXP\MIMXRT1052_DFP\10.0.1\system_MIMXRT1052.h)(0x5ABC318C)
+I (D:\software\Keil_v5\ARM\PACK\NXP\MIMXRT1052_DFP\10.0.1\MIMXRT1052_features.h)(0x5ABC318C)
+I (..\..\libraries\drivers\fsl_clock.h)(0x5AC901F8)
+F (..\..\user\xip\fsl_flexspi_nor_boot.c)(0x5B35D623)(--c99 -c --cpu Cortex-M7.fp.dp -D__MICROLIB -g -O2 --apcs=interwork --split_sections -I..\..\libraries\CMSIS\Include -I..\..\libraries\drivers -I..\..\libraries\utilities -I..\..\libraries\utilities\str -I..\..\libraries\utilities\log -I..\..\libraries\utilities\io -I..\..\libraries\xip -I..\..\user -I..\..\user\bsp -I..\..\user\pigDriver --library_interface=armcc --library_type=standardlib --diag_suppress=66,1296,186  -I D:\智能车\麦轮信标\程序\RT1052\固件库学习\project\mdk\RTE-I D:\software\Keil_v5\ARM\PACK\NXP\MIMXRT1052_DFP\10.0.1-I D:\software\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DCPU_MIMXRT1052DVL6B -DCPU_MIMXRT1052DVL6B -DXIP_EXTERNAL_FLASH="1" -DXIP_BOOT_HEADER_ENABLE="1" -DXIP_BOOT_HEADER_DCD_ENABLE="1" -DPRINTF_FLOAT_ENABLE="1" -DSCANF_FLOAT_ENABLE="1" -DPRINTF_ADVANCED_ENABLE="1" -DSCANF_ADVANCED_ENABLE="1"-o .\nor_txt_ram\objects\fsl_flexspi_nor_boot.o --depend .\nor_txt_ram\objects\fsl_flexspi_nor_boot.d)
+I (..\..\user\xip\fsl_flexspi_nor_boot.h)(0x5AE28987)
+I (D:\software\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (..\..\user\board.h)(0x5AE29BE3)
+I (..\..\user\clock_config.h)(0x5CAC7A78)
+I (..\..\libraries\drivers\fsl_common.h)(0x5C9F83B1)
+I (D:\software\Keil_v5\ARM\ARMCC\include\assert.h)(0x5475F300)
+I (D:\software\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x5475F300)
+I (D:\software\Keil_v5\ARM\ARMCC\include\string.h)(0x5475F300)
+I (D:\software\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5475F300)
+I (D:\software\Keil_v5\ARM\PACK\NXP\MIMXRT1052_DFP\10.0.1\fsl_device_registers.h)(0x5ABC318C)
+I (D:\software\Keil_v5\ARM\PACK\NXP\MIMXRT1052_DFP\10.0.1\MIMXRT1052.h)(0x5ABC318C)
+I (..\..\libraries\CMSIS\Include\core_cm7.h)(0x5AC901F8)
+I (..\..\libraries\CMSIS\Include\cmsis_version.h)(0x5AC901F8)
+I (..\..\libraries\CMSIS\Include\cmsis_compiler.h)(0x5AC901F8)
+I (..\..\libraries\CMSIS\Include\cmsis_armcc.h)(0x5AC901F8)
+I (..\..\libraries\CMSIS\Include\mpu_armv7.h)(0x5AC901F8)
+I (D:\software\Keil_v5\ARM\PACK\NXP\MIMXRT1052_DFP\10.0.1\system_MIMXRT1052.h)(0x5ABC318C)
+I (D:\software\Keil_v5\ARM\PACK\NXP\MIMXRT1052_DFP\10.0.1\MIMXRT1052_features.h)(0x5ABC318C)
+I (..\..\libraries\drivers\fsl_clock.h)(0x5AC901F8)
+I (..\..\libraries\drivers\fsl_gpio.h)(0x5AC901F8)
+F (..\..\doc\必读说明.txt)(0x5B347AC0)()
+F (..\..\user\pigDriver\GPIO.C)(0x5CAC7C91)(--c99 -c --cpu Cortex-M7.fp.dp -D__MICROLIB -g -O2 --apcs=interwork --split_sections -I..\..\libraries\CMSIS\Include -I..\..\libraries\drivers -I..\..\libraries\utilities -I..\..\libraries\utilities\str -I..\..\libraries\utilities\log -I..\..\libraries\utilities\io -I..\..\libraries\xip -I..\..\user -I..\..\user\bsp -I..\..\user\pigDriver --library_interface=armcc --library_type=standardlib --diag_suppress=66,1296,186  -I D:\智能车\麦轮信标\程序\RT1052\固件库学习\project\mdk\RTE-I D:\software\Keil_v5\ARM\PACK\NXP\MIMXRT1052_DFP\10.0.1-I D:\software\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DCPU_MIMXRT1052DVL6B -DCPU_MIMXRT1052DVL6B -DXIP_EXTERNAL_FLASH="1" -DXIP_BOOT_HEADER_ENABLE="1" -DXIP_BOOT_HEADER_DCD_ENABLE="1" -DPRINTF_FLOAT_ENABLE="1" -DSCANF_FLOAT_ENABLE="1" -DPRINTF_ADVANCED_ENABLE="1" -DSCANF_ADVANCED_ENABLE="1"-o .\nor_txt_ram\objects\gpio.o --depend .\nor_txt_ram\objects\gpio.d)
+I (..\..\libraries\drivers\fsl_common.h)(0x5C9F83B1)
+I (D:\software\Keil_v5\ARM\ARMCC\include\assert.h)(0x5475F300)
+I (D:\software\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x5475F300)
+I (D:\software\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (D:\software\Keil_v5\ARM\ARMCC\include\string.h)(0x5475F300)
+I (D:\software\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5475F300)
+I (D:\software\Keil_v5\ARM\PACK\NXP\MIMXRT1052_DFP\10.0.1\fsl_device_registers.h)(0x5ABC318C)
+I (D:\software\Keil_v5\ARM\PACK\NXP\MIMXRT1052_DFP\10.0.1\MIMXRT1052.h)(0x5ABC318C)
+I (..\..\libraries\CMSIS\Include\core_cm7.h)(0x5AC901F8)
+I (..\..\libraries\CMSIS\Include\cmsis_version.h)(0x5AC901F8)
+I (..\..\libraries\CMSIS\Include\cmsis_compiler.h)(0x5AC901F8)
+I (..\..\libraries\CMSIS\Include\cmsis_armcc.h)(0x5AC901F8)
+I (..\..\libraries\CMSIS\Include\mpu_armv7.h)(0x5AC901F8)
+I (D:\software\Keil_v5\ARM\PACK\NXP\MIMXRT1052_DFP\10.0.1\system_MIMXRT1052.h)(0x5ABC318C)
+I (D:\software\Keil_v5\ARM\PACK\NXP\MIMXRT1052_DFP\10.0.1\MIMXRT1052_features.h)(0x5ABC318C)
+I (..\..\libraries\drivers\fsl_clock.h)(0x5AC901F8)
+I (..\..\libraries\drivers\fsl_iomuxc.h)(0x5AC901F8)
+I (..\..\user\pigDriver\GPIO.h)(0x5C9F917C)
