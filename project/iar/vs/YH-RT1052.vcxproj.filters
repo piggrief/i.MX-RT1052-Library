@@ -2,55 +2,64 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 	<ItemGroup>
 		<Filter Include="源文件\board">
-			<UniqueIdentifier>{cf824b56-6629-412d-5f7f-f84baad6cea1}</UniqueIdentifier>
+			<UniqueIdentifier>{fe7f7b2e-e658-45cf-7f5a-dc0a26a33f31}</UniqueIdentifier>
 		</Filter>
 		<Filter Include="源文件\CMSIS">
-			<UniqueIdentifier>{b241f9c2-f7eb-4713-6db8-74a41349e14d}</UniqueIdentifier>
+			<UniqueIdentifier>{af70f9e0-df32-49d9-6195-655a530b691e}</UniqueIdentifier>
 		</Filter>
 		<Filter Include="源文件\doc">
-			<UniqueIdentifier>{eab097dd-34d4-4b07-7c3c-b8120b062fc0}</UniqueIdentifier>
+			<UniqueIdentifier>{e5fcffe9-f589-4e26-5b25-fbdc44a6618f}</UniqueIdentifier>
 		</Filter>
 		<Filter Include="源文件\drivers">
-			<UniqueIdentifier>{c1193dba-6629-47b7-70f0-97f9a6cf2310}</UniqueIdentifier>
+			<UniqueIdentifier>{36e4d306-8875-4b02-41f9-9a4562c7dc65}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="源文件\drivers\fsl_camera">
+			<UniqueIdentifier>{b8a1ac27-0b5d-4889-5f29-e7c56cbcffdb}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="源文件\drivers\fsl_csi">
+			<UniqueIdentifier>{693e4684-668d-4ab8-752a-58228c818806}</UniqueIdentifier>
 		</Filter>
 		<Filter Include="源文件\drivers\fsl_lpspi">
-			<UniqueIdentifier>{eb364096-5512-4b76-6b0c-cffabd7f65cd}</UniqueIdentifier>
+			<UniqueIdentifier>{7dbf7544-b15e-4755-51f5-39d1cbf98420}</UniqueIdentifier>
 		</Filter>
 		<Filter Include="源文件\drivers\fsl_lpuart">
-			<UniqueIdentifier>{1d9d8adc-76cf-4e9c-5aa0-f01289ccfaf3}</UniqueIdentifier>
+			<UniqueIdentifier>{3098a1a6-26b2-4d0b-42a8-6b6fec3cc482}</UniqueIdentifier>
 		</Filter>
 		<Filter Include="源文件\drivers\fsl_pit">
-			<UniqueIdentifier>{2ae75050-b066-4bf9-5a86-0649ca43d64f}</UniqueIdentifier>
+			<UniqueIdentifier>{fabae6aa-0ba0-4f6a-5595-ea4dffe7d5b9}</UniqueIdentifier>
 		</Filter>
 		<Filter Include="源文件\PigDrive">
-			<UniqueIdentifier>{b8836cd7-4c25-4d54-4383-04ff0557d94b}</UniqueIdentifier>
+			<UniqueIdentifier>{9d99754c-beb1-4991-73e5-cd12f9046e71}</UniqueIdentifier>
 		</Filter>
 		<Filter Include="源文件\PigDrive\LPSPI">
-			<UniqueIdentifier>{85bfe1cb-cd07-4707-480a-a416a70b5326}</UniqueIdentifier>
+			<UniqueIdentifier>{0347bdad-9ac2-41a5-7ac2-64570800d363}</UniqueIdentifier>
 		</Filter>
 		<Filter Include="源文件\PigDrive\LPUART">
-			<UniqueIdentifier>{4f2080cc-64e6-48ea-53de-b5b0fd6e3f8e}</UniqueIdentifier>
+			<UniqueIdentifier>{d0aa93c1-69e3-49cd-5f67-d615a9fc3460}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="源文件\PigDrive\MT9V032">
+			<UniqueIdentifier>{9b88e7f8-5bee-4325-79fb-a6ec6ca1c29f}</UniqueIdentifier>
 		</Filter>
 		<Filter Include="源文件\PigDrive\PIT">
-			<UniqueIdentifier>{433626a9-596f-41af-62bb-48f05a24dae9}</UniqueIdentifier>
+			<UniqueIdentifier>{93fbdf7f-52e1-47c9-7203-c7ff0889682f}</UniqueIdentifier>
 		</Filter>
 		<Filter Include="源文件\startup">
-			<UniqueIdentifier>{aedf969d-7d4f-456d-6c6d-c816ff56b128}</UniqueIdentifier>
+			<UniqueIdentifier>{b059a848-0295-4844-4d9d-f193f1de9e58}</UniqueIdentifier>
 		</Filter>
 		<Filter Include="源文件\user">
-			<UniqueIdentifier>{70f6520f-3f72-477f-5eb3-f3b9578f6815}</UniqueIdentifier>
+			<UniqueIdentifier>{be26e90b-dbad-4906-4f53-8b1706aeee9a}</UniqueIdentifier>
 		</Filter>
 		<Filter Include="源文件\user\TFT">
-			<UniqueIdentifier>{4d29c85b-9e38-4ffb-4997-f723cf1b3468}</UniqueIdentifier>
+			<UniqueIdentifier>{94a89e77-af15-4de9-63c5-82df83c04c2b}</UniqueIdentifier>
 		</Filter>
 		<Filter Include="源文件\utilities">
-			<UniqueIdentifier>{2626a933-d93c-4080-5aa8-a0a11d909c5d}</UniqueIdentifier>
+			<UniqueIdentifier>{3b082104-f92a-426e-4c87-a1445854ecd7}</UniqueIdentifier>
 		</Filter>
 		<Filter Include="源文件\xip">
-			<UniqueIdentifier>{36b48528-42f3-493a-716d-c2d89da79f78}</UniqueIdentifier>
+			<UniqueIdentifier>{35ce42df-558a-4c3f-4f2d-0472804b1bb4}</UniqueIdentifier>
 		</Filter>
 		<Filter Include="源文件">
-			<UniqueIdentifier>{409dee1a-7cd4-4da7-530e-52dc7e154cc1}</UniqueIdentifier>
+			<UniqueIdentifier>{2f6317eb-3f5f-4b10-7610-906858655ffa}</UniqueIdentifier>
 		</Filter>
 	</ItemGroup>
 	<ItemGroup>
@@ -81,6 +90,15 @@
 		<ClCompile Include="..\..\..\libraries\drivers\fsl_gpio.c">
 			<Filter>源文件\drivers</Filter>
 		</ClCompile>
+		<ClCompile Include="..\..\..\libraries\fsl_csi_camera_adapter.c">
+			<Filter>源文件\drivers\fsl_camera</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\libraries\fsl_sccb.c">
+			<Filter>源文件\drivers\fsl_camera</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\libraries\drivers\fsl_csi.c">
+			<Filter>源文件\drivers\fsl_csi</Filter>
+		</ClCompile>
 		<ClCompile Include="..\..\..\libraries\drivers\fsl_lpspi.c">
 			<Filter>源文件\drivers\fsl_lpspi</Filter>
 		</ClCompile>
@@ -95,6 +113,9 @@
 		</ClCompile>
 		<ClCompile Include="..\..\..\user\Pig_UART.c">
 			<Filter>源文件\PigDrive\LPUART</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\user\MT9V032.c">
+			<Filter>源文件\PigDrive\MT9V032</Filter>
 		</ClCompile>
 		<ClCompile Include="..\..\..\user\Pig_PIT.c">
 			<Filter>源文件\PigDrive\PIT</Filter>
@@ -155,6 +176,27 @@
 		<ClInclude Include="..\..\..\libraries\drivers\fsl_iomuxc.h">
 			<Filter>源文件\drivers</Filter>
 		</ClInclude>
+		<ClInclude Include="..\..\..\libraries\fsl_camera.h">
+			<Filter>源文件\drivers\fsl_camera</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\libraries\fsl_camera_device.h">
+			<Filter>源文件\drivers\fsl_camera</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\libraries\fsl_camera_receiver.h">
+			<Filter>源文件\drivers\fsl_camera</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\libraries\fsl_csi_camera_adapter.h">
+			<Filter>源文件\drivers\fsl_camera</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\libraries\fsl_sccb.h">
+			<Filter>源文件\drivers\fsl_camera</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\libraries\fsl_video_common.h">
+			<Filter>源文件\drivers\fsl_camera</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\libraries\drivers\fsl_csi.h">
+			<Filter>源文件\drivers\fsl_csi</Filter>
+		</ClInclude>
 		<ClInclude Include="..\..\..\libraries\drivers\fsl_lpspi.h">
 			<Filter>源文件\drivers\fsl_lpspi</Filter>
 		</ClInclude>
@@ -166,6 +208,9 @@
 		</ClInclude>
 		<ClInclude Include="..\..\..\user\Pig_UART.h">
 			<Filter>源文件\PigDrive\LPUART</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\user\MT9V032.h">
+			<Filter>源文件\PigDrive\MT9V032</Filter>
 		</ClInclude>
 		<ClInclude Include="..\..\..\user\Pig_PIT.h">
 			<Filter>源文件\PigDrive\PIT</Filter>

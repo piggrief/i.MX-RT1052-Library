@@ -25,7 +25,7 @@ if not "%~1" == "" goto debugFile
 
 @echo on 
 
-"C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.0\common\bin\cspybat" -f "G:\GIT_OSC\nxp_develop\rt1050\develop\固件库例程\FlexSPI—读写外部SPI NorFlash-\project\iar\settings\YH-RT1052.nor_sdram_txt_sdram.general.xcl" --backend -f "G:\GIT_OSC\nxp_develop\rt1050\develop\固件库例程\FlexSPI—读写外部SPI NorFlash-\project\iar\settings\YH-RT1052.nor_sdram_txt_sdram.driver.xcl" 
+"D:\software\IAR Systems\Embedded Workbench 8.1\common\bin\cspybat" -f "D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\project\iar\settings\YH-RT1052.nor_sdram_txt_sdram.general.xcl" --backend -f "D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\project\iar\settings\YH-RT1052.nor_sdram_txt_sdram.driver.xcl" 
 
 @echo off 
 goto end 
@@ -34,7 +34,7 @@ goto end
 
 @echo on 
 
-"C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.0\common\bin\cspybat" -f "G:\GIT_OSC\nxp_develop\rt1050\develop\固件库例程\FlexSPI—读写外部SPI NorFlash-\project\iar\settings\YH-RT1052.nor_sdram_txt_sdram.general.xcl" "--debug_file=%~1" --backend -f "G:\GIT_OSC\nxp_develop\rt1050\develop\固件库例程\FlexSPI—读写外部SPI NorFlash-\project\iar\settings\YH-RT1052.nor_sdram_txt_sdram.driver.xcl" 
+"D:\software\IAR Systems\Embedded Workbench 8.1\common\bin\cspybat" -f "D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\project\iar\settings\YH-RT1052.nor_sdram_txt_sdram.general.xcl" "--debug_file=%~1" --backend -f "D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\project\iar\settings\YH-RT1052.nor_sdram_txt_sdram.driver.xcl" 
 
 @echo off 
 :end

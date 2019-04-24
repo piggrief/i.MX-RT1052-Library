@@ -35,6 +35,8 @@ void PIT0Inter();
   */
  int main(void)
 {
+    uint32_t fullCameraBufferAddr;   
+
     /* 初始化内存保护单元 */
     BOARD_ConfigMPU();
     /* 初始化引脚设定 */
@@ -58,19 +60,26 @@ void PIT0Inter();
     PRINTF("SYSPLLPFD3:      %d Hz\r\n", CLOCK_GetFreq(kCLOCK_SysPllPfd3Clk));  
     /* 在这里添加你的代码^_^. */
   
-    TFT_init();
+    TFTSPI_Init();
     UART_Init(LPUART2, 256000);
     UART_Send(LPUART2, "123123\r\n", 8);
     UART_Send(LPUART2, "123123\r\n", 8);
     UART_Send(LPUART2, "123123\r\n", 8);
-    PIT_Init_us(kPIT_Chnl_0, 1000000, false);
-
+    //LQ_PIT_Init(kPIT_Chnl_1, 1000000);
+    //MT9V032Init();
+    TFTSPI_CLS(u16RED);
     while(1)
     {
-      TFT_showfloat(0, 0, count_1s, 3, 0, BLACK, WHITE);
-      TFT_showfloat(0,1,321.3,3,1,BLACK,WHITE);
-      TFT_showfloat(0,2,23213.3,3,1,BLACK,WHITE);     
-      delayms(1);
+ 
+      
+      
+      //if (kStatus_Success == CAMERA_RECEIVER_GetFullBuffer(&cameraReceiver, &fullCameraBufferAddr))  //摄像头CSI缓存区已满
+      //{
+        
+        
+        
+         //CAMERA_RECEIVER_SubmitEmptyBuffer(&cameraReceiver, fullCameraBufferAddr);//将照相机缓冲区提交到缓冲队列  
+      //}  
     }     
 
 }

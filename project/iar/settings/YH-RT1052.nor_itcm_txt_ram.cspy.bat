@@ -25,7 +25,7 @@ if not "%~1" == "" goto debugFile
 
 @echo on 
 
-"D:\software\IAR Systems\Embedded Workbench 8.1\common\bin\cspybat" -f "D:\智能车\麦轮信标\程序\RT1052\PIT库\project\iar\settings\YH-RT1052.nor_itcm_txt_ram.general.xcl" --backend -f "D:\智能车\麦轮信标\程序\RT1052\PIT库\project\iar\settings\YH-RT1052.nor_itcm_txt_ram.driver.xcl" 
+"D:\software\IAR Systems\Embedded Workbench 8.1\common\bin\cspybat" -f "D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\project\iar\settings\YH-RT1052.nor_itcm_txt_ram.general.xcl" --backend -f "D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\project\iar\settings\YH-RT1052.nor_itcm_txt_ram.driver.xcl" 
 
 @echo off 
 goto end 
@@ -34,7 +34,7 @@ goto end
 
 @echo on 
 
-"D:\software\IAR Systems\Embedded Workbench 8.1\common\bin\cspybat" -f "D:\智能车\麦轮信标\程序\RT1052\PIT库\project\iar\settings\YH-RT1052.nor_itcm_txt_ram.general.xcl" "--debug_file=%~1" --backend -f "D:\智能车\麦轮信标\程序\RT1052\PIT库\project\iar\settings\YH-RT1052.nor_itcm_txt_ram.driver.xcl" 
+"D:\software\IAR Systems\Embedded Workbench 8.1\common\bin\cspybat" -f "D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\project\iar\settings\YH-RT1052.nor_itcm_txt_ram.general.xcl" "--debug_file=%~1" --backend -f "D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\project\iar\settings\YH-RT1052.nor_itcm_txt_ram.driver.xcl" 
 
 @echo off 
 :end

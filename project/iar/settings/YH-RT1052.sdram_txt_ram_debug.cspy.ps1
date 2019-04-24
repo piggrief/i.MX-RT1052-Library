@@ -23,9 +23,9 @@
 
 if ($debugfile -eq "")
 {
-& "C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.0\common\bin\cspybat" -f "G:\GIT_OSC\nxp_develop\rt1050\develop\固件库例程\5-新建工程-固件库版本\project\iar\settings\YH-RT1052.sdram_txt_ram_debug.general.xcl" --backend -f "G:\GIT_OSC\nxp_develop\rt1050\develop\固件库例程\5-新建工程-固件库版本\project\iar\settings\YH-RT1052.sdram_txt_ram_debug.driver.xcl" 
+& "D:\software\IAR Systems\Embedded Workbench 8.1\common\bin\cspybat" -f "D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\project\iar\settings\YH-RT1052.sdram_txt_ram_debug.general.xcl" --backend -f "D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\project\iar\settings\YH-RT1052.sdram_txt_ram_debug.driver.xcl" 
 }
 else
 {
-& "C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.0\common\bin\cspybat" -f "G:\GIT_OSC\nxp_develop\rt1050\develop\固件库例程\5-新建工程-固件库版本\project\iar\settings\YH-RT1052.sdram_txt_ram_debug.general.xcl" --debug_file=$debugfile --backend -f "G:\GIT_OSC\nxp_develop\rt1050\develop\固件库例程\5-新建工程-固件库版本\project\iar\settings\YH-RT1052.sdram_txt_ram_debug.driver.xcl" 
+& "D:\software\IAR Systems\Embedded Workbench 8.1\common\bin\cspybat" -f "D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\project\iar\settings\YH-RT1052.sdram_txt_ram_debug.general.xcl" --debug_file=$debugfile --backend -f "D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\project\iar\settings\YH-RT1052.sdram_txt_ram_debug.driver.xcl" 
 }

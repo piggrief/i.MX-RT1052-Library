@@ -19,12 +19,6 @@
 * @param enableRunInDebug 是否让该PIT运行在DEBUG模式
 * @example PIT_Init(kPIT_Chnl_0, 1000, false);//代表初始化1ms中断
 */
-void PIT_Init_us(pit_chnl_t PITn, long TimeInterval, bool enableRunInDebug);
+void LQ_PIT_Init(pit_chnl_t channel, uint32_t count);
 
-/*!
-* @brief PIT定时器中断函数
-* 0~3通道的中断程序都需要加入这里，一般只需要编写一个void XX(void)的函数加入这个函数即可
-*
-*/
-void PIT_IRQHANDLER(void);
 # endif

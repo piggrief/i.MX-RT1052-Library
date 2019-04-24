@@ -13,10 +13,19 @@
 # include "fsl_lpspi.h"
 # include "fsl_lpuart.h"
 # include "fsl_pit.h"
+# include "fsl_csi.h"
+# include "fsl_sccb.h"
+# include "fsl_video_common.h"
+#include "fsl_camera.h"
+#include "fsl_camera_receiver.h"
+#include "fsl_camera_device.h"
+#include "fsl_csi_camera_adapter.h"
+
 
 # include "Pig_SPI.h"
 # include "Pig_UART.h"
 # include "Pig_PIT.h"
 # include "TFTDriver.h"
+# include "MT9V032.h"
 
 #endif

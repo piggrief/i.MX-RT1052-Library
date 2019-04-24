@@ -21,6 +21,10 @@
       <Configuration>nor_sdram_txt_sdram</Configuration>
       <Platform>Win32</Platform>
     </ProjectConfiguration>
+    <ProjectConfiguration Include="nor_txt_ram|Win32">
+      <Configuration>nor_txt_ram</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\user\board.c">
@@ -41,6 +45,12 @@
     </ClCompile>
     <ClCompile Include="..\..\..\libraries\drivers\fsl_gpio.c">
     </ClCompile>
+    <ClCompile Include="..\..\..\libraries\fsl_csi_camera_adapter.c">
+    </ClCompile>
+    <ClCompile Include="..\..\..\libraries\fsl_sccb.c">
+    </ClCompile>
+    <ClCompile Include="..\..\..\libraries\drivers\fsl_csi.c">
+    </ClCompile>
     <ClCompile Include="..\..\..\libraries\drivers\fsl_lpspi.c">
     </ClCompile>
     <ClCompile Include="..\..\..\libraries\drivers\fsl_lpuart.c">
@@ -50,6 +60,8 @@
     <ClCompile Include="..\..\..\user\Pig_SPI.c">
     </ClCompile>
     <ClCompile Include="..\..\..\user\Pig_UART.c">
+    </ClCompile>
+    <ClCompile Include="..\..\..\user\MT9V032.c">
     </ClCompile>
     <ClCompile Include="..\..\..\user\Pig_PIT.c">
     </ClCompile>
@@ -91,6 +103,20 @@
     </ClInclude>
     <ClInclude Include="..\..\..\libraries\drivers\fsl_iomuxc.h">
     </ClInclude>
+    <ClInclude Include="..\..\..\libraries\fsl_camera.h">
+    </ClInclude>
+    <ClInclude Include="..\..\..\libraries\fsl_camera_device.h">
+    </ClInclude>
+    <ClInclude Include="..\..\..\libraries\fsl_camera_receiver.h">
+    </ClInclude>
+    <ClInclude Include="..\..\..\libraries\fsl_csi_camera_adapter.h">
+    </ClInclude>
+    <ClInclude Include="..\..\..\libraries\fsl_sccb.h">
+    </ClInclude>
+    <ClInclude Include="..\..\..\libraries\fsl_video_common.h">
+    </ClInclude>
+    <ClInclude Include="..\..\..\libraries\drivers\fsl_csi.h">
+    </ClInclude>
     <ClInclude Include="..\..\..\libraries\drivers\fsl_lpspi.h">
     </ClInclude>
     <ClInclude Include="..\..\..\libraries\drivers\fsl_pit.h">
@@ -98,6 +124,8 @@
     <ClInclude Include="..\..\..\user\Pig_SPI.h">
     </ClInclude>
     <ClInclude Include="..\..\..\user\Pig_UART.h">
+    </ClInclude>
+    <ClInclude Include="..\..\..\user\MT9V032.h">
     </ClInclude>
     <ClInclude Include="..\..\..\user\Pig_PIT.h">
     </ClInclude>
@@ -115,7 +143,7 @@
     </None>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{64193BD7-37B1-4E3A-5244-FFC3EA6C80BD}</ProjectGuid>
+    <ProjectGuid>{25ED2008-8B43-42B2-5CF4-0A7A0B3E5698}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>YH-RT1052</RootNamespace>
   </PropertyGroup>
@@ -136,6 +164,10 @@
     <IncludePath>..\..\..\libraries;..\..\..\libraries\CMSIS\Include;..\..\..\libraries\drivers;..\..\..\libraries\utilities;..\..\..\libraries\utilities\str;..\..\..\libraries\utilities\log;..\..\..\libraries\utilities\io;..\..\..\libraries\xip;..\..\..\user;..\..\..\user\bsp</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='nor_sdram_txt_sdram|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>..\..\..\libraries;..\..\..\libraries\CMSIS\Include;..\..\..\libraries\drivers;..\..\..\libraries\utilities;..\..\..\libraries\utilities\str;..\..\..\libraries\utilities\log;..\..\..\libraries\utilities\io;..\..\..\libraries\xip;..\..\..\user;..\..\..\user\bsp</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='nor_txt_ram|Win32'">
     <LinkIncremental>true</LinkIncremental>
     <IncludePath>..\..\..\libraries;..\..\..\libraries\CMSIS\Include;..\..\..\libraries\drivers;..\..\..\libraries\utilities;..\..\..\libraries\utilities\str;..\..\..\libraries\utilities\log;..\..\..\libraries\utilities\io;..\..\..\libraries\xip;..\..\..\user;..\..\..\user\bsp</IncludePath>
   </PropertyGroup>
@@ -202,6 +234,20 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>CPU_MIMXRT1052DVL6B;XIP_EXTERNAL_FLASH=1;XIP_BOOT_HEADER_ENABLE=1;XIP_BOOT_HEADER_DCD_ENABLE=1;PRINTF_FLOAT_ENABLE=1;SCANF_FLOAT_ENABLE=1;PRINTF_ADVANCED_ENABLE=1;SCANF_ADVANCED_ENABLE=1;USE_RAM_VECTOR_TABLE</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>
+      </SubSystem>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='nor_txt_ram|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>CPU_MIMXRT1052DVL6B;XIP_EXTERNAL_FLASH=1;XIP_BOOT_HEADER_ENABLE=1;XIP_BOOT_HEADER_DCD_ENABLE=1;PRINTF_FLOAT_ENABLE=1;SCANF_FLOAT_ENABLE=1;PRINTF_ADVANCED_ENABLE=1;SCANF_ADVANCED_ENABLE=1</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <SubSystem>
