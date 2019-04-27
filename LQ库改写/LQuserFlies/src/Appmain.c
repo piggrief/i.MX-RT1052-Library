@@ -94,8 +94,15 @@ void delayus(uint32_t us) //延时1us 实测为1.18us   延时10us 实测为10.02us   延时
     return ;
 } 
 
+void DelayTest(void)
+{
+    _systime.delay_ms(900);
+}
+
     uint32_t fullCameraBufferAddr;     
   unsigned char * image;
+  uint64_t time;
+  uint64_t now;
 int main(void)
 {        
   
@@ -104,37 +111,32 @@ int main(void)
     BOARD_BootClockRUN();                /* 初始化开发板时钟 */   
     BOARD_InitDEBUG_UARTPins();          //UART调试口管脚复用初始化 
     BOARD_InitDebugConsole();            //UART调试口初始化 可以使用 PRINTF函数          
-    //LED_Init();                          //初始化核心板和开发板上的LED接口
-//    LQ_UART_Init(LPUART1, 115200);       //串口1初始化 可以使用 printf函数
+    LED_Init();                          //初始化核心板和开发板上的LED接口
+    LQ_UART_Init(LPUART1, 115200);       //串口1初始化 可以使用 printf函数
     _systime.init();                     //开启systick定时器
     NVIC_SetPriorityGrouping(2);/*设置中断优先级组  0: 0个抢占优先级16位个子优先级 
                                  *1: 2个抢占优先级 8个子优先级 2: 4个抢占优先级 4个子优先级 
                                  *3: 8个抢占优先级 2个子优先级 4: 16个抢占优先级 0个子优先级
                                  */
-
-/*    uint64_t now = _systime.get_time_us();         //计时功能  得到当前时间   
- *    代码
- *    uint64_t time = _systime.get_time_us() - now;  //得到时差
- *    printf("time is %llu \r\n", time);
- */    
+    Test_PIT();
 
     /****************打印系统时钟******************/
-    printf("\r\n");
-    printf("*****LQ_1052*****\r\n");
-    printf("CPU:             %d Hz\r\n", CLOCK_GetFreq(kCLOCK_CpuClk));
-    printf("AHB:             %d Hz\r\n", CLOCK_GetFreq(kCLOCK_AhbClk));
-    printf("SEMC:            %d Hz\r\n", CLOCK_GetFreq(kCLOCK_SemcClk));
-    printf("SYSPLL:          %d Hz\r\n", CLOCK_GetFreq(kCLOCK_SysPllClk));
-    printf("Video:           %d Hz\r\n", CLOCK_GetFreq(kCLOCK_VideoPllClk));
-    printf("SYSPLLPFD0:      %d Hz\r\n", CLOCK_GetFreq(kCLOCK_SysPllPfd0Clk));
-    printf("SYSPLLPFD1:      %d Hz\r\n", CLOCK_GetFreq(kCLOCK_SysPllPfd1Clk));
-    printf("SYSPLLPFD2:      %d Hz\r\n", CLOCK_GetFreq(kCLOCK_SysPllPfd2Clk));
-    printf("SYSPLLPFD3:      %d Hz\r\n", CLOCK_GetFreq(kCLOCK_SysPllPfd3Clk));
-    printf("USB1PLL:          %d Hz\r\n", CLOCK_GetFreq(kCLOCK_Usb1PllClk));
-    printf("USB1PLLPFD0:      %d Hz\r\n", CLOCK_GetFreq(kCLOCK_Usb1PllPfd0Clk));
-    printf("USB1PLLPFD1:      %d Hz\r\n", CLOCK_GetFreq(kCLOCK_Usb1PllPfd1Clk));
-    printf("USB1PLLPFD2:      %d Hz\r\n", CLOCK_GetFreq(kCLOCK_Usb1PllPfd2Clk));
-    printf("USB1PLLPFD3:      %d Hz\r\n", CLOCK_GetFreq(kCLOCK_Usb1PllPfd3Clk));	
+    PRINTF("\r\n");
+    PRINTF("*****LQ_1052*****\r\n");
+    PRINTF("CPU:             %d Hz\r\n", CLOCK_GetFreq(kCLOCK_CpuClk));
+    PRINTF("AHB:             %d Hz\r\n", CLOCK_GetFreq(kCLOCK_AhbClk));
+    PRINTF("SEMC:            %d Hz\r\n", CLOCK_GetFreq(kCLOCK_SemcClk));
+    PRINTF("SYSPLL:          %d Hz\r\n", CLOCK_GetFreq(kCLOCK_SysPllClk));
+    PRINTF("Video:           %d Hz\r\n", CLOCK_GetFreq(kCLOCK_VideoPllClk));
+    PRINTF("SYSPLLPFD0:      %d Hz\r\n", CLOCK_GetFreq(kCLOCK_SysPllPfd0Clk));
+    PRINTF("SYSPLLPFD1:      %d Hz\r\n", CLOCK_GetFreq(kCLOCK_SysPllPfd1Clk));
+    PRINTF("SYSPLLPFD2:      %d Hz\r\n", CLOCK_GetFreq(kCLOCK_SysPllPfd2Clk));
+    PRINTF("SYSPLLPFD3:      %d Hz\r\n", CLOCK_GetFreq(kCLOCK_SysPllPfd3Clk));
+    PRINTF("USB1PLL:          %d Hz\r\n", CLOCK_GetFreq(kCLOCK_Usb1PllClk));
+    PRINTF("USB1PLLPFD0:      %d Hz\r\n", CLOCK_GetFreq(kCLOCK_Usb1PllPfd0Clk));
+    PRINTF("USB1PLLPFD1:      %d Hz\r\n", CLOCK_GetFreq(kCLOCK_Usb1PllPfd1Clk));
+    PRINTF("USB1PLLPFD2:      %d Hz\r\n", CLOCK_GetFreq(kCLOCK_Usb1PllPfd2Clk));
+    PRINTF("USB1PLLPFD3:      %d Hz\r\n", CLOCK_GetFreq(kCLOCK_Usb1PllPfd3Clk));
     
 //-----------------------------------------------------------------------------------------  
 //  测试函数都是死循环，每次只能开启一个，综合应用需自行调用各模块初始化函数
@@ -162,7 +164,8 @@ int main(void)
 //    Test_SGP18_OV7725();   //测试OV7725RGB 和TFT1.8
 //    Test_SGP18_Camera();   //测试神眼 Or 7725 二值化 + TFT1.8  注意，7725使用灰度图像时使用YUYV格式 需要配置 cameraConfig = { .pixelFormat = kVIDEO_PixelFormatYUYV }
 //----------------------------------------------------------------------------------------- 
-     
+    PRINTF("经过了 %d \r\n", time);
+    time = MeasureRunTime_ms(DelayTest);
 //综合测试    
     while(1)
     {
@@ -228,43 +231,10 @@ int main(void)
         uint16_t color = 0;
         while(1)
         {                                          
-                
-            // Wait to get the full frame buffer to show. 
-            while (kStatus_Success != CAMERA_RECEIVER_GetFullBuffer(&cameraReceiver, &fullCameraBufferAddr))  //摄像头CSI缓存区已满
-            {
-            }   
-            if (SCB_CCR_DC_Msk == (SCB_CCR_DC_Msk & SCB->CCR)) {//注意，使用csiFrameBuf数组时，最好关闭D-Cache 不然上次数据可能会存放在cache里面，造成数据错乱
-            SCB_DisableDCache();
-            }
-    
-            image = (unsigned char *)(fullCameraBufferAddr);
-            int ShowWidth = 80;
-            int ShowHeight = 80;
-            uint8_t ShowPix = 0;
-          TFTSPI_Set_Pos(0,0,ShowWidth-1 ,ShowHeight);//注意 设置显示大小要与下面的实际显示大小相等，不然会显示不出来或者花屏
-          for(int i = 0; i < ShowWidth; i++)  //  480/4/2/2 = 30
-          {
-              for(int j = 0; j < ShowHeight*2; j+=2)//隔2列取一列  752*2/4/4 = 188   //两行数据 一行94像素
-              {
-                  //灰度显示
-                  color = 0;
-                  color=(((*((uint8_t *)fullCameraBufferAddr +  i * APP_CAMERA_WIDTH * 2 + j))>>3))<<11;
-                  color=color|((((*((uint8_t *)fullCameraBufferAddr +  i * APP_CAMERA_WIDTH * 2 + j))>>2))<<5);
-                  color=color|(((*((uint8_t *)fullCameraBufferAddr +  i * APP_CAMERA_WIDTH * 2 + j))>>3));
-                  TFTSPI_Write_Word(color);
-                  //二值化显示
-  //                if(*((uint8_t *)fullCameraBufferAddr +  i * APP_CAMERA_WIDTH * 2 + j) > 0x60)  //阈值0x60 二值化显示
-  //                  TFTSPI_Write_Word (0xffff); //显示数据
-  //                else
-  //                  TFTSPI_Write_Word (0x0000); //显示数据
-              }
-          }
-            CAMERA_RECEIVER_SubmitEmptyBuffer(&cameraReceiver, fullCameraBufferAddr);//将照相机缓冲区提交到缓冲队列        
-            SCB_EnableDCache();
-          }
-        
-        
-        
+         
+          
+          
+        }        
     }
     
     

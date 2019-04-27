@@ -21,6 +21,20 @@ typedef struct
 }systime_t;
 
 extern systime_t  _systime;
+/*!位置：m_systime.h
+* @brief 测量程序运行时间，us级别
+*
+* @param *RunFuction 待测量运行时间的函数指针，要定义一个void输入，void输出的函数
+* @example uint64_t time = MeasureRunTime_us(DelayTest);
+*/
+uint64_t MeasureRunTime_us(void(*RunFuction)(void));
+/*!位置：m_systime.h
+* @brief 测量程序运行时间，ms级别
+*
+* @param *RunFuction 待测量运行时间的函数指针，要定义一个void输入，void输出的函数
+* @example uint64_t time = MeasureRunTime_ms(DelayTest);
+*/
+uint32_t MeasureRunTime_ms(void(*RunFuction)(void));
 
 
 #endif //__M_SYSTIME_H

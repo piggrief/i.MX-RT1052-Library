@@ -75,5 +75,18 @@ systime_t  _systime =
 
 };
 
+uint64_t MeasureRunTime_us(void(*RunFuction)(void))
+{
+    uint64_t StartTime_us = _systime.get_time_us();
+    RunFuction();
+    uint64_t EndTime_us = _systime.get_time_us();
+    return EndTime_us - StartTime_us;
+}
 
-
+uint32_t MeasureRunTime_ms(void(*RunFuction)(void))
+{
+    uint32_t StartTime_ms = _systime.get_time_ms();
+    RunFuction();
+    uint32_t EndTime_ms = _systime.get_time_ms();
+    return EndTime_ms - StartTime_ms;
+}
