@@ -1,53 +1,53 @@
-"D:\智能车\学习资料\0-野火【i.MX RT1052 Pro 开发板】资料\3-程序源码\1-固件库例程\FlexSPI—读写外部SPI NorFlash\1-SPI FLASH基本读写测试\user\board.c"
+"D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\user\board.c"
 -std=c11
 -ferror-limit=0
 -fbracket-depth=512
 -I
-D:\智能车\学习资料\0-野火【i.MX RT1052 Pro 开发板】资料\3-程序源码\1-固件库例程\FlexSPI—读写外部SPI NorFlash\1-SPI FLASH基本读写测试\user
+D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\user
 -I
-D:\智能车\学习资料\0-野火【i.MX RT1052 Pro 开发板】资料\3-程序源码\1-固件库例程\FlexSPI—读写外部SPI NorFlash\1-SPI FLASH基本读写测试\project\iar\..\..\libraries
+D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\project\iar\..\..\libraries
 -I
-D:\智能车\学习资料\0-野火【i.MX RT1052 Pro 开发板】资料\3-程序源码\1-固件库例程\FlexSPI—读写外部SPI NorFlash\1-SPI FLASH基本读写测试\project\iar\..\..\libraries\CMSIS\Include
+D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\project\iar\..\..\libraries\CMSIS\Include
 -I
-D:\智能车\学习资料\0-野火【i.MX RT1052 Pro 开发板】资料\3-程序源码\1-固件库例程\FlexSPI—读写外部SPI NorFlash\1-SPI FLASH基本读写测试\project\iar\..\..\libraries\drivers
+D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\project\iar\..\..\libraries\drivers
 -I
-D:\智能车\学习资料\0-野火【i.MX RT1052 Pro 开发板】资料\3-程序源码\1-固件库例程\FlexSPI—读写外部SPI NorFlash\1-SPI FLASH基本读写测试\project\iar\..\..\libraries\utilities
+D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\project\iar\..\..\libraries\utilities
 -I
-D:\智能车\学习资料\0-野火【i.MX RT1052 Pro 开发板】资料\3-程序源码\1-固件库例程\FlexSPI—读写外部SPI NorFlash\1-SPI FLASH基本读写测试\project\iar\..\..\libraries\utilities\str
+D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\project\iar\..\..\libraries\utilities\str
 -I
-D:\智能车\学习资料\0-野火【i.MX RT1052 Pro 开发板】资料\3-程序源码\1-固件库例程\FlexSPI—读写外部SPI NorFlash\1-SPI FLASH基本读写测试\project\iar\..\..\libraries\utilities\log
+D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\project\iar\..\..\libraries\utilities\log
 -I
-D:\智能车\学习资料\0-野火【i.MX RT1052 Pro 开发板】资料\3-程序源码\1-固件库例程\FlexSPI—读写外部SPI NorFlash\1-SPI FLASH基本读写测试\project\iar\..\..\libraries\utilities\io
+D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\project\iar\..\..\libraries\utilities\io
 -I
-D:\智能车\学习资料\0-野火【i.MX RT1052 Pro 开发板】资料\3-程序源码\1-固件库例程\FlexSPI—读写外部SPI NorFlash\1-SPI FLASH基本读写测试\project\iar\..\..\libraries\xip
+D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\project\iar\..\..\libraries\xip
 -I
-D:\智能车\学习资料\0-野火【i.MX RT1052 Pro 开发板】资料\3-程序源码\1-固件库例程\FlexSPI—读写外部SPI NorFlash\1-SPI FLASH基本读写测试\project\iar\..\..\user
+D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\project\iar\..\..\user
 -I
-D:\智能车\学习资料\0-野火【i.MX RT1052 Pro 开发板】资料\3-程序源码\1-固件库例程\FlexSPI—读写外部SPI NorFlash\1-SPI FLASH基本读写测试\project\iar\..\..\user\bsp
+D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\project\iar\..\..\user\bsp
 -I
 D:\software\IAR Systems\Embedded Workbench 8.1\arm\inc
 -I
 D:\software\IAR Systems\Embedded Workbench 8.1\arm\inc\c
 -I
-D:\智能车\学习资料\0-野火【i.MX RT1052 Pro 开发板】资料\3-程序源码\1-固件库例程\FlexSPI—读写外部SPI NorFlash\1-SPI FLASH基本读写测试\libraries
+D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\libraries
 -I
-D:\智能车\学习资料\0-野火【i.MX RT1052 Pro 开发板】资料\3-程序源码\1-固件库例程\FlexSPI—读写外部SPI NorFlash\1-SPI FLASH基本读写测试\libraries\CMSIS\Include
+D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\libraries\CMSIS\Include
 -I
-D:\智能车\学习资料\0-野火【i.MX RT1052 Pro 开发板】资料\3-程序源码\1-固件库例程\FlexSPI—读写外部SPI NorFlash\1-SPI FLASH基本读写测试\libraries\drivers
+D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\libraries\drivers
 -I
-D:\智能车\学习资料\0-野火【i.MX RT1052 Pro 开发板】资料\3-程序源码\1-固件库例程\FlexSPI—读写外部SPI NorFlash\1-SPI FLASH基本读写测试\libraries\utilities
+D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\libraries\utilities
 -I
-D:\智能车\学习资料\0-野火【i.MX RT1052 Pro 开发板】资料\3-程序源码\1-固件库例程\FlexSPI—读写外部SPI NorFlash\1-SPI FLASH基本读写测试\libraries\utilities\str
+D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\libraries\utilities\str
 -I
-D:\智能车\学习资料\0-野火【i.MX RT1052 Pro 开发板】资料\3-程序源码\1-固件库例程\FlexSPI—读写外部SPI NorFlash\1-SPI FLASH基本读写测试\libraries\utilities\log
+D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\libraries\utilities\log
 -I
-D:\智能车\学习资料\0-野火【i.MX RT1052 Pro 开发板】资料\3-程序源码\1-固件库例程\FlexSPI—读写外部SPI NorFlash\1-SPI FLASH基本读写测试\libraries\utilities\io
+D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\libraries\utilities\io
 -I
-D:\智能车\学习资料\0-野火【i.MX RT1052 Pro 开发板】资料\3-程序源码\1-固件库例程\FlexSPI—读写外部SPI NorFlash\1-SPI FLASH基本读写测试\libraries\xip
+D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\libraries\xip
 -I
-D:\智能车\学习资料\0-野火【i.MX RT1052 Pro 开发板】资料\3-程序源码\1-固件库例程\FlexSPI—读写外部SPI NorFlash\1-SPI FLASH基本读写测试\user
+D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\user
 -I
-D:\智能车\学习资料\0-野火【i.MX RT1052 Pro 开发板】资料\3-程序源码\1-固件库例程\FlexSPI—读写外部SPI NorFlash\1-SPI FLASH基本读写测试\user\bsp
+D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\user\bsp
 -D__CHAR_BITS__=8
 -D__CHAR_MAX__=0xff
 -D__CHAR_MIN__=0

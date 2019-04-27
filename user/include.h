@@ -21,6 +21,8 @@
 #include "fsl_camera_device.h"
 #include "fsl_csi_camera_adapter.h"
 
+#include "LQ_MT9V034M.h"   //神眼摄像头V3   
+#include "LQ_CSI.h"       //摄像头接口
 
 # include "Pig_SPI.h"
 # include "Pig_UART.h"

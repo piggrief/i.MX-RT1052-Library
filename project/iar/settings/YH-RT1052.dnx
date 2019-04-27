@@ -16,10 +16,10 @@
         <MemConfigValue>D:\software\IAR Systems\Embedded Workbench 8.1\arm\CONFIG\debugger\NXP\MIMXRT1052xxx6B.ddf</MemConfigValue>
     </PlDriver>
     <Jet>
-        <JetConnSerialNo>14098</JetConnSerialNo>
-        <JetConnFoundProbes />
         <PrevWtdReset>Core</PrevWtdReset>
         <OnlineReset>Software</OnlineReset>
+        <JetConnSerialNo>14098</JetConnSerialNo>
+        <JetConnFoundProbes />
         <DisableInterrupts>0</DisableInterrupts>
         <LeaveRunning>0</LeaveRunning>
         <MultiCoreRunAll>0</MultiCoreRunAll>
@@ -28,7 +28,7 @@
         <EnableCache>1</EnableCache>
     </ArmDriver>
     <DebugChecksum>
-        <Checksum>2155536633</Checksum>
+        <Checksum>1556108539</Checksum>
     </DebugChecksum>
     <Exceptions>
         <StopOnUncaught>_ 0</StopOnUncaught>

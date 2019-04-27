@@ -1,0 +1,140 @@
+/*LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL
+【平    台】龙邱i.MX RT1052核心板-智能车板
+【编    写】CHIUSIR
+【E-mail  】chiusir@163.com
+【软件版本】V1.0，龙邱开源代码，仅供参考，后果自负
+【最后更新】2018年2月1日
+【相关信息参考下列地址】
+【网    站】http://www.lqist.cn
+【淘宝店铺】http://shop36265907.taobao.com
+------------------------------------------------
+【dev.env.】IAR8.20.1及以上版本
+【Target 】 i.MX RT1052
+【Crystal】 24.000Mhz
+【ARM PLL】 1200MHz
+【SYS PLL】 528MHz
+【USB PLL】 480MHz
+================================================
+Board settings
+================================================
+1. Connect the LCD8000-43T module.
+2. Connect the lqmt9v034 camera module.
+3. Insert the microSD card.
+------------------------------------------------
+EVB:
+J22              J23           J24
+AD_B1_07       AD_B1_10       AD_B0_03 
+AD_B1_06       AD_B1_11       AD_B0_02 
+AD_B0_11       AD_B1_04       SD_B0_01
+AD_B1_08       AD_B1_05       SD_B0_02
+AD_B0_09       AD_B1_01       SD_B0_03
+AD_B0_10       AD_B1_00       SD_B0_00
+AD_B1_02                      GND 
+AD_B1_03                      3.3V
+                              AD_B0_01 
+                              AD_B0_00 
+QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ*/
+
+#include "include.h"
+//==========================================================================================  
+//测试函数名称        测试内部模块及功能           智能车及应用开发               完成状况
+//----------------------------------------------------------------------------------------- 
+//Test_LED();        //测试GPIO输出口               LED显示及外设控制              已完成
+//Test_OLED();       //测试模拟SPI功能              OLED模块功能                   已完成
+//Test_GPIO_KEY();   //测试GPIO输入                 按键检测功能                   已完成 
+//Test_GPIO_EXINT(); //测试GPIO输入及外部中断       按键、中断检测功能             已完成     
+//Test_UART();       //测试UART及中断               蓝牙、USB转TTL调试及通信       已完成
+//Test_ADC();        //测试ADC采集功能              电磁传感器及电源电压监控       已完成
+//Test_QTMR_PWM();
+//Test_QTMR_PMW();
+//Test_QTMR_INPUT_CAPTURE();//测试LPTMR功能         计数功能  
+//Test_QTMR();
+//Test_Servo();      //测试用PWM功能                数字舵机驱动控制               
+//Test_Motor();      //测试用PWM功能                电机驱动控制                      
+//TestOLED_TSL1401();//测试OLED和TSL1401功能        OLED显示屏及线阵摄像头         
+//TestOLED_MT9V034();//测试OLED和MT9V034功能        OLED显示屏及面阵摄像头动图     已完成
+//Test_WDG();        //测试看门狗功能               程序监控                       已完成
+//Test_9AX();        //测试I2C及龙邱九轴            陀螺仪及加速度功能             待完成 
+//Test_MPU6050();    //测试I2C及6轴陀螺仪功能       陀螺仪及加速度功能             待完成 
+//Test_TFT();        //测试模拟SPI功能              彩屏功能                       
+//Test_EEPROM();     //测试EEPROM功能               内部EEPROM数据存贮             待完成 
+//-----------------------------------------------------------------------------------------  
+//                    能车验证程序
+//----------------------------------------------------------------------------------------- 
+//LQMT4Wheel_Run(void);          //四轮神眼面阵摄像头车演示/光电                   已完成
+//LQMT4Wheel_Run2(void);         //四轮神眼面阵摄像头车演示/信标                   已完成
+//OV76204Wheel_Run(void);        //四轮OV7620面阵摄像头车演示                      已完成
+//MagNav4Wheel_Run(void);        //四轮magnetic navigation车演示                   待完成 
+//MagNavSelfBalance_Run(void);   //两轮自平衡magnetic navigation车演示             待完成 
+//========================================================================================== 
+void delayms(uint32_t ms)
+{
+    uint32_t i,j;
+    
+    for (i = 0; i < ms; i++)
+    {
+        for (j = 0; j < 300000; j++)//528M--1ms
+        __NOP();//asm("NOP");   
+    }
+    return ;
+}
+
+//@brief Main function
+int main(void)
+{        
+    uint16_t addr;
+      
+    BOARD_ConfigMPU();                   //Config MPU.
+    BOARD_BootClockRUN();                //Configure clock
+    CLOCK_InitSysPfd(kCLOCK_Pfd0, 0x12U);//
+    CLOCK_SetDiv(kCLOCK_Usdhc1Div, 0U);  //CCM DIV
+    CLOCK_SetMux(kCLOCK_Usdhc1Mux, 1U);  //CCM MUX
+    CLOCK_SetMux(kCLOCK_PerclkMux, 1U);  //Set PERCLK_CLK source to OSC_CLK  
+    CLOCK_SetDiv(kCLOCK_PerclkDiv, 0U);  //Set PERCLK_CLK divider to 1     
+    SEMC->SDRAMCR3 |= SEMC_SDRAMCR3_REN_MASK;//   
+    BOARD_InitDEBUG_UARTPins();          //UART调试口管脚复用初始化   
+    //BOARD_InitLPI2C1Pins();              //I2C1口管脚复用初始化  
+    BOARD_InitSDRAMPins();               //SDRAM管脚复用初始化   
+    BOARD_InitDebugConsole();            //UART调试口初始化          
+    LED_Init();                          //开发板上LED0会用到
+    
+    //-----------------------------------------------------------------------------------------  
+    //  测试函数都是死循环，每次只能开启一个，综合应用需自行调用各模块初始化函数
+    //-----------------------------------------------------------------------------------------
+    //Test_ADC();          //测试ADC采集功能               电磁传感器及电源电压监控 
+    //Test_UART();         //测试UART及中断                蓝牙、USB转TTL调试及通信
+    //Test_LED();          //测试GPIO输出口                LED显示及外设控制        
+    //Test_OLED();         //测试模拟SPI功能               OLED模块功能   
+    //TFTSPI_Test();       //测试模拟SPI功能               TFT1.8模块功能    
+    //Test_GPIO_KEY();     //测试GPIO输入                  按键检测功能              
+    //Test_GPIO_ExInt();   //测试GPIO输入及外部中断        按键、中断检测功能     
+    //Test_LQV034();       //OLED显示屏及面阵摄像头动图 
+    //Test_PIT();          //测试PIT定时中断功能     
+    //Test_RNG();          //随机数产生      
+    //Test_9AX();
+     
+    LQ_IIC_GPIO_Init();    
+
+    addr=MTV_IICReadReg16(0);
+    PRINTF("\r\nLQMT9V034_CHIP_ID:0x%04X",addr);
+    addr=MTV_IICReadReg16(0x0F);
+    PRINTF("\r\nMTV_HDR_ENABLE_REG:0x%04X",addr);
+    MTV_IICWriteReg16(0x0F,0x0103); 
+    addr=MTV_IICReadReg16(0x0F);
+    PRINTF("\r\nMTV_HDR_ENABLE_REG:0x%04X",addr);
+    
+    PRINTF("\r\nLQMT9V034C_Set_ResolutionX()\r\n");  
+    LQMT9V034C_Set_ResolutionX(752,480);
+    
+    //Test_PWM_nCH();
+    //Test_Servo();        //数字舵机测试
+    //Test_Motor();        //直流电机驱动测试，            用龙邱全桥驱动板
+    //Test_ENCoder();      //编码器采集
+    //-----------------------------------------------------------------------------------------  
+    Test_TFT_Camera();
+    while (1)
+    {      
+      LED_Ctrl(LED0, RVS); //EVK LED闪烁  
+      delayms(100);        //延时100毫秒
+    }
+}

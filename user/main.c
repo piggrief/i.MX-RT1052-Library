@@ -36,6 +36,7 @@ void PIT0Inter();
  int main(void)
 {
     uint32_t fullCameraBufferAddr;   
+    uint16_t color = 0;
 
     /* 初始化内存保护单元 */
     BOARD_ConfigMPU();
@@ -61,17 +62,44 @@ void PIT0Inter();
     /* 在这里添加你的代码^_^. */
   
     TFTSPI_Init();
-    UART_Init(LPUART2, 256000);
-    UART_Send(LPUART2, "123123\r\n", 8);
-    UART_Send(LPUART2, "123123\r\n", 8);
-    UART_Send(LPUART2, "123123\r\n", 8);
+//    UART_Init(LPUART2, 256000);
+//    UART_Send(LPUART2, "123123\r\n", 8);
+//    UART_Send(LPUART2, "123123\r\n", 8);
+//    UART_Send(LPUART2, "123123\r\n", 8);
     //LQ_PIT_Init(kPIT_Chnl_1, 1000000);
-    //MT9V032Init();
+    LQ_Camera_Init();
     TFTSPI_CLS(u16RED);
     while(1)
     {
  
-      
+            while (kStatus_Success != CAMERA_RECEIVER_GetFullBuffer(&cameraReceiver, &fullCameraBufferAddr))  //摄像头CSI缓存区已满
+            {
+            }   
+            if (SCB_CCR_DC_Msk == (SCB_CCR_DC_Msk & SCB->CCR)) {//注意，使用csiFrameBuf数组时，最好关闭D-Cache 不然上次数据可能会存放在cache里面，造成数据错乱
+            SCB_DisableDCache();
+            }
+    
+            TFTSPI_Set_Pos(0,100,(uint8_t)(APP_CAMERA_WIDTH/2-1) ,APP_CAMERA_HEIGHT);//注意 设置显示大小要与下面的实际显示大小相等，不然会显示不出来或者花屏
+            for(int i = 0; i < APP_CAMERA_HEIGHT; i+=2)  //  480/4/2/2/2 = 15    //30
+            {
+                for(int j = 0; j < APP_CAMERA_WIDTH*2; j+=2)//隔2列取一列  752*2/4/4 = 188   //两行数据 一行47像素
+                {
+                    //灰度显示
+                    color = 0;
+                    color=(((*((uint8_t *)fullCameraBufferAddr +  i * APP_CAMERA_WIDTH * 2 + j))>>3))<<11;
+                    color=color|((((*((uint8_t *)fullCameraBufferAddr +  i * APP_CAMERA_WIDTH * 2 + j))>>2))<<5);
+                    color=color|(((*((uint8_t *)fullCameraBufferAddr +  i * APP_CAMERA_WIDTH * 2 + j))>>3));
+                    TFTSPI_Write_Word(color);
+                    //二值化显示
+                    //                if(*((uint8_t *)fullCameraBufferAddr +  i * APP_CAMERA_WIDTH * 2 + j) > 0x60)  //阈值0x60 二值化显示
+                    //                  TFTSPI_Write_Word (0xffff); //显示数据
+                    //                else
+                    //                  TFTSPI_Write_Word (0x0000); //显示数据
+                }
+            }
+            CAMERA_RECEIVER_SubmitEmptyBuffer(&cameraReceiver, fullCameraBufferAddr);//将照相机缓冲区提交到缓冲队列        
+            SCB_EnableDCache();
+
       
       //if (kStatus_Success == CAMERA_RECEIVER_GetFullBuffer(&cameraReceiver, &fullCameraBufferAddr))  //摄像头CSI缓存区已满
       //{

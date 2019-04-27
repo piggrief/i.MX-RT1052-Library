@@ -1,0 +1,518 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	<ItemGroup>
+		<Filter Include="源文件\App_main">
+			<UniqueIdentifier>{7fe8028c-ab00-40b3-6f75-f2170a80cc75}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="源文件\AppDriver">
+			<UniqueIdentifier>{c4b75a5c-63b1-49dc-45bf-db5da1a588e0}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="源文件\AppDriver\AHRS">
+			<UniqueIdentifier>{1e14c721-afd9-4113-6139-ea753729f14c}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="源文件\AppDriver\ANO_TC">
+			<UniqueIdentifier>{73a7d7e1-c2f8-4cfe-7f0b-b8c1e05419c8}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="源文件\AppDriver\Camera">
+			<UniqueIdentifier>{c96ae874-432d-43cb-4635-af8dcb86d4a8}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="源文件\AppDriver\car">
+			<UniqueIdentifier>{a9d2628e-c3f6-4051-5f61-24cfb6b28c50}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="源文件\AppDriver\LCD">
+			<UniqueIdentifier>{1f46ac6d-6042-462d-75e2-5d36965852c0}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="源文件\AppDriver\SDCard">
+			<UniqueIdentifier>{92699680-be4e-4b08-47bd-e9c8661fcbff}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="源文件\AppDriver\Sys">
+			<UniqueIdentifier>{2b604369-5d30-4c9b-6098-b070d0ffa91e}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="源文件\AppDriver\TouchSCR">
+			<UniqueIdentifier>{bb3f282c-e001-4789-4dbf-89761fe2cd74}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="源文件\board">
+			<UniqueIdentifier>{11c36844-b62c-42b0-7ef8-2ddbb58c451e}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="源文件\drivers">
+			<UniqueIdentifier>{fe51be28-aad4-48f2-448e-9162593b9950}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="源文件\startup">
+			<UniqueIdentifier>{b94c188c-c5a3-4b10-606b-f71d1d046e0e}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="源文件\utilities">
+			<UniqueIdentifier>{793e5cac-2cad-4da8-781e-99615708add7}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="源文件\XIP">
+			<UniqueIdentifier>{eee8a6f5-4731-4b19-60d6-94e8582e616c}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="源文件">
+			<UniqueIdentifier>{6d0ca8af-a0ed-4239-4256-a787f2e71dd9}</UniqueIdentifier>
+		</Filter>
+	</ItemGroup>
+	<ItemGroup>
+		<ClCompile Include="..\LQuserFlies\src\Appmain.c">
+			<Filter>源文件\App_main</Filter>
+		</ClCompile>
+		<ClCompile Include="..\LQuserFlies\src\LQ_9AX.c">
+			<Filter>源文件\AppDriver</Filter>
+		</ClCompile>
+		<ClCompile Include="..\LQuserFlies\src\LQ_9AXtest.c">
+			<Filter>源文件\AppDriver</Filter>
+		</ClCompile>
+		<ClCompile Include="..\LQuserFlies\src\LQ_ADC.c">
+			<Filter>源文件\AppDriver</Filter>
+		</ClCompile>
+		<ClCompile Include="..\LQuserFlies\src\LQ_CSI.c">
+			<Filter>源文件\AppDriver</Filter>
+		</ClCompile>
+		<ClCompile Include="..\LQuserFlies\src\LQ_Encoder.c">
+			<Filter>源文件\AppDriver</Filter>
+		</ClCompile>
+		<ClCompile Include="..\LQuserFlies\src\LQ_IIC.c">
+			<Filter>源文件\AppDriver</Filter>
+		</ClCompile>
+		<ClCompile Include="..\LQuserFlies\src\LQ_KEY.c">
+			<Filter>源文件\AppDriver</Filter>
+		</ClCompile>
+		<ClCompile Include="..\LQuserFlies\src\LQ_LED.c">
+			<Filter>源文件\AppDriver</Filter>
+		</ClCompile>
+		<ClCompile Include="..\LQuserFlies\src\LQ_MPU6050.c">
+			<Filter>源文件\AppDriver</Filter>
+		</ClCompile>
+		<ClCompile Include="..\LQuserFlies\src\LQ_NRF2401.c">
+			<Filter>源文件\AppDriver</Filter>
+		</ClCompile>
+		<ClCompile Include="..\LQuserFlies\src\LQ_PIT.c">
+			<Filter>源文件\AppDriver</Filter>
+		</ClCompile>
+		<ClCompile Include="..\LQuserFlies\src\LQ_PWM.c">
+			<Filter>源文件\AppDriver</Filter>
+		</ClCompile>
+		<ClCompile Include="..\LQuserFlies\src\LQ_PXP.c">
+			<Filter>源文件\AppDriver</Filter>
+		</ClCompile>
+		<ClCompile Include="..\LQuserFlies\src\LQ_QTMR.c">
+			<Filter>源文件\AppDriver</Filter>
+		</ClCompile>
+		<ClCompile Include="..\LQuserFlies\src\LQ_SGP18Test.c">
+			<Filter>源文件\AppDriver</Filter>
+		</ClCompile>
+		<ClCompile Include="..\LQuserFlies\src\LQ_SPI.c">
+			<Filter>源文件\AppDriver</Filter>
+		</ClCompile>
+		<ClCompile Include="..\LQuserFlies\src\LQ_TRNG.c">
+			<Filter>源文件\AppDriver</Filter>
+		</ClCompile>
+		<ClCompile Include="..\LQuserFlies\src\LQ_UART.c">
+			<Filter>源文件\AppDriver</Filter>
+		</ClCompile>
+		<ClCompile Include="..\LQuserFlies\src\LQ_WDog.c">
+			<Filter>源文件\AppDriver</Filter>
+		</ClCompile>
+		<ClCompile Include="..\LQuserFlies\src\sys\AHRS.c">
+			<Filter>源文件\AppDriver\AHRS</Filter>
+		</ClCompile>
+		<ClCompile Include="..\LQuserFlies\src\sys\AP_Math.c">
+			<Filter>源文件\AppDriver\AHRS</Filter>
+		</ClCompile>
+		<ClCompile Include="..\LQuserFlies\src\sys\Inertial_Sensor.c">
+			<Filter>源文件\AppDriver\AHRS</Filter>
+		</ClCompile>
+		<ClCompile Include="..\LQuserFlies\src\ANO_DT\ANO_DT.c">
+			<Filter>源文件\AppDriver\ANO_TC</Filter>
+		</ClCompile>
+		<ClCompile Include="..\LQuserFlies\src\camera\fsl_csi_camera_adapter.c">
+			<Filter>源文件\AppDriver\Camera</Filter>
+		</ClCompile>
+		<ClCompile Include="..\LQuserFlies\src\camera\fsl_sccb.c">
+			<Filter>源文件\AppDriver\Camera</Filter>
+		</ClCompile>
+		<ClCompile Include="..\LQuserFlies\src\camera\LQ_MT9V034M.c">
+			<Filter>源文件\AppDriver\Camera</Filter>
+		</ClCompile>
+		<ClCompile Include="..\LQuserFlies\src\camera\LQ_OV7725M.c">
+			<Filter>源文件\AppDriver\Camera</Filter>
+		</ClCompile>
+		<ClCompile Include="..\LQuserFlies\src\LQ_12864SPI.c">
+			<Filter>源文件\AppDriver\LCD</Filter>
+		</ClCompile>
+		<ClCompile Include="..\LQuserFlies\src\LQ_SGP18T.c">
+			<Filter>源文件\AppDriver\LCD</Filter>
+		</ClCompile>
+		<ClCompile Include="..\LQuserFlies\src\sys\LQ_Control.c">
+			<Filter>源文件\AppDriver\Sys</Filter>
+		</ClCompile>
+		<ClCompile Include="..\LQuserFlies\src\sys\m_systime.c">
+			<Filter>源文件\AppDriver\Sys</Filter>
+		</ClCompile>
+		<ClCompile Include="..\LQuserFlies\src\sys\PID.c">
+			<Filter>源文件\AppDriver\Sys</Filter>
+		</ClCompile>
+		<ClCompile Include="..\LQuserFlies\src\sys\Scheduler.c">
+			<Filter>源文件\AppDriver\Sys</Filter>
+		</ClCompile>
+		<ClCompile Include="..\LQuserFlies\src\sys\status.c">
+			<Filter>源文件\AppDriver\Sys</Filter>
+		</ClCompile>
+		<ClCompile Include="..\LQuserFlies\src\board\board.c">
+			<Filter>源文件\board</Filter>
+		</ClCompile>
+		<ClCompile Include="..\LQuserFlies\src\board\clock_config.c">
+			<Filter>源文件\board</Filter>
+		</ClCompile>
+		<ClCompile Include="..\LQuserFlies\src\board\pin_mux.c">
+			<Filter>源文件\board</Filter>
+		</ClCompile>
+		<ClCompile Include="..\LQuserFlies\devices\drivers\fsl_adc.c">
+			<Filter>源文件\drivers</Filter>
+		</ClCompile>
+		<ClCompile Include="..\LQuserFlies\devices\drivers\fsl_clock.c">
+			<Filter>源文件\drivers</Filter>
+		</ClCompile>
+		<ClCompile Include="..\LQuserFlies\devices\drivers\fsl_common.c">
+			<Filter>源文件\drivers</Filter>
+		</ClCompile>
+		<ClCompile Include="..\LQuserFlies\devices\drivers\fsl_csi.c">
+			<Filter>源文件\drivers</Filter>
+		</ClCompile>
+		<ClCompile Include="..\LQuserFlies\devices\drivers\fsl_dmamux.c">
+			<Filter>源文件\drivers</Filter>
+		</ClCompile>
+		<ClCompile Include="..\LQuserFlies\devices\drivers\fsl_edma.c">
+			<Filter>源文件\drivers</Filter>
+		</ClCompile>
+		<ClCompile Include="..\LQuserFlies\devices\drivers\fsl_elcdif.c">
+			<Filter>源文件\drivers</Filter>
+		</ClCompile>
+		<ClCompile Include="..\LQuserFlies\devices\drivers\fsl_enc.c">
+			<Filter>源文件\drivers</Filter>
+		</ClCompile>
+		<ClCompile Include="..\LQuserFlies\devices\drivers\fsl_flexio.c">
+			<Filter>源文件\drivers</Filter>
+		</ClCompile>
+		<ClCompile Include="..\LQuserFlies\devices\drivers\fsl_flexio_spi.c">
+			<Filter>源文件\drivers</Filter>
+		</ClCompile>
+		<ClCompile Include="..\LQuserFlies\devices\drivers\fsl_flexio_spi_edma.c">
+			<Filter>源文件\drivers</Filter>
+		</ClCompile>
+		<ClCompile Include="..\LQuserFlies\devices\drivers\fsl_flexspi.c">
+			<Filter>源文件\drivers</Filter>
+		</ClCompile>
+		<ClCompile Include="..\LQuserFlies\devices\drivers\fsl_gpio.c">
+			<Filter>源文件\drivers</Filter>
+		</ClCompile>
+		<ClCompile Include="..\LQuserFlies\devices\drivers\fsl_gpt.c">
+			<Filter>源文件\drivers</Filter>
+		</ClCompile>
+		<ClCompile Include="..\LQuserFlies\devices\drivers\fsl_lpi2c.c">
+			<Filter>源文件\drivers</Filter>
+		</ClCompile>
+		<ClCompile Include="..\LQuserFlies\devices\drivers\fsl_lpspi.c">
+			<Filter>源文件\drivers</Filter>
+		</ClCompile>
+		<ClCompile Include="..\LQuserFlies\devices\drivers\fsl_lpuart.c">
+			<Filter>源文件\drivers</Filter>
+		</ClCompile>
+		<ClCompile Include="..\LQuserFlies\devices\drivers\fsl_lpuart_edma.c">
+			<Filter>源文件\drivers</Filter>
+		</ClCompile>
+		<ClCompile Include="..\LQuserFlies\devices\drivers\fsl_pit.c">
+			<Filter>源文件\drivers</Filter>
+		</ClCompile>
+		<ClCompile Include="..\LQuserFlies\devices\drivers\fsl_pwm.c">
+			<Filter>源文件\drivers</Filter>
+		</ClCompile>
+		<ClCompile Include="..\LQuserFlies\devices\drivers\fsl_pxp.c">
+			<Filter>源文件\drivers</Filter>
+		</ClCompile>
+		<ClCompile Include="..\LQuserFlies\devices\drivers\fsl_qtmr.c">
+			<Filter>源文件\drivers</Filter>
+		</ClCompile>
+		<ClCompile Include="..\LQuserFlies\devices\drivers\fsl_semc.c">
+			<Filter>源文件\drivers</Filter>
+		</ClCompile>
+		<ClCompile Include="..\LQuserFlies\devices\drivers\fsl_trng.c">
+			<Filter>源文件\drivers</Filter>
+		</ClCompile>
+		<ClCompile Include="..\LQuserFlies\devices\drivers\fsl_usdhc.c">
+			<Filter>源文件\drivers</Filter>
+		</ClCompile>
+		<ClCompile Include="..\LQuserFlies\devices\drivers\fsl_wdog.c">
+			<Filter>源文件\drivers</Filter>
+		</ClCompile>
+		<ClCompile Include="..\LQuserFlies\devices\drivers\fsl_xbara.c">
+			<Filter>源文件\drivers</Filter>
+		</ClCompile>
+		<ClCompile Include="..\LQuserFlies\devices\startup\system_MIMXRT1052.c">
+			<Filter>源文件\startup</Filter>
+		</ClCompile>
+		<ClCompile Include="..\LQuserFlies\devices\utilities\fsl_assert.c">
+			<Filter>源文件\utilities</Filter>
+		</ClCompile>
+		<ClCompile Include="..\LQuserFlies\devices\utilities\fsl_debug_console.c">
+			<Filter>源文件\utilities</Filter>
+		</ClCompile>
+		<ClCompile Include="..\LQuserFlies\devices\utilities\fsl_io.c">
+			<Filter>源文件\utilities</Filter>
+		</ClCompile>
+		<ClCompile Include="..\LQuserFlies\devices\utilities\fsl_log.c">
+			<Filter>源文件\utilities</Filter>
+		</ClCompile>
+		<ClCompile Include="..\LQuserFlies\devices\utilities\fsl_str.c">
+			<Filter>源文件\utilities</Filter>
+		</ClCompile>
+		<ClCompile Include="..\LQuserFlies\Xip\fsl_flexspi_nor_boot.c">
+			<Filter>源文件\XIP</Filter>
+		</ClCompile>
+		<ClCompile Include="..\LQuserFlies\Xip\xip_config.c">
+			<Filter>源文件\XIP</Filter>
+		</ClCompile>
+	</ItemGroup>
+	<ItemGroup>
+		<ClInclude Include="..\LQuserFlies\src\include.h">
+			<Filter>源文件\App_main</Filter>
+		</ClInclude>
+		<ClInclude Include="..\LQuserFlies\src\LQ_9AX.h">
+			<Filter>源文件\AppDriver</Filter>
+		</ClInclude>
+		<ClInclude Include="..\LQuserFlies\src\LQ_ADC.h">
+			<Filter>源文件\AppDriver</Filter>
+		</ClInclude>
+		<ClInclude Include="..\LQuserFlies\src\LQ_CSI.h">
+			<Filter>源文件\AppDriver</Filter>
+		</ClInclude>
+		<ClInclude Include="..\LQuserFlies\src\LQ_Encoder.h">
+			<Filter>源文件\AppDriver</Filter>
+		</ClInclude>
+		<ClInclude Include="..\LQuserFlies\src\LQ_GPIOmacro.h">
+			<Filter>源文件\AppDriver</Filter>
+		</ClInclude>
+		<ClInclude Include="..\LQuserFlies\src\LQ_IIC.h">
+			<Filter>源文件\AppDriver</Filter>
+		</ClInclude>
+		<ClInclude Include="..\LQuserFlies\src\LQ_KEY.h">
+			<Filter>源文件\AppDriver</Filter>
+		</ClInclude>
+		<ClInclude Include="..\LQuserFlies\src\LQ_LED.h">
+			<Filter>源文件\AppDriver</Filter>
+		</ClInclude>
+		<ClInclude Include="..\LQuserFlies\src\LQ_MPU6050.h">
+			<Filter>源文件\AppDriver</Filter>
+		</ClInclude>
+		<ClInclude Include="..\LQuserFlies\src\LQ_NRF2401.h">
+			<Filter>源文件\AppDriver</Filter>
+		</ClInclude>
+		<ClInclude Include="..\LQuserFlies\src\LQ_PIT.h">
+			<Filter>源文件\AppDriver</Filter>
+		</ClInclude>
+		<ClInclude Include="..\LQuserFlies\src\LQ_PWM.h">
+			<Filter>源文件\AppDriver</Filter>
+		</ClInclude>
+		<ClInclude Include="..\LQuserFlies\src\LQ_PXP.h">
+			<Filter>源文件\AppDriver</Filter>
+		</ClInclude>
+		<ClInclude Include="..\LQuserFlies\src\LQ_QTMR.h">
+			<Filter>源文件\AppDriver</Filter>
+		</ClInclude>
+		<ClInclude Include="..\LQuserFlies\src\LQ_SGP18Test.h">
+			<Filter>源文件\AppDriver</Filter>
+		</ClInclude>
+		<ClInclude Include="..\LQuserFlies\src\LQ_SPI.h">
+			<Filter>源文件\AppDriver</Filter>
+		</ClInclude>
+		<ClInclude Include="..\LQuserFlies\src\LQ_TRNG.h">
+			<Filter>源文件\AppDriver</Filter>
+		</ClInclude>
+		<ClInclude Include="..\LQuserFlies\src\LQ_UART.h">
+			<Filter>源文件\AppDriver</Filter>
+		</ClInclude>
+		<ClInclude Include="..\LQuserFlies\src\LQ_WDog.h">
+			<Filter>源文件\AppDriver</Filter>
+		</ClInclude>
+		<ClInclude Include="..\LQuserFlies\src\sys\AHRS.h">
+			<Filter>源文件\AppDriver\AHRS</Filter>
+		</ClInclude>
+		<ClInclude Include="..\LQuserFlies\src\sys\AP_Math.h">
+			<Filter>源文件\AppDriver\AHRS</Filter>
+		</ClInclude>
+		<ClInclude Include="..\LQuserFlies\src\sys\Inertial_Sensor.h">
+			<Filter>源文件\AppDriver\AHRS</Filter>
+		</ClInclude>
+		<ClInclude Include="..\LQuserFlies\src\ANO_DT\ANO_DT.h">
+			<Filter>源文件\AppDriver\ANO_TC</Filter>
+		</ClInclude>
+		<ClInclude Include="..\LQuserFlies\src\camera\fsl_camera.h">
+			<Filter>源文件\AppDriver\Camera</Filter>
+		</ClInclude>
+		<ClInclude Include="..\LQuserFlies\src\camera\fsl_camera_device.h">
+			<Filter>源文件\AppDriver\Camera</Filter>
+		</ClInclude>
+		<ClInclude Include="..\LQuserFlies\src\camera\fsl_camera_receiver.h">
+			<Filter>源文件\AppDriver\Camera</Filter>
+		</ClInclude>
+		<ClInclude Include="..\LQuserFlies\src\camera\fsl_csi_camera_adapter.h">
+			<Filter>源文件\AppDriver\Camera</Filter>
+		</ClInclude>
+		<ClInclude Include="..\LQuserFlies\src\camera\fsl_sccb.h">
+			<Filter>源文件\AppDriver\Camera</Filter>
+		</ClInclude>
+		<ClInclude Include="..\LQuserFlies\src\camera\fsl_video_common.h">
+			<Filter>源文件\AppDriver\Camera</Filter>
+		</ClInclude>
+		<ClInclude Include="..\LQuserFlies\src\camera\LQ_MT9V034M.h">
+			<Filter>源文件\AppDriver\Camera</Filter>
+		</ClInclude>
+		<ClInclude Include="..\LQuserFlies\src\camera\LQ_OV7725M.h">
+			<Filter>源文件\AppDriver\Camera</Filter>
+		</ClInclude>
+		<ClInclude Include="..\LQuserFlies\src\LQ_12864.h">
+			<Filter>源文件\AppDriver\LCD</Filter>
+		</ClInclude>
+		<ClInclude Include="..\LQuserFlies\src\LQ_SGP18T.h">
+			<Filter>源文件\AppDriver\LCD</Filter>
+		</ClInclude>
+		<ClInclude Include="..\LQuserFlies\src\sys\LQ_control.h">
+			<Filter>源文件\AppDriver\Sys</Filter>
+		</ClInclude>
+		<ClInclude Include="..\LQuserFlies\src\sys\m_systime.h">
+			<Filter>源文件\AppDriver\Sys</Filter>
+		</ClInclude>
+		<ClInclude Include="..\LQuserFlies\src\sys\PID.h">
+			<Filter>源文件\AppDriver\Sys</Filter>
+		</ClInclude>
+		<ClInclude Include="..\LQuserFlies\src\sys\Scheduler.h">
+			<Filter>源文件\AppDriver\Sys</Filter>
+		</ClInclude>
+		<ClInclude Include="..\LQuserFlies\src\sys\status.h">
+			<Filter>源文件\AppDriver\Sys</Filter>
+		</ClInclude>
+		<ClInclude Include="..\LQuserFlies\src\board\board.h">
+			<Filter>源文件\board</Filter>
+		</ClInclude>
+		<ClInclude Include="..\LQuserFlies\src\board\clock_config.h">
+			<Filter>源文件\board</Filter>
+		</ClInclude>
+		<ClInclude Include="..\LQuserFlies\devices\MIMXRT1052.h">
+			<Filter>源文件\board</Filter>
+		</ClInclude>
+		<ClInclude Include="..\LQuserFlies\devices\MIMXRT1052_features.h">
+			<Filter>源文件\board</Filter>
+		</ClInclude>
+		<ClInclude Include="..\LQuserFlies\src\board\pin_mux.h">
+			<Filter>源文件\board</Filter>
+		</ClInclude>
+		<ClInclude Include="..\LQuserFlies\devices\drivers\fsl_adc.h">
+			<Filter>源文件\drivers</Filter>
+		</ClInclude>
+		<ClInclude Include="..\LQuserFlies\devices\drivers\fsl_clock.h">
+			<Filter>源文件\drivers</Filter>
+		</ClInclude>
+		<ClInclude Include="..\LQuserFlies\devices\drivers\fsl_common.h">
+			<Filter>源文件\drivers</Filter>
+		</ClInclude>
+		<ClInclude Include="..\LQuserFlies\devices\drivers\fsl_csi.h">
+			<Filter>源文件\drivers</Filter>
+		</ClInclude>
+		<ClInclude Include="..\LQuserFlies\devices\drivers\fsl_dmamux.h">
+			<Filter>源文件\drivers</Filter>
+		</ClInclude>
+		<ClInclude Include="..\LQuserFlies\devices\drivers\fsl_edma.h">
+			<Filter>源文件\drivers</Filter>
+		</ClInclude>
+		<ClInclude Include="..\LQuserFlies\devices\drivers\fsl_elcdif.h">
+			<Filter>源文件\drivers</Filter>
+		</ClInclude>
+		<ClInclude Include="..\LQuserFlies\devices\drivers\fsl_flexio.h">
+			<Filter>源文件\drivers</Filter>
+		</ClInclude>
+		<ClInclude Include="..\LQuserFlies\devices\drivers\fsl_flexio_spi.h">
+			<Filter>源文件\drivers</Filter>
+		</ClInclude>
+		<ClInclude Include="..\LQuserFlies\devices\drivers\fsl_flexio_spi_edma.h">
+			<Filter>源文件\drivers</Filter>
+		</ClInclude>
+		<ClInclude Include="..\LQuserFlies\devices\drivers\fsl_flexspi.h">
+			<Filter>源文件\drivers</Filter>
+		</ClInclude>
+		<ClInclude Include="..\LQuserFlies\devices\drivers\fsl_gpio.h">
+			<Filter>源文件\drivers</Filter>
+		</ClInclude>
+		<ClInclude Include="..\LQuserFlies\devices\drivers\fsl_gpt.h">
+			<Filter>源文件\drivers</Filter>
+		</ClInclude>
+		<ClInclude Include="..\LQuserFlies\devices\drivers\fsl_iomuxc.h">
+			<Filter>源文件\drivers</Filter>
+		</ClInclude>
+		<ClInclude Include="..\LQuserFlies\devices\drivers\fsl_lpi2c.h">
+			<Filter>源文件\drivers</Filter>
+		</ClInclude>
+		<ClInclude Include="..\LQuserFlies\devices\drivers\fsl_lpspi.h">
+			<Filter>源文件\drivers</Filter>
+		</ClInclude>
+		<ClInclude Include="..\LQuserFlies\devices\drivers\fsl_lpuart.h">
+			<Filter>源文件\drivers</Filter>
+		</ClInclude>
+		<ClInclude Include="..\LQuserFlies\devices\drivers\fsl_lpuart_edma.h">
+			<Filter>源文件\drivers</Filter>
+		</ClInclude>
+		<ClInclude Include="..\LQuserFlies\devices\drivers\fsl_pit.h">
+			<Filter>源文件\drivers</Filter>
+		</ClInclude>
+		<ClInclude Include="..\LQuserFlies\devices\drivers\fsl_pwm.h">
+			<Filter>源文件\drivers</Filter>
+		</ClInclude>
+		<ClInclude Include="..\LQuserFlies\devices\drivers\fsl_pxp.h">
+			<Filter>源文件\drivers</Filter>
+		</ClInclude>
+		<ClInclude Include="..\LQuserFlies\devices\drivers\fsl_qtmr.h">
+			<Filter>源文件\drivers</Filter>
+		</ClInclude>
+		<ClInclude Include="..\LQuserFlies\devices\drivers\fsl_semc.h">
+			<Filter>源文件\drivers</Filter>
+		</ClInclude>
+		<ClInclude Include="..\LQuserFlies\devices\drivers\fsl_trng.h">
+			<Filter>源文件\drivers</Filter>
+		</ClInclude>
+		<ClInclude Include="..\LQuserFlies\devices\drivers\fsl_usdhc.h">
+			<Filter>源文件\drivers</Filter>
+		</ClInclude>
+		<ClInclude Include="..\LQuserFlies\devices\drivers\fsl_wdog.h">
+			<Filter>源文件\drivers</Filter>
+		</ClInclude>
+		<ClInclude Include="..\LQuserFlies\devices\drivers\fsl_xbara.h">
+			<Filter>源文件\drivers</Filter>
+		</ClInclude>
+		<ClInclude Include="..\LQuserFlies\devices\startup\system_MIMXRT1052.h">
+			<Filter>源文件\startup</Filter>
+		</ClInclude>
+		<ClInclude Include="..\LQuserFlies\devices\utilities\fsl_debug_console.h">
+			<Filter>源文件\utilities</Filter>
+		</ClInclude>
+		<ClInclude Include="..\LQuserFlies\devices\utilities\fsl_debug_console_conf.h">
+			<Filter>源文件\utilities</Filter>
+		</ClInclude>
+		<ClInclude Include="..\LQuserFlies\devices\utilities\fsl_io.h">
+			<Filter>源文件\utilities</Filter>
+		</ClInclude>
+		<ClInclude Include="..\LQuserFlies\devices\utilities\fsl_log.h">
+			<Filter>源文件\utilities</Filter>
+		</ClInclude>
+		<ClInclude Include="..\LQuserFlies\devices\utilities\fsl_str.h">
+			<Filter>源文件\utilities</Filter>
+		</ClInclude>
+		<ClInclude Include="..\LQuserFlies\Xip\external_flash_config.h">
+			<Filter>源文件\XIP</Filter>
+		</ClInclude>
+		<ClInclude Include="..\LQuserFlies\Xip\fsl_flexspi_nor_boot.h">
+			<Filter>源文件\XIP</Filter>
+		</ClInclude>
+	</ItemGroup>
+	<ItemGroup>
+		<None Include="..\LQuserFlies\devices\startup\startup_MIMXRT1052.s">
+			<Filter>源文件\startup</Filter>
+		</None>
+	</ItemGroup>
+</Project>

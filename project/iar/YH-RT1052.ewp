@@ -6327,6 +6327,18 @@
             <file>
                 <name>$PROJ_DIR$\..\..\libraries\fsl_video_common.h</name>
             </file>
+            <file>
+                <name>$PROJ_DIR$\..\..\libraries\LQ_CSI.c</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\..\libraries\LQ_CSI.h</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\..\libraries\LQ_MT9V034M.c</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\..\libraries\LQ_MT9V034M.h</name>
+            </file>
         </group>
         <group>
             <name>fsl_csi</name>
@@ -6395,15 +6407,6 @@
             </file>
             <file>
                 <name>$PROJ_DIR$\..\..\user\Pig_UART.h</name>
-            </file>
-        </group>
-        <group>
-            <name>MT9V032</name>
-            <file>
-                <name>$PROJ_DIR$\..\..\user\MT9V032.c</name>
-            </file>
-            <file>
-                <name>$PROJ_DIR$\..\..\user\MT9V032.h</name>
             </file>
         </group>
         <group>

@@ -22,7 +22,19 @@ typedef struct _MT9V032_resource
 void MT9V032PinInit()
 {
     IOMUXC_SetPinMux(
+        IOMUXC_GPIO_AD_B1_04_CSI_PIXCLK,        /* GPIO_AD_B1_04 is configured as CSI_PIXCLK */
+        0U);                                    /* Software Input On Field: Input Path is determined by functionality */
+    IOMUXC_SetPinMux(
+        IOMUXC_GPIO_AD_B1_06_CSI_VSYNC,         /* GPIO_AD_B1_06 is configured as CSI_VSYNC */
+        0U);                                    /* Software Input On Field: Input Path is determined by functionality */
+    IOMUXC_SetPinMux(
         IOMUXC_GPIO_AD_B1_07_CSI_HSYNC,         /* GPIO_AD_B1_07 is configured as CSI_HSYNC */
+        0U);                                    /* Software Input On Field: Input Path is determined by functionality */
+    IOMUXC_SetPinMux(
+        IOMUXC_GPIO_AD_B1_08_CSI_DATA09,        /* GPIO_AD_B1_08 is configured as CSI_DATA09 */
+        0U);                                    /* Software Input On Field: Input Path is determined by functionality */
+    IOMUXC_SetPinMux(
+        IOMUXC_GPIO_AD_B1_09_CSI_DATA08,        /* GPIO_AD_B1_09 is configured as CSI_DATA08 */
         0U);                                    /* Software Input On Field: Input Path is determined by functionality */
     IOMUXC_SetPinMux(
         IOMUXC_GPIO_AD_B1_10_CSI_DATA07,        /* GPIO_AD_B1_10 is configured as CSI_DATA07 */
@@ -41,18 +53,6 @@ void MT9V032PinInit()
         0U);                                    /* Software Input On Field: Input Path is determined by functionality */
     IOMUXC_SetPinMux(
         IOMUXC_GPIO_AD_B1_15_CSI_DATA02,        /* GPIO_AD_B1_15 is configured as CSI_DATA02 */
-        0U);                                    /* Software Input On Field: Input Path is determined by functionality */
-    IOMUXC_SetPinMux(
-        IOMUXC_GPIO_B1_10_CSI_DATA00,           /* GPIO_B1_10 is configured as CSI_DATA00 */
-        0U);                                    /* Software Input On Field: Input Path is determined by functionality */
-    IOMUXC_SetPinMux(
-        IOMUXC_GPIO_B1_11_CSI_DATA01,           /* GPIO_B1_11 is configured as CSI_DATA01 */
-        0U);                                    /* Software Input On Field: Input Path is determined by functionality */
-    IOMUXC_SetPinMux(
-        IOMUXC_GPIO_B1_12_CSI_PIXCLK,           /* GPIO_B1_12 is configured as CSI_PIXCLK */
-        0U);                                    /* Software Input On Field: Input Path is determined by functionality */
-    IOMUXC_SetPinMux(
-        IOMUXC_GPIO_B1_13_CSI_VSYNC,            /* GPIO_B1_13 is configured as CSI_VSYNC */
         0U);                                    /* Software Input On Field: Input Path is determined by functionality */
 }
 
@@ -141,6 +141,7 @@ void MT9V032Init()
 {
     /*引脚初始化*/
     MT9V032PinInit();
+    memset(csiFrameBuf, 0, sizeof(csiFrameBuf));
     /*CSI模块初始化*/
     CAMERA_RECEIVER_Init(&cameraReceiver, &cameraConfig, NULL, NULL);
     CAMERA_DEVICE_Init(&cameraDevice, &cameraConfig);
@@ -153,7 +154,7 @@ void MT9V032Init()
 
     CAMERA_RECEIVER_Start(&cameraReceiver);   // 启动接收camera数据
 
-    delayms(1000);        //延时200毫秒  摄像头不是重新上电 可以不要延时
+    //delayms(200);        //延时200毫秒  摄像头不是重新上电 可以不要延时
     if (SCB_CCR_DC_Msk == (SCB_CCR_DC_Msk & SCB->CCR)) {//注意，使用csiFrameBuf数组时，最好关闭D-Cache 不然上次数据可能会存放在cache里面，造成数据错乱
         SCB_DisableDCache();
     }

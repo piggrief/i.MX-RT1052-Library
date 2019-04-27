@@ -1,6 +1,6 @@
 ###############################################################################
 #
-# IAR ELF Linker V8.30.1.114/W32 for ARM                  24/Apr/2019  21:15:01
+# IAR ELF Linker V8.30.1.114/W32 for ARM                  25/Apr/2019  16:16:19
 # Copyright 2007-2018 IAR Systems AB.
 #
 #    Output file  =  
@@ -8,7 +8,7 @@
 #    Map file     =  
 #        D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\project\iar\nor_txt_ram\List\YH-RT1052.map
 #    Command line =  
-#        -f C:\Users\zhuzh\AppData\Local\Temp\EWAFC1.tmp
+#        -f C:\Users\zhuzh\AppData\Local\Temp\EW91D3.tmp
 #        (D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\project\iar\nor_txt_ram\Obj\board.o
 #        D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\project\iar\nor_txt_ram\Obj\clock_config.o
 #        D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\project\iar\nor_txt_ram\Obj\fire_imxrt1052_sdram_ini_dcd.o
@@ -32,8 +32,9 @@
 #        D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\project\iar\nor_txt_ram\Obj\fsl_sccb.o
 #        D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\project\iar\nor_txt_ram\Obj\fsl_shell.o
 #        D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\project\iar\nor_txt_ram\Obj\fsl_str.o
+#        D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\project\iar\nor_txt_ram\Obj\LQ_CSI.o
+#        D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\project\iar\nor_txt_ram\Obj\LQ_MT9V034M.o
 #        D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\project\iar\nor_txt_ram\Obj\main.o
-#        D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\project\iar\nor_txt_ram\Obj\MT9V032.o
 #        D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\project\iar\nor_txt_ram\Obj\peripherals.o
 #        D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\project\iar\nor_txt_ram\Obj\Pig_PIT.o
 #        D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\project\iar\nor_txt_ram\Obj\Pig_SPI.o
@@ -98,248 +99,254 @@ keep {
 
 No sections matched the following patterns:
 
-  section NonCacheable       in block NCACHE_VAR
   section NonCacheable.init  in block NCACHE_VAR
 
 
-  Section              Kind         Address    Size  Object
-  -------              ----         -------    ----  ------
-"P2-P3|P5", part 1 of 2:                       0xc8
-  RW                            0x2000'0000    0xc8  <Block>
-    RW-1                        0x2000'0000    0xc8  <Init block>
-      .data            inited   0x2000'0000     0x4  Pig_UART.o [1]
-      .data            inited   0x2000'0004    0x14  Pig_UART.o [1]
-      .data            inited   0x2000'0018     0x4  Pig_UART.o [1]
-      .data            inited   0x2000'001c    0x14  Pig_UART.o [1]
-      .data            inited   0x2000'0030     0x4  Pig_UART.o [1]
-      .data            inited   0x2000'0034    0x14  Pig_UART.o [1]
-      .data            inited   0x2000'0048     0x4  Pig_UART.o [1]
-      .data            inited   0x2000'004c    0x14  Pig_UART.o [1]
-      .data            inited   0x2000'0060     0x4  Pig_UART.o [1]
-      .data            inited   0x2000'0064    0x14  Pig_UART.o [1]
-      .data            inited   0x2000'0078     0x4  Pig_UART.o [1]
-      .data            inited   0x2000'007c    0x14  Pig_UART.o [1]
-      .data            inited   0x2000'0090     0x4  Pig_UART.o [1]
-      .data            inited   0x2000'0094    0x14  Pig_UART.o [1]
-      .data            inited   0x2000'00a8     0x4  Pig_UART.o [1]
-      .data            inited   0x2000'00ac    0x14  Pig_UART.o [1]
-      .data            inited   0x2000'00c0     0x4  system_MIMXRT1052.o [1]
-      .data            inited   0x2000'00c4     0x4  TFTDriver.o [1]
-                              - 0x2000'00c8    0xc8
+  Section              Kind         Address     Size  Object
+  -------              ----         -------     ----  ------
+"P2-P3|P5", part 1 of 2:                        0x48
+  RW                            0x2000'0000     0x48  <Block>
+    RW-1                        0x2000'0000     0x48  <Init block>
+      .data            inited   0x2000'0000     0x10  LQ_CSI.o [1]
+      .data            inited   0x2000'0010      0x8  LQ_CSI.o [1]
+      .data            inited   0x2000'0018      0x4  LQ_CSI.o [1]
+      .data            inited   0x2000'001c      0xc  LQ_CSI.o [1]
+      .data            inited   0x2000'0028     0x18  LQ_CSI.o [1]
+      .data            inited   0x2000'0040      0x4  system_MIMXRT1052.o [1]
+      .data            inited   0x2000'0044      0x4  TFTDriver.o [1]
+                              - 0x2000'0048     0x48
 
-"P2-P3|P5", part 2 of 2:                       0x5c
-  ZI                            0x2000'00c8    0x5c  <Block>
-    .bss               zero     0x2000'00c8     0x4  fsl_clock.o [1]
-    .bss               zero     0x2000'00cc     0x4  fsl_clock.o [1]
-    .bss               zero     0x2000'00d0     0x4  fsl_flexspi.o [1]
-    .bss               zero     0x2000'00d4     0x8  fsl_io.o [1]
-    .bss               zero     0x2000'00dc    0x14  fsl_lpspi.o [1]
-    .bss               zero     0x2000'00f0     0x4  fsl_lpspi.o [1]
-    .bss               zero     0x2000'00f4     0x4  fsl_lpspi.o [1]
-    .bss               zero     0x2000'00f8    0x24  fsl_lpuart.o [1]
-    .bss               zero     0x2000'011c     0x4  fsl_lpuart.o [1]
-    .bss               zero     0x2000'0120     0x4  main.o [1]
-                              - 0x2000'0124    0x5c
+"P2-P3|P5", part 2 of 2:                     0x16148
+  NCACHE_VAR                    0x2000'0080  0x160b8  <Block>
+    NonCacheable       zero     0x2000'0080  0x16080  LQ_CSI.o [1]
+  ZI                            0x2001'6100     0x90  <Block>
+    .bss               zero     0x2001'6100      0x4  fsl_clock.o [1]
+    .bss               zero     0x2001'6104      0x4  fsl_clock.o [1]
+    .bss               zero     0x2001'6108      0x4  fsl_csi.o [1]
+    .bss               zero     0x2001'610c      0x4  fsl_csi.o [1]
+    .bss               zero     0x2001'6110      0x4  fsl_flexspi.o [1]
+    .bss               zero     0x2001'6114      0x8  fsl_io.o [1]
+    .bss               zero     0x2001'611c     0x14  fsl_lpspi.o [1]
+    .bss               zero     0x2001'6130      0x4  fsl_lpspi.o [1]
+    .bss               zero     0x2001'6134      0x4  fsl_lpspi.o [1]
+    .bss               zero     0x2001'6138     0x24  fsl_lpuart.o [1]
+    .bss               zero     0x2001'615c      0x4  fsl_lpuart.o [1]
+    .bss               zero     0x2001'6160     0x2c  LQ_CSI.o [1]
+    .bss               zero     0x2001'618c      0x4  main.o [1]
+                              - 0x2001'6190  0x16148
 
-"P6":                                         0x400
-  CSTACK                        0x2001'fc00   0x400  <Block>
-    CSTACK             uninit   0x2001'fc00   0x400  <Block tail>
-                              - 0x2002'0000   0x400
+"P6":                                          0x400
+  CSTACK                        0x2001'fc00    0x400  <Block>
+    CSTACK             uninit   0x2001'fc00    0x400  <Block tail>
+                              - 0x2002'0000    0x400
 
-"A1":                                         0x200
-  .boot_hdr.conf       const    0x6000'0000   0x200  fire_imxrt1052_spiflash_config.o [1]
-                              - 0x6000'0200   0x200
+"A1":                                          0x200
+  .boot_hdr.conf       const    0x6000'0000    0x200  fire_imxrt1052_spiflash_config.o [1]
+                              - 0x6000'0200    0x200
 
-"A2":                                          0x20
-  .boot_hdr.ivt        const    0x6000'1000    0x20  fsl_flexspi_nor_boot.o [1]
-                              - 0x6000'1020    0x20
+"A2":                                           0x20
+  .boot_hdr.ivt        const    0x6000'1000     0x20  fsl_flexspi_nor_boot.o [1]
+                              - 0x6000'1020     0x20
 
-"A3":                                          0x10
-  .boot_hdr.boot_data  const    0x6000'1020    0x10  fsl_flexspi_nor_boot.o [1]
-                              - 0x6000'1030    0x10
+"A3":                                           0x10
+  .boot_hdr.boot_data  const    0x6000'1020     0x10  fsl_flexspi_nor_boot.o [1]
+                              - 0x6000'1030     0x10
 
-"A4":                                         0x430
-  .boot_hdr.dcd_data   const    0x6000'1030   0x430  fire_imxrt1052_sdram_ini_dcd.o [1]
-                              - 0x6000'1460   0x430
+"A4":                                          0x430
+  .boot_hdr.dcd_data   const    0x6000'1030    0x430  fire_imxrt1052_sdram_ini_dcd.o [1]
+                              - 0x6000'1460    0x430
 
-"A0":                                          0x40
-  .intvec              ro code  0x6000'2000    0x40  startup_MIMXRT1052_ram_vector.o [1]
-                              - 0x6000'2040    0x40
+"A0":                                           0x40
+  .intvec              ro code  0x6000'2000     0x40  startup_MIMXRT1052_ram_vector.o [1]
+                              - 0x6000'2040     0x40
 
-"P1", part 1 of 2:                              0x0
-  .rodata              const    0x6000'2040     0x0  zero_init3.o [4]
-  .rodata              const    0x6000'2040     0x0  copy_init3.o [4]
+"P1", part 1 of 2:                               0x0
+  .rodata              const    0x6000'2040      0x0  zero_init3.o [4]
+  .rodata              const    0x6000'2040      0x0  copy_init3.o [4]
 
-"P1", part 2 of 2:                           0x5328
-  .text                ro code  0x6000'2400   0x990  pow64.o [3]
-  .text                ro code  0x6000'2d90    0x7c  frexp.o [3]
-  .text                ro code  0x6000'2e0c   0x36c  iar_Exp64.o [3]
-  .text                ro code  0x6000'3178    0xf0  ldexp.o [3]
-  .text                ro code  0x6000'3268   0x888  fsl_str.o [1]
-  .text                ro code  0x6000'3af0   0x274  I64DivMod.o [4]
-  .text                ro code  0x6000'3d64    0x9e  modf.o [3]
-  .text                ro code  0x6000'3e02    0x3a  zero_init3.o [4]
-  .text                ro code  0x6000'3e3c    0x5c  DblToS64.o [3]
-  .text                ro code  0x6000'3e98    0x52  S64ToDbl.o [3]
-  .text                ro code  0x6000'3eea     0x2  startup_MIMXRT1052_ram_vector.o [1]
-  .text                ro code  0x6000'3eec    0x36  strlen.o [4]
-  .text                ro code  0x6000'3f22     0x2  startup_MIMXRT1052_ram_vector.o [1]
-  .text                ro code  0x6000'3f24     0x2  I64DivZer.o [4]
-  .text                ro code  0x6000'3f26     0x2  startup_MIMXRT1052_ram_vector.o [1]
-  .text                ro code  0x6000'3f28   0x7d4  clock_config.o [1]
-  .text                ro code  0x6000'46fc    0x18  fsl_assert.o [1]
-  .text                ro code  0x6000'4714   0x5e8  fsl_clock.o [1]
-  .text                ro code  0x6000'4cfc    0xa4  fsl_debug_console.o [1]
-  .text                ro code  0x6000'4da0    0x60  fsl_log.o [1]
-  .text                ro code  0x6000'4e00     0x6  ABImemclr4.o [4]
-  .text                ro code  0x6000'4e06     0x2  startup_MIMXRT1052_ram_vector.o [1]
-  .text                ro code  0x6000'4e08    0xb4  fsl_io.o [1]
-  .text                ro code  0x6000'4ebc    0x32  ABImemset48.o [4]
-  .text                ro code  0x6000'4eee     0x2  startup_MIMXRT1052_ram_vector.o [1]
-  .text                ro code  0x6000'4ef0   0x4e8  fsl_lpuart.o [1]
-  .text                ro code  0x6000'53d8   0x550  TFTDriver.o [1]
-  .text                ro code  0x6000'5928   0x198  fsl_gpio.o [1]
-  .intvec_RAM          ro code  0x6000'5ac0   0x400  startup_MIMXRT1052_ram_vector.o [1]
-  .text                ro code  0x6000'5ec0   0x2d4  board.o [1]
-  .text                ro code  0x6000'6194   0x22c  fsl_flexspi.o [1]
-  .text                ro code  0x6000'63c0   0x1a0  pin_mux.o [1]
-  .text                ro code  0x6000'6560   0x140  Pig_UART.o [1]
-  .text                ro code  0x6000'66a0    0x86  ABImemcpy.o [4]
-  .text                ro code  0x6000'6726     0x2  startup_MIMXRT1052_ram_vector.o [1]
-  .text                ro code  0x6000'6728   0x12e  system_MIMXRT1052.o [1]
-  .text                ro code  0x6000'6856     0x2  startup_MIMXRT1052_ram_vector.o [1]
-  .text                ro code  0x6000'6858   0x118  main.o [1]
-  .text                ro code  0x6000'6970     0x4  peripherals.o [1]
-  .text                ro code  0x6000'6974    0xf0  fsl_lpspi.o [1]
-  Initializer bytes    const    0x6000'6a64    0xc8  <for RW-1>
-  .text                ro code  0x6000'6b2c    0x84  Pig_PIT.o [1]
-  .rodata              const    0x6000'6bb0    0x70  fsl_debug_console.o [1]
-  .rodata              const    0x6000'6c20    0x68  fsl_flexspi.o [1]
-  .rodata              const    0x6000'6c88    0x68  fsl_io.o [1]
-  .rodata              const    0x6000'6cf0    0x68  fsl_log.o [1]
-  .rodata              const    0x6000'6d58    0x68  fsl_lpuart.o [1]
-  .rodata              const    0x6000'6dc0    0x64  clock_config.o [1]
-  .rodata              const    0x6000'6e24    0x64  fsl_clock.o [1]
-  .rodata              const    0x6000'6e88    0x64  fsl_gpio.o [1]
-  .rodata              const    0x6000'6eec    0x64  fsl_gpio.o [1]
-  .rodata              const    0x6000'6f50    0x64  fsl_lpspi.o [1]
-  .rodata              const    0x6000'6fb4    0x64  fsl_lpuart.o [1]
-  .rodata              const    0x6000'7018    0x64  pin_mux.o [1]
-  .rodata              const    0x6000'707c    0x64  TFTDriver.o [1]
-  .rodata              const    0x6000'70e0    0x40  fsl_lpuart.o [1]
-  .rodata              const    0x6000'7120    0x3c  fsl_gpio.o [1]
-  .rodata              const    0x6000'715c    0x2c  fsl_assert.o [1]
-  .rodata              const    0x6000'7188    0x2c  main.o [1]
-  .text                ro code  0x6000'71b4    0x2c  copy_init3.o [4]
-  .text                ro code  0x6000'71e0    0x28  startup_MIMXRT1052_ram_vector.o [1]
-  .text                ro code  0x6000'7208    0x28  data_init.o [4]
-  .rodata              const    0x6000'7230    0x24  fsl_lpuart.o [1]
-  .text                ro code  0x6000'7254    0x22  fpinit_M.o [3]
-  .iar.init_table      const    0x6000'7278    0x24  - Linker created -
-  .text                ro code  0x6000'729c     0x2  startup_MIMXRT1052_ram_vector.o [1]
-  .rodata              const    0x6000'72a0    0x20  fsl_lpuart.o [1]
-  .rodata              const    0x6000'72c0    0x20  fsl_lpuart.o [1]
-  .text                ro code  0x6000'72e0    0x1e  cmain.o [4]
-  .text                ro code  0x6000'72fe     0x4  low_level_init.o [2]
-  .text                ro code  0x6000'7302     0x4  exit.o [2]
-  .text                ro code  0x6000'7306     0x2  startup_MIMXRT1052_ram_vector.o [1]
-  .text                ro code  0x6000'7308     0xa  cexit.o [4]
-  .text                ro code  0x6000'7314    0x14  exit.o [5]
-  .rodata              const    0x6000'7328    0x1c  main.o [1]
-  .rodata              const    0x6000'7344    0x1c  main.o [1]
-  .rodata              const    0x6000'7360    0x1c  main.o [1]
-  .rodata              const    0x6000'737c    0x1c  main.o [1]
-  .rodata              const    0x6000'7398    0x1c  main.o [1]
-  .rodata              const    0x6000'73b4    0x1c  main.o [1]
-  .rodata              const    0x6000'73d0    0x1c  main.o [1]
-  .rodata              const    0x6000'73ec    0x1c  main.o [1]
-  .rodata              const    0x6000'7408    0x18  clock_config.o [1]
-  .rodata              const    0x6000'7420    0x18  fsl_gpio.o [1]
-  .rodata              const    0x6000'7438    0x18  fsl_lpuart.o [1]
-  .rodata              const    0x6000'7450    0x14  fsl_lpspi.o [1]
-  .rodata              const    0x6000'7464    0x14  fsl_lpspi.o [1]
-  .rodata              const    0x6000'7478    0x14  fsl_lpspi.o [1]
-  .rodata              const    0x6000'748c    0x14  fsl_lpspi.o [1]
-  .rodata              const    0x6000'74a0    0x14  fsl_lpuart.o [1]
-  .rodata              const    0x6000'74b4    0x14  Pig_UART.o [1]
-  .rodata              const    0x6000'74c8    0x10  fsl_clock.o [1]
-  .rodata              const    0x6000'74d8    0x10  fsl_clock.o [1]
-  .rodata              const    0x6000'74e8    0x10  fsl_debug_console.o [1]
-  .rodata              const    0x6000'74f8     0xc  clock_config.o [1]
-  .rodata              const    0x6000'7504     0xc  clock_config.o [1]
-  .rodata              const    0x6000'7510     0xc  fsl_gpio.o [1]
-  .rodata              const    0x6000'751c     0xc  fsl_gpio.o [1]
-  .rodata              const    0x6000'7528     0xc  fsl_gpio.o [1]
-  .rodata              const    0x6000'7534     0xc  fsl_log.o [1]
-  .rodata              const    0x6000'7540     0xc  fsl_lpuart.o [1]
-  .rodata              const    0x6000'754c     0xc  main.o [1]
-  .rodata              const    0x6000'7558     0xc  pin_mux.o [1]
-  .rodata              const    0x6000'7564     0xc  TFTDriver.o [1]
-  .text                ro code  0x6000'7570     0xc  startup_MIMXRT1052_ram_vector.o [1]
-  .text                ro code  0x6000'757c     0xc  cstartup_M.o [4]
-  .rodata              const    0x6000'7588     0x8  fsl_flexspi.o [1]
-  .rodata              const    0x6000'7590     0x8  fsl_io.o [1]
-  .rodata              const    0x6000'7598     0x8  fsl_lpuart.o [1]
-  .rodata              const    0x6000'75a0     0x8  fsl_lpuart.o [1]
-  .text                ro code  0x6000'75a8     0x8  startup_MIMXRT1052_ram_vector.o [1]
-  .text                ro code  0x6000'75b0     0x8  startup_MIMXRT1052_ram_vector.o [1]
-  .text                ro code  0x6000'75b8     0x8  startup_MIMXRT1052_ram_vector.o [1]
-  .text                ro code  0x6000'75c0     0x8  startup_MIMXRT1052_ram_vector.o [1]
-  .text                ro code  0x6000'75c8     0x8  startup_MIMXRT1052_ram_vector.o [1]
-  .text                ro code  0x6000'75d0     0x8  startup_MIMXRT1052_ram_vector.o [1]
-  .text                ro code  0x6000'75d8     0x8  startup_MIMXRT1052_ram_vector.o [1]
-  .text                ro code  0x6000'75e0     0x8  startup_MIMXRT1052_ram_vector.o [1]
-  .text                ro code  0x6000'75e8     0x8  startup_MIMXRT1052_ram_vector.o [1]
-  .text                ro code  0x6000'75f0     0x8  startup_MIMXRT1052_ram_vector.o [1]
-  .text                ro code  0x6000'75f8     0x8  startup_MIMXRT1052_ram_vector.o [1]
-  .text                ro code  0x6000'7600     0x8  startup_MIMXRT1052_ram_vector.o [1]
-  .text                ro code  0x6000'7608     0x8  startup_MIMXRT1052_ram_vector.o [1]
-  .text                ro code  0x6000'7610     0x8  startup_MIMXRT1052_ram_vector.o [1]
-  .text                ro code  0x6000'7618     0x8  startup_MIMXRT1052_ram_vector.o [1]
-  .text                ro code  0x6000'7620     0x8  startup_MIMXRT1052_ram_vector.o [1]
-  .text                ro code  0x6000'7628     0x8  startup_MIMXRT1052_ram_vector.o [1]
-  .text                ro code  0x6000'7630     0x8  startup_MIMXRT1052_ram_vector.o [1]
-  .text                ro code  0x6000'7638     0x8  startup_MIMXRT1052_ram_vector.o [1]
-  .text                ro code  0x6000'7640     0x8  startup_MIMXRT1052_ram_vector.o [1]
-  .text                ro code  0x6000'7648     0x8  startup_MIMXRT1052_ram_vector.o [1]
-  .text                ro code  0x6000'7650     0x8  startup_MIMXRT1052_ram_vector.o [1]
-  .text                ro code  0x6000'7658     0x8  startup_MIMXRT1052_ram_vector.o [1]
-  .text                ro code  0x6000'7660     0x8  startup_MIMXRT1052_ram_vector.o [1]
-  .text                ro code  0x6000'7668     0x8  startup_MIMXRT1052_ram_vector.o [1]
-  .text                ro code  0x6000'7670     0x8  startup_MIMXRT1052_ram_vector.o [1]
-  .text                ro code  0x6000'7678     0x8  startup_MIMXRT1052_ram_vector.o [1]
-  .text                ro code  0x6000'7680     0x8  startup_MIMXRT1052_ram_vector.o [1]
-  .text                ro code  0x6000'7688     0x8  startup_MIMXRT1052_ram_vector.o [1]
-  .text                ro code  0x6000'7690     0x8  startup_MIMXRT1052_ram_vector.o [1]
-  .text                ro code  0x6000'7698     0x8  startup_MIMXRT1052_ram_vector.o [1]
-  .text                ro code  0x6000'76a0     0x8  startup_MIMXRT1052_ram_vector.o [1]
-  .text                ro code  0x6000'76a8     0x8  startup_MIMXRT1052_ram_vector.o [1]
-  .text                ro code  0x6000'76b0     0x8  startup_MIMXRT1052_ram_vector.o [1]
-  .text                ro code  0x6000'76b8     0x8  startup_MIMXRT1052_ram_vector.o [1]
-  .text                ro code  0x6000'76c0     0x8  startup_MIMXRT1052_ram_vector.o [1]
-  .text                ro code  0x6000'76c8     0x8  startup_MIMXRT1052_ram_vector.o [1]
-  .text                ro code  0x6000'76d0     0x8  startup_MIMXRT1052_ram_vector.o [1]
-  .text                ro code  0x6000'76d8     0x8  startup_MIMXRT1052_ram_vector.o [1]
-  .text                ro code  0x6000'76e0     0x8  startup_MIMXRT1052_ram_vector.o [1]
-  .text                ro code  0x6000'76e8     0x8  startup_MIMXRT1052_ram_vector.o [1]
-  .text                ro code  0x6000'76f0     0x8  startup_MIMXRT1052_ram_vector.o [1]
-  .text                ro code  0x6000'76f8     0x8  startup_MIMXRT1052_ram_vector.o [1]
-  .text                ro code  0x6000'7700     0x8  startup_MIMXRT1052_ram_vector.o [1]
-  .text                ro code  0x6000'7708     0x8  startup_MIMXRT1052_ram_vector.o [1]
-  .text                ro code  0x6000'7710     0x8  startup_MIMXRT1052_ram_vector.o [1]
-  .rodata              const    0x6000'7718     0x4  clock_config.o [1]
-  .rodata              const    0x6000'771c     0x4  pin_mux.o [1]
-  .rodata              const    0x6000'7720     0x4  pin_mux.o [1]
-  .text                ro code  0x6000'7724     0x4  startup_MIMXRT1052_ram_vector.o [1]
-                              - 0x6000'7728  0x5328
+"P1", part 2 of 2:                            0x5f34
+  .text                ro code  0x6000'2400    0x990  pow64.o [3]
+  .text                ro code  0x6000'2d90     0x7c  frexp.o [3]
+  .text                ro code  0x6000'2e0c    0x36c  iar_Exp64.o [3]
+  .text                ro code  0x6000'3178     0xf0  ldexp.o [3]
+  .text                ro code  0x6000'3268    0x888  fsl_str.o [1]
+  .text                ro code  0x6000'3af0    0x274  I64DivMod.o [4]
+  .text                ro code  0x6000'3d64     0x9e  modf.o [3]
+  .text                ro code  0x6000'3e02     0x3a  zero_init3.o [4]
+  .text                ro code  0x6000'3e3c     0x5c  DblToS64.o [3]
+  .text                ro code  0x6000'3e98     0x52  S64ToDbl.o [3]
+  .rodata              const    0x6000'3eea      0x2  fsl_csi.o [1]
+  .text                ro code  0x6000'3eec     0x36  strlen.o [4]
+  .rodata              const    0x6000'3f22      0x2  fsl_csi.o [1]
+  .text                ro code  0x6000'3f24      0x2  I64DivZer.o [4]
+  .text                ro code  0x6000'3f26      0x2  startup_MIMXRT1052_ram_vector.o [1]
+  .text                ro code  0x6000'3f28    0x7d4  clock_config.o [1]
+  .text                ro code  0x6000'46fc     0x18  fsl_assert.o [1]
+  .text                ro code  0x6000'4714    0x5e8  fsl_clock.o [1]
+  .text                ro code  0x6000'4cfc     0xa4  fsl_debug_console.o [1]
+  .text                ro code  0x6000'4da0     0x60  fsl_log.o [1]
+  .text                ro code  0x6000'4e00      0x6  ABImemclr4.o [4]
+  .text                ro code  0x6000'4e06      0x2  startup_MIMXRT1052_ram_vector.o [1]
+  .text                ro code  0x6000'4e08     0xb4  fsl_io.o [1]
+  .text                ro code  0x6000'4ebc     0x3a  ABImemset48.o [4]
+  .text                ro code  0x6000'4ef6      0x2  startup_MIMXRT1052_ram_vector.o [1]
+  .text                ro code  0x6000'4ef8    0x4e8  fsl_lpuart.o [1]
+  .text                ro code  0x6000'53e0    0x5f4  fsl_csi.o [1]
+  .text                ro code  0x6000'59d4    0x59c  TFTDriver.o [1]
+  .text                ro code  0x6000'5f70    0x198  fsl_gpio.o [1]
+  .intvec_RAM          ro code  0x6000'6108    0x400  startup_MIMXRT1052_ram_vector.o [1]
+  .text                ro code  0x6000'6508    0x3ec  LQ_CSI.o [1]
+  .text                ro code  0x6000'68f4    0x2d4  board.o [1]
+  .text                ro code  0x6000'6bc8    0x22c  fsl_flexspi.o [1]
+  .text                ro code  0x6000'6df4    0x228  main.o [1]
+  .text                ro code  0x6000'701c    0x1a0  pin_mux.o [1]
+  .text                ro code  0x6000'71bc      0x4  peripherals.o [1]
+  .text                ro code  0x6000'71c0    0x12e  system_MIMXRT1052.o [1]
+  .text                ro code  0x6000'72ee      0x2  startup_MIMXRT1052_ram_vector.o [1]
+  .text                ro code  0x6000'72f0    0x126  fsl_csi_camera_adapter.o [1]
+  .text                ro code  0x6000'7416      0x2  startup_MIMXRT1052_ram_vector.o [1]
+  .text                ro code  0x6000'7418     0xf0  fsl_lpspi.o [1]
+  .text                ro code  0x6000'7508     0x84  Pig_PIT.o [1]
+  .rodata              const    0x6000'758c     0x70  fsl_debug_console.o [1]
+  .rodata              const    0x6000'75fc     0x68  fsl_flexspi.o [1]
+  .rodata              const    0x6000'7664     0x68  fsl_io.o [1]
+  .rodata              const    0x6000'76cc     0x68  fsl_log.o [1]
+  .rodata              const    0x6000'7734     0x68  fsl_lpuart.o [1]
+  .rodata              const    0x6000'779c     0x64  clock_config.o [1]
+  .rodata              const    0x6000'7800     0x64  fsl_clock.o [1]
+  .rodata              const    0x6000'7864     0x64  fsl_csi.o [1]
+  .rodata              const    0x6000'78c8     0x64  fsl_csi.o [1]
+  .rodata              const    0x6000'792c     0x64  fsl_gpio.o [1]
+  .rodata              const    0x6000'7990     0x64  fsl_gpio.o [1]
+  .rodata              const    0x6000'79f4     0x64  fsl_lpspi.o [1]
+  .rodata              const    0x6000'7a58     0x64  fsl_lpuart.o [1]
+  .rodata              const    0x6000'7abc     0x64  LQ_CSI.o [1]
+  .rodata              const    0x6000'7b20     0x64  pin_mux.o [1]
+  .rodata              const    0x6000'7b84     0x64  TFTDriver.o [1]
+  Initializer bytes    const    0x6000'7be8     0x48  <for RW-1>
+  .rodata              const    0x6000'7c30     0x40  fsl_lpuart.o [1]
+  .rodata              const    0x6000'7c70     0x3c  fsl_csi.o [1]
+  .rodata              const    0x6000'7cac     0x3c  fsl_gpio.o [1]
+  .rodata              const    0x6000'7ce8     0x2c  fsl_assert.o [1]
+  .rodata              const    0x6000'7d14     0x2c  main.o [1]
+  .text                ro code  0x6000'7d40     0x2c  copy_init3.o [4]
+  .text                ro code  0x6000'7d6c     0x28  startup_MIMXRT1052_ram_vector.o [1]
+  .text                ro code  0x6000'7d94     0x28  data_init.o [4]
+  .rodata              const    0x6000'7dbc     0x24  fsl_lpuart.o [1]
+  .text                ro code  0x6000'7de0     0x22  LQ_MT9V034M.o [1]
+  .text                ro code  0x6000'7e02      0x2  startup_MIMXRT1052_ram_vector.o [1]
+  .text                ro code  0x6000'7e04     0x22  fpinit_M.o [3]
+  .iar.init_table      const    0x6000'7e28     0x2c  - Linker created -
+  .text                ro code  0x6000'7e54      0x2  startup_MIMXRT1052_ram_vector.o [1]
+  .rodata              const    0x6000'7e58     0x20  fsl_lpuart.o [1]
+  .rodata              const    0x6000'7e78     0x20  fsl_lpuart.o [1]
+  .text                ro code  0x6000'7e98     0x1e  cmain.o [4]
+  .text                ro code  0x6000'7eb6      0x4  low_level_init.o [2]
+  .text                ro code  0x6000'7eba      0x4  exit.o [2]
+  .text                ro code  0x6000'7ebe      0x2  startup_MIMXRT1052_ram_vector.o [1]
+  .text                ro code  0x6000'7ec0      0xa  cexit.o [4]
+  .text                ro code  0x6000'7eca      0x2  startup_MIMXRT1052_ram_vector.o [1]
+  .text                ro code  0x6000'7ecc     0x14  exit.o [5]
+  .rodata              const    0x6000'7ee0     0x1c  fsl_csi_camera_adapter.o [1]
+  .rodata              const    0x6000'7efc     0x1c  main.o [1]
+  .rodata              const    0x6000'7f18     0x1c  main.o [1]
+  .rodata              const    0x6000'7f34     0x1c  main.o [1]
+  .rodata              const    0x6000'7f50     0x1c  main.o [1]
+  .rodata              const    0x6000'7f6c     0x1c  main.o [1]
+  .rodata              const    0x6000'7f88     0x1c  main.o [1]
+  .rodata              const    0x6000'7fa4     0x1c  main.o [1]
+  .rodata              const    0x6000'7fc0     0x1c  main.o [1]
+  .rodata              const    0x6000'7fdc     0x18  clock_config.o [1]
+  .rodata              const    0x6000'7ff4     0x18  fsl_gpio.o [1]
+  .rodata              const    0x6000'800c     0x18  fsl_lpuart.o [1]
+  .rodata              const    0x6000'8024     0x18  LQ_CSI.o [1]
+  .rodata              const    0x6000'803c     0x18  LQ_MT9V034M.o [1]
+  .rodata              const    0x6000'8054     0x14  fsl_lpspi.o [1]
+  .rodata              const    0x6000'8068     0x14  fsl_lpspi.o [1]
+  .rodata              const    0x6000'807c     0x14  fsl_lpspi.o [1]
+  .rodata              const    0x6000'8090     0x14  fsl_lpspi.o [1]
+  .rodata              const    0x6000'80a4     0x14  fsl_lpuart.o [1]
+  .rodata              const    0x6000'80b8     0x10  fsl_clock.o [1]
+  .rodata              const    0x6000'80c8     0x10  fsl_clock.o [1]
+  .rodata              const    0x6000'80d8     0x10  fsl_debug_console.o [1]
+  .rodata              const    0x6000'80e8      0xc  clock_config.o [1]
+  .rodata              const    0x6000'80f4      0xc  clock_config.o [1]
+  .rodata              const    0x6000'8100      0xc  fsl_csi.o [1]
+  .rodata              const    0x6000'810c      0xc  fsl_gpio.o [1]
+  .rodata              const    0x6000'8118      0xc  fsl_gpio.o [1]
+  .rodata              const    0x6000'8124      0xc  fsl_gpio.o [1]
+  .rodata              const    0x6000'8130      0xc  fsl_log.o [1]
+  .rodata              const    0x6000'813c      0xc  fsl_lpuart.o [1]
+  .rodata              const    0x6000'8148      0xc  LQ_CSI.o [1]
+  .rodata              const    0x6000'8154      0xc  pin_mux.o [1]
+  .rodata              const    0x6000'8160      0xc  TFTDriver.o [1]
+  .text                ro code  0x6000'816c      0xc  startup_MIMXRT1052_ram_vector.o [1]
+  .text                ro code  0x6000'8178      0xc  cstartup_M.o [4]
+  .rodata              const    0x6000'8184      0x8  fsl_csi.o [1]
+  .rodata              const    0x6000'818c      0x8  fsl_csi.o [1]
+  .rodata              const    0x6000'8194      0x8  fsl_flexspi.o [1]
+  .rodata              const    0x6000'819c      0x8  fsl_io.o [1]
+  .rodata              const    0x6000'81a4      0x8  fsl_lpuart.o [1]
+  .rodata              const    0x6000'81ac      0x8  fsl_lpuart.o [1]
+  .text                ro code  0x6000'81b4      0x8  startup_MIMXRT1052_ram_vector.o [1]
+  .text                ro code  0x6000'81bc      0x8  startup_MIMXRT1052_ram_vector.o [1]
+  .text                ro code  0x6000'81c4      0x8  startup_MIMXRT1052_ram_vector.o [1]
+  .text                ro code  0x6000'81cc      0x8  startup_MIMXRT1052_ram_vector.o [1]
+  .text                ro code  0x6000'81d4      0x8  startup_MIMXRT1052_ram_vector.o [1]
+  .text                ro code  0x6000'81dc      0x8  startup_MIMXRT1052_ram_vector.o [1]
+  .text                ro code  0x6000'81e4      0x8  startup_MIMXRT1052_ram_vector.o [1]
+  .text                ro code  0x6000'81ec      0x8  startup_MIMXRT1052_ram_vector.o [1]
+  .text                ro code  0x6000'81f4      0x8  startup_MIMXRT1052_ram_vector.o [1]
+  .text                ro code  0x6000'81fc      0x8  startup_MIMXRT1052_ram_vector.o [1]
+  .text                ro code  0x6000'8204      0x8  startup_MIMXRT1052_ram_vector.o [1]
+  .text                ro code  0x6000'820c      0x8  startup_MIMXRT1052_ram_vector.o [1]
+  .text                ro code  0x6000'8214      0x8  startup_MIMXRT1052_ram_vector.o [1]
+  .text                ro code  0x6000'821c      0x8  startup_MIMXRT1052_ram_vector.o [1]
+  .text                ro code  0x6000'8224      0x8  startup_MIMXRT1052_ram_vector.o [1]
+  .text                ro code  0x6000'822c      0x8  startup_MIMXRT1052_ram_vector.o [1]
+  .text                ro code  0x6000'8234      0x8  startup_MIMXRT1052_ram_vector.o [1]
+  .text                ro code  0x6000'823c      0x8  startup_MIMXRT1052_ram_vector.o [1]
+  .text                ro code  0x6000'8244      0x8  startup_MIMXRT1052_ram_vector.o [1]
+  .text                ro code  0x6000'824c      0x8  startup_MIMXRT1052_ram_vector.o [1]
+  .text                ro code  0x6000'8254      0x8  startup_MIMXRT1052_ram_vector.o [1]
+  .text                ro code  0x6000'825c      0x8  startup_MIMXRT1052_ram_vector.o [1]
+  .text                ro code  0x6000'8264      0x8  startup_MIMXRT1052_ram_vector.o [1]
+  .text                ro code  0x6000'826c      0x8  startup_MIMXRT1052_ram_vector.o [1]
+  .text                ro code  0x6000'8274      0x8  startup_MIMXRT1052_ram_vector.o [1]
+  .text                ro code  0x6000'827c      0x8  startup_MIMXRT1052_ram_vector.o [1]
+  .text                ro code  0x6000'8284      0x8  startup_MIMXRT1052_ram_vector.o [1]
+  .text                ro code  0x6000'828c      0x8  startup_MIMXRT1052_ram_vector.o [1]
+  .text                ro code  0x6000'8294      0x8  startup_MIMXRT1052_ram_vector.o [1]
+  .text                ro code  0x6000'829c      0x8  startup_MIMXRT1052_ram_vector.o [1]
+  .text                ro code  0x6000'82a4      0x8  startup_MIMXRT1052_ram_vector.o [1]
+  .text                ro code  0x6000'82ac      0x8  startup_MIMXRT1052_ram_vector.o [1]
+  .text                ro code  0x6000'82b4      0x8  startup_MIMXRT1052_ram_vector.o [1]
+  .text                ro code  0x6000'82bc      0x8  startup_MIMXRT1052_ram_vector.o [1]
+  .text                ro code  0x6000'82c4      0x8  startup_MIMXRT1052_ram_vector.o [1]
+  .text                ro code  0x6000'82cc      0x8  startup_MIMXRT1052_ram_vector.o [1]
+  .text                ro code  0x6000'82d4      0x8  startup_MIMXRT1052_ram_vector.o [1]
+  .text                ro code  0x6000'82dc      0x8  startup_MIMXRT1052_ram_vector.o [1]
+  .text                ro code  0x6000'82e4      0x8  startup_MIMXRT1052_ram_vector.o [1]
+  .text                ro code  0x6000'82ec      0x8  startup_MIMXRT1052_ram_vector.o [1]
+  .text                ro code  0x6000'82f4      0x8  startup_MIMXRT1052_ram_vector.o [1]
+  .text                ro code  0x6000'82fc      0x8  startup_MIMXRT1052_ram_vector.o [1]
+  .text                ro code  0x6000'8304      0x8  startup_MIMXRT1052_ram_vector.o [1]
+  .text                ro code  0x6000'830c      0x8  startup_MIMXRT1052_ram_vector.o [1]
+  .text                ro code  0x6000'8314      0x8  startup_MIMXRT1052_ram_vector.o [1]
+  .text                ro code  0x6000'831c      0x8  startup_MIMXRT1052_ram_vector.o [1]
+  .rodata              const    0x6000'8324      0x4  clock_config.o [1]
+  .rodata              const    0x6000'8328      0x4  pin_mux.o [1]
+  .rodata              const    0x6000'832c      0x4  pin_mux.o [1]
+  .text                ro code  0x6000'8330      0x4  startup_MIMXRT1052_ram_vector.o [1]
+                              - 0x6000'8334   0x5f34
 
 Unused ranges:
 
          From           To        Size
          ----           --        ----
-  0x2000'0124  0x2001'fbff    0x1'fadc
+  0x2001'6190  0x2001'fbff      0x9a70
   0x6000'2040  0x6000'23ff       0x3c0
-  0x6000'7728  0x61ff'ffff  0x1ff'88d8
+  0x6000'8334  0x61ff'ffff  0x1ff'7ccc
 
 
 *******************************************************************************
@@ -349,14 +356,15 @@ Unused ranges:
           Address      Size
           -------      ----
 Zero (__iar_zero_init3)
-    1 destination range, total size 0x5c:
-          0x2000'00c8  0x5c
+    2 destination ranges, total size 0x16110:
+          0x2000'0080  0x16080
+          0x2001'6100     0x90
 
 Copy (__iar_copy_init3)
-    1 source range, total size 0xc8:
-          0x6000'6a64  0xc8
-    1 destination range, total size 0xc8:
-          0x2000'0000  0xc8
+    1 source range, total size 0x48:
+          0x6000'7be8     0x48
+    1 destination range, total size 0x48:
+          0x2000'0000     0x48
 
 
 
@@ -371,15 +379,18 @@ command line/config:
     Total:
 
 D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\project\iar\nor_txt_ram\Obj: [1]
+    LQ_CSI.o                            1 004      200   90 348
+    LQ_MT9V034M.o                          34       24
     Pig_PIT.o                             132
-    Pig_UART.o                            320      212      192
-    TFTDriver.o                         1 360      116        4
+    TFTDriver.o                         1 436      116        4
     board.o                               724
     clock_config.o                      2 004      152
     fire_imxrt1052_sdram_ini_dcd.o               1 072
     fire_imxrt1052_spiflash_config.o               512
     fsl_assert.o                           24       44
     fsl_clock.o                         1 512      132        8
+    fsl_csi.o                           1 524      292        8
+    fsl_csi_camera_adapter.o              294       28
     fsl_debug_console.o                   164      128
     fsl_flexspi.o                         556      112        4
     fsl_flexspi_nor_boot.o                          48
@@ -389,13 +400,13 @@ D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\project\iar\nor_txt_
     fsl_lpspi.o                           240      180       28
     fsl_lpuart.o                        1 256      440       40
     fsl_str.o                           2 184
-    main.o                                280      280        4
+    main.o                                552      268        4
     peripherals.o                           4
     pin_mux.o                             416      120
     startup_MIMXRT1052_ram_vector.o     1 530
     system_MIMXRT1052.o                   302        4        4
     -----------------------------------------------------------
-    Total:                             13 692    4 100      292
+    Total:                             16 576    4 420   90 456
 
 dl7M_tln.a: [2]
     exit.o                                  4
@@ -417,8 +428,7 @@ m7M_tlv.a: [3]
 
 rt7M_tl.a: [4]
     ABImemclr4.o                            6
-    ABImemcpy.o                           134
-    ABImemset48.o                          50
+    ABImemset48.o                          58
     I64DivMod.o                           628
     I64DivZer.o                             2
     cexit.o                                10
@@ -429,297 +439,370 @@ rt7M_tl.a: [4]
     strlen.o                               54
     zero_init3.o                           58
     -----------------------------------------------------------
-    Total:                              1 068
+    Total:                                942
 
 shb_l.a: [5]
     exit.o                                 20
     -----------------------------------------------------------
     Total:                                 20
 
-    Gaps                                    2        4
-    Linker created                                  36    1 024
+    Gaps                                             4
+    Linker created                                  44    1 024
 ---------------------------------------------------------------
-    Grand Total:                       18 844    4 140    1 316
+    Grand Total:                       21 600    4 468   91 480
 
 
 *******************************************************************************
 *** ENTRY LIST
 ***
 
-Entry                       Address   Size  Type      Object
------                       -------   ----  ----      ------
-.iar.init_table$$Base   0x6000'7278          --   Gb  - Linker created -
-.iar.init_table$$Limit  0x6000'729c          --   Gb  - Linker created -
-?main                   0x6000'72e1         Code  Gb  cmain.o [4]
-ARM_MPU_Disable         0x6000'5edd   0x1e  Code  Lc  board.o [1]
-ARM_MPU_Enable          0x6000'5ec1   0x1c  Code  Lc  board.o [1]
-BOARD_BootClockRUN      0x6000'40f1  0x4cc  Code  Gb  clock_config.o [1]
-BOARD_ConfigMPU         0x6000'60a3   0x74  Code  Gb  board.o [1]
+Entry                       Address     Size  Type      Object
+-----                       -------     ----  ----      ------
+.iar.init_table$$Base   0x6000'7e28            --   Gb  - Linker created -
+.iar.init_table$$Limit  0x6000'7e54            --   Gb  - Linker created -
+?main                   0x6000'7e99           Code  Gb  cmain.o [4]
+ARM_MPU_Disable         0x6000'6911     0x1e  Code  Lc  board.o [1]
+ARM_MPU_Enable          0x6000'68f5     0x1c  Code  Lc  board.o [1]
+BOARD_BootClockRUN      0x6000'40f1    0x4cc  Code  Gb  clock_config.o [1]
+BOARD_ConfigMPU         0x6000'6ad7     0x74  Code  Gb  board.o [1]
 BOARD_DebugConsoleSrcFreq
-                        0x6000'6051   0x3a  Code  Gb  board.o [1]
+                        0x6000'6a85     0x3a  Code  Gb  board.o [1]
 BOARD_InitBootPeripherals
-                        0x6000'6973    0x2  Code  Gb  peripherals.o [1]
-BOARD_InitDebugConsole  0x6000'608b   0x18  Code  Gb  board.o [1]
-BOARD_InitPeripherals   0x6000'6971    0x2  Code  Gb  peripherals.o [1]
-BOARD_InitPins          0x6000'641d   0xce  Code  Gb  pin_mux.o [1]
-CLOCK_ControlGate       0x6000'3ff9   0x40  Code  Lc  clock_config.o [1]
-CLOCK_ControlGate       0x6000'5929   0x3a  Code  Lc  fsl_gpio.o [1]
-CLOCK_ControlGate       0x6000'4ef1   0x40  Code  Lc  fsl_lpuart.o [1]
-CLOCK_ControlGate       0x6000'63c1   0x3a  Code  Lc  pin_mux.o [1]
-CLOCK_ControlGate       0x6000'53d9   0x40  Code  Lc  TFTDriver.o [1]
-CLOCK_DeinitAudioPll    0x6000'49dd    0xc  Code  Gb  fsl_clock.o [1]
-CLOCK_DeinitEnetPll     0x6000'49f5    0xc  Code  Gb  fsl_clock.o [1]
-CLOCK_DeinitUsb2Pll     0x6000'49d3    0xa  Code  Gb  fsl_clock.o [1]
-CLOCK_DeinitVideoPll    0x6000'49e9    0xc  Code  Gb  fsl_clock.o [1]
-CLOCK_DisableClock      0x6000'4039    0x4  Code  Lc  clock_config.o [1]
-CLOCK_EnableClock       0x6000'5963    0x4  Code  Lc  fsl_gpio.o [1]
-CLOCK_EnableClock       0x6000'4f31    0x4  Code  Lc  fsl_lpuart.o [1]
-CLOCK_EnableClock       0x6000'63fb    0x4  Code  Lc  pin_mux.o [1]
-CLOCK_EnableClock       0x6000'5419    0x4  Code  Lc  TFTDriver.o [1]
-CLOCK_GetDiv            0x6000'6015   0x2a  Code  Lc  board.o [1]
-CLOCK_GetFreq           0x6000'4879  0x12a  Code  Gb  fsl_clock.o [1]
-CLOCK_GetMux            0x6000'5feb   0x2a  Code  Lc  board.o [1]
-CLOCK_GetOscFreq        0x6000'603f   0x12  Code  Lc  board.o [1]
-CLOCK_GetOscFreq        0x6000'473b   0x18  Code  Lc  fsl_clock.o [1]
-CLOCK_GetPeriphClkFreq  0x6000'476f   0xa0  Code  Lc  fsl_clock.o [1]
+                        0x6000'71bf      0x2  Code  Gb  peripherals.o [1]
+BOARD_InitDebugConsole  0x6000'6abf     0x18  Code  Gb  board.o [1]
+BOARD_InitPeripherals   0x6000'71bd      0x2  Code  Gb  peripherals.o [1]
+BOARD_InitPins          0x6000'7079     0xce  Code  Gb  pin_mux.o [1]
+CAMERA_DEVICE_Init      0x6000'665b      0x6  Code  Lc  LQ_CSI.o [1]
+CAMERA_DEVICE_Start     0x6000'6661      0x6  Code  Lc  LQ_CSI.o [1]
+CAMERA_RECEIVER_GetFullBuffer
+                        0x6000'6e9f      0x6  Code  Lc  main.o [1]
+CAMERA_RECEIVER_Init    0x6000'6645      0xa  Code  Lc  LQ_CSI.o [1]
+CAMERA_RECEIVER_Start   0x6000'664f      0x6  Code  Lc  LQ_CSI.o [1]
+CAMERA_RECEIVER_SubmitEmptyBuffer
+                        0x6000'6655      0x6  Code  Lc  LQ_CSI.o [1]
+CAMERA_RECEIVER_SubmitEmptyBuffer
+                        0x6000'6e99      0x6  Code  Lc  main.o [1]
+CLOCK_ControlGate       0x6000'3ff9     0x40  Code  Lc  clock_config.o [1]
+CLOCK_ControlGate       0x6000'53f9     0x40  Code  Lc  fsl_csi.o [1]
+CLOCK_ControlGate       0x6000'5f71     0x3a  Code  Lc  fsl_gpio.o [1]
+CLOCK_ControlGate       0x6000'4ef9     0x40  Code  Lc  fsl_lpuart.o [1]
+CLOCK_ControlGate       0x6000'65d9     0x40  Code  Lc  LQ_CSI.o [1]
+CLOCK_ControlGate       0x6000'701d     0x3a  Code  Lc  pin_mux.o [1]
+CLOCK_ControlGate       0x6000'59d5     0x40  Code  Lc  TFTDriver.o [1]
+CLOCK_DeinitAudioPll    0x6000'49dd      0xc  Code  Gb  fsl_clock.o [1]
+CLOCK_DeinitEnetPll     0x6000'49f5      0xc  Code  Gb  fsl_clock.o [1]
+CLOCK_DeinitUsb2Pll     0x6000'49d3      0xa  Code  Gb  fsl_clock.o [1]
+CLOCK_DeinitVideoPll    0x6000'49e9      0xc  Code  Gb  fsl_clock.o [1]
+CLOCK_DisableClock      0x6000'4039      0x4  Code  Lc  clock_config.o [1]
+CLOCK_DisableClock      0x6000'543d      0x4  Code  Lc  fsl_csi.o [1]
+CLOCK_EnableClock       0x6000'5439      0x4  Code  Lc  fsl_csi.o [1]
+CLOCK_EnableClock       0x6000'5fab      0x4  Code  Lc  fsl_gpio.o [1]
+CLOCK_EnableClock       0x6000'4f39      0x4  Code  Lc  fsl_lpuart.o [1]
+CLOCK_EnableClock       0x6000'6619      0x4  Code  Lc  LQ_CSI.o [1]
+CLOCK_EnableClock       0x6000'7057      0x4  Code  Lc  pin_mux.o [1]
+CLOCK_EnableClock       0x6000'5a15      0x4  Code  Lc  TFTDriver.o [1]
+CLOCK_GetDiv            0x6000'6a49     0x2a  Code  Lc  board.o [1]
+CLOCK_GetFreq           0x6000'4879    0x12a  Code  Gb  fsl_clock.o [1]
+CLOCK_GetMux            0x6000'6a1f     0x2a  Code  Lc  board.o [1]
+CLOCK_GetOscFreq        0x6000'6a73     0x12  Code  Lc  board.o [1]
+CLOCK_GetOscFreq        0x6000'473b     0x18  Code  Lc  fsl_clock.o [1]
+CLOCK_GetPeriphClkFreq  0x6000'476f     0xa0  Code  Lc  fsl_clock.o [1]
 CLOCK_GetPllBypassRefClk
-                        0x6000'4753   0x16  Code  Lc  fsl_clock.o [1]
-CLOCK_GetPllFreq        0x6000'4a01  0x184  Code  Gb  fsl_clock.o [1]
+                        0x6000'4753     0x16  Code  Lc  fsl_clock.o [1]
+CLOCK_GetPllFreq        0x6000'4a01    0x184  Code  Gb  fsl_clock.o [1]
 CLOCK_GetPllFreq::enetRefClkFreq
-                        0x6000'74d8   0x10  Data  Lc  fsl_clock.o [1]
-CLOCK_GetRtcFreq        0x6000'4769    0x6  Code  Lc  fsl_clock.o [1]
-CLOCK_GetSysPfdFreq     0x6000'4bb1   0x58  Code  Gb  fsl_clock.o [1]
-CLOCK_GetUsb1PfdFreq    0x6000'4c09   0x58  Code  Gb  fsl_clock.o [1]
-CLOCK_InitArmPll        0x6000'49a3   0x18  Code  Gb  fsl_clock.o [1]
-CLOCK_InitExternalClk   0x6000'480f   0x44  Code  Gb  fsl_clock.o [1]
-CLOCK_InitRcOsc24M      0x6000'486b    0xe  Code  Gb  fsl_clock.o [1]
-CLOCK_InitSysPfd        0x6000'4b85   0x2c  Code  Gb  fsl_clock.o [1]
-CLOCK_InitSysPll        0x6000'49bb   0x18  Code  Gb  fsl_clock.o [1]
-CLOCK_IsPllBypassed     0x6000'4715   0x10  Code  Lc  fsl_clock.o [1]
-CLOCK_IsPllEnabled      0x6000'4725   0x16  Code  Lc  fsl_clock.o [1]
-CLOCK_SetDiv            0x6000'3f91   0x68  Code  Lc  clock_config.o [1]
-CLOCK_SetMux            0x6000'3f29   0x68  Code  Lc  clock_config.o [1]
-CLOCK_SetPllBypass      0x6000'403d   0x34  Code  Lc  clock_config.o [1]
-CLOCK_SetRtcXtalFreq    0x6000'4079    0x8  Code  Lc  clock_config.o [1]
-CLOCK_SetXtalFreq       0x6000'4071    0x8  Code  Lc  clock_config.o [1]
-CLOCK_SwitchOsc         0x6000'4853   0x18  Code  Gb  fsl_clock.o [1]
-CSTACK$$Base            0x2001'fc00          --   Gb  - Linker created -
-CSTACK$$Limit           0x2002'0000          --   Gb  - Linker created -
+                        0x6000'80c8     0x10  Data  Lc  fsl_clock.o [1]
+CLOCK_GetRtcFreq        0x6000'4769      0x6  Code  Lc  fsl_clock.o [1]
+CLOCK_GetSysPfdFreq     0x6000'4bb1     0x58  Code  Gb  fsl_clock.o [1]
+CLOCK_GetUsb1PfdFreq    0x6000'4c09     0x58  Code  Gb  fsl_clock.o [1]
+CLOCK_InitArmPll        0x6000'49a3     0x18  Code  Gb  fsl_clock.o [1]
+CLOCK_InitExternalClk   0x6000'480f     0x44  Code  Gb  fsl_clock.o [1]
+CLOCK_InitRcOsc24M      0x6000'486b      0xe  Code  Gb  fsl_clock.o [1]
+CLOCK_InitSysPfd        0x6000'4b85     0x2c  Code  Gb  fsl_clock.o [1]
+CLOCK_InitSysPll        0x6000'49bb     0x18  Code  Gb  fsl_clock.o [1]
+CLOCK_IsPllBypassed     0x6000'4715     0x10  Code  Lc  fsl_clock.o [1]
+CLOCK_IsPllEnabled      0x6000'4725     0x16  Code  Lc  fsl_clock.o [1]
+CLOCK_SetDiv            0x6000'3f91     0x68  Code  Lc  clock_config.o [1]
+CLOCK_SetDiv            0x6000'6571     0x68  Code  Lc  LQ_CSI.o [1]
+CLOCK_SetMux            0x6000'3f29     0x68  Code  Lc  clock_config.o [1]
+CLOCK_SetMux            0x6000'6509     0x68  Code  Lc  LQ_CSI.o [1]
+CLOCK_SetPllBypass      0x6000'403d     0x34  Code  Lc  clock_config.o [1]
+CLOCK_SetRtcXtalFreq    0x6000'4079      0x8  Code  Lc  clock_config.o [1]
+CLOCK_SetXtalFreq       0x6000'4071      0x8  Code  Lc  clock_config.o [1]
+CLOCK_SwitchOsc         0x6000'4853     0x18  Code  Gb  fsl_clock.o [1]
+CSIPinInit              0x6000'666b     0xe0  Code  Gb  LQ_CSI.o [1]
+CSI_ADAPTER_Callback    0x6000'73ed     0x20  Code  Lc  fsl_csi_camera_adapter.o [1]
+CSI_ADAPTER_Deinit      0x6000'73b1      0xe  Code  Lc  fsl_csi_camera_adapter.o [1]
+CSI_ADAPTER_GetFullBuffer
+                        0x6000'73df      0xc  Code  Lc  fsl_csi_camera_adapter.o [1]
+CSI_ADAPTER_Init        0x6000'72f1     0xc0  Code  Lc  fsl_csi_camera_adapter.o [1]
+CSI_ADAPTER_InitExt     0x6000'740d      0xa  Code  Lc  fsl_csi_camera_adapter.o [1]
+CSI_ADAPTER_Start       0x6000'73bf      0xa  Code  Lc  fsl_csi_camera_adapter.o [1]
+CSI_ADAPTER_Stop        0x6000'73c9      0xa  Code  Lc  fsl_csi_camera_adapter.o [1]
+CSI_ADAPTER_SubmitEmptyBuffer
+                        0x6000'73d3      0xc  Code  Lc  fsl_csi_camera_adapter.o [1]
+CSI_ClearFifo           0x6000'568f     0x2e  Code  Gb  fsl_csi.o [1]
+CSI_Deinit              0x6000'55dd     0x1c  Code  Gb  fsl_csi.o [1]
+CSI_DisableInterrupts   0x6000'5729     0x24  Code  Gb  fsl_csi.o [1]
+CSI_DriverIRQHandler    0x6000'598d      0xc  Code  Gb  fsl_csi.o [1]
+CSI_EnableFifoDmaRequest
+                        0x6000'56dd     0x2a  Code  Gb  fsl_csi.o [1]
+CSI_EnableInterrupts    0x6000'5707     0x22  Code  Gb  fsl_csi.o [1]
+CSI_GetDefaultConfig    0x6000'5641     0x42  Code  Gb  fsl_csi.o [1]
+CSI_GetInstance         0x6000'547d     0x2e  Code  Lc  fsl_csi.o [1]
+CSI_IRQHandler          0x6000'6667      0x4  Code  Gb  LQ_CSI.o [1]
+CSI_Init                0x6000'54f3     0xea  Code  Gb  fsl_csi.o [1]
+CSI_ReflashFifoDma      0x6000'56bd     0x20  Code  Gb  fsl_csi.o [1]
+CSI_Reset               0x6000'55f9     0x48  Code  Gb  fsl_csi.o [1]
+CSI_SetRxBufferAddr     0x6000'5683      0xc  Code  Gb  fsl_csi.o [1]
+CSI_Start               0x6000'5459     0x16  Code  Lc  fsl_csi.o [1]
+CSI_Stop                0x6000'546f      0xe  Code  Lc  fsl_csi.o [1]
+CSI_TransferCreateHandle
+                        0x6000'574d     0x4e  Code  Gb  fsl_csi.o [1]
+CSI_TransferGetEmptyBufferCount
+                        0x6000'54c3      0x8  Code  Lc  fsl_csi.o [1]
+CSI_TransferGetFullBuffer
+                        0x6000'58b5     0x32  Code  Gb  fsl_csi.o [1]
+CSI_TransferGetQueueDelta
+                        0x6000'54ab      0xe  Code  Lc  fsl_csi.o [1]
+CSI_TransferHandleIRQ   0x6000'58e9     0xa4  Code  Gb  fsl_csi.o [1]
+CSI_TransferIncreaseQueueIdx
+                        0x6000'54b9      0xa  Code  Lc  fsl_csi.o [1]
+CSI_TransferLoadBufferToDevice
+                        0x6000'54cb     0x28  Code  Lc  fsl_csi.o [1]
+CSI_TransferStart       0x6000'579b     0x6e  Code  Gb  fsl_csi.o [1]
+CSI_TransferStop        0x6000'5809     0x38  Code  Gb  fsl_csi.o [1]
+CSI_TransferSubmitEmptyBuffer
+                        0x6000'5841     0x74  Code  Gb  fsl_csi.o [1]
+CSTACK$$Base            0x2001'fc00            --   Gb  - Linker created -
+CSTACK$$Limit           0x2002'0000            --   Gb  - Linker created -
+CameraResourceInit      0x6000'67bb     0x14  Code  Gb  LQ_CSI.o [1]
 ConvertFloatRadixNumToString
-                        0x6000'334d  0x186  Code  Lc  fsl_str.o [1]
+                        0x6000'334d    0x186  Code  Lc  fsl_str.o [1]
 ConvertRadixNumToString
-                        0x6000'3269   0xe4  Code  Lc  fsl_str.o [1]
-DbgConsole_Init         0x6000'4cfd   0x2e  Code  Gb  fsl_debug_console.o [1]
-DbgConsole_Printf       0x6000'4d35   0x2e  Code  Gb  fsl_debug_console.o [1]
-DbgConsole_RelocateLog  0x6000'4d65   0x3c  Code  Lc  fsl_debug_console.o [1]
+                        0x6000'3269     0xe4  Code  Lc  fsl_str.o [1]
+DbgConsole_Init         0x6000'4cfd     0x2e  Code  Gb  fsl_debug_console.o [1]
+DbgConsole_Printf       0x6000'4d35     0x2e  Code  Gb  fsl_debug_console.o [1]
+DbgConsole_RelocateLog  0x6000'4d65     0x3c  Code  Lc  fsl_debug_console.o [1]
+EnableIRQ               0x6000'5441     0x18  Code  Lc  fsl_csi.o [1]
 FLEXSPI_CheckAndClearError
-                        0x6000'61a7   0x62  Code  Gb  fsl_flexspi.o [1]
+                        0x6000'6bdb     0x62  Code  Gb  fsl_flexspi.o [1]
 FLEXSPI_ClearInterruptStatusFlags
-                        0x6000'619f    0x8  Code  Lc  fsl_flexspi.o [1]
+                        0x6000'6bd3      0x8  Code  Lc  fsl_flexspi.o [1]
 FLEXSPI_DisableInterrupts
-                        0x6000'6195    0xa  Code  Lc  fsl_flexspi.o [1]
+                        0x6000'6bc9      0xa  Code  Lc  fsl_flexspi.o [1]
 FLEXSPI_DriverIRQHandler
-                        0x6000'63a5    0x8  Code  Gb  fsl_flexspi.o [1]
-FLEXSPI_TransferAbort   0x6000'620d   0x28  Code  Gb  fsl_flexspi.o [1]
+                        0x6000'6dd9      0x8  Code  Gb  fsl_flexspi.o [1]
+FLEXSPI_TransferAbort   0x6000'6c41     0x28  Code  Gb  fsl_flexspi.o [1]
 FLEXSPI_TransferHandleIRQ
-                        0x6000'6235  0x170  Code  Gb  fsl_flexspi.o [1]
-GPIO_GetInstance        0x6000'5969   0x2c  Code  Lc  fsl_gpio.o [1]
-GPIO_Output_Config      0x2000'00c4    0x4  Data  Gb  TFTDriver.o [1]
-GPIO_PinInit            0x6000'5995   0x52  Code  Gb  fsl_gpio.o [1]
+                        0x6000'6c69    0x170  Code  Gb  fsl_flexspi.o [1]
+GPIO_GetInstance        0x6000'5fb1     0x2c  Code  Lc  fsl_gpio.o [1]
+GPIO_Output_Config      0x2000'0044      0x4  Data  Gb  TFTDriver.o [1]
+GPIO_PinInit            0x6000'5fdd     0x52  Code  Gb  fsl_gpio.o [1]
 GPIO_PinSetInterruptConfig
-                        0x6000'5a41   0x80  Code  Gb  fsl_gpio.o [1]
-GPIO_PinWrite           0x6000'59e7   0x3a  Code  Gb  fsl_gpio.o [1]
+                        0x6000'6089     0x80  Code  Gb  fsl_gpio.o [1]
+GPIO_PinWrite           0x6000'602f     0x3a  Code  Gb  fsl_gpio.o [1]
 GPIO_SetPinInterruptConfig
-                        0x6000'5967    0x2  Code  Lc  fsl_gpio.o [1]
-IOMUXC_EnableMode       0x6000'4081   0x1a  Code  Lc  clock_config.o [1]
-IOMUXC_MQSConfig        0x6000'40d3   0x1c  Code  Lc  clock_config.o [1]
-IOMUXC_SetPinConfig     0x6000'5439    0xc  Code  Lc  TFTDriver.o [1]
-IOMUXC_SetPinMux        0x6000'63ff   0x1c  Code  Lc  pin_mux.o [1]
-IOMUXC_SetPinMux        0x6000'541d   0x1c  Code  Lc  TFTDriver.o [1]
+                        0x6000'5faf      0x2  Code  Lc  fsl_gpio.o [1]
+IOMUXC_EnableMode       0x6000'4081     0x1a  Code  Lc  clock_config.o [1]
+IOMUXC_MQSConfig        0x6000'40d3     0x1c  Code  Lc  clock_config.o [1]
+IOMUXC_SetPinConfig     0x6000'6639      0xc  Code  Lc  LQ_CSI.o [1]
+IOMUXC_SetPinConfig     0x6000'5a35      0xc  Code  Lc  TFTDriver.o [1]
+IOMUXC_SetPinMux        0x6000'661d     0x1c  Code  Lc  LQ_CSI.o [1]
+IOMUXC_SetPinMux        0x6000'705b     0x1c  Code  Lc  pin_mux.o [1]
+IOMUXC_SetPinMux        0x6000'5a19     0x1c  Code  Lc  TFTDriver.o [1]
 IOMUXC_SetSaiMClkClockSource
-                        0x6000'409b   0x38  Code  Lc  clock_config.o [1]
-IO_Init                 0x6000'4e35   0x52  Code  Gb  fsl_io.o [1]
-IO_Transfer             0x6000'4e87   0x2a  Code  Gb  fsl_io.o [1]
-LOG_Init                0x6000'4da1   0x1a  Code  Gb  fsl_log.o [1]
-LOG_Pop                 0x6000'4ddd   0x1a  Code  Gb  fsl_log.o [1]
-LOG_Push                0x6000'4dbb   0x22  Code  Gb  fsl_log.o [1]
+                        0x6000'409b     0x38  Code  Lc  clock_config.o [1]
+IO_Init                 0x6000'4e35     0x52  Code  Gb  fsl_io.o [1]
+IO_Transfer             0x6000'4e87     0x2a  Code  Gb  fsl_io.o [1]
+LOG_Init                0x6000'4da1     0x1a  Code  Gb  fsl_log.o [1]
+LOG_Pop                 0x6000'4ddd     0x1a  Code  Gb  fsl_log.o [1]
+LOG_Push                0x6000'4dbb     0x22  Code  Gb  fsl_log.o [1]
+LPI2C1PinsInit          0x6000'674b     0x70  Code  Gb  LQ_CSI.o [1]
 LPSPI1_DriverIRQHandler
-                        0x6000'69a3   0x24  Code  Gb  fsl_lpspi.o [1]
+                        0x6000'7447     0x24  Code  Gb  fsl_lpspi.o [1]
 LPSPI2_DriverIRQHandler
-                        0x6000'69c7   0x24  Code  Gb  fsl_lpspi.o [1]
+                        0x6000'746b     0x24  Code  Gb  fsl_lpspi.o [1]
 LPSPI3_DriverIRQHandler
-                        0x6000'69eb   0x24  Code  Gb  fsl_lpspi.o [1]
+                        0x6000'748f     0x24  Code  Gb  fsl_lpspi.o [1]
 LPSPI4_DriverIRQHandler
-                        0x6000'6a0f   0x24  Code  Gb  fsl_lpspi.o [1]
-LPSPI_CommonIRQHandler  0x6000'697d   0x26  Code  Lc  fsl_lpspi.o [1]
-LPSPI_IsMaster          0x6000'6975    0x8  Code  Lc  fsl_lpspi.o [1]
-LPUART1_Clock           0x2000'0000    0x4  Data  Gb  Pig_UART.o [1]
+                        0x6000'74b3     0x24  Code  Gb  fsl_lpspi.o [1]
+LPSPI_CommonIRQHandler  0x6000'7421     0x26  Code  Lc  fsl_lpspi.o [1]
+LPSPI_IsMaster          0x6000'7419      0x8  Code  Lc  fsl_lpspi.o [1]
 LPUART1_DriverIRQHandler
-                        0x6000'531d    0xc  Code  Gb  fsl_lpuart.o [1]
-LPUART1_config          0x2000'0004   0x14  Data  Gb  Pig_UART.o [1]
-LPUART2_Clock           0x2000'0018    0x4  Data  Gb  Pig_UART.o [1]
+                        0x6000'5325      0xc  Code  Gb  fsl_lpuart.o [1]
 LPUART2_DriverIRQHandler
-                        0x6000'5329    0xc  Code  Gb  fsl_lpuart.o [1]
-LPUART2_config          0x2000'001c   0x14  Data  Gb  Pig_UART.o [1]
-LPUART3_Clock           0x2000'0030    0x4  Data  Gb  Pig_UART.o [1]
+                        0x6000'5331      0xc  Code  Gb  fsl_lpuart.o [1]
 LPUART3_DriverIRQHandler
-                        0x6000'533d    0xc  Code  Gb  fsl_lpuart.o [1]
-LPUART3_config          0x2000'0034   0x14  Data  Gb  Pig_UART.o [1]
-LPUART4_Clock           0x2000'0048    0x4  Data  Gb  Pig_UART.o [1]
+                        0x6000'5345      0xc  Code  Gb  fsl_lpuart.o [1]
 LPUART4_DriverIRQHandler
-                        0x6000'5355    0xc  Code  Gb  fsl_lpuart.o [1]
-LPUART4_config          0x2000'004c   0x14  Data  Gb  Pig_UART.o [1]
-LPUART5_Clock           0x2000'0060    0x4  Data  Gb  Pig_UART.o [1]
+                        0x6000'535d      0xc  Code  Gb  fsl_lpuart.o [1]
 LPUART5_DriverIRQHandler
-                        0x6000'5365    0xc  Code  Gb  fsl_lpuart.o [1]
-LPUART5_config          0x2000'0064   0x14  Data  Gb  Pig_UART.o [1]
-LPUART6_Clock           0x2000'0078    0x4  Data  Gb  Pig_UART.o [1]
+                        0x6000'536d      0xc  Code  Gb  fsl_lpuart.o [1]
 LPUART6_DriverIRQHandler
-                        0x6000'5371    0xc  Code  Gb  fsl_lpuart.o [1]
-LPUART6_config          0x2000'007c   0x14  Data  Gb  Pig_UART.o [1]
-LPUART7_Clock           0x2000'0090    0x4  Data  Gb  Pig_UART.o [1]
+                        0x6000'5379      0xc  Code  Gb  fsl_lpuart.o [1]
 LPUART7_DriverIRQHandler
-                        0x6000'537d    0xc  Code  Gb  fsl_lpuart.o [1]
-LPUART7_config          0x2000'0094   0x14  Data  Gb  Pig_UART.o [1]
-LPUART8_Clock           0x2000'00a8    0x4  Data  Gb  Pig_UART.o [1]
+                        0x6000'5385      0xc  Code  Gb  fsl_lpuart.o [1]
 LPUART8_DriverIRQHandler
-                        0x6000'538d    0xc  Code  Gb  fsl_lpuart.o [1]
-LPUART8_config          0x2000'00ac   0x14  Data  Gb  Pig_UART.o [1]
+                        0x6000'5395      0xc  Code  Gb  fsl_lpuart.o [1]
 LPUART_ClearStatusFlags
-                        0x6000'51df   0x38  Code  Gb  fsl_lpuart.o [1]
-LPUART_Default_config   0x6000'74b4   0x14  Data  Gb  Pig_UART.o [1]
-LPUART_EnableRx         0x6000'4e1f   0x16  Code  Lc  fsl_io.o [1]
-LPUART_EnableTx         0x6000'4e09   0x16  Code  Lc  fsl_io.o [1]
+                        0x6000'51e7     0x38  Code  Gb  fsl_lpuart.o [1]
+LPUART_EnableRx         0x6000'4e1f     0x16  Code  Lc  fsl_io.o [1]
+LPUART_EnableTx         0x6000'4e09     0x16  Code  Lc  fsl_io.o [1]
 LPUART_GetDefaultConfig
-                        0x6000'518f   0x40  Code  Gb  fsl_lpuart.o [1]
-LPUART_GetInstance      0x6000'4f47   0x32  Code  Gb  fsl_lpuart.o [1]
-LPUART_GetStatusFlags   0x6000'51cf   0x10  Code  Gb  fsl_lpuart.o [1]
-LPUART_Init             0x6000'4f79  0x216  Code  Gb  fsl_lpuart.o [1]
-LPUART_ReadBlocking     0x6000'524f   0xb8  Code  Gb  fsl_lpuart.o [1]
-LPUART_SoftwareReset    0x6000'4f35   0x12  Code  Lc  fsl_lpuart.o [1]
-LPUART_WriteBlocking    0x6000'5217   0x38  Code  Gb  fsl_lpuart.o [1]
-PIT0Inter               0x6000'6925   0x16  Code  Gb  main.o [1]
-PIT_ClearStatusFlags    0x6000'6b3b    0xa  Code  Lc  Pig_PIT.o [1]
-PIT_GetStatusFlags      0x6000'6b2d    0xe  Code  Lc  Pig_PIT.o [1]
-PIT_IRQHandler          0x6000'6b45   0x64  Code  Gb  Pig_PIT.o [1]
-RW$$Base                0x2000'0000          --   Gb  - Linker created -
-RW$$Limit               0x2000'00c8          --   Gb  - Linker created -
-Region$$Table$$Base     0x6000'7278          --   Gb  - Linker created -
-Region$$Table$$Limit    0x6000'729c          --   Gb  - Linker created -
-SCB_DisableDCache       0x6000'5f99   0x52  Code  Lc  board.o [1]
-SCB_DisableICache       0x6000'5f25   0x22  Code  Lc  board.o [1]
-SCB_EnableDCache        0x6000'5f47   0x52  Code  Lc  board.o [1]
-SCB_EnableDCache        0x6000'6753   0x52  Code  Lc  system_MIMXRT1052.o [1]
-SCB_EnableICache        0x6000'5efb   0x2a  Code  Lc  board.o [1]
-SCB_EnableICache        0x6000'6729   0x2a  Code  Lc  system_MIMXRT1052.o [1]
-StrFormatPrintf         0x6000'34dd  0x612  Code  Gb  fsl_str.o [1]
-SystemCoreClock         0x2000'00c0    0x4  Data  Gb  system_MIMXRT1052.o [1]
-SystemInit              0x6000'67a5   0x7a  Code  Gb  system_MIMXRT1052.o [1]
-TFTSPI_Addr_Rst         0x6000'5879   0x46  Code  Gb  TFTDriver.o [1]
-TFTSPI_CLS              0x6000'58bf   0x24  Code  Gb  TFTDriver.o [1]
-TFTSPI_Init             0x6000'5461  0x2fe  Code  Gb  TFTDriver.o [1]
-TFTSPI_Write_Byte       0x6000'57c9   0x5e  Code  Gb  TFTDriver.o [1]
-TFTSPI_Write_Cmd        0x6000'5777   0x52  Code  Gb  TFTDriver.o [1]
-TFTSPI_Write_Word       0x6000'5827   0x52  Code  Gb  TFTDriver.o [1]
-UART_Init               0x6000'6561   0xd0  Code  Gb  Pig_UART.o [1]
-UART_Send               0x6000'669d    0x4  Code  Gb  Pig_UART.o [1]
-ZI$$Base                0x2000'00c8          --   Gb  - Linker created -
-ZI$$Limit               0x2000'0124          --   Gb  - Linker created -
+                        0x6000'5197     0x40  Code  Gb  fsl_lpuart.o [1]
+LPUART_GetInstance      0x6000'4f4f     0x32  Code  Gb  fsl_lpuart.o [1]
+LPUART_GetStatusFlags   0x6000'51d7     0x10  Code  Gb  fsl_lpuart.o [1]
+LPUART_Init             0x6000'4f81    0x216  Code  Gb  fsl_lpuart.o [1]
+LPUART_ReadBlocking     0x6000'5257     0xb8  Code  Gb  fsl_lpuart.o [1]
+LPUART_SoftwareReset    0x6000'4f3d     0x12  Code  Lc  fsl_lpuart.o [1]
+LPUART_WriteBlocking    0x6000'521f     0x38  Code  Gb  fsl_lpuart.o [1]
+LQMT9V034Resource       0x2000'0000     0x10  Data  Lc  LQ_CSI.o [1]
+LQMT9V034_Control       0x6000'7df1      0x4  Code  Gb  LQ_MT9V034M.o [1]
+LQMT9V034_Deinit        0x6000'7de1     0x10  Code  Gb  LQ_MT9V034M.o [1]
+LQMT9V034_Init          0x6000'7dff      0x4  Code  Gb  LQ_MT9V034M.o [1]
+LQMT9V034_InitExt       0x6000'7dfd      0x2  Code  Gb  LQ_MT9V034M.o [1]
+LQMT9V034_Start         0x6000'7df5      0x4  Code  Gb  LQ_MT9V034M.o [1]
+LQMT9V034_Stop          0x6000'7df9      0x4  Code  Gb  LQ_MT9V034M.o [1]
+LQMT9V034_ops           0x6000'803c     0x18  Data  Gb  LQ_MT9V034M.o [1]
+LQ_Camera_Init          0x6000'67cf     0x58  Code  Gb  LQ_CSI.o [1]
+NCACHE_VAR$$Base        0x2000'0080            --   Gb  - Linker created -
+NCACHE_VAR$$Limit       0x2001'6100            --   Gb  - Linker created -
+PIT0Inter               0x6000'6fc3     0x16  Code  Gb  main.o [1]
+PIT_ClearStatusFlags    0x6000'7517      0xa  Code  Lc  Pig_PIT.o [1]
+PIT_GetStatusFlags      0x6000'7509      0xe  Code  Lc  Pig_PIT.o [1]
+PIT_IRQHandler          0x6000'7521     0x64  Code  Gb  Pig_PIT.o [1]
+RW$$Base                0x2000'0000            --   Gb  - Linker created -
+RW$$Limit               0x2000'0048            --   Gb  - Linker created -
+Region$$Table$$Base     0x6000'7e28            --   Gb  - Linker created -
+Region$$Table$$Limit    0x6000'7e54            --   Gb  - Linker created -
+SCB_DisableDCache       0x6000'69cd     0x52  Code  Lc  board.o [1]
+SCB_DisableDCache       0x6000'6e47     0x52  Code  Lc  main.o [1]
+SCB_DisableICache       0x6000'6959     0x22  Code  Lc  board.o [1]
+SCB_EnableDCache        0x6000'697b     0x52  Code  Lc  board.o [1]
+SCB_EnableDCache        0x6000'6df5     0x52  Code  Lc  main.o [1]
+SCB_EnableDCache        0x6000'71eb     0x52  Code  Lc  system_MIMXRT1052.o [1]
+SCB_EnableICache        0x6000'692f     0x2a  Code  Lc  board.o [1]
+SCB_EnableICache        0x6000'71c1     0x2a  Code  Lc  system_MIMXRT1052.o [1]
+StrFormatPrintf         0x6000'34dd    0x612  Code  Gb  fsl_str.o [1]
+SystemCoreClock         0x2000'0040      0x4  Data  Gb  system_MIMXRT1052.o [1]
+SystemInit              0x6000'723d     0x7a  Code  Gb  system_MIMXRT1052.o [1]
+TFTSPI_Addr_Rst         0x6000'5ec3     0x46  Code  Gb  TFTDriver.o [1]
+TFTSPI_CLS              0x6000'5f09     0x24  Code  Gb  TFTDriver.o [1]
+TFTSPI_Init             0x6000'5a5d    0x2fe  Code  Gb  TFTDriver.o [1]
+TFTSPI_Set_Pos          0x6000'5e75     0x4e  Code  Gb  TFTDriver.o [1]
+TFTSPI_Write_Byte       0x6000'5dc5     0x5e  Code  Gb  TFTDriver.o [1]
+TFTSPI_Write_Cmd        0x6000'5d73     0x52  Code  Gb  TFTDriver.o [1]
+TFTSPI_Write_Word       0x6000'5e23     0x52  Code  Gb  TFTDriver.o [1]
+ZI$$Base                0x2001'6100            --   Gb  - Linker created -
+ZI$$Limit               0x2001'6190            --   Gb  - Linker created -
+__NVIC_EnableIRQ        0x6000'53e1     0x18  Code  Lc  fsl_csi.o [1]
 __RAM_VECTOR_TABLE_SIZE {Abs}
-                                0x0         Data  Gb  <internal module>
-__VECTOR_RAM {Abs}      0x6000'2000         Data  Gb  <internal module>
-__VECTOR_TABLE {Abs}    0x6000'2000         Data  Gb  <internal module>
-__Vectors               0x6000'2000          --   Gb  startup_MIMXRT1052_ram_vector.o [1]
-__Vectors_End           0x6000'2040         Data  Gb  startup_MIMXRT1052_ram_vector.o [1]
-__Vectors_RAM           0x6000'5ac0          --   Gb  startup_MIMXRT1052_ram_vector.o [1]
-__Vectors_RAM_End       0x6000'5ec0         Data  Gb  startup_MIMXRT1052_ram_vector.o [1]
+                                0x0           Data  Gb  <internal module>
+__VECTOR_RAM {Abs}      0x6000'2000           Data  Gb  <internal module>
+__VECTOR_TABLE {Abs}    0x6000'2000           Data  Gb  <internal module>
+__Vectors               0x6000'2000            --   Gb  startup_MIMXRT1052_ram_vector.o [1]
+__Vectors_End           0x6000'2040           Data  Gb  startup_MIMXRT1052_ram_vector.o [1]
+__Vectors_RAM           0x6000'6108            --   Gb  startup_MIMXRT1052_ram_vector.o [1]
+__Vectors_RAM_End       0x6000'6508           Data  Gb  startup_MIMXRT1052_ram_vector.o [1]
 __Vectors_RAM_Size {Abs}
-                              0x400          --   Gb  startup_MIMXRT1052_ram_vector.o [1]
-__Vectors_Size {Abs}           0x40          --   Gb  startup_MIMXRT1052_ram_vector.o [1]
-__aeabi_assert          0x6000'46fd   0x18  Code  Gb  fsl_assert.o [1]
-__aeabi_d2lz            0x6000'3e3d         Code  Gb  DblToS64.o [3]
-__aeabi_l2d             0x6000'3e99         Code  Gb  S64ToDbl.o [3]
-__aeabi_ldiv0           0x6000'3f25         Code  Gb  I64DivZer.o [4]
-__aeabi_ldivmod         0x6000'3af1         Code  Gb  I64DivMod.o [4]
-__aeabi_memclr4         0x6000'4e01         Code  Gb  ABImemclr4.o [4]
-__aeabi_memcpy4         0x6000'66a1         Code  Gb  ABImemcpy.o [4]
-__aeabi_memcpy8         0x6000'66a1         Code  Gb  ABImemcpy.o [4]
-__aeabi_uldivmod        0x6000'3b35         Code  Gb  I64DivMod.o [4]
-__cmain                 0x6000'72e1         Code  Gb  cmain.o [4]
-__exit                  0x6000'7315   0x14  Code  Gb  exit.o [5]
-__iar_Exp64             0x6000'2e0d  0x36c  Code  Gb  iar_Exp64.o [3]
-__iar_Memset4_word      0x6000'4ebd         Code  Gb  ABImemset48.o [4]
-__iar_Memset8_word      0x6000'4ebd         Code  Gb  ABImemset48.o [4]
-__iar_Pow64             0x6000'2401  0x4e0  Code  Lc  pow64.o [3]
-__iar_copy_init3        0x6000'71b5   0x2c  Code  Gb  copy_init3.o [4]
-__iar_data_init3        0x6000'7209   0x28  Code  Gb  data_init.o [4]
-__iar_frexp             0x6000'2da9         Code  Gb  frexp.o [3]
-__iar_frexp64           0x6000'2d91         Code  Gb  frexp.o [3]
-__iar_frexpl            0x6000'2da9         Code  Gb  frexp.o [3]
-__iar_init_vfp          0x6000'7255         Code  Gb  fpinit_M.o [3]
-__iar_ldexp64           0x6000'3179         Code  Gb  ldexp.o [3]
-__iar_modf              0x6000'3d75         Code  Gb  modf.o [3]
-__iar_modf64            0x6000'3d65         Code  Gb  modf.o [3]
-__iar_modfl             0x6000'3d75         Code  Gb  modf.o [3]
-__iar_pow64             0x6000'2969    0x4  Code  Gb  pow64.o [3]
-__iar_pow_medium        0x6000'2969    0x4  Code  Gb  pow64.o [3]
-__iar_pow_medium64      0x6000'2969    0x4  Code  Gb  pow64.o [3]
-__iar_pow_mediuml       0x6000'2969    0x4  Code  Gb  pow64.o [3]
-__iar_program_start     0x6000'757d         Code  Gb  cstartup_M.o [4]
-__iar_scalbln64         0x6000'3179         Code  Gb  ldexp.o [3]
-__iar_scalbn64          0x6000'3179         Code  Gb  ldexp.o [3]
-__iar_zero_init3        0x6000'3e03   0x3a  Code  Gb  zero_init3.o [4]
-__low_level_init        0x6000'72ff    0x4  Code  Gb  low_level_init.o [2]
-__vector_table          0x6000'2000         Data  Gb  startup_MIMXRT1052_ram_vector.o [1]
-__vector_table_0x1c     0x6000'201c         Data  Gb  startup_MIMXRT1052_ram_vector.o [1]
-__vector_table_RAM      0x6000'5ac0         Data  Gb  startup_MIMXRT1052_ram_vector.o [1]
+                              0x400            --   Gb  startup_MIMXRT1052_ram_vector.o [1]
+__Vectors_Size {Abs}           0x40            --   Gb  startup_MIMXRT1052_ram_vector.o [1]
+__aeabi_assert          0x6000'46fd     0x18  Code  Gb  fsl_assert.o [1]
+__aeabi_d2lz            0x6000'3e3d           Code  Gb  DblToS64.o [3]
+__aeabi_l2d             0x6000'3e99           Code  Gb  S64ToDbl.o [3]
+__aeabi_ldiv0           0x6000'3f25           Code  Gb  I64DivZer.o [4]
+__aeabi_ldivmod         0x6000'3af1           Code  Gb  I64DivMod.o [4]
+__aeabi_memclr4         0x6000'4e01           Code  Gb  ABImemclr4.o [4]
+__aeabi_memset4         0x6000'4ebd           Code  Gb  ABImemset48.o [4]
+__aeabi_memset8         0x6000'4ebd           Code  Gb  ABImemset48.o [4]
+__aeabi_uldivmod        0x6000'3b35           Code  Gb  I64DivMod.o [4]
+__cmain                 0x6000'7e99           Code  Gb  cmain.o [4]
+__exit                  0x6000'7ecd     0x14  Code  Gb  exit.o [5]
+__iar_Exp64             0x6000'2e0d    0x36c  Code  Gb  iar_Exp64.o [3]
+__iar_Memset4_word      0x6000'4ec5           Code  Gb  ABImemset48.o [4]
+__iar_Memset8_word      0x6000'4ec5           Code  Gb  ABImemset48.o [4]
+__iar_Pow64             0x6000'2401    0x4e0  Code  Lc  pow64.o [3]
+__iar_copy_init3        0x6000'7d41     0x2c  Code  Gb  copy_init3.o [4]
+__iar_data_init3        0x6000'7d95     0x28  Code  Gb  data_init.o [4]
+__iar_frexp             0x6000'2da9           Code  Gb  frexp.o [3]
+__iar_frexp64           0x6000'2d91           Code  Gb  frexp.o [3]
+__iar_frexpl            0x6000'2da9           Code  Gb  frexp.o [3]
+__iar_init_vfp          0x6000'7e05           Code  Gb  fpinit_M.o [3]
+__iar_ldexp64           0x6000'3179           Code  Gb  ldexp.o [3]
+__iar_modf              0x6000'3d75           Code  Gb  modf.o [3]
+__iar_modf64            0x6000'3d65           Code  Gb  modf.o [3]
+__iar_modfl             0x6000'3d75           Code  Gb  modf.o [3]
+__iar_pow64             0x6000'2969      0x4  Code  Gb  pow64.o [3]
+__iar_pow_medium        0x6000'2969      0x4  Code  Gb  pow64.o [3]
+__iar_pow_medium64      0x6000'2969      0x4  Code  Gb  pow64.o [3]
+__iar_pow_mediuml       0x6000'2969      0x4  Code  Gb  pow64.o [3]
+__iar_program_start     0x6000'8179           Code  Gb  cstartup_M.o [4]
+__iar_scalbln64         0x6000'3179           Code  Gb  ldexp.o [3]
+__iar_scalbn64          0x6000'3179           Code  Gb  ldexp.o [3]
+__iar_zero_init3        0x6000'3e03     0x3a  Code  Gb  zero_init3.o [4]
+__low_level_init        0x6000'7eb7      0x4  Code  Gb  low_level_init.o [2]
+__vector_table          0x6000'2000           Data  Gb  startup_MIMXRT1052_ram_vector.o [1]
+__vector_table_0x1c     0x6000'201c           Data  Gb  startup_MIMXRT1052_ram_vector.o [1]
+__vector_table_RAM      0x6000'6108           Data  Gb  startup_MIMXRT1052_ram_vector.o [1]
 __vector_table_RAM_0x1c
-                        0x6000'5adc         Data  Gb  startup_MIMXRT1052_ram_vector.o [1]
-_call_main              0x6000'72ed         Code  Gb  cmain.o [4]
-_exit                   0x6000'7309         Code  Gb  cexit.o [4]
-_main                   0x6000'72fb         Code  Gb  cmain.o [4]
+                        0x6000'6124           Data  Gb  startup_MIMXRT1052_ram_vector.o [1]
+_call_main              0x6000'7ea5           Code  Gb  cmain.o [4]
+_exit                   0x6000'7ec1           Code  Gb  cexit.o [4]
+_main                   0x6000'7eb3           Code  Gb  cmain.o [4]
 armPllConfig_BOARD_BootClockRUN
-                        0x6000'7718    0x4  Data  Gb  clock_config.o [1]
-boot_data               0x6000'1020   0x10  Data  Gb  fsl_flexspi_nor_boot.o [1]
-count_1s                0x2000'0120    0x4  Data  Gb  main.o [1]
-dcd_data                0x6000'1030  0x430  Data  Gb  fire_imxrt1052_sdram_ini_dcd.o [1]
-delayms                 0x6000'5445   0x1c  Code  Gb  TFTDriver.o [1]
-exit                    0x6000'7303    0x4  Code  Gb  exit.o [2]
-frexp                   0x6000'2d91         Code  Gb  frexp.o [3]
-frexpl                  0x6000'2d91         Code  Gb  frexp.o [3]
-g_rtcXtalFreq           0x2000'00cc    0x4  Data  Gb  fsl_clock.o [1]
-g_xtalFreq              0x2000'00c8    0x4  Data  Gb  fsl_clock.o [1]
-image_vector_table      0x6000'1000   0x20  Data  Gb  fsl_flexspi_nor_boot.o [1]
-ldexp                   0x6000'3179         Code  Gb  ldexp.o [3]
-ldexpl                  0x6000'3179         Code  Gb  ldexp.o [3]
-lnbias                  0x6000'2970  0x420  Data  Lc  pow64.o [3]
+                        0x6000'8324      0x4  Data  Gb  clock_config.o [1]
+boot_data               0x6000'1020     0x10  Data  Gb  fsl_flexspi_nor_boot.o [1]
+cameraConfig            0x2000'0028     0x18  Data  Gb  LQ_CSI.o [1]
+cameraDevice            0x2000'0010      0x8  Data  Gb  LQ_CSI.o [1]
+cameraReceiver          0x2000'001c      0xc  Data  Gb  LQ_CSI.o [1]
+count_1s                0x2001'618c      0x4  Data  Gb  main.o [1]
+csiFrameBuf             0x2000'0080  0x16080  Data  Gb  LQ_CSI.o [1]
+csiPrivateData          0x2001'6160     0x2c  Data  Lc  LQ_CSI.o [1]
+csiResource             0x2000'0018      0x4  Data  Lc  LQ_CSI.o [1]
+csi_ops                 0x6000'7ee0     0x1c  Data  Gb  fsl_csi_camera_adapter.o [1]
+dcd_data                0x6000'1030    0x430  Data  Gb  fire_imxrt1052_sdram_ini_dcd.o [1]
+delayms                 0x6000'5a41     0x1c  Code  Gb  TFTDriver.o [1]
+exit                    0x6000'7ebb      0x4  Code  Gb  exit.o [2]
+frexp                   0x6000'2d91           Code  Gb  frexp.o [3]
+frexpl                  0x6000'2d91           Code  Gb  frexp.o [3]
+g_rtcXtalFreq           0x2001'6104      0x4  Data  Gb  fsl_clock.o [1]
+g_xtalFreq              0x2001'6100      0x4  Data  Gb  fsl_clock.o [1]
+image_vector_table      0x6000'1000     0x20  Data  Gb  fsl_flexspi_nor_boot.o [1]
+ldexp                   0x6000'3179           Code  Gb  ldexp.o [3]
+ldexpl                  0x6000'3179           Code  Gb  ldexp.o [3]
+lnbias                  0x6000'2970    0x420  Data  Lc  pow64.o [3]
 m_boot_hdr_conf_start {Abs}
-                        0x6000'0000         Data  Gb  <internal module>
-main                    0x6000'6859   0xcc  Code  Gb  main.o [1]
-modf                    0x6000'3d65         Code  Gb  modf.o [3]
-modfl                   0x6000'3d65         Code  Gb  modf.o [3]
-pow                     0x6000'2969    0x4  Code  Gb  pow64.o [3]
-powl                    0x6000'2969    0x4  Code  Gb  pow64.o [3]
-s_debugConsoleIO        0x2000'00d4    0x8  Data  Lc  fsl_io.o [1]
-s_flexspiHandle         0x2000'00d0    0x4  Data  Lc  fsl_flexspi.o [1]
-s_gpioBases             0x6000'7420   0x18  Data  Lc  fsl_gpio.o [1]
-s_gpioClock             0x6000'7528    0xc  Data  Lc  fsl_gpio.o [1]
-s_lpspiHandle           0x2000'00dc   0x14  Data  Lc  fsl_lpspi.o [1]
-s_lpspiMasterIsr        0x2000'00f0    0x4  Data  Lc  fsl_lpspi.o [1]
-s_lpspiSlaveIsr         0x2000'00f4    0x4  Data  Lc  fsl_lpspi.o [1]
-s_lpuartBases           0x6000'7230   0x24  Data  Lc  fsl_lpuart.o [1]
-s_lpuartClock           0x6000'74a0   0x14  Data  Lc  fsl_lpuart.o [1]
-s_lpuartHandle          0x2000'00f8   0x24  Data  Lc  fsl_lpuart.o [1]
-s_lpuartIsr             0x2000'011c    0x4  Data  Lc  fsl_lpuart.o [1]
-scalbln                 0x6000'3179         Code  Gb  ldexp.o [3]
-scalblnl                0x6000'3179         Code  Gb  ldexp.o [3]
-scalbn                  0x6000'3179         Code  Gb  ldexp.o [3]
-scalbnl                 0x6000'3179         Code  Gb  ldexp.o [3]
-spiflash_config         0x6000'0000  0x200  Data  Gb  fire_imxrt1052_spiflash_config.o [1]
-strlen                  0x6000'3eed         Code  Gb  strlen.o [4]
+                        0x6000'0000           Data  Gb  <internal module>
+main                    0x6000'6ea5    0x11e  Code  Gb  main.o [1]
+modf                    0x6000'3d65           Code  Gb  modf.o [3]
+modfl                   0x6000'3d65           Code  Gb  modf.o [3]
+pow                     0x6000'2969      0x4  Code  Gb  pow64.o [3]
+powl                    0x6000'2969      0x4  Code  Gb  pow64.o [3]
+s_csiClocks             0x6000'3eea      0x2  Data  Lc  fsl_csi.o [1]
+s_csiHandle             0x2001'6108      0x4  Data  Lc  fsl_csi.o [1]
+s_csiIRQ                0x6000'3f22      0x2  Data  Lc  fsl_csi.o [1]
+s_csiIsr                0x2001'610c      0x4  Data  Lc  fsl_csi.o [1]
+s_debugConsoleIO        0x2001'6114      0x8  Data  Lc  fsl_io.o [1]
+s_flexspiHandle         0x2001'6110      0x4  Data  Lc  fsl_flexspi.o [1]
+s_gpioBases             0x6000'7ff4     0x18  Data  Lc  fsl_gpio.o [1]
+s_gpioClock             0x6000'8124      0xc  Data  Lc  fsl_gpio.o [1]
+s_lpspiHandle           0x2001'611c     0x14  Data  Lc  fsl_lpspi.o [1]
+s_lpspiMasterIsr        0x2001'6130      0x4  Data  Lc  fsl_lpspi.o [1]
+s_lpspiSlaveIsr         0x2001'6134      0x4  Data  Lc  fsl_lpspi.o [1]
+s_lpuartBases           0x6000'7dbc     0x24  Data  Lc  fsl_lpuart.o [1]
+s_lpuartClock           0x6000'80a4     0x14  Data  Lc  fsl_lpuart.o [1]
+s_lpuartHandle          0x2001'6138     0x24  Data  Lc  fsl_lpuart.o [1]
+s_lpuartIsr             0x2001'615c      0x4  Data  Lc  fsl_lpuart.o [1]
+scalbln                 0x6000'3179           Code  Gb  ldexp.o [3]
+scalblnl                0x6000'3179           Code  Gb  ldexp.o [3]
+scalbn                  0x6000'3179           Code  Gb  ldexp.o [3]
+scalbnl                 0x6000'3179           Code  Gb  ldexp.o [3]
+spiflash_config         0x6000'0000    0x200  Data  Gb  fire_imxrt1052_spiflash_config.o [1]
+strlen                  0x6000'3eed           Code  Gb  strlen.o [4]
 sysPllConfig_BOARD_BootClockRUN
-                        0x6000'7504    0xc  Data  Gb  clock_config.o [1]
-tft18delay_1us          0x6000'5761   0x16  Code  Gb  TFTDriver.o [1]
+                        0x6000'80f4      0xc  Data  Gb  clock_config.o [1]
+tft18delay_1us          0x6000'5d5d     0x16  Code  Gb  TFTDriver.o [1]
 
 
 [1] = D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\project\iar\nor_txt_ram\Obj
@@ -728,9 +811,9 @@ tft18delay_1us          0x6000'5761   0x16  Code  Gb  TFTDriver.o [1]
 [4] = rt7M_tl.a
 [5] = shb_l.a
 
-  18 844 bytes of readonly  code memory
-   4 140 bytes of readonly  data memory
-   1 316 bytes of readwrite data memory
+  21 600 bytes of readonly  code memory
+   4 468 bytes of readonly  data memory
+  91 480 bytes of readwrite data memory
 
 Errors: none
 Warnings: none

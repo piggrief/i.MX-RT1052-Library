@@ -1,0 +1,17 @@
+"D:\software\IAR Systems\Embedded Workbench 8.1\arm\bin\armproc.dll" 
+
+"D:\software\IAR Systems\Embedded Workbench 8.1\arm\bin\armjlink2.dll" 
+
+"D:\智能车\麦轮信标\程序\RT1052\LQ库测试\sdram_release\LQ_RT1052LCD.bin" 
+
+--plugin="D:\software\IAR Systems\Embedded Workbench 8.1\arm\bin\armbat.dll" 
+
+--device_macro="D:\software\IAR Systems\Embedded Workbench 8.1\arm\config\debugger\NXP\iMXRT.dmac" 
+
+--device_macro="D:\software\IAR Systems\Embedded Workbench 8.1\arm\config\debugger\NXP\iMXRT_Trace.dmac" 
+
+--flash_loader="D:\智能车\麦轮信标\程序\RT1052\LQ库测试\LQ_RT1052SYS.board" 
+
+
+
+
