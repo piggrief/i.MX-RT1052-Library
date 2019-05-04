@@ -85,6 +85,9 @@ QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ*/
     #include "LQ_QTMR.h"      //计时器可用于生成PWM  和 正交解码
     #include "LQ_NRF2401.h"   //NRF2401驱动程序
     #include "LQ_SPI.h"
+
+    #include "Pig_edma.h"
+    #include "SEEKFREE_MT9V032.h"
 //用户自定义函数
     void delayus(uint32_t us);
     void delayms(uint32_t ms);   

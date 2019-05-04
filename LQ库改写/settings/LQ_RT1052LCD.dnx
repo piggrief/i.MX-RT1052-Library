@@ -28,7 +28,7 @@
         <EnableCache>1</EnableCache>
     </ArmDriver>
     <DebugChecksum>
-        <Checksum>373522345</Checksum>
+        <Checksum>1964755879</Checksum>
     </DebugChecksum>
     <Exceptions>
         <StopOnUncaught>_ 0</StopOnUncaught>
@@ -91,6 +91,10 @@
         <ITMportsLogFile>0</ITMportsLogFile>
         <ITMlogFile>$PROJ_DIR$\ITM.log</ITMlogFile>
     </SWOTraceHWSettings>
+    <struct_types>
+        <Fmt0>edma_transfer_config_t-destAddr	4	0</Fmt0>
+        <Fmt1>edma_transfer_config_t-srcAddr	4	0</Fmt1>
+    </struct_types>
     <Trace1>
         <Enabled>0</Enabled>
         <ShowSource>1</ShowSource>
@@ -180,7 +184,9 @@
         <mode>0</mode>
     </DisassembleMode>
     <Breakpoints2>
-        <Count>0</Count>
+        <Bp0>_ 0 "EMUL_CODE" "{$PROJ_DIR$\LQuserFlies\src\LQ_CSI.c}.214.1" 0 0 1 "" 0 "" 0</Bp0>
+        <Bp1>_ 1 "EMUL_CODE" "{$PROJ_DIR$\LQuserFlies\src\Appmain.c}.273.5" 0 0 1 "" 0 "" 0</Bp1>
+        <Count>2</Count>
     </Breakpoints2>
     <Aliases>
         <A0>_ "D:\智能车\麦轮信标\程序\RT1052\LQ_RT1052TFT1.8寸屏 母板综合测试例程\LQuserFlies\devices\drivers\fsl_gpio.c" ""</A0>

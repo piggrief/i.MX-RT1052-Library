@@ -2,7 +2,7 @@
 
 "--cpu=Cortex-M7" 
 
-"--jlink_script_file=D:\智能车\麦轮信标\程序\RT1052\LQ库测试/../evkmimxrt1050_sdram_init.jlinkscript" 
+"--jlink_script_file=D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQ库改写/../evkmimxrt1050_sdram_init.jlinkscript" 
 
 "--fpu=VFPv5_D16" 
 

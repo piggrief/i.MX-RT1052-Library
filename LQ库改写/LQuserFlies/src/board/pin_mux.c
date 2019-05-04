@@ -973,6 +973,17 @@ void BOARD_InitCSIPins(void) {
   IOMUXC_SetPinMux(
       IOMUXC_GPIO_AD_B1_15_CSI_DATA02,        /* GPIO_AD_B1_15 is configured as CSI_DATA02 */
       0U);                                    /* Software Input On Field: Input Path is determined by functionality */
+
+  IOMUXC_SetPinConfig(
+      IOMUXC_GPIO_AD_B1_07_CSI_HSYNC,         /* GPIO_AD_B1_07 PAD functional properties : */
+      0x10B1U);
+  IOMUXC_SetPinConfig(
+      IOMUXC_GPIO_B1_12_CSI_PIXCLK,           /* GPIO_B1_12 PAD functional properties : */
+      0x10F1U);
+  IOMUXC_SetPinConfig(
+      IOMUXC_GPIO_B1_13_CSI_VSYNC,            /* GPIO_B1_13 PAD functional properties : */
+      0x10B1U);
+
 }
 
 /*

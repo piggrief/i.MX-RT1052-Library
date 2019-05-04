@@ -2222,6 +2222,24 @@
             </file>
         </group>
         <group>
+            <name>MT9V032</name>
+            <file>
+                <name>$PROJ_DIR$\LQuserFlies\src\SEEKFREE_MT9V032.c</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\LQuserFlies\src\SEEKFREE_MT9V032.h</name>
+            </file>
+        </group>
+        <group>
+            <name>Pig_eDMA</name>
+            <file>
+                <name>$PROJ_DIR$\LQuserFlies\src\Pig_edma.c</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\LQuserFlies\src\Pig_edma.h</name>
+            </file>
+        </group>
+        <group>
             <name>SDCard</name>
         </group>
         <group>

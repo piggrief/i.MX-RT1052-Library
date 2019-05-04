@@ -71,6 +71,7 @@ QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ*/
  *      1.解决神眼188*120分辨率不出图问题
  *      2.解决图像抖动问题                                                         2019/01/15
  */
+
 void delayms(uint32_t ms)
 {
     uint32_t i,j;
@@ -99,26 +100,47 @@ void DelayTest(void)
     _systime.delay_ms(900);
 }
 
-    uint32_t fullCameraBufferAddr;     
-  unsigned char * image;
-  uint64_t time;
-  uint64_t now;
+uint32_t fullCameraBufferAddr;     
+unsigned char * image;
+uint64_t time;
+uint64_t now;
+
+//#define DMA0_DMA16_DriverIRQHandler DMA_CH_0_16_DriverIRQHandler
+volatile bool g_Transfer_Done = false;
+    edma_handle_t g_EDMA_Handle;
+    edma_config_t userConfig;
+
+    edma_transfer_config_t transferConfig;
+
+/* User callback function for EDMA transfer. */
+void EDMA_Callback(edma_handle_t *handle, void *param, bool transferDone, uint32_t tcds)
+{
+    if (transferDone)
+    {
+        g_Transfer_Done = true;
+    }
+}
+void TMR2_IRQHandler(void);
+AT_NONCACHEABLE_SECTION_INIT(uint32_t databuff[4]) = {0x01, 0x02, 0x03, 0x04};
+AT_NONCACHEABLE_SECTION_INIT(uint32_t databuff2[4]) = {0x00, 0x00, 0x00, 0x00};
 int main(void)
 {        
-  
+    uint8_t count = 0;
+
     BOARD_ConfigMPU();                   /* 初始化内存保护单元 */      
     BOARD_InitSDRAMPins();               /* SDRAM初始化 */
     BOARD_BootClockRUN();                /* 初始化开发板时钟 */   
     BOARD_InitDEBUG_UARTPins();          //UART调试口管脚复用初始化 
     BOARD_InitDebugConsole();            //UART调试口初始化 可以使用 PRINTF函数          
     LED_Init();                          //初始化核心板和开发板上的LED接口
-    LQ_UART_Init(LPUART1, 115200);       //串口1初始化 可以使用 printf函数
+    LQ_UART_Init(LPUART1, 256000);       //串口1初始化 可以使用 printf函数
     _systime.init();                     //开启systick定时器
     NVIC_SetPriorityGrouping(2);/*设置中断优先级组  0: 0个抢占优先级16位个子优先级 
                                  *1: 2个抢占优先级 8个子优先级 2: 4个抢占优先级 4个子优先级 
                                  *3: 8个抢占优先级 2个子优先级 4: 16个抢占优先级 0个子优先级
                                  */
-    Test_PIT();
+    
+    //Test_PIT();
 
     /****************打印系统时钟******************/
     PRINTF("\r\n");
@@ -162,84 +184,91 @@ int main(void)
 //    Test_ENCoder();      //编码器采集
 //    Test_Camera_Reprot();  //上位机看图  7725RGB565 / 7725 灰度 / 神眼灰度
 //    Test_SGP18_OV7725();   //测试OV7725RGB 和TFT1.8
-//    Test_SGP18_Camera();   //测试神眼 Or 7725 二值化 + TFT1.8  注意，7725使用灰度图像时使用YUYV格式 需要配置 cameraConfig = { .pixelFormat = kVIDEO_PixelFormatYUYV }
+    //Test_SGP18_Camera();   //测试神眼 Or 7725 二值化 + TFT1.8  注意，7725使用灰度图像时使用YUYV格式 需要配置 cameraConfig = { .pixelFormat = kVIDEO_PixelFormatYUYV }
 //----------------------------------------------------------------------------------------- 
     PRINTF("经过了 %d \r\n", time);
     time = MeasureRunTime_ms(DelayTest);
-//综合测试    
-    while(1)
-    {
-        //LED_Init();
-        //LQ_KEY_Init(); 
-        TFTSPI_Init();                 //TFT1.8初始化  
-        TFTSPI_CLS(u16BLUE);           //清屏
-        
-        ///*GPIO 外部中断配置开始*/
-        //CLOCK_EnableClock(kCLOCK_Iomuxc);                         // IO口时钟使能
-        //IOMUXC_SetPinMux(IOMUXC_SNVS_WAKEUP_GPIO5_IO00,0U);       // 设置管脚复用功能                          
-        //IOMUXC_SetPinConfig(IOMUXC_SNVS_WAKEUP_GPIO5_IO00,0xF080);// 配置管脚
-        //
-        //gpio_pin_config_t GPIO_Input_Config =                     // GPIO初始化结构体
-        //{
-        //    kGPIO_DigitalInput,                                   // GPIO为输入方向
-        //    1,                                                    // 高电平
-        //    kGPIO_IntFallingEdge,                                 // 下降沿触发中断
-        //};
-        //GPIO_PinInit(GPIO5, 0, &GPIO_Input_Config);               // GPIO输入口，中断
-        //
-        //GPIO_PortEnableInterrupts(GPIO5,1<<0);			          // GPIO5_00中断使能
-        ////优先级配置 抢占优先级1  子优先级2   越小优先级越高  抢占优先级可打断别的中断
-        //NVIC_SetPriority(GPIO5_Combined_0_15_IRQn,NVIC_EncodePriority(NVIC_GetPriorityGrouping(),1,2));
-        //
-        //EnableIRQ(GPIO5_Combined_0_15_IRQn);			          //使能GPIO5_0~15IO的中断  
-        //
-      
-        //IOMUXC_SetPinMux(IOMUXC_SNVS_WAKEUP_GPIO5_IO00,0U);          //管脚L6
-        //IOMUXC_SetPinMux(IOMUXC_SNVS_PMIC_STBY_REQ_GPIO5_IO02,0U);   //管脚L7
-        //IOMUXC_SetPinMux(IOMUXC_GPIO_B1_12_GPIO2_IO28,0U);           //管脚D13
-        //IOMUXC_SetPinMux(IOMUXC_GPIO_AD_B0_03_GPIO1_IO03,0U);        //管脚G11
-        //
-        //IOMUXC_SetPinConfig(IOMUXC_SNVS_WAKEUP_GPIO5_IO00,0xF080); 
-        //IOMUXC_SetPinConfig(IOMUXC_SNVS_PMIC_STBY_REQ_GPIO5_IO02,0xF080);
-        //IOMUXC_SetPinConfig(IOMUXC_GPIO_B1_12_GPIO2_IO28,0xF080);
-        //IOMUXC_SetPinConfig(IOMUXC_GPIO_AD_B0_03_GPIO1_IO03,0xF080);
-        //
-        //gpio_pin_config_t GPIO_Config = {kGPIO_DigitalInput,    //GPIO为输入方向
-        //                           1,                    //高电平
-        //                           kGPIO_NoIntmode,      //不触发中断
-        //                           };
-        //
-        //GPIO_PinInit(GPIO5,  0, &GPIO_Config);        // GPIO输入口，非中断
-        //GPIO_PinInit(GPIO5, 02, &GPIO_Config);        // GPIO输入口，非中断
-        //GPIO_PinInit(GPIO1, 03, &GPIO_Config);        // GPIO输入口，非中断
-        //GPIO_PinInit(GPIO2, 28, &GPIO_Config);        // GPIO输入口，非中断
-        //
-        //LQ_PWM_Init(PWM2, kPWM_Module_3, kPWM_PwmA_B,  200);//PWM的最低频率 = 6250 000 / VAL1  = 96Hz //默认是M3  M4，
-        //LQ_PWM_Init(PWM2, kPWM_Module_0, kPWM_PwmA_B, 12000);//PWM的最低频率 = 6250 000 / VAL1  = 96Hz     A8 A9
-        //LQ_PWM_Init(PWM2, kPWM_Module_1, kPWM_PwmA_B, 12000);//PWM的最低频率 = 6250 000 / VAL1  = 96Hz     B9 C9
-        //LQ_PWM_Init(PWM2, kPWM_Module_2, kPWM_PwmB,   12000);//PWM的最低频率 = 6250 000 / VAL1  = 96Hz     A10
-        //LQ_PWM_Init(PWM1, kPWM_Module_1, kPWM_PwmA,   12000);//PWM的最低频率 = 6250 000 / VAL1  = 96Hz     J1
-        //LQ_PWM_Init(PWM1, kPWM_Module_3, kPWM_PwmA_B, 12000);//PWM的最低频率 = 6250 000 / VAL1  = 96Hz     L5 M5
-        //
-        //LQ_ENC_Init(ENC1);   //正交解码初始化
-        //LQ_ENC_Init(ENC2);
-        //LQ_ENC_Init(ENC3);   //正交解码初始化
-        //LQ_ENC_Init(ENC4);
 
-        LQ_Camera_Init();
-        short velocity1, velocity2, velocity3, velocity4;
-        uint16_t color = 0;
-        while(1)
-        {                                          
-         
-          
-          
-        }        
+    const qtmr_config_t QuadTimer_1_Channel_0_config = {
+        .primarySource = kQTMR_ClockDivide_2,
+        .secondarySource = kQTMR_Counter0InputPin,
+        .enableMasterMode = false,
+        .enableExternalForce = false,
+        .faultFilterCount = 0,
+        .faultFilterPeriod = 0,
+        .debugMode = kQTMR_RunNormalInDebug
+    };
+    /*QTMR输入捕捉*/
+    CLOCK_EnableClock(kCLOCK_Iomuxc);           /* iomuxc clock (iomuxc_clk_enable): 0x03U */
+    CLOCK_EnableClock(kCLOCK_Xbar1);            /* xbar1 clock (xbar1_clk_enable): 0x03U */
+
+    IOMUXC_SetPinMux(
+        IOMUXC_GPIO_B0_14_XBAR1_INOUT12,        /* GPIO_B0_14 is configured as XBAR1_INOUT12 */
+        0U);                                    /* Software Input On Field: Input Path is determined by functionality */
+    IOMUXC_GPR->GPR6 = ((IOMUXC_GPR->GPR6 &
+        (~(IOMUXC_GPR_GPR6_QTIMER2_TRM0_INPUT_SEL_MASK | IOMUXC_GPR_GPR6_IOMUXC_XBAR_DIR_SEL_12_MASK))) /* Mask bits to zero which are setting */
+        | IOMUXC_GPR_GPR6_QTIMER2_TRM0_INPUT_SEL(0x01U) /* QTIMER2 TMR0 input select: input from XBAR */
+        | IOMUXC_GPR_GPR6_IOMUXC_XBAR_DIR_SEL_12(0x00U) /* IOMUXC XBAR_INOUT12 function direction select: XBAR_INOUT as input */
+        );
+    XBARA_SetSignalsConnection(XBARA1, kXBARA1_InputIomuxXbarInout12, kXBARA1_OutputQtimer2Tmr0Input); /* IOMUX_XBAR_INOUT12 output assigned to XBARA1_IN12 input is connected to XBARA1_OUT90 output assigned to QTIMER2_TMR0_INPUT */
+
+    //QTMR_GetDefaultConfig(&qtmrcpatureconfig);
+    QTMR_Init(TMR2, kQTMR_Channel_0, &QuadTimer_1_Channel_0_config);
+    QTMR_SetupInputCapture(TMR2, kQTMR_Channel_0, kQTMR_Counter0InputPin, false, true, kQTMR_FallingEdge);
+    QTMR_EnableDma(TMR2, kQTMR_Channel_0, kQTMR_InputEdgeFlagDmaEnable);
+    //PWM_StartTimer(PWM1, 1u << kPWM_Module_0); //开启定时器
+    /*eDMA初始化*/
+    DMAMUX_Init(DMAMUX);
+    //DMAMUX_EnableAlwaysOn(DMAMUX, 0, true);
+    DMAMUX_SetSource(DMAMUX, 0, kDmaRequestMuxQTIMER2CaptTimer0);
+    DMAMUX_EnableChannel(DMAMUX, 0);
+
+
+
+    EDMA_GetDefaultConfig(&userConfig);
+    EDMA_Init(DMA0, &userConfig);
+    EDMA_CreateHandle(&g_EDMA_Handle, DMA0, 0);
+    EDMA_SetCallback(&g_EDMA_Handle, EDMA_Callback, NULL);
+
+    EnableIRQ(TMR2_IRQn);
+    QTMR_StartTimer(TMR2, kQTMR_Channel_0, kQTMR_PriSrcRiseEdge);
+    /*eDMA传输*/
+
+    EDMA_PrepareTransfer(&transferConfig, databuff, sizeof(databuff[0]), databuff2, sizeof(databuff[2])
+        , sizeof(databuff[0]), sizeof(databuff), kEDMA_MemoryToMemory);
+    EDMA_SubmitTransfer(&g_EDMA_Handle, &transferConfig);
+    EDMA_StartTransfer(&g_EDMA_Handle);
+
+    /* Wait for EDMA transfer finish */
+    while (g_Transfer_Done != true)
+    {
     }
+
+    TFTSPI_Init();                 //TFT1.8初始化  
+    TFTSPI_CLS(u16BLUE);           //清屏
+    LQ_PWM_Init(PWM2, kPWM_Module_0, kPWM_PwmA_B, 12000);//PWM的最低频率 = 6250 000 / VAL1  = 96Hz     A8 A9
+    LQ_PWM_Init(PWM2, kPWM_Module_1, kPWM_PwmA_B, 12000);//PWM的最低频率 = 6250 000 / VAL1  = 96Hz     B9 C9
+    //camera_init_1();
+    _systime.delay_ms(200);
+    //LQ_Camera_Init();
+    uint16_t color = 0;
+    LQ_PWMA_B_SetDuty(PWM2, kPWM_Module_0, 2000, 0);
+    LQ_PWMA_B_SetDuty(PWM2, kPWM_Module_1, 4000, 0);
+
+    while(1)
+    {                                                 
+
+    }        
     
     
     
     
     
     
+}
+
+void TMR2_IRQHandler(void)
+{
+    int a = 0;
+    return;
 }

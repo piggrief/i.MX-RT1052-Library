@@ -71,6 +71,10 @@
     </ClCompile>
     <ClCompile Include="..\LQuserFlies\src\LQ_SGP18T.c">
     </ClCompile>
+    <ClCompile Include="..\LQuserFlies\src\SEEKFREE_MT9V032.c">
+    </ClCompile>
+    <ClCompile Include="..\LQuserFlies\src\Pig_edma.c">
+    </ClCompile>
     <ClCompile Include="..\LQuserFlies\src\sys\LQ_Control.c">
     </ClCompile>
     <ClCompile Include="..\LQuserFlies\src\sys\m_systime.c">
@@ -227,6 +231,10 @@
     </ClInclude>
     <ClInclude Include="..\LQuserFlies\src\LQ_SGP18T.h">
     </ClInclude>
+    <ClInclude Include="..\LQuserFlies\src\SEEKFREE_MT9V032.h">
+    </ClInclude>
+    <ClInclude Include="..\LQuserFlies\src\Pig_edma.h">
+    </ClInclude>
     <ClInclude Include="..\LQuserFlies\src\sys\LQ_control.h">
     </ClInclude>
     <ClInclude Include="..\LQuserFlies\src\sys\m_systime.h">
@@ -323,7 +331,7 @@
     </None>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{BEF6078B-A55A-4981-492D-DC8692C91FD2}</ProjectGuid>
+    <ProjectGuid>{9D477A1F-C182-4171-59CB-359E187EE362}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>LQ_RT1052LCD</RootNamespace>
   </PropertyGroup>

@@ -2,7 +2,7 @@
 
 "D:\software\IAR Systems\Embedded Workbench 8.1\arm\bin\armJET.dll" 
 
-"D:\智能车\麦轮信标\程序\RT1052\LQ库测试\sdram_debug\elcdif_rgb.out" 
+"D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQ库改写\sdram_debug\elcdif_rgb.out" 
 
 --plugin="D:\software\IAR Systems\Embedded Workbench 8.1\arm\bin\armbat.dll" 
 
@@ -10,7 +10,7 @@
 
 --device_macro="D:\software\IAR Systems\Embedded Workbench 8.1\arm\config\debugger\NXP\iMXRT_Trace.dmac" 
 
---macro="D:\智能车\麦轮信标\程序\RT1052\LQ库测试\LQuserFlies\config\LQ_RT1052QSPI_Boot.mac" 
+--macro="D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQ库改写\LQuserFlies\config\LQ_RT1052QSPI_Boot.mac" 
 
 --flash_loader="D:\software\IAR Systems\Embedded Workbench 8.1\arm\config\flashloader\NXP\FlashIMXRT1050_EVK_FlexSPI.board" 
 

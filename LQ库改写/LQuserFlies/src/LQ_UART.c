@@ -425,18 +425,18 @@ void LPUART3_IRQHandler(void)
 	__DSB();				//数据同步屏蔽指令
 }
 
-void LPUART4_IRQHandler(void)
-{
-	static uint8_t res=0;
-	
-	if((LPUART4->STAT)&kLPUART_RxDataRegFullFlag) //接收中断
-	{
-		LPUART_RX_BUF[res] = LPUART_ReadByte(LPUART4);				//读取数据
-		res ++;
-        if(res == 100) res = 0;                   //接受缓冲区满，直接覆盖
-	}
-	__DSB();				//数据同步屏蔽指令
-}
+//void LPUART4_IRQHandler(void)
+//{
+//	static uint8_t res=0;
+//	
+//	if((LPUART4->STAT)&kLPUART_RxDataRegFullFlag) //接收中断
+//	{
+//		LPUART_RX_BUF[res] = LPUART_ReadByte(LPUART4);				//读取数据
+//		res ++;
+//        if(res == 100) res = 0;                   //接受缓冲区满，直接覆盖
+//	}
+//	__DSB();				//数据同步屏蔽指令
+//}
 
 void LPUART5_IRQHandler(void)
 {

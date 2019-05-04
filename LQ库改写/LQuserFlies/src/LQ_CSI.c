@@ -18,7 +18,7 @@ QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ*/
 *  AT_NONCACHEABLE_SECTION_ALIGN(var, alignbytes)
 *  AT_NONCACHEABLE_SECTION(var)
 ******************************************************************************/
-AT_NONCACHEABLE_SECTION_ALIGN(uint16_t csiFrameBuf[APP_CAMERA_FRAME_BUFFER_COUNT][APP_CAMERA_HEIGHT][APP_CAMERA_WIDTH], FRAME_BUFFER_ALIGN); //定义摄像头数据缓存区
+//AT_NONCACHEABLE_SECTION_ALIGN(uint16_t csiFrameBuf[APP_CAMERA_FRAME_BUFFER_COUNT][APP_CAMERA_HEIGHT][APP_CAMERA_WIDTH], FRAME_BUFFER_ALIGN); //定义摄像头数据缓存区
 static void BOARD_PullCameraPowerDownPin(bool pullUp)  //闪光灯
 {
 //    if (pullUp)
@@ -141,29 +141,16 @@ void BOARD_InitCameraResource(void)
 【参数值】无
 【实例】 
 QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ*/
-camera_config_t cameraConfig;   //摄像头配置结构体
-#ifdef LQMT9V034 //LQMT9V034模块
-    // Configure camera device and receiver.
-    camera_config_t cameraConfig = {
-        .pixelFormat = kVIDEO_PixelFormatYUYV,//kVIDEO_PixelFormatYUYV,//kVIDEO_PixelFormatBGR565,
-        .bytesPerPixel = APP_BPP,//   每个像素点几个数据
-        .resolution = FSL_VIDEO_RESOLUTION(APP_CAMERA_WIDTH, APP_CAMERA_HEIGHT), //分辨率
-        .frameBufferLinePitch_Bytes = APP_CAMERA_WIDTH* APP_BPP,                //行间隔
-        .interface = kCAMERA_InterfaceNonGatedClock,                            //摄像机接口类型
-        .controlFlags = APP_CAMERA_CONTROL_FLAGS,
-        .framePerSec   = 50,                                                     //fps 修改需要修改曝光时间 和 分辨率 配合
-    };
-#else            //LQOV7725模块
-    camera_config_t cameraConfig = {
-        .pixelFormat = kVIDEO_PixelFormatRGB565,//kVIDEO_PixelFormatRGB565,//kVIDEO_PixelFormatYUYV,
-        .bytesPerPixel = APP_BPP,
-        .resolution = FSL_VIDEO_RESOLUTION(APP_CAMERA_WIDTH, APP_CAMERA_HEIGHT),  //分辨率
-        .frameBufferLinePitch_Bytes = APP_CAMERA_WIDTH * APP_BPP,                 //行间隔
-        .interface =  kCAMERA_InterfaceCCIR656,                                   //摄像机接口类型
-        .controlFlags = APP_CAMERA_CONTROL_FLAGS,
-        .framePerSec = 50,                                                        //fps 修改需要修改plck 和 分辨率 配合
-    };
-#endif
+camera_config_t cameraConfig = {
+    .pixelFormat = kVIDEO_PixelFormatYUYV,//kVIDEO_PixelFormatYUYV,//kVIDEO_PixelFormatBGR565,
+    .bytesPerPixel = APP_BPP,//   每个像素点几个数据
+    .resolution = FSL_VIDEO_RESOLUTION(APP_CAMERA_WIDTH, APP_CAMERA_HEIGHT), //分辨率
+    .frameBufferLinePitch_Bytes = APP_CAMERA_WIDTH* APP_BPP,                //行间隔
+    .interface = kCAMERA_InterfaceGatedClock,                            //摄像机接口类型
+    .controlFlags = APP_CAMERA_CONTROL_FLAGS,
+    .framePerSec   = 50,                                                     //fps 修改需要修改曝光时间 和 分辨率 配合
+};
+
 void LQ_Camera_Init(void)  
 {
     BOARD_InitCSIPins();      //摄像头CSI管脚复用  
@@ -180,10 +167,10 @@ void LQ_Camera_Init(void)
     CAMERA_DEVICE_Start(&cameraDevice);                                //启动相机
     
     /* Submit the empty frame buffers to buffer queue. */
-    for (uint32_t i = 0; i < APP_CAMERA_FRAME_BUFFER_COUNT; i++) //将空帧缓冲区提交到缓冲区队列
-    {
-        CAMERA_RECEIVER_SubmitEmptyBuffer(&cameraReceiver, (uint32_t)(csiFrameBuf[i]));
-    }
+//    for (uint32_t i = 0; i < APP_CAMERA_FRAME_BUFFER_COUNT; i++) //将空帧缓冲区提交到缓冲区队列
+//    {
+//        CAMERA_RECEIVER_SubmitEmptyBuffer(&cameraReceiver, (uint32_t)(csiFrameBuf[i]));
+//    }
     
     CAMERA_RECEIVER_Start(&cameraReceiver);   // 启动接收camera数据
     delayms(200);        //延时200毫秒  摄像头不是重新上电 可以不要延时
@@ -224,7 +211,7 @@ void Test_Camera_Reprot(void)
         CAMERA_RECEIVER_Stop(&cameraReceiver);//停止csi接收
         for(count = 0; count < 4; count++)    //获取当前缓冲满的数组索引
         {
-            if(fullCameraBufferAddr == (uint32_t )csiFrameBuf[count])
+//            if(fullCameraBufferAddr == (uint32_t )csiFrameBuf[count])
                 break;
         }
         LQ_UART_PutChar(LPUART1, 0x01);  //帧头
