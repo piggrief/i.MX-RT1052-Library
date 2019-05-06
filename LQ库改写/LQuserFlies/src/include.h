@@ -87,7 +87,7 @@ QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ*/
     #include "LQ_SPI.h"
 
     #include "Pig_edma.h"
-    #include "SEEKFREE_MT9V032.h"
+    #include "PigMT9V032.h"
 //用户自定义函数
     void delayus(uint32_t us);
     void delayms(uint32_t ms);   

@@ -105,9 +105,9 @@ unsigned char * image;
 uint64_t time;
 uint64_t now;
 
-//#define DMA0_DMA16_DriverIRQHandler DMA_CH_0_16_DriverIRQHandler
 volatile bool g_Transfer_Done = false;
     edma_handle_t g_EDMA_Handle;
+    edma_handle_t g_EDMA_Handle_5;
     edma_config_t userConfig;
 
     edma_transfer_config_t transferConfig;
@@ -120,9 +120,22 @@ void EDMA_Callback(edma_handle_t *handle, void *param, bool transferDone, uint32
         g_Transfer_Done = true;
     }
 }
+
+void EDMA_Callback_5(edma_handle_t *handle, void *param, bool transferDone, uint32_t tcds)
+{
+    int a = 0;
+    return;
+}
+const edma_channel_Preemption_config_t eDMA_1_DMA5_preemption = {
+  .enableChannelPreemption = true,
+  .enablePreemptAbility = true,
+  .channelPriority = 0
+};
 void TMR2_IRQHandler(void);
-AT_NONCACHEABLE_SECTION_INIT(uint32_t databuff[4]) = {0x01, 0x02, 0x03, 0x04};
-AT_NONCACHEABLE_SECTION_INIT(uint32_t databuff2[4]) = {0x00, 0x00, 0x00, 0x00};
+
+AT_NONCACHEABLE_SECTION_INIT(uint32_t databuff[50]) = {0x00};
+AT_NONCACHEABLE_SECTION_INIT(uint32_t databuff2[50]) = {0x00};
+uint16_t buff_tmr = 0;
 int main(void)
 {        
     uint8_t count = 0;
@@ -189,14 +202,19 @@ int main(void)
     PRINTF("经过了 %d \r\n", time);
     time = MeasureRunTime_ms(DelayTest);
 
+    for(int i = 0; i < 50; i++)
+    {
+      databuff[i] = i;
+    }
+    
     const qtmr_config_t QuadTimer_1_Channel_0_config = {
-        .primarySource = kQTMR_ClockDivide_2,
-        .secondarySource = kQTMR_Counter0InputPin,
-        .enableMasterMode = false,
-        .enableExternalForce = false,
-        .faultFilterCount = 0,
-        .faultFilterPeriod = 0,
-        .debugMode = kQTMR_RunNormalInDebug
+    .primarySource = kQTMR_ClockDivide_2,
+    .secondarySource = kQTMR_Counter0InputPin,
+    .enableMasterMode = false,
+    .enableExternalForce = false,
+    .faultFilterCount = 0,
+    .faultFilterPeriod = 0,
+    .debugMode = kQTMR_RunNormalInDebug
     };
     /*QTMR输入捕捉*/
     CLOCK_EnableClock(kCLOCK_Iomuxc);           /* iomuxc clock (iomuxc_clk_enable): 0x03U */
@@ -214,36 +232,53 @@ int main(void)
 
     //QTMR_GetDefaultConfig(&qtmrcpatureconfig);
     QTMR_Init(TMR2, kQTMR_Channel_0, &QuadTimer_1_Channel_0_config);
-    QTMR_SetupInputCapture(TMR2, kQTMR_Channel_0, kQTMR_Counter0InputPin, false, true, kQTMR_FallingEdge);
+    QTMR_SetupInputCapture(TMR2, kQTMR_Channel_0, kQTMR_Counter0InputPin, false, false, kQTMR_FallingEdge);
     QTMR_EnableDma(TMR2, kQTMR_Channel_0, kQTMR_InputEdgeFlagDmaEnable);
     //PWM_StartTimer(PWM1, 1u << kPWM_Module_0); //开启定时器
     /*eDMA初始化*/
     DMAMUX_Init(DMAMUX);
     //DMAMUX_EnableAlwaysOn(DMAMUX, 0, true);
-    DMAMUX_SetSource(DMAMUX, 0, kDmaRequestMuxQTIMER2CaptTimer0);
-    DMAMUX_EnableChannel(DMAMUX, 0);
-
-
+    DMAMUX_SetSource(DMAMUX, 5, kDmaRequestMuxQTIMER2CaptTimer0);
+    DMAMUX_EnableChannel(DMAMUX, 5);
+    DMAMUX_SetSource(DMAMUX, 6, 10);
+    DMAMUX_EnableChannel(DMAMUX, 6);    
+    
 
     EDMA_GetDefaultConfig(&userConfig);
+    //userConfig.enableContinuousLinkMode = false;
     EDMA_Init(DMA0, &userConfig);
-    EDMA_CreateHandle(&g_EDMA_Handle, DMA0, 0);
+    EDMA_CreateHandle(&g_EDMA_Handle, DMA0, 5);
+    EDMA_CreateHandle(&g_EDMA_Handle_5, DMA0, 6);
     EDMA_SetCallback(&g_EDMA_Handle, EDMA_Callback, NULL);
-
-    EnableIRQ(TMR2_IRQn);
-    QTMR_StartTimer(TMR2, kQTMR_Channel_0, kQTMR_PriSrcRiseEdge);
+    //EDMA_SetCallback(&g_EDMA_Handle_5, EDMA_Callback_5, NULL);
+        
     /*eDMA传输*/
-
     EDMA_PrepareTransfer(&transferConfig, databuff, sizeof(databuff[0]), databuff2, sizeof(databuff[2])
         , sizeof(databuff[0]), sizeof(databuff), kEDMA_MemoryToMemory);
     EDMA_SubmitTransfer(&g_EDMA_Handle, &transferConfig);
-    EDMA_StartTransfer(&g_EDMA_Handle);
-
+    //EDMA_SetChannelPreemptionConfig(DMA0, 6, &eDMA_1_DMA5_preemption);
+    EDMA_SetChannelLink(DMA0, 5, kEDMA_MinorLink, 6);
+    
+    EDMA_PrepareTransfer(&transferConfig, (uint32_t *)(0x401E0004), 2, &buff_tmr, 2
+                        , 2, 2, 20);
+    EDMA_SubmitTransfer(&g_EDMA_Handle_5, &transferConfig);
+    
+    DMA0->CR &= ~DMA_CR_EMLM(1);
+    DMA0->TCD[6].CSR &= ~DMA_CSR_INTMAJOR(1);
+    DMA0->TCD[6].BITER_ELINKNO = DMA_BITER_ELINKNO_BITER(100);
+    DMA0->TCD[6].CITER_ELINKNO = DMA_CITER_ELINKNO_CITER(100);
+    DMA0->TCD[6].SOFF = DMA_SOFF_SOFF(0);
+    DMA0->TCD[6].DOFF = DMA_DOFF_DOFF(0);
+    
+    EDMA_StartTransfer(&g_EDMA_Handle_5);
+    EDMA_StartTransfer(&g_EDMA_Handle);   
+    QTMR_StartTimer(TMR2, kQTMR_Channel_0, kQTMR_QuadCountMode);
     /* Wait for EDMA transfer finish */
     while (g_Transfer_Done != true)
     {
     }
 
+    
     TFTSPI_Init();                 //TFT1.8初始化  
     TFTSPI_CLS(u16BLUE);           //清屏
     LQ_PWM_Init(PWM2, kPWM_Module_0, kPWM_PwmA_B, 12000);//PWM的最低频率 = 6250 000 / VAL1  = 96Hz     A8 A9
@@ -258,17 +293,5 @@ int main(void)
     while(1)
     {                                                 
 
-    }        
-    
-    
-    
-    
-    
-    
-}
-
-void TMR2_IRQHandler(void)
-{
-    int a = 0;
-    return;
+    }             
 }

@@ -2,58 +2,58 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 	<ItemGroup>
 		<Filter Include="源文件\App_main">
-			<UniqueIdentifier>{7ab56c79-5c61-4140-6cbd-e36ec6fe0c8a}</UniqueIdentifier>
+			<UniqueIdentifier>{321a785f-e2dc-43ee-48b1-514b4aeaa286}</UniqueIdentifier>
 		</Filter>
 		<Filter Include="源文件\AppDriver">
-			<UniqueIdentifier>{ff9dda42-7125-42d5-50f2-aac865011960}</UniqueIdentifier>
+			<UniqueIdentifier>{41d4af30-41b8-4642-7fd1-9b456b5c5a24}</UniqueIdentifier>
 		</Filter>
 		<Filter Include="源文件\AppDriver\AHRS">
-			<UniqueIdentifier>{1ba3c773-f1d5-416f-59fc-ea8285701cfd}</UniqueIdentifier>
+			<UniqueIdentifier>{e48e522e-89a5-41b0-7e11-f21e14e5e527}</UniqueIdentifier>
 		</Filter>
 		<Filter Include="源文件\AppDriver\ANO_TC">
-			<UniqueIdentifier>{79111c15-64a1-45b4-7dca-f781e06130f2}</UniqueIdentifier>
+			<UniqueIdentifier>{c3b75d1f-3416-4af0-42c2-d38d5e26b19f}</UniqueIdentifier>
 		</Filter>
 		<Filter Include="源文件\AppDriver\Camera">
-			<UniqueIdentifier>{2f9ac04c-3f4a-4893-5ec8-0ce554ea8cbb}</UniqueIdentifier>
+			<UniqueIdentifier>{829aef06-428c-4cc9-4671-db8a74e136c9}</UniqueIdentifier>
 		</Filter>
 		<Filter Include="源文件\AppDriver\car">
-			<UniqueIdentifier>{05404c5d-eedd-4a2e-75b3-597b95d54e8b}</UniqueIdentifier>
+			<UniqueIdentifier>{cdbf7276-e8a1-40bd-7723-3e98d5290dd2}</UniqueIdentifier>
 		</Filter>
 		<Filter Include="源文件\AppDriver\LCD">
-			<UniqueIdentifier>{ac50877c-a2c8-4674-5c8e-a1dcaeea10f3}</UniqueIdentifier>
+			<UniqueIdentifier>{4a84235f-943e-478c-68b3-991e9e76aa97}</UniqueIdentifier>
 		</Filter>
 		<Filter Include="源文件\AppDriver\MT9V032">
-			<UniqueIdentifier>{415c15bf-06eb-47c7-78b1-24f64ae16741}</UniqueIdentifier>
+			<UniqueIdentifier>{5398fe32-1220-499a-7fa8-f565589608d0}</UniqueIdentifier>
 		</Filter>
 		<Filter Include="源文件\AppDriver\Pig_eDMA">
-			<UniqueIdentifier>{2907141c-9fba-47b2-7297-1fb104be38dc}</UniqueIdentifier>
+			<UniqueIdentifier>{e59bc76b-976a-4127-53ce-76b795967e40}</UniqueIdentifier>
 		</Filter>
 		<Filter Include="源文件\AppDriver\SDCard">
-			<UniqueIdentifier>{68cf71fa-e5c4-4550-46b9-c08d1658fa81}</UniqueIdentifier>
+			<UniqueIdentifier>{71aab300-5062-4b7a-6208-a9a65e0f8d37}</UniqueIdentifier>
 		</Filter>
 		<Filter Include="源文件\AppDriver\Sys">
-			<UniqueIdentifier>{6db68ac0-df47-4866-64c4-23105f922e36}</UniqueIdentifier>
+			<UniqueIdentifier>{3fa396bd-54d7-4a41-7737-59895129f9df}</UniqueIdentifier>
 		</Filter>
 		<Filter Include="源文件\AppDriver\TouchSCR">
-			<UniqueIdentifier>{83749339-d510-4f54-4b07-068cf9ad023b}</UniqueIdentifier>
+			<UniqueIdentifier>{ee34a084-74f5-44ce-6a2f-9b9442239c6e}</UniqueIdentifier>
 		</Filter>
 		<Filter Include="源文件\board">
-			<UniqueIdentifier>{cb003841-0a17-4a75-5d84-087252549a11}</UniqueIdentifier>
+			<UniqueIdentifier>{76f12afe-7449-4199-500e-53eb841136aa}</UniqueIdentifier>
 		</Filter>
 		<Filter Include="源文件\drivers">
-			<UniqueIdentifier>{8bb0c501-96bd-4fdf-572b-c44f11ef9fc2}</UniqueIdentifier>
+			<UniqueIdentifier>{0f016755-8f14-4e57-6b3b-4986b21725b8}</UniqueIdentifier>
 		</Filter>
 		<Filter Include="源文件\startup">
-			<UniqueIdentifier>{1a8e9727-9ae7-4979-480e-4e2901e16cc5}</UniqueIdentifier>
+			<UniqueIdentifier>{0a10da36-f0ac-40f3-455f-32482e077f38}</UniqueIdentifier>
 		</Filter>
 		<Filter Include="源文件\utilities">
-			<UniqueIdentifier>{47dc3f86-9a6e-4231-496a-ae9c0fb20b26}</UniqueIdentifier>
+			<UniqueIdentifier>{c2bd9dd6-42f7-4695-63a1-57e71817eb38}</UniqueIdentifier>
 		</Filter>
 		<Filter Include="源文件\XIP">
-			<UniqueIdentifier>{d5d976ef-a3b7-4149-5a16-12f8954273fd}</UniqueIdentifier>
+			<UniqueIdentifier>{f7c78b73-3c98-40fd-4b11-1948e26fe76f}</UniqueIdentifier>
 		</Filter>
 		<Filter Include="源文件">
-			<UniqueIdentifier>{0583a39d-8475-43e2-5f01-9813e7a70191}</UniqueIdentifier>
+			<UniqueIdentifier>{0f8e68ff-b521-4bda-5d55-52e0e6ac6e9c}</UniqueIdentifier>
 		</Filter>
 	</ItemGroup>
 	<ItemGroup>
@@ -146,6 +146,9 @@
 		</ClCompile>
 		<ClCompile Include="..\LQuserFlies\src\LQ_SGP18T.c">
 			<Filter>源文件\AppDriver\LCD</Filter>
+		</ClCompile>
+		<ClCompile Include="..\LQuserFlies\src\PigMT9V032.c">
+			<Filter>源文件\AppDriver\MT9V032</Filter>
 		</ClCompile>
 		<ClCompile Include="..\LQuserFlies\src\SEEKFREE_MT9V032.c">
 			<Filter>源文件\AppDriver\MT9V032</Filter>
@@ -385,6 +388,9 @@
 		</ClInclude>
 		<ClInclude Include="..\LQuserFlies\src\LQ_SGP18T.h">
 			<Filter>源文件\AppDriver\LCD</Filter>
+		</ClInclude>
+		<ClInclude Include="..\LQuserFlies\src\PigMT9V032.h">
+			<Filter>源文件\AppDriver\MT9V032</Filter>
 		</ClInclude>
 		<ClInclude Include="..\LQuserFlies\src\SEEKFREE_MT9V032.h">
 			<Filter>源文件\AppDriver\MT9V032</Filter>
