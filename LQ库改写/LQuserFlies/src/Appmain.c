@@ -105,37 +105,39 @@ unsigned char * image;
 uint64_t time;
 uint64_t now;
 
-volatile bool g_Transfer_Done = false;
-    edma_handle_t g_EDMA_Handle;
-    edma_handle_t g_EDMA_Handle_5;
-    edma_config_t userConfig;
-
-    edma_transfer_config_t transferConfig;
-
-/* User callback function for EDMA transfer. */
-void EDMA_Callback(edma_handle_t *handle, void *param, bool transferDone, uint32_t tcds)
-{
-    if (transferDone)
-    {
-        g_Transfer_Done = true;
-    }
-}
-
-void EDMA_Callback_5(edma_handle_t *handle, void *param, bool transferDone, uint32_t tcds)
-{
-    int a = 0;
-    return;
-}
-const edma_channel_Preemption_config_t eDMA_1_DMA5_preemption = {
-  .enableChannelPreemption = true,
-  .enablePreemptAbility = true,
-  .channelPriority = 0
-};
-void TMR2_IRQHandler(void);
+//volatile bool g_Transfer_Done = false;
+//    edma_handle_t g_EDMA_Handle;
+//    edma_handle_t g_EDMA_Handle_5;
+//    edma_config_t userConfig;
+//
+//    edma_transfer_config_t transferConfig;
+//
+///* User callback function for EDMA transfer. */
+//void EDMA_Callback(edma_handle_t *handle, void *param, bool transferDone, uint32_t tcds)
+//{
+//    if (transferDone)
+//    {
+//        g_Transfer_Done = true;
+//    }
+//}
+//
+//void EDMA_Callback_5(edma_handle_t *handle, void *param, bool transferDone, uint32_t tcds)
+//{
+//    int a = 0;
+//    return;
+//}
+//const edma_channel_Preemption_config_t eDMA_1_DMA5_preemption = {
+//  .enableChannelPreemption = true,
+//  .enablePreemptAbility = true,
+//  .channelPriority = 0
+//};
+//void TMR2_IRQHandler(void);
 
 AT_NONCACHEABLE_SECTION_INIT(uint32_t databuff[50]) = {0x00};
 AT_NONCACHEABLE_SECTION_INIT(uint32_t databuff2[50]) = {0x00};
-uint16_t buff_tmr = 0;
+    short velocity1, velocity2, velocity3, velocity4;
+
+//uint16_t buff_tmr = 0;
 int main(void)
 {        
     uint8_t count = 0;
@@ -202,81 +204,81 @@ int main(void)
     PRINTF("经过了 %d \r\n", time);
     time = MeasureRunTime_ms(DelayTest);
 
-    for(int i = 0; i < 50; i++)
-    {
-      databuff[i] = i;
-    }
+//    for(int i = 0; i < 50; i++)
+//    {
+//      databuff[i] = i;
+//    }
     
-    const qtmr_config_t QuadTimer_1_Channel_0_config = {
-    .primarySource = kQTMR_ClockDivide_2,
-    .secondarySource = kQTMR_Counter0InputPin,
-    .enableMasterMode = false,
-    .enableExternalForce = false,
-    .faultFilterCount = 0,
-    .faultFilterPeriod = 0,
-    .debugMode = kQTMR_RunNormalInDebug
-    };
-    /*QTMR输入捕捉*/
-    CLOCK_EnableClock(kCLOCK_Iomuxc);           /* iomuxc clock (iomuxc_clk_enable): 0x03U */
-    CLOCK_EnableClock(kCLOCK_Xbar1);            /* xbar1 clock (xbar1_clk_enable): 0x03U */
-
-    IOMUXC_SetPinMux(
-        IOMUXC_GPIO_B0_14_XBAR1_INOUT12,        /* GPIO_B0_14 is configured as XBAR1_INOUT12 */
-        0U);                                    /* Software Input On Field: Input Path is determined by functionality */
-    IOMUXC_GPR->GPR6 = ((IOMUXC_GPR->GPR6 &
-        (~(IOMUXC_GPR_GPR6_QTIMER2_TRM0_INPUT_SEL_MASK | IOMUXC_GPR_GPR6_IOMUXC_XBAR_DIR_SEL_12_MASK))) /* Mask bits to zero which are setting */
-        | IOMUXC_GPR_GPR6_QTIMER2_TRM0_INPUT_SEL(0x01U) /* QTIMER2 TMR0 input select: input from XBAR */
-        | IOMUXC_GPR_GPR6_IOMUXC_XBAR_DIR_SEL_12(0x00U) /* IOMUXC XBAR_INOUT12 function direction select: XBAR_INOUT as input */
-        );
-    XBARA_SetSignalsConnection(XBARA1, kXBARA1_InputIomuxXbarInout12, kXBARA1_OutputQtimer2Tmr0Input); /* IOMUX_XBAR_INOUT12 output assigned to XBARA1_IN12 input is connected to XBARA1_OUT90 output assigned to QTIMER2_TMR0_INPUT */
-
-    //QTMR_GetDefaultConfig(&qtmrcpatureconfig);
-    QTMR_Init(TMR2, kQTMR_Channel_0, &QuadTimer_1_Channel_0_config);
-    QTMR_SetupInputCapture(TMR2, kQTMR_Channel_0, kQTMR_Counter0InputPin, false, false, kQTMR_FallingEdge);
-    QTMR_EnableDma(TMR2, kQTMR_Channel_0, kQTMR_InputEdgeFlagDmaEnable);
-    //PWM_StartTimer(PWM1, 1u << kPWM_Module_0); //开启定时器
-    /*eDMA初始化*/
-    DMAMUX_Init(DMAMUX);
-    //DMAMUX_EnableAlwaysOn(DMAMUX, 0, true);
-    DMAMUX_SetSource(DMAMUX, 5, kDmaRequestMuxQTIMER2CaptTimer0);
-    DMAMUX_EnableChannel(DMAMUX, 5);
-    DMAMUX_SetSource(DMAMUX, 6, 10);
-    DMAMUX_EnableChannel(DMAMUX, 6);    
-    
-
-    EDMA_GetDefaultConfig(&userConfig);
-    //userConfig.enableContinuousLinkMode = false;
-    EDMA_Init(DMA0, &userConfig);
-    EDMA_CreateHandle(&g_EDMA_Handle, DMA0, 5);
-    EDMA_CreateHandle(&g_EDMA_Handle_5, DMA0, 6);
-    EDMA_SetCallback(&g_EDMA_Handle, EDMA_Callback, NULL);
-    //EDMA_SetCallback(&g_EDMA_Handle_5, EDMA_Callback_5, NULL);
-        
-    /*eDMA传输*/
-    EDMA_PrepareTransfer(&transferConfig, databuff, sizeof(databuff[0]), databuff2, sizeof(databuff[2])
-        , sizeof(databuff[0]), sizeof(databuff), kEDMA_MemoryToMemory);
-    EDMA_SubmitTransfer(&g_EDMA_Handle, &transferConfig);
-    //EDMA_SetChannelPreemptionConfig(DMA0, 6, &eDMA_1_DMA5_preemption);
-    EDMA_SetChannelLink(DMA0, 5, kEDMA_MinorLink, 6);
-    
-    EDMA_PrepareTransfer(&transferConfig, (uint32_t *)(0x401E0004), 2, &buff_tmr, 2
-                        , 2, 2, 20);
-    EDMA_SubmitTransfer(&g_EDMA_Handle_5, &transferConfig);
-    
-    DMA0->CR &= ~DMA_CR_EMLM(1);
-    DMA0->TCD[6].CSR &= ~DMA_CSR_INTMAJOR(1);
-    DMA0->TCD[6].BITER_ELINKNO = DMA_BITER_ELINKNO_BITER(100);
-    DMA0->TCD[6].CITER_ELINKNO = DMA_CITER_ELINKNO_CITER(100);
-    DMA0->TCD[6].SOFF = DMA_SOFF_SOFF(0);
-    DMA0->TCD[6].DOFF = DMA_DOFF_DOFF(0);
-    
-    EDMA_StartTransfer(&g_EDMA_Handle_5);
-    EDMA_StartTransfer(&g_EDMA_Handle);   
-    QTMR_StartTimer(TMR2, kQTMR_Channel_0, kQTMR_QuadCountMode);
-    /* Wait for EDMA transfer finish */
-    while (g_Transfer_Done != true)
-    {
-    }
+//    const qtmr_config_t QuadTimer_1_Channel_0_config = {
+//    .primarySource = kQTMR_ClockDivide_2,
+//    .secondarySource = kQTMR_Counter0InputPin,
+//    .enableMasterMode = false,
+//    .enableExternalForce = false,
+//    .faultFilterCount = 0,
+//    .faultFilterPeriod = 0,
+//    .debugMode = kQTMR_RunNormalInDebug
+//    };
+//    /*QTMR输入捕捉*/
+//    CLOCK_EnableClock(kCLOCK_Iomuxc);           /* iomuxc clock (iomuxc_clk_enable): 0x03U */
+//    CLOCK_EnableClock(kCLOCK_Xbar1);            /* xbar1 clock (xbar1_clk_enable): 0x03U */
+//
+//    IOMUXC_SetPinMux(
+//        IOMUXC_GPIO_B0_14_XBAR1_INOUT12,        /* GPIO_B0_14 is configured as XBAR1_INOUT12 */
+//        0U);                                    /* Software Input On Field: Input Path is determined by functionality */
+//    IOMUXC_GPR->GPR6 = ((IOMUXC_GPR->GPR6 &
+//        (~(IOMUXC_GPR_GPR6_QTIMER2_TRM0_INPUT_SEL_MASK | IOMUXC_GPR_GPR6_IOMUXC_XBAR_DIR_SEL_12_MASK))) /* Mask bits to zero which are setting */
+//        | IOMUXC_GPR_GPR6_QTIMER2_TRM0_INPUT_SEL(0x01U) /* QTIMER2 TMR0 input select: input from XBAR */
+//        | IOMUXC_GPR_GPR6_IOMUXC_XBAR_DIR_SEL_12(0x00U) /* IOMUXC XBAR_INOUT12 function direction select: XBAR_INOUT as input */
+//        );
+//    XBARA_SetSignalsConnection(XBARA1, kXBARA1_InputIomuxXbarInout12, kXBARA1_OutputQtimer2Tmr0Input); /* IOMUX_XBAR_INOUT12 output assigned to XBARA1_IN12 input is connected to XBARA1_OUT90 output assigned to QTIMER2_TMR0_INPUT */
+//
+//    //QTMR_GetDefaultConfig(&qtmrcpatureconfig);
+//    QTMR_Init(TMR2, kQTMR_Channel_0, &QuadTimer_1_Channel_0_config);
+//    QTMR_SetupInputCapture(TMR2, kQTMR_Channel_0, kQTMR_Counter0InputPin, false, false, kQTMR_FallingEdge);
+//    QTMR_EnableDma(TMR2, kQTMR_Channel_0, kQTMR_InputEdgeFlagDmaEnable);
+//    //PWM_StartTimer(PWM1, 1u << kPWM_Module_0); //开启定时器
+//    /*eDMA初始化*/
+//    DMAMUX_Init(DMAMUX);
+//    //DMAMUX_EnableAlwaysOn(DMAMUX, 0, true);
+//    DMAMUX_SetSource(DMAMUX, 5, kDmaRequestMuxQTIMER2CaptTimer0);
+//    DMAMUX_EnableChannel(DMAMUX, 5);
+//    DMAMUX_SetSource(DMAMUX, 6, 10);
+//    DMAMUX_EnableChannel(DMAMUX, 6);    
+//    
+//
+//    EDMA_GetDefaultConfig(&userConfig);
+//    //userConfig.enableContinuousLinkMode = false;
+//    EDMA_Init(DMA0, &userConfig);
+//    EDMA_CreateHandle(&g_EDMA_Handle, DMA0, 5);
+//    EDMA_CreateHandle(&g_EDMA_Handle_5, DMA0, 6);
+//    EDMA_SetCallback(&g_EDMA_Handle, EDMA_Callback, NULL);
+//    //EDMA_SetCallback(&g_EDMA_Handle_5, EDMA_Callback_5, NULL);
+//        
+//    /*eDMA传输*/
+//    EDMA_PrepareTransfer(&transferConfig, databuff, sizeof(databuff[0]), databuff2, sizeof(databuff[2])
+//        , sizeof(databuff[0]), sizeof(databuff), kEDMA_MemoryToMemory);
+//    EDMA_SubmitTransfer(&g_EDMA_Handle, &transferConfig);
+//    //EDMA_SetChannelPreemptionConfig(DMA0, 6, &eDMA_1_DMA5_preemption);
+//    EDMA_SetChannelLink(DMA0, 5, kEDMA_MinorLink, 6);
+//    
+//    EDMA_PrepareTransfer(&transferConfig, (uint32_t *)(0x401E0004), 2, &buff_tmr, 2
+//                        , 2, 2, 20);
+//    EDMA_SubmitTransfer(&g_EDMA_Handle_5, &transferConfig);
+//    
+//    DMA0->CR &= ~DMA_CR_EMLM(1);
+//    DMA0->TCD[6].CSR &= ~DMA_CSR_INTMAJOR(1);
+//    DMA0->TCD[6].BITER_ELINKNO = DMA_BITER_ELINKNO_BITER(100);
+//    DMA0->TCD[6].CITER_ELINKNO = DMA_CITER_ELINKNO_CITER(100);
+//    DMA0->TCD[6].SOFF = DMA_SOFF_SOFF(0);
+//    DMA0->TCD[6].DOFF = DMA_DOFF_DOFF(0);
+//    
+//    EDMA_StartTransfer(&g_EDMA_Handle_5);
+//    EDMA_StartTransfer(&g_EDMA_Handle);   
+//    QTMR_StartTimer(TMR2, kQTMR_Channel_0, kQTMR_QuadCountMode);
+//    /* Wait for EDMA transfer finish */
+//    while (g_Transfer_Done != true)
+//    {
+//    }
 
     
     TFTSPI_Init();                 //TFT1.8初始化  
@@ -289,9 +291,12 @@ int main(void)
     uint16_t color = 0;
     LQ_PWMA_B_SetDuty(PWM2, kPWM_Module_0, 2000, 0);
     LQ_PWMA_B_SetDuty(PWM2, kPWM_Module_1, 4000, 0);
+    LQ_ENC_Init(ENC1);   //正交解码初始化
 
     while(1)
-    {                                                 
+    {         
+        _systime.delay_ms(100);
+        velocity1 = (int16_t)ENC_GetPositionDifferenceValue(ENC1);  //得到编码器微分值
 
     }             
 }

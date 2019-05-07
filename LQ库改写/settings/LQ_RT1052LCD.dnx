@@ -28,7 +28,7 @@
         <EnableCache>1</EnableCache>
     </ArmDriver>
     <DebugChecksum>
-        <Checksum>1416002622</Checksum>
+        <Checksum>3069141190</Checksum>
     </DebugChecksum>
     <Exceptions>
         <StopOnUncaught>_ 0</StopOnUncaught>
@@ -95,6 +95,9 @@
         <Fmt0>edma_transfer_config_t-destAddr	4	0</Fmt0>
         <Fmt1>edma_transfer_config_t-srcAddr	4	0</Fmt1>
     </struct_types>
+    <array_types>
+        <Fmt0>unsigned char[188]	3	0</Fmt0>
+    </array_types>
     <Trace1>
         <Enabled>0</Enabled>
         <ShowSource>1</ShowSource>
@@ -185,17 +188,17 @@
     </DisassembleMode>
     <Breakpoints2>
         <Bp0>_ 0 "EMUL_CODE" "{$PROJ_DIR$\LQuserFlies\src\LQ_CSI.c}.214.1" 0 0 1 "" 0 "" 0</Bp0>
-        <Bp1>_ 0 "EMUL_CODE" "{$PROJ_DIR$\LQuserFlies\src\Appmain.c}.299.1" 0 0 1 "" 0 "" 0</Bp1>
-        <Bp2>_ 0 "EMUL_CODE" "{$PROJ_DIR$\LQuserFlies\src\Appmain.c}.299.1" 0 0 1 "" 0 "" 0</Bp2>
-        <Bp3>_ 1 "EMUL_CODE" "{$PROJ_DIR$\LQuserFlies\src\Appmain.c}.221.5" 0 0 1 "" 0 "" 0</Bp3>
-        <Bp4>_ 1 "EMUL_CODE" "{$PROJ_DIR$\LQuserFlies\src\Appmain.c}.264.5" 0 0 1 "" 0 "" 0</Bp4>
-        <Bp5>_ 1 "EMUL_CODE" "{$PROJ_DIR$\LQuserFlies\src\Appmain.c}.271.5" 0 0 1 "" 0 "" 0</Bp5>
-        <Count>6</Count>
+        <Bp1>_ 0 "EMUL_CODE" "{$PROJ_DIR$\LQuserFlies\src\PigMT9V032.c}.492.9" 0 0 1 "" 0 "" 0</Bp1>
+        <Bp2>_ 0 "EMUL_CODE" "{$PROJ_DIR$\LQuserFlies\src\PigMT9V032.c}.291.9" 0 0 1 "" 0 "" 0</Bp2>
+        <Bp3>_ 0 "EMUL_CODE" "{$PROJ_DIR$\LQuserFlies\src\PigMT9V032.c}.519.9" 0 0 1 "" 0 "" 0</Bp3>
+        <Bp4>_ 0 "EMUL_CODE" "{$PROJ_DIR$\LQuserFlies\src\PigMT9V032.c}.512.9" 0 0 1 "" 0 "" 0</Bp4>
+        <Count>5</Count>
     </Breakpoints2>
     <Aliases>
         <A0>_ "D:\智能车\麦轮信标\程序\RT1052\LQ_RT1052TFT1.8寸屏 母板综合测试例程\LQuserFlies\devices\drivers\fsl_gpio.c" ""</A0>
         <A1>_ "D:\智能车\麦轮信标\程序\RT1052\LQ_RT1052TFT1.8寸屏 母板综合测试例程\LQuserFlies\devices\utilities\fsl_assert.c" ""</A1>
-        <Count>2</Count>
+        <A2>_ "D:\智能车\麦轮信标\程序\RT1052\LQ_RT1052TFT1.8寸屏 母板综合测试例程\LQuserFlies\devices\utilities\fsl_debug_console.c" ""</A2>
+        <Count>3</Count>
         <SuppressDialog>1</SuppressDialog>
     </Aliases>
 </settings>
