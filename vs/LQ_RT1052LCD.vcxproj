@@ -1,0 +1,322 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="sdram_debug|Win32">
+      <Configuration>sdram_debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="sdram_release|Win32">
+      <Configuration>sdram_release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\LQuserFlies\src\Appmain.c">
+    </ClCompile>
+    <ClCompile Include="..\LQuserFlies\src\LQ_ADC.c">
+    </ClCompile>
+    <ClCompile Include="..\LQuserFlies\src\LQ_Encoder.c">
+    </ClCompile>
+    <ClCompile Include="..\LQuserFlies\src\LQ_IIC.c">
+    </ClCompile>
+    <ClCompile Include="..\LQuserFlies\src\LQ_KEY.c">
+    </ClCompile>
+    <ClCompile Include="..\LQuserFlies\src\LQ_LED.c">
+    </ClCompile>
+    <ClCompile Include="..\LQuserFlies\src\LQ_PIT.c">
+    </ClCompile>
+    <ClCompile Include="..\LQuserFlies\src\LQ_PWM.c">
+    </ClCompile>
+    <ClCompile Include="..\LQuserFlies\src\LQ_QTMR.c">
+    </ClCompile>
+    <ClCompile Include="..\LQuserFlies\src\LQ_SPI.c">
+    </ClCompile>
+    <ClCompile Include="..\LQuserFlies\src\LQ_TRNG.c">
+    </ClCompile>
+    <ClCompile Include="..\LQuserFlies\src\LQ_UART.c">
+    </ClCompile>
+    <ClCompile Include="..\LQuserFlies\src\LQ_WDog.c">
+    </ClCompile>
+    <ClCompile Include="..\LQuserFlies\src\sys\AHRS.c">
+    </ClCompile>
+    <ClCompile Include="..\LQuserFlies\src\sys\AP_Math.c">
+    </ClCompile>
+    <ClCompile Include="..\LQuserFlies\src\sys\Inertial_Sensor.c">
+    </ClCompile>
+    <ClCompile Include="..\LQuserFlies\src\LQ_SGP18T.c">
+    </ClCompile>
+    <ClCompile Include="..\LQuserFlies\src\PigMT9V032.c">
+    </ClCompile>
+    <ClCompile Include="..\LQuserFlies\src\Pig_edma.c">
+    </ClCompile>
+    <ClCompile Include="..\LQuserFlies\src\sys\m_systime.c">
+    </ClCompile>
+    <ClCompile Include="..\LQuserFlies\src\sys\status.c">
+    </ClCompile>
+    <ClCompile Include="..\LQuserFlies\src\board\board.c">
+    </ClCompile>
+    <ClCompile Include="..\LQuserFlies\src\board\clock_config.c">
+    </ClCompile>
+    <ClCompile Include="..\LQuserFlies\src\board\pin_mux.c">
+    </ClCompile>
+    <ClCompile Include="..\LQuserFlies\src\AttitudeCalculation.c">
+    </ClCompile>
+    <ClCompile Include="..\LQuserFlies\src\DebugFuction.c">
+    </ClCompile>
+    <ClCompile Include="..\LQuserFlies\src\MecanumWheelControl.c">
+    </ClCompile>
+    <ClCompile Include="..\LQuserFlies\devices\drivers\fsl_adc.c">
+    </ClCompile>
+    <ClCompile Include="..\LQuserFlies\devices\drivers\fsl_clock.c">
+    </ClCompile>
+    <ClCompile Include="..\LQuserFlies\devices\drivers\fsl_common.c">
+    </ClCompile>
+    <ClCompile Include="..\LQuserFlies\devices\drivers\fsl_csi.c">
+    </ClCompile>
+    <ClCompile Include="..\LQuserFlies\devices\drivers\fsl_dmamux.c">
+    </ClCompile>
+    <ClCompile Include="..\LQuserFlies\devices\drivers\fsl_edma.c">
+    </ClCompile>
+    <ClCompile Include="..\LQuserFlies\devices\drivers\fsl_enc.c">
+    </ClCompile>
+    <ClCompile Include="..\LQuserFlies\devices\drivers\fsl_flexio.c">
+    </ClCompile>
+    <ClCompile Include="..\LQuserFlies\devices\fsl_flexio_camera.c">
+    </ClCompile>
+    <ClCompile Include="..\LQuserFlies\devices\fsl_flexio_camera_edma.c">
+    </ClCompile>
+    <ClCompile Include="..\LQuserFlies\devices\drivers\fsl_flexio_spi.c">
+    </ClCompile>
+    <ClCompile Include="..\LQuserFlies\devices\drivers\fsl_flexio_spi_edma.c">
+    </ClCompile>
+    <ClCompile Include="..\LQuserFlies\devices\drivers\fsl_flexspi.c">
+    </ClCompile>
+    <ClCompile Include="..\LQuserFlies\devices\drivers\fsl_gpio.c">
+    </ClCompile>
+    <ClCompile Include="..\LQuserFlies\devices\drivers\fsl_gpt.c">
+    </ClCompile>
+    <ClCompile Include="..\LQuserFlies\devices\drivers\fsl_lpi2c.c">
+    </ClCompile>
+    <ClCompile Include="..\LQuserFlies\devices\drivers\fsl_lpspi.c">
+    </ClCompile>
+    <ClCompile Include="..\LQuserFlies\devices\drivers\fsl_lpuart.c">
+    </ClCompile>
+    <ClCompile Include="..\LQuserFlies\devices\drivers\fsl_lpuart_edma.c">
+    </ClCompile>
+    <ClCompile Include="..\LQuserFlies\devices\drivers\fsl_pit.c">
+    </ClCompile>
+    <ClCompile Include="..\LQuserFlies\devices\drivers\fsl_pwm.c">
+    </ClCompile>
+    <ClCompile Include="..\LQuserFlies\devices\drivers\fsl_qtmr.c">
+    </ClCompile>
+    <ClCompile Include="..\LQuserFlies\devices\drivers\fsl_semc.c">
+    </ClCompile>
+    <ClCompile Include="..\LQuserFlies\devices\drivers\fsl_trng.c">
+    </ClCompile>
+    <ClCompile Include="..\LQuserFlies\devices\drivers\fsl_usdhc.c">
+    </ClCompile>
+    <ClCompile Include="..\LQuserFlies\devices\drivers\fsl_wdog.c">
+    </ClCompile>
+    <ClCompile Include="..\LQuserFlies\devices\drivers\fsl_xbara.c">
+    </ClCompile>
+    <ClCompile Include="..\LQuserFlies\devices\startup\system_MIMXRT1052.c">
+    </ClCompile>
+    <ClCompile Include="..\LQuserFlies\devices\utilities\fsl_assert.c">
+    </ClCompile>
+    <ClCompile Include="..\LQuserFlies\devices\utilities\fsl_debug_console.c">
+    </ClCompile>
+    <ClCompile Include="..\LQuserFlies\devices\utilities\fsl_io.c">
+    </ClCompile>
+    <ClCompile Include="..\LQuserFlies\devices\utilities\fsl_log.c">
+    </ClCompile>
+    <ClCompile Include="..\LQuserFlies\devices\utilities\fsl_str.c">
+    </ClCompile>
+    <ClCompile Include="..\LQuserFlies\Xip\fsl_flexspi_nor_boot.c">
+    </ClCompile>
+    <ClCompile Include="..\LQuserFlies\Xip\xip_config.c">
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\LQuserFlies\src\include.h">
+    </ClInclude>
+    <ClInclude Include="..\LQuserFlies\src\LQ_ADC.h">
+    </ClInclude>
+    <ClInclude Include="..\LQuserFlies\src\LQ_Encoder.h">
+    </ClInclude>
+    <ClInclude Include="..\LQuserFlies\src\LQ_GPIOmacro.h">
+    </ClInclude>
+    <ClInclude Include="..\LQuserFlies\src\LQ_IIC.h">
+    </ClInclude>
+    <ClInclude Include="..\LQuserFlies\src\LQ_KEY.h">
+    </ClInclude>
+    <ClInclude Include="..\LQuserFlies\src\LQ_LED.h">
+    </ClInclude>
+    <ClInclude Include="..\LQuserFlies\src\LQ_PIT.h">
+    </ClInclude>
+    <ClInclude Include="..\LQuserFlies\src\LQ_PWM.h">
+    </ClInclude>
+    <ClInclude Include="..\LQuserFlies\src\LQ_QTMR.h">
+    </ClInclude>
+    <ClInclude Include="..\LQuserFlies\src\LQ_SPI.h">
+    </ClInclude>
+    <ClInclude Include="..\LQuserFlies\src\LQ_TRNG.h">
+    </ClInclude>
+    <ClInclude Include="..\LQuserFlies\src\LQ_UART.h">
+    </ClInclude>
+    <ClInclude Include="..\LQuserFlies\src\LQ_WDog.h">
+    </ClInclude>
+    <ClInclude Include="..\LQuserFlies\src\sys\AHRS.h">
+    </ClInclude>
+    <ClInclude Include="..\LQuserFlies\src\sys\AP_Math.h">
+    </ClInclude>
+    <ClInclude Include="..\LQuserFlies\src\sys\Inertial_Sensor.h">
+    </ClInclude>
+    <ClInclude Include="..\LQuserFlies\src\LQ_SGP18T.h">
+    </ClInclude>
+    <ClInclude Include="..\LQuserFlies\src\PigMT9V032.h">
+    </ClInclude>
+    <ClInclude Include="..\LQuserFlies\src\Pig_edma.h">
+    </ClInclude>
+    <ClInclude Include="..\LQuserFlies\src\sys\m_systime.h">
+    </ClInclude>
+    <ClInclude Include="..\LQuserFlies\src\sys\status.h">
+    </ClInclude>
+    <ClInclude Include="..\LQuserFlies\src\board\board.h">
+    </ClInclude>
+    <ClInclude Include="..\LQuserFlies\src\board\clock_config.h">
+    </ClInclude>
+    <ClInclude Include="..\LQuserFlies\devices\MIMXRT1052.h">
+    </ClInclude>
+    <ClInclude Include="..\LQuserFlies\devices\MIMXRT1052_features.h">
+    </ClInclude>
+    <ClInclude Include="..\LQuserFlies\src\board\pin_mux.h">
+    </ClInclude>
+    <ClInclude Include="..\LQuserFlies\src\AttitudeCalculation.h">
+    </ClInclude>
+    <ClInclude Include="..\LQuserFlies\src\DebugFunction.h">
+    </ClInclude>
+    <ClInclude Include="..\LQuserFlies\src\MecanumWheelControl.h">
+    </ClInclude>
+    <ClInclude Include="..\LQuserFlies\devices\drivers\fsl_adc.h">
+    </ClInclude>
+    <ClInclude Include="..\LQuserFlies\devices\drivers\fsl_clock.h">
+    </ClInclude>
+    <ClInclude Include="..\LQuserFlies\devices\drivers\fsl_common.h">
+    </ClInclude>
+    <ClInclude Include="..\LQuserFlies\devices\drivers\fsl_csi.h">
+    </ClInclude>
+    <ClInclude Include="..\LQuserFlies\devices\drivers\fsl_dmamux.h">
+    </ClInclude>
+    <ClInclude Include="..\LQuserFlies\devices\drivers\fsl_edma.h">
+    </ClInclude>
+    <ClInclude Include="..\LQuserFlies\devices\drivers\fsl_flexio.h">
+    </ClInclude>
+    <ClInclude Include="..\LQuserFlies\devices\fsl_flexio_camera.h">
+    </ClInclude>
+    <ClInclude Include="..\LQuserFlies\devices\fsl_flexio_camera_edma.h">
+    </ClInclude>
+    <ClInclude Include="..\LQuserFlies\devices\drivers\fsl_flexio_spi.h">
+    </ClInclude>
+    <ClInclude Include="..\LQuserFlies\devices\drivers\fsl_flexio_spi_edma.h">
+    </ClInclude>
+    <ClInclude Include="..\LQuserFlies\devices\drivers\fsl_flexspi.h">
+    </ClInclude>
+    <ClInclude Include="..\LQuserFlies\devices\drivers\fsl_gpio.h">
+    </ClInclude>
+    <ClInclude Include="..\LQuserFlies\devices\drivers\fsl_gpt.h">
+    </ClInclude>
+    <ClInclude Include="..\LQuserFlies\devices\drivers\fsl_iomuxc.h">
+    </ClInclude>
+    <ClInclude Include="..\LQuserFlies\devices\drivers\fsl_lpi2c.h">
+    </ClInclude>
+    <ClInclude Include="..\LQuserFlies\devices\drivers\fsl_lpspi.h">
+    </ClInclude>
+    <ClInclude Include="..\LQuserFlies\devices\drivers\fsl_lpuart.h">
+    </ClInclude>
+    <ClInclude Include="..\LQuserFlies\devices\drivers\fsl_lpuart_edma.h">
+    </ClInclude>
+    <ClInclude Include="..\LQuserFlies\devices\drivers\fsl_pit.h">
+    </ClInclude>
+    <ClInclude Include="..\LQuserFlies\devices\drivers\fsl_pwm.h">
+    </ClInclude>
+    <ClInclude Include="..\LQuserFlies\devices\drivers\fsl_qtmr.h">
+    </ClInclude>
+    <ClInclude Include="..\LQuserFlies\devices\drivers\fsl_semc.h">
+    </ClInclude>
+    <ClInclude Include="..\LQuserFlies\devices\drivers\fsl_trng.h">
+    </ClInclude>
+    <ClInclude Include="..\LQuserFlies\devices\drivers\fsl_usdhc.h">
+    </ClInclude>
+    <ClInclude Include="..\LQuserFlies\devices\drivers\fsl_wdog.h">
+    </ClInclude>
+    <ClInclude Include="..\LQuserFlies\devices\drivers\fsl_xbara.h">
+    </ClInclude>
+    <ClInclude Include="..\LQuserFlies\devices\startup\system_MIMXRT1052.h">
+    </ClInclude>
+    <ClInclude Include="..\LQuserFlies\devices\utilities\fsl_debug_console.h">
+    </ClInclude>
+    <ClInclude Include="..\LQuserFlies\devices\utilities\fsl_debug_console_conf.h">
+    </ClInclude>
+    <ClInclude Include="..\LQuserFlies\devices\utilities\fsl_io.h">
+    </ClInclude>
+    <ClInclude Include="..\LQuserFlies\devices\utilities\fsl_log.h">
+    </ClInclude>
+    <ClInclude Include="..\LQuserFlies\devices\utilities\fsl_str.h">
+    </ClInclude>
+    <ClInclude Include="..\LQuserFlies\Xip\external_flash_config.h">
+    </ClInclude>
+    <ClInclude Include="..\LQuserFlies\Xip\fsl_flexspi_nor_boot.h">
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\LQuserFlies\devices\startup\startup_MIMXRT1052.s">
+    </None>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{3D5C841F-2AA7-4B82-4DE8-0D37BE4848FE}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>LQ_RT1052LCD</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='sdram_debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>..\LQuserFlies\src;..\LQuserFlies\src\board;..\LQuserFlies\src\camera;..\LQuserFlies\src\touch;..\LQuserFlies\devices;..\LQuserFlies\devices\drivers;..\LQuserFlies\devices\utilities;..\LQuserFlies\devices\startup;..\LQuserFlies\CMSIS;..\LQuserFlies\middleware\fatfs;..\LQuserFlies\middleware\libjpeg;..\LQuserFlies\middleware\TF;..\LQuserFlies\middleware\usb;..\LQuserFlies\middleware\usb\device;..\LQuserFlies\middleware\usb\host;..\LQuserFlies\middleware\usb\host\class;..\LQuserFlies\middleware\usb\include;..\LQuserFlies\middleware\usb\osa;..\LQuserFlies\middleware\usb\phy;..\LQuserFlies\middleware\dma_manager;..\LQuserFlies\src\sys;..\LQuserFlies\src\ANO_DT</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='sdram_release|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>..\LQuserFlies\src;..\LQuserFlies\src\board;..\LQuserFlies\src\camera;..\LQuserFlies\src\touch;..\LQuserFlies\devices;..\LQuserFlies\devices\drivers;..\LQuserFlies\devices\utilities;..\LQuserFlies\devices\startup;..\LQuserFlies\CMSIS;..\LQuserFlies\middleware\fatfs;..\LQuserFlies\middleware\libjpeg;..\LQuserFlies\middleware\TF;..\LQuserFlies\middleware\usb;..\LQuserFlies\middleware\usb\device;..\LQuserFlies\middleware\usb\host;..\LQuserFlies\middleware\usb\host\class;..\LQuserFlies\middleware\usb\include;..\LQuserFlies\middleware\usb\osa;..\LQuserFlies\middleware\usb\phy;..\LQuserFlies\middleware\dma_manager;..\LQuserFlies\src\sys;..\LQuserFlies\src\ANO_DT</IncludePath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='sdram_debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>SKIP_SYSCLK_INIT;SDRAM_MPU_INIT;DEBUG;CPU_MIMXRT1052DVL6B;PRINTF_FLOAT_ENABLE=0;SCANF_FLOAT_ENABLE=0;PRINTF_ADVANCED_ENABLE=0;SCANF_ADVANCED_ENABLE=0;SDK_I2C_BASED_COMPONENT_USED=1;_DLIB_FILE_DESCRIPTOR</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>
+      </SubSystem>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='sdram_release|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>LQRELEASE;DEBUG;SKIP_SYSCLK_INIT;SDRAM_MPU_INIT;CPU_MIMXRT1052DVL6B;PRINTF_FLOAT_ENABLE=0;SCANF_FLOAT_ENABLE=0;XIP_EXTERNAL_FLASH=1;PRINTF_ADVANCED_ENABLE=0;SCANF_ADVANCED_ENABLE=0;SDK_I2C_BASED_COMPONENT_USED=1;XIP_EXTERNAL_FLASH=1;XIP_BOOT_HEADER_ENABLE=1;XIP_BOOT_HEADER_DCD_ENABLE=0;_DLIB_FILE_DESCRIPTOR</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>
+      </SubSystem>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props">
+  </Import>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props">
+  </Import>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets">
+  </Import>
+</Project>
