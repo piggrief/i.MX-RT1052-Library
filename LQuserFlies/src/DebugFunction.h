@@ -10,7 +10,7 @@
 */
 # ifndef _DEBUGFUNCTION_H_
 # define _DEBUGFUNCTION_H_
-# define Remote_UseDigitalReceive
+//# define Remote_UseDigitalReceive
 # define CRC_Uart_Port LPUART1
 # define Series_Uart_Port LPUART8
 # define GY53_Uart_Port LPUART6

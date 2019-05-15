@@ -172,11 +172,11 @@ void MotorOutput(float * ControlValue)
     i = 1;
     if (ControlValue[i] >= 0)
     {
-        LQ_PWMA_B_SetDuty(PWMType_Use2, Wheels_PWMChannel[i], 0, (uint16_t)(ControlValue[i]));
+        LQ_PWMA_B_SetDuty(PWMType_Use2, Wheels_PWMChannel[i], (uint16_t)(ControlValue[i]), 0);
     }
     else
     {
-        LQ_PWMA_B_SetDuty(PWMType_Use2, Wheels_PWMChannel[i], (uint16_t)(-ControlValue[i]), 0);
+        LQ_PWMA_B_SetDuty(PWMType_Use2, Wheels_PWMChannel[i], 0, (uint16_t)(-ControlValue[i]));
     }
     i = 2;
     if (ControlValue[i] >= 0)
@@ -249,7 +249,68 @@ void EncoderMeasure_Init(void)
     }
 
 }
+/*===================================================================
+功能：排列出N个最大值分别对应数组下标0、1、2、……、n-1
+输入：数据->arr数组，数据个数->size,最大值个数->maxnum
+函数测试：6.4日测试无BUG
+===================================================================*/
+/// <summary>
+/// 排列出N个最大值
+/// </summary>
+void Sort_MAX_N(int16_t arr[], int size, int maxnum)
+{
+    int i = 0, k = 0;
+    int temp = 0;
+    for (k = 0; k<maxnum; k++)
+    {
+        //降序排列！
+        for (i = size - 1; i>k; i--)
+        {
+            if (arr[i]>arr[i - 1])
+            {
+                temp = arr[i - 1];
+                arr[i - 1] = arr[i];
+                arr[i] = temp;
+            }
+        }
+    }
+}
+/// <summary>
+/// N窗口限幅中值滤波
+/// </summary>
+int16_t fiter_Medium(int16_t num, int16_t * queue, int16_t * queue_buff, int size)
+{
+    int i = 0;
 
+
+    ////!+<<<<<<<<<<<<<<<<<<<<限幅>>>>>>>>>>>>>>>>>>>>+//
+    //if (num - queue[0] < -4 && num - queue[0]>4)
+    //{
+    //    num = queue[0];
+    //}
+
+    //!+<<<<<<<<<<<<<<<<<<<<更新队列>>>>>>>>>>>>>>>>>>>>+//
+    for (i = size - 1; i > 0; i--)
+    {
+        queue[i] = queue[i - 1];
+    }
+    queue[0] = num;
+
+    //!+<<<<<<<<<<<<<<<<<<<<找中位值>>>>>>>>>>>>>>>>>>>>+//
+    for (i = 0; i < size; i++)
+        queue_buff[i] = queue[i];
+
+    Sort_MAX_N(queue_buff, size, (1 + size) / 2);
+
+    return queue_buff[(1 + size) / 2 - 1];
+}
+
+# define MediumFilterSize 5
+int16_t temp_Speed_W1[MediumFilterSize];
+int16_t temp_Speed_W2[MediumFilterSize];
+int16_t temp_Speed_W3[MediumFilterSize];
+int16_t temp_Speed_W4[MediumFilterSize];
+int16_t temp_Speed_buff[MediumFilterSize];
 
 //四个轮子反转时的旋转方向IO
 uint8_t Flag_Reverse[4] = { 0, 0, 0, 0 };
@@ -257,16 +318,30 @@ uint8_t Flag_Reverse[4] = { 0, 0, 0, 0 };
 ///<summary>获得第index个轮子的转速</summary>
 void GetSpeed(int index)
 {
-    uint8_t flag_temp = 0;
+    int16_t * temp_Speed;
+    if (index == 0)
+        temp_Speed = temp_Speed_W1;
+    else if (index == 1)
+        temp_Speed = temp_Speed_W2;
+    else if (index == 2)
+        temp_Speed = temp_Speed_W3;
+    else if (index == 3)
+        temp_Speed = temp_Speed_W4;
 
-    temp_Speed[index] = ENC_GetPositionDifferenceValue(Encoder_ENCIndex[index]);
+    uint8_t flag_temp = 0;
+    int16_t SpeedBuff = 0;
+
+    SpeedBuff = ENC_GetPositionDifferenceValue(Encoder_ENCIndex[index]);
     
     flag_temp = GPIO_PinRead(EncoderDirectionPort[index], Encoder_PORTIndex_Direction[index]);
     if (flag_temp == Flag_Reverse[index])
     {
-        temp_Speed[index] *= -1;
+        SpeedBuff *= -1;
     }
-    SpeedCount[index] += temp_Speed[index];
+
+    SpeedBuff = fiter_Medium(SpeedBuff, temp_Speed, temp_Speed_buff, MediumFilterSize);
+
+    SpeedCount[index] += SpeedBuff;
 }
 
 ///<summary>速度计数清零</summary>

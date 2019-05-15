@@ -40,29 +40,52 @@ extern float ControlValue_Closeloop[4];
 extern long SpeedCount[4];
 extern long Speed_get[4];
 
+///<summary>速度环参数</summary>
+float P_Set[4] = {22, 19, 22, 21};//{22, 19, 22, 21}{35, 39, 40, 39}
+float D_Set[4] = {5, 5, 5, 4};//{5, 5, 5, 4}{13, 19, 20, 19}
+float I_Set[4] = {5, 5,5, 5};//{5, 5, 5, 5}{5, 9, 9, 9}
+float DeadBand_Set[4] = {0,0,0,0};//{739-22, 659-20, 743-23, 720-21}
+float I_limit = 8000;
+float Max_output = 9500;
+
+extern float ControlValue_Closeloop[4];
+extern long SpeedCount[4];
+
 void InitAll();
-//uint16_t buff_tmr = 0;
+uint64_t TimeTest_us = 0;
+void RunTimeTest()
+{
+    
+//GetSpeed(0);
+}
+
 int main(void)
 {        
     uint8_t count = 0;
-    InitAll();
+    //InitAll();
+    //PID_Speedloop_init(P_Set, D_Set, I_Set, I_limit, Max_output, DeadBand_Set);
+    
+
+
+
+
 
     _systime.delay_ms(200);
+
     TFTSPI_CLS(u16WHITE);
     while(1)
-    {   
-
-        TFTSPI_P8X8NUM(0,0,(uint16_t)(Speed_get[0]),5,u16BLACK, u16WHITE);
-        TFTSPI_P8X8NUM(0,1,(uint16_t)(Speed_get[1]),5,u16BLACK, u16WHITE);
-        TFTSPI_P8X8NUM(0,2,(uint16_t)(Speed_get[2]),5,u16BLACK, u16WHITE);
-        TFTSPI_P8X8NUM(0,3,(uint16_t)(Speed_get[3]),5,u16BLACK, u16WHITE);
-        _systime.delay_ms(50);
+    {
+      //SendRemoteCMDData();
+        //LQ_PWMA_B_SetDuty(PWM1, PWMChannel_Use_W1, 0, (uint16_t)(ControlValue[i]));
+        //TimeTest_us = MeasureRunTime_us(&RunTimeTest);
+        _systime.delay_ms(5);
 //        LQ_PWMA_B_SetDuty(PWM1, kPWM_Module_2, 1000, 2800);
 //        LQ_PWMA_B_SetDuty(PWM1, kPWM_Module_3, 3000, 4800);
 //        LQ_PWMA_B_SetDuty(PWM2, kPWM_Module_1, 5000, 6800);
 //        LQ_PWMA_B_SetDuty(PWM2, kPWM_Module_2, 7000, 8800);
     }             
 }
+float adc_V = 0;
 void InitAll()
 {
     BOARD_ConfigMPU();                   /* 初始化内存保护单元 */
@@ -71,22 +94,20 @@ void InitAll()
     BOARD_InitDEBUG_UARTPins();          //UART调试口管脚复用初始化 
     BOARD_InitDebugConsole();            //UART调试口初始化 可以使用 PRINTF函数          
     //LED_Init();                          //初始化核心板和开发板上的LED接口
-    //LQ_UART_Init(LPUART1, 9600);       //串口1初始化 可以使用 printf函数
+    LQ_UART_Init(LPUART1, 115200);       //串口1初始化 可以使用 printf函数
     _systime.init();                     //开启systick定时器
     NVIC_SetPriorityGrouping(2);/*设置中断优先级组  0: 0个抢占优先级16位个子优先级
                                 *1: 2个抢占优先级 8个子优先级 2: 4个抢占优先级 4个子优先级
                                 *3: 8个抢占优先级 2个子优先级 4: 16个抢占优先级 0个子优先级
                                 */
-    //Camera1PinInit();
-    //Camera2PinInit();
-    //EncoderPinInit();
-
     TFTSPI_Init();                 //TFT1.8初始化
 
     Motor_init();
     BatteryVoltageCollect_Init(1);
+    adc_V = GetBatteryVoltage(0);
     EncoderMeasure_Init();
     RemoteInit();
+    //camera_init_1();
     //Series_Receive_init();
     LQ_PIT_Init(kPIT_Chnl_0, 3000);//3000us
 }
@@ -122,7 +143,7 @@ void PIT_IRQHandler(void)
             #else
             SetSpeed_FromRemote_Analog();//模拟量
             #endif
-            SEND(ControlValue_Closeloop[0], ControlValue_Closeloop[1], ControlValue_Closeloop[2], ControlValue_Closeloop[3]);
+            //SEND(ControlValue_Closeloop[0], ControlValue_Closeloop[1], ControlValue_Closeloop[2], ControlValue_Closeloop[3]);
             ////串级通信//
             //Series_deviation_received = Series_ReceiveBuff[0];
             //Series_distance_received = One_loop_bubblesort(length);
@@ -145,7 +166,7 @@ void PIT_IRQHandler(void)
                 Speed_watch[j] = Speed_get[j];
                 Speed_get[j] = 0;//速度计清零
             }
-
+            SEND(Speed_watch[0],Speed_watch[1],Speed_watch[2],Speed_watch[3]);
             PIT0_Flag = 0;
         }
     }

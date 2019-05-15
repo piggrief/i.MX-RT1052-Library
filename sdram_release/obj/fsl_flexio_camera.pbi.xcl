@@ -1,101 +1,101 @@
-"D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQ库改写\LQuserFlies\devices\fsl_flexio_camera.c"
+"D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQuserFlies\devices\fsl_flexio_camera.c"
 -std=c11
 -ferror-limit=0
 -fbracket-depth=512
 -I
-D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQ库改写\LQuserFlies\devices
+D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQuserFlies\devices
 -I
-D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQ库改写\LQuserFlies\src
+D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQuserFlies\src
 -I
-D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQ库改写\LQuserFlies\src\board
+D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQuserFlies\src\board
 -I
-D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQ库改写\LQuserFlies\src\camera
+D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQuserFlies\src\camera
 -I
-D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQ库改写\LQuserFlies\src\touch
+D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQuserFlies\src\touch
 -I
-D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQ库改写\LQuserFlies\devices
+D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQuserFlies\devices
 -I
-D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQ库改写\LQuserFlies\devices\drivers
+D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQuserFlies\devices\drivers
 -I
-D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQ库改写\LQuserFlies\devices\utilities
+D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQuserFlies\devices\utilities
 -I
-D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQ库改写\LQuserFlies\devices\startup
+D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQuserFlies\devices\startup
 -I
-D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQ库改写\LQuserFlies\CMSIS
+D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQuserFlies\CMSIS
 -I
-D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQ库改写\LQuserFlies\middleware\fatfs
+D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQuserFlies\middleware\fatfs
 -I
-D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQ库改写\LQuserFlies\middleware\libjpeg
+D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQuserFlies\middleware\libjpeg
 -I
-D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQ库改写\LQuserFlies\middleware\TF
+D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQuserFlies\middleware\TF
 -I
-D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQ库改写\LQuserFlies\middleware\usb
+D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQuserFlies\middleware\usb
 -I
-D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQ库改写\LQuserFlies\middleware\usb\device
+D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQuserFlies\middleware\usb\device
 -I
-D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQ库改写\LQuserFlies\middleware\usb\host
+D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQuserFlies\middleware\usb\host
 -I
-D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQ库改写\LQuserFlies\middleware\usb\host\class
+D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQuserFlies\middleware\usb\host\class
 -I
-D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQ库改写\LQuserFlies\middleware\usb\include
+D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQuserFlies\middleware\usb\include
 -I
-D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQ库改写\LQuserFlies\middleware\usb\osa
+D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQuserFlies\middleware\usb\osa
 -I
-D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQ库改写\LQuserFlies\middleware\usb\phy
+D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQuserFlies\middleware\usb\phy
 -I
-D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQ库改写\LQuserFlies\middleware\dma_manager
+D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQuserFlies\middleware\dma_manager
 -I
-D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQ库改写\LQuserFlies\src\sys
+D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQuserFlies\src\sys
 -I
-D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQ库改写\LQuserFlies\src\ANO_DT
+D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQuserFlies\src\ANO_DT
 -I
-D:\software\IAR Systems\Embedded Workbench 8.1\arm\inc
+C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.1\arm\inc
 -I
-D:\software\IAR Systems\Embedded Workbench 8.1\arm\inc\c
+C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.1\arm\inc\c
 -I
-D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQ库改写\LQuserFlies\src
+D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQuserFlies\src
 -I
-D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQ库改写\LQuserFlies\src\board
+D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQuserFlies\src\board
 -I
-D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQ库改写\LQuserFlies\src\camera
+D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQuserFlies\src\camera
 -I
-D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQ库改写\LQuserFlies\src\touch
+D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQuserFlies\src\touch
 -I
-D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQ库改写\LQuserFlies\devices
+D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQuserFlies\devices
 -I
-D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQ库改写\LQuserFlies\devices\drivers
+D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQuserFlies\devices\drivers
 -I
-D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQ库改写\LQuserFlies\devices\utilities
+D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQuserFlies\devices\utilities
 -I
-D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQ库改写\LQuserFlies\devices\startup
+D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQuserFlies\devices\startup
 -I
-D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQ库改写\LQuserFlies\CMSIS
+D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQuserFlies\CMSIS
 -I
-D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQ库改写\LQuserFlies\middleware\fatfs
+D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQuserFlies\middleware\fatfs
 -I
-D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQ库改写\LQuserFlies\middleware\libjpeg
+D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQuserFlies\middleware\libjpeg
 -I
-D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQ库改写\LQuserFlies\middleware\TF
+D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQuserFlies\middleware\TF
 -I
-D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQ库改写\LQuserFlies\middleware\usb
+D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQuserFlies\middleware\usb
 -I
-D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQ库改写\LQuserFlies\middleware\usb\device
+D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQuserFlies\middleware\usb\device
 -I
-D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQ库改写\LQuserFlies\middleware\usb\host
+D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQuserFlies\middleware\usb\host
 -I
-D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQ库改写\LQuserFlies\middleware\usb\host\class
+D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQuserFlies\middleware\usb\host\class
 -I
-D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQ库改写\LQuserFlies\middleware\usb\include
+D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQuserFlies\middleware\usb\include
 -I
-D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQ库改写\LQuserFlies\middleware\usb\osa
+D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQuserFlies\middleware\usb\osa
 -I
-D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQ库改写\LQuserFlies\middleware\usb\phy
+D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQuserFlies\middleware\usb\phy
 -I
-D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQ库改写\LQuserFlies\middleware\dma_manager
+D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQuserFlies\middleware\dma_manager
 -I
-D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQ库改写\LQuserFlies\src\sys
+D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQuserFlies\src\sys
 -I
-D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQ库改写\LQuserFlies\src\ANO_DT
+D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQuserFlies\src\ANO_DT
 -D__CHAR_BITS__=8
 -D__CHAR_MAX__=0xff
 -D__CHAR_MIN__=0
@@ -403,8 +403,8 @@ D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQ库改�
 -DXIP_BOOT_HEADER_ENABLE=1
 -DXIP_BOOT_HEADER_DCD_ENABLE=0
 -D_DLIB_FILE_DESCRIPTOR=1
--D_DLIB_CONFIG_FILE_HEADER_NAME="D:\\software\\IAR Systems\\Embedded Workbench 8.1\\arm\\inc\\c\\DLib_Config_Normal.h"
--D_DLIB_CONFIG_FILE_STRING="D:\\software\\IAR Systems\\Embedded Workbench 8.1\\arm\\inc\\c\\DLib_Config_Normal.h"
+-D_DLIB_CONFIG_FILE_HEADER_NAME="C:\\Program Files (x86)\\IAR Systems\\Embedded Workbench 8.1\\arm\\inc\\c\\DLib_Config_Normal.h"
+-D_DLIB_CONFIG_FILE_STRING="C:\\Program Files (x86)\\IAR Systems\\Embedded Workbench 8.1\\arm\\inc\\c\\DLib_Config_Normal.h"
 -D__VERSION__="IAR ANSI C/C++ Compiler V8.30.1.114/W32 for ARM"
 -D__ICCARM_OLD_DEFINED_VAARGS__=1
 -D__VA_STACK_ALIGN__=8

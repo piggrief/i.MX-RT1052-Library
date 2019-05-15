@@ -33,7 +33,7 @@ extern unsigned char image_1[ROW][COL];      //内部使用
 
 //引脚配置
 
-#define MT9V032_COF_UART_1    LPUART4 //配置摄像头所使用到的串口     
+#define MT9V032_COF_UART_1    LPUART5 //配置摄像头所使用到的串口     
 #define MT9V032_COF_UART_2    LPUART3 //配置摄像头所使用到的串口     
 
 typedef enum
