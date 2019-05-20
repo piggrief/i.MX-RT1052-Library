@@ -1,0 +1,125 @@
+/*PWM输入捕捉触发*/
+edma_transfer_config_t transferConfig;
+    edma_config_t userConfig;
+    //InitAll();
+    //PID_Speedloop_init(P_Set, D_Set, I_Set, I_limit, Max_output, DeadBand_Set);
+    
+    for (int i = 0; i < 100; i++)
+    {
+        srcAddr[i] = i;
+    }
+    /*PWM Capture DMA Request Init*/
+    CLOCK_EnableClock(kCLOCK_Iomuxc);           /* iomuxc clock (iomuxc_clk_enable): 0x03U */
+
+    IOMUXC_SetPinMux(
+        IOMUXC_GPIO_SD_B0_03_FLEXPWM1_PWMB01,   /* GPIO_SD_B0_03 is configured as FLEXPWM1_PWMB01 */
+        0U);
+
+    pwm_config_t pwmCaptureConfig;
+    PWM_GetDefaultConfig(&pwmCaptureConfig);  //得到默认的PWM初始化结构体
+
+    pwmCaptureConfig.enableDebugMode = true;
+    pwmCaptureConfig.pairOperation = kPWM_Independent;   //PWMA和PWMB独立输出
+    PWM_Init(PWM1, kPWM_Module_1, &pwmCaptureConfig);
+    PWM1->SM[kPWM_Module_1].DISMAP[0] = 0;
+
+    pwm_input_capture_param_t PWMInputCaptureConfig;
+    PWMInputCaptureConfig.captureInputSel = false;
+    PWMInputCaptureConfig.edgeCompareValue = 0;
+    PWMInputCaptureConfig.edge0 = kPWM_FallingEdge;
+    PWMInputCaptureConfig.edge1 = kPWM_Disable;
+    PWMInputCaptureConfig.enableOneShotCapture = false;
+    PWMInputCaptureConfig.fifoWatermark = 4;//4
+    PWM_SetupInputCapture(PWM1, kPWM_Module_1, kPWM_PwmB, &PWMInputCaptureConfig);
+    PWM_DisableInterrupts(PWM1, kPWM_Module_1, kPWM_CaptureB0InterruptEnable);
+    //PWM_EnableInterrupts(PWM1, kPWM_Module_1, kPWM_CaptureB0InterruptEnable);
+    //EnableIRQ(PWM1_1_IRQn);
+    
+    //PWM1->SM[kPWM_Module_1].DMAEN = (0|0x0244);
+    PWM1->SM[kPWM_Module_1].DMAEN = (0 
+                                     | PWM_DMAEN_VALDE(1)
+                                     | PWM_DMAEN_FAND(0)
+                                     | PWM_DMAEN_CAPTDE(1)
+                                     | PWM_DMAEN_CB0DE(1));
+    
+
+    DMAMUX_Init(DMAMUX);
+    //DMAMUX_EnableAlwaysOn(DMAMUX, 5, true);
+    DMAMUX_SetSource(DMAMUX, 5, kDmaRequestMuxFlexPWM1CaptureSub1);
+    //DMAMUX_EnableChannel(DMAMUX, 5);
+    /* Configure EDMA one shot transfer */
+    /*
+    * userConfig.enableRoundRobinArbitration = false;
+    * userConfig.enableHaltOnError = true;
+    * userConfig.enableContinuousLinkMode = false;
+    * userConfig.enableDebugMode = false;
+    */
+    EDMA_GetDefaultConfig(&userConfig);
+    EDMA_Init(DMA0, &userConfig);
+    EDMA_CreateHandle(&g_EDMA_Handle, DMA0, 5);
+    EDMA_SetCallback(&g_EDMA_Handle, EDMA_Callback, NULL);
+    EDMA_PrepareTransfer(&transferConfig, srcAddr, sizeof(srcAddr[0]), destAddr, sizeof(destAddr[0]),
+        sizeof(srcAddr[0]), sizeof(srcAddr), kEDMA_MemoryToMemory);
+    EDMA_SubmitTransfer(&g_EDMA_Handle, &transferConfig);
+    PWM_StartTimer(PWM1, kPWM_Control_Module_1);
+    EDMA_StartTransfer(&g_EDMA_Handle);
+    
+    /* Wait for EDMA transfer finish */
+    while (g_Transfer_Done != true)
+    {
+    }
+
+问题：
+PWM输入捕捉到了，使能中断的话能正常进中断，正常工作。启动DMA的时候无法触发DMA请求。
+
+/*XBARA DMA请求触发*/
+    /*XBARA DMA Request Init*/
+  CLOCK_EnableClock(kCLOCK_Iomuxc);           /* iomuxc clock (iomuxc_clk_enable): 0x03U */
+  CLOCK_EnableClock(kCLOCK_Xbar1);            /* xbar1 clock (xbar1_clk_enable): 0x03U */
+
+  IOMUXC_SetPinMux(
+      IOMUXC_GPIO_SD_B0_03_XBAR1_INOUT07,     /* GPIO_SD_B0_03 is configured as XBAR1_INOUT07 */
+      0U);                                    /* Software Input On Field: Input Path is determined by functionality */
+  IOMUXC_GPR->GPR6 = ((IOMUXC_GPR->GPR6 &
+    (~(IOMUXC_GPR_GPR6_IOMUXC_XBAR_DIR_SEL_7_MASK))) /* Mask bits to zero which are setting */
+      | IOMUXC_GPR_GPR6_IOMUXC_XBAR_DIR_SEL_7(0x00U) /* IOMUXC XBAR_INOUT7 function direction select: XBAR_INOUT as input */
+    );
+  XBARA_SetSignalsConnection(XBARA1, kXBARA1_InputIomuxXbarInout07, kXBARA1_OutputDmaChMuxReq30); /* IOMUX_XBAR_INOUT07 output assigned to XBARA1_IN7 input is connected to XBARA1_OUT0 output assigned to DMA_CH_MUX_REQ30 */
+
+    xbara_control_config_t XbaraConfig;
+    XbaraConfig.activeEdge = kXBARA_EdgeFalling;
+    XbaraConfig.requestType = kXBARA_RequestDMAEnable;
+
+    XBARA_SetOutputSignalConfig(XBARA1, kXBARA1_OutputDmaChMuxReq30, &XbaraConfig);
+    //XBARA1->CTRL0 = (0 | XBARA_CTRL0_EDGE1(2) | XBARA_CTRL0_IEN1(0) | XBARA_CTRL0_DEN1(1) | XBARA_CTRL0_EDGE0(2) | XBARA_CTRL0_IEN0(0) | XBARA_CTRL0_DEN0(1));
+    //EnableIRQ(XBAR1_IRQ_0_1_IRQn);
+    //EnableIRQ(XBAR1_IRQ_2_3_IRQn);
+
+    DMAMUX_Init(DMAMUX);
+    //DMAMUX_EnableAlwaysOn(DMAMUX, 5, true);
+    DMAMUX_SetSource(DMAMUX, 5, 30);
+    //DMAMUX_EnableChannel(DMAMUX, 5);
+    /* Configure EDMA one shot transfer */
+    /*
+    * userConfig.enableRoundRobinArbitration = false;
+    * userConfig.enableHaltOnError = true;
+    * userConfig.enableContinuousLinkMode = false;
+    * userConfig.enableDebugMode = false;
+    */
+    EDMA_GetDefaultConfig(&userConfig);
+    EDMA_Init(DMA0, &userConfig);
+    EDMA_CreateHandle(&g_EDMA_Handle, DMA0, 5);
+    EDMA_SetCallback(&g_EDMA_Handle, EDMA_Callback, NULL);
+    EDMA_PrepareTransfer(&transferConfig, srcAddr, sizeof(srcAddr[0]), destAddr, sizeof(destAddr[0]),
+        sizeof(srcAddr[0]), sizeof(srcAddr), kEDMA_MemoryToMemory);
+    EDMA_SubmitTransfer(&g_EDMA_Handle, &transferConfig);
+    //PWM_StartTimer(PWM1, kPWM_Control_Module_1);
+    EDMA_StartTransfer(&g_EDMA_Handle);
+    
+    /* Wait for EDMA transfer finish */
+    while (g_Transfer_Done != true)
+    {
+    }
+问题：
+没用
+

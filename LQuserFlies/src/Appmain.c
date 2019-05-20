@@ -59,15 +59,139 @@ void RunTimeTest()
 //GetSpeed(0);
 }
 
+/*******************************************************************************
+* Variables
+******************************************************************************/
+edma_handle_t g_EDMA_Handle;
+volatile bool g_Transfer_Done = false;
+
+/*******************************************************************************
+* Code
+******************************************************************************/
+
+/* User callback function for EDMA transfer. */
+void EDMA_Callback(edma_handle_t *handle, void *param, bool transferDone, uint32_t tcds)
+{
+    if (transferDone)
+    {
+        g_Transfer_Done = true;
+    }
+}
+
+AT_NONCACHEABLE_SECTION_INIT(uint32_t srcAddr[100]) = {0};
+AT_NONCACHEABLE_SECTION_INIT(uint32_t destAddr[100]) = {0};
+
+long XBARInterCount = 0;
+void XBAR1_IRQ_0_1_IRQHandler()
+{
+  
+  XBARInterCount++;
+}
+void XBAR1_IRQ_2_3_IRQHandler()
+{
+  
+  XBARInterCount++;
+}
+uint8 flag_PWM1Inter = 0;
+long PWMInterCount = 0;
+void PWM1_1_IRQHandler()
+{
+  PWM_ClearStatusFlags(PWM1, kPWM_Module_1,kPWM_CaptureB0Flag);
+  PWMInterCount++;
+  flag_PWM1Inter = 1;
+  return;
+}
+
 int main(void)
 {        
     uint8_t count = 0;
+    BOARD_ConfigMPU();                   /* 初始化内存保护单元 */
+    BOARD_InitSDRAMPins();               /* SDRAM初始化 */
+    BOARD_BootClockRUN();                /* 初始化开发板时钟 */
+    BOARD_InitDEBUG_UARTPins();          //UART调试口管脚复用初始化 
+    BOARD_InitDebugConsole();            //UART调试口初始化 可以使用 PRINTF函数          
+    //LED_Init();                          //初始化核心板和开发板上的LED接口
+    LQ_UART_Init(LPUART1, 115200);       //串口1初始化 可以使用 printf函数
+    _systime.init();                     //开启systick定时器
+    NVIC_SetPriorityGrouping(2);/*设置中断优先级组  0: 0个抢占优先级16位个子优先级
+                                *1: 2个抢占优先级 8个子优先级 2: 4个抢占优先级 4个子优先级
+                                *3: 8个抢占优先级 2个子优先级 4: 16个抢占优先级 0个子优先级
+                                */
+    
+    edma_transfer_config_t transferConfig;
+    edma_config_t userConfig;
     //InitAll();
     //PID_Speedloop_init(P_Set, D_Set, I_Set, I_limit, Max_output, DeadBand_Set);
     
+    for (int i = 0; i < 100; i++)
+    {
+        srcAddr[i] = i;
+    }
+    /*PWM Capture DMA Request Init*/
+    CLOCK_EnableClock(kCLOCK_Iomuxc);           /* iomuxc clock (iomuxc_clk_enable): 0x03U */
 
+    IOMUXC_SetPinMux(
+        IOMUXC_GPIO_SD_B0_03_FLEXPWM1_PWMB01,   /* GPIO_SD_B0_03 is configured as FLEXPWM1_PWMB01 */
+        0U);
 
+    pwm_config_t pwmCaptureConfig;
+    PWM_GetDefaultConfig(&pwmCaptureConfig);  //得到默认的PWM初始化结构体
 
+    pwmCaptureConfig.enableDebugMode = true;
+    pwmCaptureConfig.pairOperation = kPWM_Independent;   //PWMA和PWMB独立输出
+    PWM_Init(PWM1, kPWM_Module_1, &pwmCaptureConfig);
+    PWM1->SM[kPWM_Module_1].DISMAP[0] = 0;
+
+    pwm_input_capture_param_t PWMInputCaptureConfig;
+    PWMInputCaptureConfig.captureInputSel = false;
+    PWMInputCaptureConfig.edgeCompareValue = 0;
+    PWMInputCaptureConfig.edge0 = kPWM_FallingEdge;
+    PWMInputCaptureConfig.edge1 = kPWM_Disable;
+    PWMInputCaptureConfig.enableOneShotCapture = false;
+    PWMInputCaptureConfig.fifoWatermark = 4;//4
+    PWM_SetupInputCapture(PWM1, kPWM_Module_1, kPWM_PwmB, &PWMInputCaptureConfig);
+    PWM_DisableInterrupts(PWM1, kPWM_Module_1, kPWM_CaptureB0InterruptEnable);
+    //PWM_EnableInterrupts(PWM1, kPWM_Module_1, kPWM_CaptureB0InterruptEnable);
+    //EnableIRQ(PWM1_1_IRQn);
+    
+    //PWM1->SM[kPWM_Module_1].DMAEN = (0|0x0244);
+    PWM1->SM[kPWM_Module_1].DMAEN = (0 
+                                     | PWM_DMAEN_VALDE(1)
+                                     | PWM_DMAEN_FAND(0)
+                                     | PWM_DMAEN_CAPTDE(1)
+                                     | PWM_DMAEN_CB0DE(1));
+    
+
+    DMAMUX_Init(DMAMUX);
+    //DMAMUX_EnableAlwaysOn(DMAMUX, 5, true);
+    DMAMUX_SetSource(DMAMUX, 5, kDmaRequestMuxFlexPWM1CaptureSub1);
+    //DMAMUX_EnableChannel(DMAMUX, 5);
+    /* Configure EDMA one shot transfer */
+    /*
+    * userConfig.enableRoundRobinArbitration = false;
+    * userConfig.enableHaltOnError = true;
+    * userConfig.enableContinuousLinkMode = false;
+    * userConfig.enableDebugMode = false;
+    */
+    EDMA_GetDefaultConfig(&userConfig);
+    EDMA_Init(DMA0, &userConfig);
+    EDMA_CreateHandle(&g_EDMA_Handle, DMA0, 5);
+    EDMA_SetCallback(&g_EDMA_Handle, EDMA_Callback, NULL);
+    EDMA_PrepareTransfer(&transferConfig, srcAddr, sizeof(srcAddr[0]), destAddr, sizeof(destAddr[0]),
+        sizeof(srcAddr[0]), sizeof(srcAddr), kEDMA_MemoryToMemory);
+    EDMA_SubmitTransfer(&g_EDMA_Handle, &transferConfig);
+
+    EDMA_StartTransfer(&g_EDMA_Handle);
+        PWM1->SM[kPWM_Module_1].DMAEN = (0 
+                                     | PWM_DMAEN_VALDE(1)
+                                     | PWM_DMAEN_FAND(0)
+                                     | PWM_DMAEN_CAPTDE(1)
+                                     | PWM_DMAEN_CB0DE(1));
+    PWM_StartTimer(PWM1, kPWM_Control_Module_1);    
+    /* Wait for EDMA transfer finish */
+    while (g_Transfer_Done != true)
+    {
+    }
 
 
     _systime.delay_ms(200);
@@ -107,7 +231,7 @@ void InitAll()
     adc_V = GetBatteryVoltage(0);
     EncoderMeasure_Init();
     RemoteInit();
-    //camera_init_1();
+    camera_init_1();
     //Series_Receive_init();
     LQ_PIT_Init(kPIT_Chnl_0, 3000);//3000us
 }

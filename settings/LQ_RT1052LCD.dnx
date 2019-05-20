@@ -28,7 +28,7 @@
         <EnableCache>1</EnableCache>
     </ArmDriver>
     <DebugChecksum>
-        <Checksum>439114560</Checksum>
+        <Checksum>1418569849</Checksum>
     </DebugChecksum>
     <Exceptions>
         <StopOnUncaught>_ 0</StopOnUncaught>
@@ -192,13 +192,16 @@
         <Bp2>_ 0 "EMUL_CODE" "{$PROJ_DIR$\LQuserFlies\src\PigMT9V032.c}.340.21" 0 0 1 "" 0 "" 0</Bp2>
         <Bp3>_ 0 "EMUL_CODE" "{$PROJ_DIR$\LQuserFlies\src\LQ_SGP18Test.c}.35.5" 0 0 1 "" 0 "" 0</Bp3>
         <Bp4>_ 0 "EMUL_CODE" "{$PROJ_DIR$\LQuserFlies\src\LQ_SGP18Test.c}.52.9" 0 0 1 "" 0 "" 0</Bp4>
-        <Bp5>_ 0 "EMUL_CODE" "{$PROJ_DIR$\LQuserFlies\src\Appmain.c}.222.5" 0 0 1 "" 0 "" 0</Bp5>
-        <Bp6>_ 0 "EMUL_CODE" "{$PROJ_DIR$\LQuserFlies\src\Appmain.c}.250.1" 0 0 1 "" 0 "" 0</Bp6>
-        <Bp7>_ 0 "EMUL_CODE" "{$PROJ_DIR$\LQuserFlies\src\Appmain.c}.222.5" 0 0 1 "" 0 "" 0</Bp7>
-        <Bp8>_ 0 "EMUL_CODE" "{$PROJ_DIR$\LQuserFlies\src\Appmain.c}.250.1" 0 0 1 "" 0 "" 0</Bp8>
+        <Bp5>_ 0 "EMUL_CODE" "{$PROJ_DIR$\LQuserFlies\src\Appmain.c}.288.17" 0 0 1 "" 0 "" 0</Bp5>
+        <Bp6>_ 0 "EMUL_CODE" "{$PROJ_DIR$\LQuserFlies\src\Appmain.c}.288.17" 0 0 1 "" 0 "" 0</Bp6>
+        <Bp7>_ 0 "EMUL_CODE" "{$PROJ_DIR$\LQuserFlies\src\Appmain.c}.288.17" 0 0 1 "" 0 "" 0</Bp7>
+        <Bp8>_ 0 "EMUL_CODE" "{$PROJ_DIR$\LQuserFlies\src\Appmain.c}.288.17" 0 0 1 "" 0 "" 0</Bp8>
         <Bp9>_ 1 "EMUL_CODE" "{$PROJ_DIR$\LQuserFlies\src\LQ_UART.c}.455.2" 0 0 1 "" 0 "" 0</Bp9>
-        <Bp10>_ 1 "EMUL_CODE" "{$PROJ_DIR$\LQuserFlies\src\LQ_UART.c}.444.3" 0 0 1 "" 0 "" 0</Bp10>
-        <Count>11</Count>
+        <Bp10>_ 0 "EMUL_CODE" "{$PROJ_DIR$\LQuserFlies\src\Appmain.c}.1.1" 0 0 1 "" 0 "" 0</Bp10>
+        <Bp11>_ 0 "EMUL_CODE" "{$PROJ_DIR$\LQuserFlies\src\PigMT9V032.c}.514.5" 0 0 1 "" 0 "" 0</Bp11>
+        <Bp12>_ 1 "EMUL_CODE" "{$PROJ_DIR$\LQuserFlies\src\Appmain.c}.88.3" 0 0 1 "" 0 "" 0</Bp12>
+        <Bp13>_ 1 "EMUL_CODE" "{$PROJ_DIR$\LQuserFlies\src\Appmain.c}.93.3" 0 0 1 "" 0 "" 0</Bp13>
+        <Count>14</Count>
     </Breakpoints2>
     <Aliases>
         <A0>_ "D:\智能车\麦轮信标\程序\RT1052\LQ_RT1052TFT1.8寸屏 母板综合测试例程\LQuserFlies\devices\drivers\fsl_gpio.c" ""</A0>
