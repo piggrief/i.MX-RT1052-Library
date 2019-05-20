@@ -45,8 +45,15 @@ QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ*/
     #include "fsl_lpuart_edma.h"
     #include "fsl_edma.h"
     #include "fsl_dmamux.h"
+    #include "fsl_lpspi.h"
 
 #define delayms(x) _systime.delay_ms(x)
+#define delayus(x) _systime.delay_us(x)
+#define uint16 uint16_t
+#define int16 int16_t
+#define uint8 uint8_t
+#define int8 int8_t
+
 
 //用户自定义文件    
     #include "LQ_IIC.h"
@@ -70,6 +77,8 @@ QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ*/
     #include "DebugFunction.h"
     #include "MecanumWheelControl.h" 
 
+    #include "Pig_SPI.h"
+    #include "TFTDriver.h"
 //    void LQ_Get_CameraBuff(void);//得到摄像头数据 
 //    void LQ_Camera_0_1_Handle(void);  //二值化并显示
 //    void Seek_Road(void);

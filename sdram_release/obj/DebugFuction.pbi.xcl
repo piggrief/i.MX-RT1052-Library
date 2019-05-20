@@ -49,6 +49,8 @@ D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQuserFlie
 -I
 D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQuserFlies\src\ANO_DT
 -I
+D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\Pig_DriverFiles
+-I
 C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.1\arm\inc
 -I
 C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.1\arm\inc\c
@@ -96,6 +98,8 @@ D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQuserFlie
 D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQuserFlies\src\sys
 -I
 D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQuserFlies\src\ANO_DT
+-I
+D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\Pig_DriverFiles
 -D__CHAR_BITS__=8
 -D__CHAR_MAX__=0xff
 -D__CHAR_MIN__=0

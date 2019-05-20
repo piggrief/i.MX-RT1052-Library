@@ -2,52 +2,55 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 	<ItemGroup>
 		<Filter Include="源文件\App_main">
-			<UniqueIdentifier>{81a7b332-58d8-4908-741f-b8e9cc0c724a}</UniqueIdentifier>
+			<UniqueIdentifier>{cede39cf-6a32-477d-5f12-66ce3988901e}</UniqueIdentifier>
 		</Filter>
 		<Filter Include="源文件\AppDriver">
-			<UniqueIdentifier>{4b10d70e-799f-4529-5604-4a0b92a379a5}</UniqueIdentifier>
+			<UniqueIdentifier>{41484da8-c43a-4f7f-6d9c-7c3ddd2374da}</UniqueIdentifier>
 		</Filter>
 		<Filter Include="源文件\AppDriver\AHRS">
-			<UniqueIdentifier>{8a24b222-0bd9-45a0-41ef-731ac9542e2e}</UniqueIdentifier>
+			<UniqueIdentifier>{fe9a8ed6-ace3-4c36-7426-56bba06379c6}</UniqueIdentifier>
 		</Filter>
 		<Filter Include="源文件\AppDriver\car">
-			<UniqueIdentifier>{53637785-155d-4626-6228-0438b1957415}</UniqueIdentifier>
+			<UniqueIdentifier>{f215cd0d-d853-42d0-7c5e-2191677c86a3}</UniqueIdentifier>
 		</Filter>
 		<Filter Include="源文件\AppDriver\LCD">
-			<UniqueIdentifier>{28c43a18-7ebf-49c2-7417-094d86ad1c8e}</UniqueIdentifier>
+			<UniqueIdentifier>{8335b8a2-35f5-48d9-7d7e-8d2608a83cd5}</UniqueIdentifier>
 		</Filter>
 		<Filter Include="源文件\AppDriver\MT9V032">
-			<UniqueIdentifier>{cfbdd5e1-8bfa-45b4-5543-2503cafc9fbb}</UniqueIdentifier>
+			<UniqueIdentifier>{19b9ecb0-5b56-40d6-5e12-252ec5a9eea0}</UniqueIdentifier>
 		</Filter>
 		<Filter Include="源文件\AppDriver\Pig_eDMA">
-			<UniqueIdentifier>{ee979390-bac6-4bf0-437c-dacf48c8b5ad}</UniqueIdentifier>
+			<UniqueIdentifier>{b6c5135f-1b9b-49f6-764b-8e3abad2936e}</UniqueIdentifier>
 		</Filter>
 		<Filter Include="源文件\AppDriver\SDCard">
-			<UniqueIdentifier>{2e57fcef-138a-43be-4eb0-c0f282e97508}</UniqueIdentifier>
+			<UniqueIdentifier>{24b83b8c-84ac-4a5e-6ff7-1cad78032767}</UniqueIdentifier>
 		</Filter>
 		<Filter Include="源文件\AppDriver\Sys">
-			<UniqueIdentifier>{82592299-e382-4411-6933-f4c1930aa7c5}</UniqueIdentifier>
+			<UniqueIdentifier>{d30d2bed-2717-423d-62d6-42a6a9096f92}</UniqueIdentifier>
 		</Filter>
 		<Filter Include="源文件\board">
-			<UniqueIdentifier>{b8e2d8b7-b552-4142-7951-31ca10109284}</UniqueIdentifier>
+			<UniqueIdentifier>{bf5a7d00-704d-44ac-713c-090b6b0f6c41}</UniqueIdentifier>
 		</Filter>
 		<Filter Include="源文件\BoardDriver">
-			<UniqueIdentifier>{82bb97bd-2c58-45b9-4b01-21e306cffc85}</UniqueIdentifier>
+			<UniqueIdentifier>{eb37205b-ee40-43b9-7c6f-3a5380b69be4}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="源文件\BoardDriver\Pig_SPI">
+			<UniqueIdentifier>{2f182467-9142-4e12-76eb-e880d68118fa}</UniqueIdentifier>
 		</Filter>
 		<Filter Include="源文件\drivers">
-			<UniqueIdentifier>{b90fcdcd-bfcf-4271-62df-4bf696aee9eb}</UniqueIdentifier>
+			<UniqueIdentifier>{6118fd69-fc4e-4f47-4f93-e3da7c180300}</UniqueIdentifier>
 		</Filter>
 		<Filter Include="源文件\startup">
-			<UniqueIdentifier>{060f9713-3ca0-4152-49aa-87ecf5c6a347}</UniqueIdentifier>
+			<UniqueIdentifier>{81b87de6-c899-4539-473a-38bdba36c679}</UniqueIdentifier>
 		</Filter>
 		<Filter Include="源文件\utilities">
-			<UniqueIdentifier>{e5ed9b32-68c1-45b1-5fc1-8b4208fe87b2}</UniqueIdentifier>
+			<UniqueIdentifier>{11c9016a-4a65-4bee-56be-0a87ffa1b3c7}</UniqueIdentifier>
 		</Filter>
 		<Filter Include="源文件\XIP">
-			<UniqueIdentifier>{ba735394-00c1-43aa-5432-094a5ce3adcb}</UniqueIdentifier>
+			<UniqueIdentifier>{87fb2e9a-5ccc-44aa-5a37-d25665bbeffe}</UniqueIdentifier>
 		</Filter>
 		<Filter Include="源文件">
-			<UniqueIdentifier>{8ffca85e-8c6d-49d7-481b-9da34f4049c6}</UniqueIdentifier>
+			<UniqueIdentifier>{2a866410-d151-409d-766c-a73fc016d33b}</UniqueIdentifier>
 		</Filter>
 	</ItemGroup>
 	<ItemGroup>
@@ -131,6 +134,12 @@
 		</ClCompile>
 		<ClCompile Include="..\LQuserFlies\src\MecanumWheelControl.c">
 			<Filter>源文件\BoardDriver</Filter>
+		</ClCompile>
+		<ClCompile Include="..\Pig_DriverFiles\Pig_SPI.c">
+			<Filter>源文件\BoardDriver\Pig_SPI</Filter>
+		</ClCompile>
+		<ClCompile Include="..\Pig_DriverFiles\TFTDriver.c">
+			<Filter>源文件\BoardDriver\Pig_SPI</Filter>
 		</ClCompile>
 		<ClCompile Include="..\LQuserFlies\devices\drivers\fsl_adc.c">
 			<Filter>源文件\drivers</Filter>
@@ -328,6 +337,12 @@
 		</ClInclude>
 		<ClInclude Include="..\LQuserFlies\src\MecanumWheelControl.h">
 			<Filter>源文件\BoardDriver</Filter>
+		</ClInclude>
+		<ClInclude Include="..\Pig_DriverFiles\Pig_SPI.h">
+			<Filter>源文件\BoardDriver\Pig_SPI</Filter>
+		</ClInclude>
+		<ClInclude Include="..\Pig_DriverFiles\TFTDriver.h">
+			<Filter>源文件\BoardDriver\Pig_SPI</Filter>
 		</ClInclude>
 		<ClInclude Include="..\LQuserFlies\devices\drivers\fsl_adc.h">
 			<Filter>源文件\drivers</Filter>

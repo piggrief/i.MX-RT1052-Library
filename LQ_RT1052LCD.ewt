@@ -2554,6 +2554,21 @@
     </group>
     <group>
         <name>BoardDriver</name>
+        <group>
+            <name>Pig_SPI</name>
+            <file>
+                <name>$PROJ_DIR$\Pig_DriverFiles\Pig_SPI.c</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\Pig_DriverFiles\Pig_SPI.h</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\Pig_DriverFiles\TFTDriver.c</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\Pig_DriverFiles\TFTDriver.h</name>
+            </file>
+        </group>
         <file>
             <name>$PROJ_DIR$\LQuserFlies\src\AttitudeCalculation.c</name>
         </file>
@@ -2676,6 +2691,12 @@
         </file>
         <file>
             <name>$PROJ_DIR$\LQuserFlies\devices\drivers\fsl_lpspi.h</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\LQuserFlies\devices\drivers\fsl_lpspi_edma.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\LQuserFlies\devices\drivers\fsl_lpspi_edma.h</name>
         </file>
         <file>
             <name>$PROJ_DIR$\LQuserFlies\devices\drivers\fsl_lpuart.c</name>

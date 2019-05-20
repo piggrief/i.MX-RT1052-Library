@@ -16,10 +16,10 @@
         <MemConfigValue>C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.1\arm\CONFIG\debugger\NXP\MIMXRT1052xxx6A.ddf</MemConfigValue>
     </PlDriver>
     <Jet>
-        <JetConnSerialNo>97969900</JetConnSerialNo>
-        <JetConnFoundProbes />
         <PrevWtdReset>Core</PrevWtdReset>
         <OnlineReset>Software</OnlineReset>
+        <JetConnSerialNo>97969900</JetConnSerialNo>
+        <JetConnFoundProbes />
         <DisableInterrupts>0</DisableInterrupts>
         <LeaveRunning>0</LeaveRunning>
         <MultiCoreRunAll>0</MultiCoreRunAll>
@@ -28,7 +28,7 @@
         <EnableCache>1</EnableCache>
     </ArmDriver>
     <DebugChecksum>
-        <Checksum>1418569849</Checksum>
+        <Checksum>4138526762</Checksum>
     </DebugChecksum>
     <Exceptions>
         <StopOnUncaught>_ 0</StopOnUncaught>
@@ -79,43 +79,6 @@
         <ITMportsLogFile>0</ITMportsLogFile>
         <ITMlogFile>$PROJ_DIR$\ITM.log</ITMlogFile>
     </SWOTraceHWSettings>
-    <ETMTraceWindow>
-        <PortWidth>4</PortWidth>
-        <PortMode>0</PortMode>
-        <CaptureDataValues>0</CaptureDataValues>
-        <CaptureDataAddresses>0</CaptureDataAddresses>
-        <CaptureDataRange>0</CaptureDataRange>
-        <DataFirst>0</DataFirst>
-        <DataLast>4294967295</DataLast>
-        <StopWhen>0</StopWhen>
-        <StallCPU>0</StallCPU>
-        <NoPCCapture>0</NoPCCapture>
-    </ETMTraceWindow>
-    <struct_types>
-        <Fmt0>edma_transfer_config_t-destAddr	4	0</Fmt0>
-        <Fmt1>edma_transfer_config_t-srcAddr	4	0</Fmt1>
-    </struct_types>
-    <array_types>
-        <Fmt0>unsigned char[188]	3	0</Fmt0>
-    </array_types>
-    <Trace1>
-        <Enabled>0</Enabled>
-        <ShowSource>1</ShowSource>
-    </Trace1>
-    <Trace2>
-        <Enabled>0</Enabled>
-        <ShowSource>0</ShowSource>
-    </Trace2>
-    <SWOTraceWindow>
-        <PcSampling>0</PcSampling>
-        <InterruptLogs>0</InterruptLogs>
-        <ForcedTimeStamps>0</ForcedTimeStamps>
-        <EventCPI>0</EventCPI>
-        <EventEXC>0</EventEXC>
-        <EventFOLD>0</EventFOLD>
-        <EventLSU>0</EventLSU>
-        <EventSLEEP>0</EventSLEEP>
-    </SWOTraceWindow>
     <PowerLog>
         <Title_0>I0</Title_0>
         <Symbol_0>0 4 0</Symbol_0>
@@ -156,15 +119,6 @@
         <ShowTimeSum>1</ShowTimeSum>
         <SumSortOrder>0</SumSortOrder>
     </EventLog>
-    <TermIOLog>
-        <LoggingEnabled>_ 0</LoggingEnabled>
-        <LogFile>_ ""</LogFile>
-    </TermIOLog>
-    <LogFile>
-        <LoggingEnabled>_ 0</LoggingEnabled>
-        <LogFile>_ ""</LogFile>
-        <Category>_ 0</Category>
-    </LogFile>
     <DriverProfiling>
         <Enabled>0</Enabled>
         <Mode>1</Mode>
@@ -183,6 +137,52 @@
         <Probe0>I0</Probe0>
         <ProbeSetup0>2 1 1 2 0 0</ProbeSetup0>
     </PowerProbe>
+    <struct_types>
+        <Fmt0>edma_transfer_config_t-destAddr	4	0</Fmt0>
+        <Fmt1>edma_transfer_config_t-srcAddr	4	0</Fmt1>
+    </struct_types>
+    <array_types>
+        <Fmt0>unsigned char[188]	3	0</Fmt0>
+    </array_types>
+    <Trace1>
+        <Enabled>0</Enabled>
+        <ShowSource>1</ShowSource>
+    </Trace1>
+    <ETMTraceWindow>
+        <PortWidth>4</PortWidth>
+        <PortMode>0</PortMode>
+        <CaptureDataValues>0</CaptureDataValues>
+        <CaptureDataAddresses>0</CaptureDataAddresses>
+        <CaptureDataRange>0</CaptureDataRange>
+        <DataFirst>0</DataFirst>
+        <DataLast>4294967295</DataLast>
+        <StopWhen>0</StopWhen>
+        <StallCPU>0</StallCPU>
+        <NoPCCapture>0</NoPCCapture>
+    </ETMTraceWindow>
+    <Trace2>
+        <Enabled>0</Enabled>
+        <ShowSource>0</ShowSource>
+    </Trace2>
+    <SWOTraceWindow>
+        <ForcedPcSampling>0</ForcedPcSampling>
+        <ForcedInterruptLogs>0</ForcedInterruptLogs>
+        <ForcedItmLogs>0</ForcedItmLogs>
+        <EventCPI>0</EventCPI>
+        <EventEXC>0</EventEXC>
+        <EventFOLD>0</EventFOLD>
+        <EventLSU>0</EventLSU>
+        <EventSLEEP>0</EventSLEEP>
+    </SWOTraceWindow>
+    <TermIOLog>
+        <LoggingEnabled>_ 0</LoggingEnabled>
+        <LogFile>_ ""</LogFile>
+    </TermIOLog>
+    <LogFile>
+        <LoggingEnabled>_ 0</LoggingEnabled>
+        <LogFile>_ ""</LogFile>
+        <Category>_ 0</Category>
+    </LogFile>
     <DisassembleMode>
         <mode>0</mode>
     </DisassembleMode>
@@ -192,16 +192,15 @@
         <Bp2>_ 0 "EMUL_CODE" "{$PROJ_DIR$\LQuserFlies\src\PigMT9V032.c}.340.21" 0 0 1 "" 0 "" 0</Bp2>
         <Bp3>_ 0 "EMUL_CODE" "{$PROJ_DIR$\LQuserFlies\src\LQ_SGP18Test.c}.35.5" 0 0 1 "" 0 "" 0</Bp3>
         <Bp4>_ 0 "EMUL_CODE" "{$PROJ_DIR$\LQuserFlies\src\LQ_SGP18Test.c}.52.9" 0 0 1 "" 0 "" 0</Bp4>
-        <Bp5>_ 0 "EMUL_CODE" "{$PROJ_DIR$\LQuserFlies\src\Appmain.c}.288.17" 0 0 1 "" 0 "" 0</Bp5>
-        <Bp6>_ 0 "EMUL_CODE" "{$PROJ_DIR$\LQuserFlies\src\Appmain.c}.288.17" 0 0 1 "" 0 "" 0</Bp6>
-        <Bp7>_ 0 "EMUL_CODE" "{$PROJ_DIR$\LQuserFlies\src\Appmain.c}.288.17" 0 0 1 "" 0 "" 0</Bp7>
-        <Bp8>_ 0 "EMUL_CODE" "{$PROJ_DIR$\LQuserFlies\src\Appmain.c}.288.17" 0 0 1 "" 0 "" 0</Bp8>
+        <Bp5>_ 0 "EMUL_CODE" "{$PROJ_DIR$\LQuserFlies\src\Appmain.c}.223.13" 0 0 1 "" 0 "" 0</Bp5>
+        <Bp6>_ 0 "EMUL_CODE" "{$PROJ_DIR$\LQuserFlies\src\Appmain.c}.223.13" 0 0 1 "" 0 "" 0</Bp6>
+        <Bp7>_ 0 "EMUL_CODE" "{$PROJ_DIR$\LQuserFlies\src\Appmain.c}.223.13" 0 0 1 "" 0 "" 0</Bp7>
+        <Bp8>_ 0 "EMUL_CODE" "{$PROJ_DIR$\LQuserFlies\src\Appmain.c}.223.17" 0 0 1 "" 0 "" 0</Bp8>
         <Bp9>_ 1 "EMUL_CODE" "{$PROJ_DIR$\LQuserFlies\src\LQ_UART.c}.455.2" 0 0 1 "" 0 "" 0</Bp9>
         <Bp10>_ 0 "EMUL_CODE" "{$PROJ_DIR$\LQuserFlies\src\Appmain.c}.1.1" 0 0 1 "" 0 "" 0</Bp10>
         <Bp11>_ 0 "EMUL_CODE" "{$PROJ_DIR$\LQuserFlies\src\PigMT9V032.c}.514.5" 0 0 1 "" 0 "" 0</Bp11>
-        <Bp12>_ 1 "EMUL_CODE" "{$PROJ_DIR$\LQuserFlies\src\Appmain.c}.88.3" 0 0 1 "" 0 "" 0</Bp12>
-        <Bp13>_ 1 "EMUL_CODE" "{$PROJ_DIR$\LQuserFlies\src\Appmain.c}.93.3" 0 0 1 "" 0 "" 0</Bp13>
-        <Count>14</Count>
+        <Bp12>_ 1 "EMUL_CODE" "{$PROJ_DIR$\LQuserFlies\src\Appmain.c}.84.11" 0 0 1 "" 0 "" 0</Bp12>
+        <Count>13</Count>
     </Breakpoints2>
     <Aliases>
         <A0>_ "D:\智能车\麦轮信标\程序\RT1052\LQ_RT1052TFT1.8寸屏 母板综合测试例程\LQuserFlies\devices\drivers\fsl_gpio.c" ""</A0>

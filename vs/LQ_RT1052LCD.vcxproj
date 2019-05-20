@@ -65,6 +65,10 @@
     </ClCompile>
     <ClCompile Include="..\LQuserFlies\src\MecanumWheelControl.c">
     </ClCompile>
+    <ClCompile Include="..\Pig_DriverFiles\Pig_SPI.c">
+    </ClCompile>
+    <ClCompile Include="..\Pig_DriverFiles\TFTDriver.c">
+    </ClCompile>
     <ClCompile Include="..\LQuserFlies\devices\drivers\fsl_adc.c">
     </ClCompile>
     <ClCompile Include="..\LQuserFlies\devices\drivers\fsl_clock.c">
@@ -197,6 +201,10 @@
     </ClInclude>
     <ClInclude Include="..\LQuserFlies\src\MecanumWheelControl.h">
     </ClInclude>
+    <ClInclude Include="..\Pig_DriverFiles\Pig_SPI.h">
+    </ClInclude>
+    <ClInclude Include="..\Pig_DriverFiles\TFTDriver.h">
+    </ClInclude>
     <ClInclude Include="..\LQuserFlies\devices\drivers\fsl_adc.h">
     </ClInclude>
     <ClInclude Include="..\LQuserFlies\devices\drivers\fsl_clock.h">
@@ -273,7 +281,7 @@
     </None>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{3D5C841F-2AA7-4B82-4DE8-0D37BE4848FE}</ProjectGuid>
+    <ProjectGuid>{F5D1515B-DCF4-408B-6EE1-02FD72660B0E}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>LQ_RT1052LCD</RootNamespace>
   </PropertyGroup>
@@ -283,7 +291,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='sdram_release|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>..\LQuserFlies\src;..\LQuserFlies\src\board;..\LQuserFlies\src\camera;..\LQuserFlies\src\touch;..\LQuserFlies\devices;..\LQuserFlies\devices\drivers;..\LQuserFlies\devices\utilities;..\LQuserFlies\devices\startup;..\LQuserFlies\CMSIS;..\LQuserFlies\middleware\fatfs;..\LQuserFlies\middleware\libjpeg;..\LQuserFlies\middleware\TF;..\LQuserFlies\middleware\usb;..\LQuserFlies\middleware\usb\device;..\LQuserFlies\middleware\usb\host;..\LQuserFlies\middleware\usb\host\class;..\LQuserFlies\middleware\usb\include;..\LQuserFlies\middleware\usb\osa;..\LQuserFlies\middleware\usb\phy;..\LQuserFlies\middleware\dma_manager;..\LQuserFlies\src\sys;..\LQuserFlies\src\ANO_DT</IncludePath>
+    <IncludePath>..\LQuserFlies\src;..\LQuserFlies\src\board;..\LQuserFlies\src\camera;..\LQuserFlies\src\touch;..\LQuserFlies\devices;..\LQuserFlies\devices\drivers;..\LQuserFlies\devices\utilities;..\LQuserFlies\devices\startup;..\LQuserFlies\CMSIS;..\LQuserFlies\middleware\fatfs;..\LQuserFlies\middleware\libjpeg;..\LQuserFlies\middleware\TF;..\LQuserFlies\middleware\usb;..\LQuserFlies\middleware\usb\device;..\LQuserFlies\middleware\usb\host;..\LQuserFlies\middleware\usb\host\class;..\LQuserFlies\middleware\usb\include;..\LQuserFlies\middleware\usb\osa;..\LQuserFlies\middleware\usb\phy;..\LQuserFlies\middleware\dma_manager;..\LQuserFlies\src\sys;..\LQuserFlies\src\ANO_DT;..\Pig_DriverFiles</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='sdram_debug|Win32'">
     <ClCompile>
