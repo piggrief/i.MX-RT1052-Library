@@ -12,9 +12,9 @@
 # define _DEBUGFUNCTION_H_
 //# define Remote_UseDigitalReceive
 # define CRC_Uart_Port LPUART1
-# define Series_Uart_Port LPUART8
+# define Series_Uart_Port LPUART5
 # define GY53_Uart_Port LPUART6
-# define Remote_Uart_Port LPUART2
+# define Remote_Uart_Port LPUART3
 /// <summary>
 ///给虚拟示波器发送a,b,c,d取整之后的值
 ///<para>example:  SEND(a,b,c,d);</para>

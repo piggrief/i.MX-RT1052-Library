@@ -305,13 +305,13 @@ void LQ_PWM_InitPins(uint8_t pwm_num, pwm_submodule_t subModule, pwm_channels_t 
                 {
                     if(pwm_channels == kPWM_PwmA || pwm_channels == kPWM_PwmA_B)
                     {
-                        IOMUXC_SetPinMux(IOMUXC_GPIO_SD_B1_02_FLEXPWM2_PWMA03, 0U);      //M3
-                        IOMUXC_SetPinConfig(IOMUXC_GPIO_SD_B1_02_FLEXPWM2_PWMA03, 0x10B0u);    
+                        IOMUXC_SetPinMux(IOMUXC_GPIO_B1_02_FLEXPWM2_PWMA03, 0U);      //M3
+                        IOMUXC_SetPinConfig(IOMUXC_GPIO_B1_02_FLEXPWM2_PWMA03, 0x10B0u);
                     }
                     if(pwm_channels == kPWM_PwmB || pwm_channels == kPWM_PwmA_B)
                     {
-                        IOMUXC_SetPinMux(IOMUXC_GPIO_SD_B1_03_FLEXPWM2_PWMB03, 0U);      //M4
-                        IOMUXC_SetPinConfig(IOMUXC_GPIO_SD_B1_03_FLEXPWM2_PWMB03, 0x10B0u); 
+                        IOMUXC_SetPinMux(IOMUXC_GPIO_B1_03_FLEXPWM2_PWMB03, 0U);      //M4
+                        IOMUXC_SetPinConfig(IOMUXC_GPIO_B1_03_FLEXPWM2_PWMB03, 0x10B0u);
 //                        IOMUXC_SetPinMux(IOMUXC_GPIO_AD_B0_01_FLEXPWM2_PWMB03, 0U);        //H10                    
 //                        IOMUXC_SetPinConfig(IOMUXC_GPIO_AD_B0_01_FLEXPWM2_PWMB03, 0x10B0u); 
                     }

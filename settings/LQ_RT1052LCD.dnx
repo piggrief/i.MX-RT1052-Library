@@ -16,10 +16,10 @@
         <MemConfigValue>C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.1\arm\CONFIG\debugger\NXP\MIMXRT1052xxx6A.ddf</MemConfigValue>
     </PlDriver>
     <Jet>
-        <PrevWtdReset>Core</PrevWtdReset>
-        <OnlineReset>Software</OnlineReset>
         <JetConnSerialNo>97969900</JetConnSerialNo>
         <JetConnFoundProbes />
+        <PrevWtdReset>Core</PrevWtdReset>
+        <OnlineReset>Software</OnlineReset>
         <DisableInterrupts>0</DisableInterrupts>
         <LeaveRunning>0</LeaveRunning>
         <MultiCoreRunAll>0</MultiCoreRunAll>
@@ -28,7 +28,7 @@
         <EnableCache>1</EnableCache>
     </ArmDriver>
     <DebugChecksum>
-        <Checksum>4138526762</Checksum>
+        <Checksum>248866177</Checksum>
     </DebugChecksum>
     <Exceptions>
         <StopOnUncaught>_ 0</StopOnUncaught>
@@ -51,8 +51,8 @@
         <PowerConnectPC>1</PowerConnectPC>
     </SWOManager>
     <Disassembly>
-        <MixedMode>1</MixedMode>
         <InstrCount>0</InstrCount>
+        <MixedMode>1</MixedMode>
     </Disassembly>
     <JLinkDriver>
         <CStepIntDis>_ 0</CStepIntDis>
@@ -79,6 +79,19 @@
         <ITMportsLogFile>0</ITMportsLogFile>
         <ITMlogFile>$PROJ_DIR$\ITM.log</ITMlogFile>
     </SWOTraceHWSettings>
+    <DriverProfiling>
+        <Enabled>0</Enabled>
+        <Mode>1</Mode>
+        <Graph>0</Graph>
+        <Symbiont>0</Symbiont>
+        <Exclusions />
+    </DriverProfiling>
+    <CallStackLog>
+        <Enabled>0</Enabled>
+    </CallStackLog>
+    <CallStackStripe>
+        <ShowTiming>1</ShowTiming>
+    </CallStackStripe>
     <PowerLog>
         <Title_0>I0</Title_0>
         <Symbol_0>0 4 0</Symbol_0>
@@ -119,19 +132,6 @@
         <ShowTimeSum>1</ShowTimeSum>
         <SumSortOrder>0</SumSortOrder>
     </EventLog>
-    <DriverProfiling>
-        <Enabled>0</Enabled>
-        <Mode>1</Mode>
-        <Graph>0</Graph>
-        <Symbiont>0</Symbiont>
-        <Exclusions />
-    </DriverProfiling>
-    <CallStackLog>
-        <Enabled>0</Enabled>
-    </CallStackLog>
-    <CallStackStripe>
-        <ShowTiming>1</ShowTiming>
-    </CallStackStripe>
     <PowerProbe>
         <Frequency>10000</Frequency>
         <Probe0>I0</Probe0>
@@ -192,15 +192,14 @@
         <Bp2>_ 0 "EMUL_CODE" "{$PROJ_DIR$\LQuserFlies\src\PigMT9V032.c}.340.21" 0 0 1 "" 0 "" 0</Bp2>
         <Bp3>_ 0 "EMUL_CODE" "{$PROJ_DIR$\LQuserFlies\src\LQ_SGP18Test.c}.35.5" 0 0 1 "" 0 "" 0</Bp3>
         <Bp4>_ 0 "EMUL_CODE" "{$PROJ_DIR$\LQuserFlies\src\LQ_SGP18Test.c}.52.9" 0 0 1 "" 0 "" 0</Bp4>
-        <Bp5>_ 0 "EMUL_CODE" "{$PROJ_DIR$\LQuserFlies\src\Appmain.c}.223.13" 0 0 1 "" 0 "" 0</Bp5>
-        <Bp6>_ 0 "EMUL_CODE" "{$PROJ_DIR$\LQuserFlies\src\Appmain.c}.223.13" 0 0 1 "" 0 "" 0</Bp6>
-        <Bp7>_ 0 "EMUL_CODE" "{$PROJ_DIR$\LQuserFlies\src\Appmain.c}.223.13" 0 0 1 "" 0 "" 0</Bp7>
-        <Bp8>_ 0 "EMUL_CODE" "{$PROJ_DIR$\LQuserFlies\src\Appmain.c}.223.17" 0 0 1 "" 0 "" 0</Bp8>
-        <Bp9>_ 1 "EMUL_CODE" "{$PROJ_DIR$\LQuserFlies\src\LQ_UART.c}.455.2" 0 0 1 "" 0 "" 0</Bp9>
+        <Bp5>_ 0 "EMUL_CODE" "{$PROJ_DIR$\LQuserFlies\src\Appmain.c}.222.1" 0 0 1 "" 0 "" 0</Bp5>
+        <Bp6>_ 0 "EMUL_CODE" "{$PROJ_DIR$\LQuserFlies\src\Appmain.c}.222.1" 0 0 1 "" 0 "" 0</Bp6>
+        <Bp7>_ 0 "EMUL_CODE" "{$PROJ_DIR$\LQuserFlies\src\Appmain.c}.222.1" 0 0 1 "" 0 "" 0</Bp7>
+        <Bp8>_ 0 "EMUL_CODE" "{$PROJ_DIR$\LQuserFlies\src\Appmain.c}.222.1" 0 0 1 "" 0 "" 0</Bp8>
+        <Bp9>_ 1 "EMUL_CODE" "{$PROJ_DIR$\LQuserFlies\src\LQ_UART.c}.455.3" 0 0 1 "" 0 "" 0</Bp9>
         <Bp10>_ 0 "EMUL_CODE" "{$PROJ_DIR$\LQuserFlies\src\Appmain.c}.1.1" 0 0 1 "" 0 "" 0</Bp10>
         <Bp11>_ 0 "EMUL_CODE" "{$PROJ_DIR$\LQuserFlies\src\PigMT9V032.c}.514.5" 0 0 1 "" 0 "" 0</Bp11>
-        <Bp12>_ 1 "EMUL_CODE" "{$PROJ_DIR$\LQuserFlies\src\Appmain.c}.84.11" 0 0 1 "" 0 "" 0</Bp12>
-        <Count>13</Count>
+        <Count>12</Count>
     </Breakpoints2>
     <Aliases>
         <A0>_ "D:\智能车\麦轮信标\程序\RT1052\LQ_RT1052TFT1.8寸屏 母板综合测试例程\LQuserFlies\devices\drivers\fsl_gpio.c" ""</A0>

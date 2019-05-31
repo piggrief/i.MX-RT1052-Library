@@ -92,12 +92,12 @@ void LQ_ENC_InitPin(uint8_t enc_num)
         {
             /*用户可自行配置，将引脚复用为XBAR模式*/
 //            IOMUXC_SetPinMux(IOMUXC_GPIO_B0_12_XBAR1_INOUT10,1U); //        C10  用之前确保没有当作别的用途
-            IOMUXC_SetPinMux(IOMUXC_GPIO_AD_B0_01_XBAR1_INOUT15, 1U); //        C11  用之前确保没有当作别的用途                                       
+            IOMUXC_SetPinMux(IOMUXC_GPIO_B0_15_XBAR1_INOUT13, 1U); //        C11  用之前确保没有当作别的用途                                       
             //IOMUXC_SetPinMux(
             //    IOMUXC_GPIO_B1_14_XBAR1_IN02,           /* GPIO_B1_14 is configured as XBAR1_IN02 */
             //    0U);                                    /* Software Input On Field: Input Path is determined by functionality */
             //            IOMUXC_SetPinConfig(IOMUXC_GPIO_B0_12_XBAR1_INOUT10,0x10B0u);  
-            IOMUXC_SetPinConfig(IOMUXC_GPIO_AD_B0_01_XBAR1_INOUT15, 0x10B0u);
+            IOMUXC_SetPinConfig(IOMUXC_GPIO_B0_15_XBAR1_INOUT13, 0x10B0u);
             //IOMUXC_SetPinConfig(IOMUXC_GPIO_B1_14_XBAR1_IN02, 0x10B0u);
             break;
         }
@@ -157,8 +157,8 @@ void LQ_ENC_Init(ENC_Type *base)
         XBARA_Init(XBARA1);    //初始化XBARA？模块  可选参数XBARA1
         
         /*将单片机引脚连接到ENC2的内部触发信号上*/
-        XBARA_SetSignalsConnection(XBARA1, kXBARA1_InputIomuxXbarInout15, kXBARA1_OutputEnc4PhaseAInput);
-//        XBARA_SetSignalsConnection(XBARA1, kXBARA1_InputIomuxXbarIn02, kXBARA1_OutputEnc4PhaseBInput); /* IOMUX_XBAR_IN02 output assigned to XBARA1_IN2 input is connected to XBARA1_OUT82 output assigned to ENC4_PHASE_B_INPUT */
+        XBARA_SetSignalsConnection(XBARA1, kXBARA1_InputIomuxXbarInout13, kXBARA1_OutputEnc4PhaseAInput); /* IOMUX_XBAR_INOUT13 output assigned to XBARA1_IN13 input is connected to XBARA1_OUT81 output assigned to ENC4_PHASE_A_INPUT */
+        //        XBARA_SetSignalsConnection(XBARA1, kXBARA1_InputIomuxXbarIn02, kXBARA1_OutputEnc4PhaseBInput); /* IOMUX_XBAR_IN02 output assigned to XBARA1_IN2 input is connected to XBARA1_OUT82 output assigned to ENC4_PHASE_B_INPUT */
         //        XBARA_SetSignalsConnection(XBARA1, kXBARA1_InputIomuxXbarInout10, kXBARA1_OutputEnc4Index);      //C10   Z相
     }
 

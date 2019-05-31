@@ -10,6 +10,7 @@
 
 # ifndef _MECANUMWHEELCONTROL_H
 # define _MECANUMWHEELCONTROL_H
+# include "fsl_pwm.h"
 /*
 定义轮子顺序为：
                 1：左前轮
@@ -25,11 +26,12 @@
 # define PWMType_Use2 PWM1
 # define PWMType_Use3 PWM2
 # define PWMType_Use4 PWM2
-# define PWMChannel_Use_W1 kPWM_Module_2//对应板子PWM1、2
+# define PWMChannel_Use_W1 kPWM_Module_0//对应板子PWM1、2
 # define PWMChannel_Use_W2 kPWM_Module_3//对应板子PWM3、4
-# define PWMChannel_Use_W3 kPWM_Module_1//对应板子PWM5、6
+# define PWMChannel_Use_W3 kPWM_Module_3//对应板子PWM5、6
 # define PWMChannel_Use_W4 kPWM_Module_2//对应板子PWM7、8
 
+extern pwm_submodule_t Wheels_PWMChannel[4];
 //RunState麦轮车运动速度
 //用三个速度来表示麦轮车的运动速度
 struct RunSpeed

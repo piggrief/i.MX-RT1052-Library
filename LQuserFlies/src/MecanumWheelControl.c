@@ -163,20 +163,20 @@ void MotorOutput(float * ControlValue)
     int i = 0;
     if (ControlValue[i] >= 0)
     {
-        LQ_PWMA_B_SetDuty(PWMType_Use1, Wheels_PWMChannel[i], 0, (uint16_t)(ControlValue[i]));
+        LQ_PWMA_B_SetDuty(PWMType_Use1, Wheels_PWMChannel[i], (uint16_t)(ControlValue[i]), 0);
     }
     else
     {
-        LQ_PWMA_B_SetDuty(PWMType_Use1, Wheels_PWMChannel[i], (uint16_t)(-ControlValue[i]), 0);
+        LQ_PWMA_B_SetDuty(PWMType_Use1, Wheels_PWMChannel[i], 0, (uint16_t)(-ControlValue[i]));
     }
     i = 1;
     if (ControlValue[i] >= 0)
     {
-        LQ_PWMA_B_SetDuty(PWMType_Use2, Wheels_PWMChannel[i], (uint16_t)(ControlValue[i]), 0);
+        LQ_PWMA_B_SetDuty(PWMType_Use2, Wheels_PWMChannel[i], 0, (uint16_t)(ControlValue[i]));
     }
     else
     {
-        LQ_PWMA_B_SetDuty(PWMType_Use2, Wheels_PWMChannel[i], 0, (uint16_t)(-ControlValue[i]));
+        LQ_PWMA_B_SetDuty(PWMType_Use2, Wheels_PWMChannel[i], (uint16_t)(-ControlValue[i]), 0);
     }
     i = 2;
     if (ControlValue[i] >= 0)
@@ -185,7 +185,7 @@ void MotorOutput(float * ControlValue)
     }
     else
     {
-        LQ_PWMA_B_SetDuty(PWMType_Use3, Wheels_PWMChannel[i], (uint16_t)(-ControlValue[i]), 0);
+        LQ_PWMA_B_SetDuty(PWMType_Use3, Wheels_PWMChannel[i], (uint16_t)(-ControlValue[i]) , 0);
     }
     i = 3;
     if (ControlValue[i] >= 0)
@@ -208,9 +208,9 @@ long Speed_get[4] = { 0 };
 //编码器测速用的ENC编号
 ENC_Type* Encoder_ENCIndex[4] = { ENC1, ENC2, ENC3, ENC4 };
 //编码器测速用的旋转方向Port总端口
-GPIO_Type* EncoderDirectionPort[4] = { GPIO3, GPIO3, GPIO2, GPIO2 };
+GPIO_Type* EncoderDirectionPort[4] = { GPIO3, GPIO2, GPIO2, GPIO2 };
 //编码器测速用的旋转方向Port端口索引
-uint32_t Encoder_PORTIndex_Direction[4] = { 12, 25, 27, 26 };
+uint32_t Encoder_PORTIndex_Direction[4] = { 15, 12, 27, 26 };
 
 ///<summary>四个编码器初始化</summary>
 void EncoderMeasure_Init(void)
@@ -218,11 +218,11 @@ void EncoderMeasure_Init(void)
     CLOCK_EnableClock(kCLOCK_Iomuxc);           /* iomuxc clock (iomuxc_clk_enable): 0x03U */
 
     IOMUXC_SetPinMux(
-        IOMUXC_GPIO_SD_B0_00_GPIO3_IO12,        /* GPIO_SD_B0_00 is configured as GPIO3_IO12 */
+        IOMUXC_GPIO_SD_B0_03_GPIO3_IO15,        /* GPIO_SD_B0_00 is configured as GPIO3_IO12 */
         0U);
 
     IOMUXC_SetPinMux(
-        IOMUXC_GPIO_EMC_39_GPIO3_IO25,          /* GPIO_EMC_39 is configured as GPIO3_IO25 */
+        IOMUXC_GPIO_B0_12_GPIO2_IO12,          /* GPIO_EMC_39 is configured as GPIO3_IO25 */
         0U);
 
     IOMUXC_SetPinMux(

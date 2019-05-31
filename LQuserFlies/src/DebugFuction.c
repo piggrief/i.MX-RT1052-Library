@@ -236,10 +236,12 @@ void SendRemoteCMDData(void)
     if(Remote_CMD_ReceiveStatus == ReceivingLeftCMD)
     {
       count_error_left++;
+      count_error_right = 0;
     }
     else if(Remote_CMD_ReceiveStatus == ReceivingRightCMD)
     {
-      count_error_right++;      
+      count_error_right++; 
+      count_error_left = 0;
     }
     else
     {
@@ -247,7 +249,7 @@ void SendRemoteCMDData(void)
       count_error_right = 0;
     }
     
-    if(count_error_left >= 500000 || count_error_right >= 500000)
+    if(count_error_left >= 1000 || count_error_right >= 1000)
     {
       RemoteData.Left_Y = 127;
       RemoteData.Left_X = 127;

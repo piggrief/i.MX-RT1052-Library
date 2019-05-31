@@ -143,16 +143,16 @@ void LQ_UART_Init(LPUART_Type *base, uint32_t bound)
     {
         CLOCK_EnableClock(kCLOCK_Lpuart3);	//使能LPUART1时钟
         //LPUART1所使用的IO功能配置，即：从ALT0~ALT7选择合适的功能。
-        IOMUXC_SetPinMux(IOMUXC_GPIO_AD_B1_06_LPUART3_TX,0U);	//LPUART3_TX     J12
-        IOMUXC_SetPinMux(IOMUXC_GPIO_AD_B1_07_LPUART3_RX,0U);	//LPUART3_RX     K10
+        IOMUXC_SetPinMux(IOMUXC_GPIO_B0_08_LPUART3_TX, 0U);	//LPUART3_TX     J12
+        IOMUXC_SetPinMux(IOMUXC_GPIO_B0_09_LPUART3_RX, 0U);	//LPUART3_RX     K10
         
 //        IOMUXC_SetPinMux(IOMUXC_GPIO_B0_08_LPUART3_TX,0U);	
 //        IOMUXC_SetPinMux(IOMUXC_GPIO_B0_09_LPUART3_RX,0U);	
         //配置IO引脚GPIO_AD_B0_12和GPIO_AD_B0_13的功能
         //低转换速度,驱动能力为R0/6,速度为100Mhz，关闭开路功能，使能pull/keepr
         //选择keeper功能，下拉100K Ohm，关闭Hyst
-        IOMUXC_SetPinConfig(IOMUXC_GPIO_AD_B1_06_LPUART3_TX,0x10B0u); 
-        IOMUXC_SetPinConfig(IOMUXC_GPIO_AD_B1_07_LPUART3_RX,0x10B0u); 
+        IOMUXC_SetPinConfig(IOMUXC_GPIO_B0_08_LPUART3_TX, 0x10B0u);
+        IOMUXC_SetPinConfig(IOMUXC_GPIO_B0_09_LPUART3_RX, 0x10B0u);
         
 //        IOMUXC_SetPinConfig(IOMUXC_GPIO_B0_08_LPUART3_TX,0x10B0u); 
 //        IOMUXC_SetPinConfig(IOMUXC_GPIO_B0_09_LPUART3_RX,0x10B0u); 
@@ -399,15 +399,15 @@ void LPUART1_IRQHandler(void)
 	}
 	__DSB();				//数据同步屏蔽指令
 }
-extern void ReceiveCMD_Remote(void);
 void LPUART2_IRQHandler(void)
 {	
 	if((LPUART2->STAT)&kLPUART_RxDataRegFullFlag) //接收中断
 	{
-        ReceiveCMD_Remote();
+        //ReceiveCMD_Remote();
     }
 	__DSB();				//数据同步屏蔽指令
 }
+extern void ReceiveCMD_Remote(void);
 
 void LPUART3_IRQHandler(void)
 {
@@ -415,9 +415,7 @@ void LPUART3_IRQHandler(void)
 	
 	if((LPUART3->STAT)&kLPUART_RxDataRegFullFlag) //接收中断
 	{
-		LPUART_RX_BUF[res] = LPUART_ReadByte(LPUART3);					//读取数据
-		res ++;
-        if(res == 100) res = 0;                   //接受缓冲区满，直接覆盖
+		ReceiveCMD_Remote();
 	}
 	__DSB();				//数据同步屏蔽指令
 }
