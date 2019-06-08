@@ -1009,13 +1009,13 @@ void BOARD_InitLPI2C1Pins(void) {
   CLOCK_EnableClock(kCLOCK_Iomuxc);          /* iomuxc clock (iomuxc_clk_enable): 0x03u */
 
   IOMUXC_SetPinMux(
-      IOMUXC_GPIO_AD_B1_00_LPI2C1_SCL,        /* GPIO_AD_B1_00 is configured as LPI2C1_SCL */
+      IOMUXC_GPIO_B0_04_LPI2C2_SCL,        /* GPIO_AD_B1_00 is configured as LPI2C1_SCL */
       1U);                                    /* Software Input On Field: Input Path is determined by functionality */
   IOMUXC_SetPinMux(
-      IOMUXC_GPIO_AD_B1_01_LPI2C1_SDA,        /* GPIO_AD_B1_01 is configured as LPI2C1_SDA */
+      IOMUXC_GPIO_B0_05_LPI2C2_SDA,        /* GPIO_AD_B1_01 is configured as LPI2C1_SDA */
       1U);                                    /* Software Input On Field: Input Path is determined by functionality */
   IOMUXC_SetPinConfig(
-      IOMUXC_GPIO_AD_B1_00_LPI2C1_SCL,        /* GPIO_AD_B1_00 PAD functional properties : */
+      IOMUXC_GPIO_B0_04_LPI2C2_SCL,        /* GPIO_AD_B1_00 PAD functional properties : */
       0xD8B0u);                               /* Slew Rate Field: Slow Slew Rate
                                                  Drive Strength Field: R0/6
                                                  Speed Field: medium(100MHz)
@@ -1025,7 +1025,7 @@ void BOARD_InitLPI2C1Pins(void) {
                                                  Pull Up / Down Config. Field: 22K Ohm Pull Up
                                                  Hyst. Enable Field: Hysteresis Disabled */
   IOMUXC_SetPinConfig(
-      IOMUXC_GPIO_AD_B1_01_LPI2C1_SDA,        /* GPIO_AD_B1_01 PAD functional properties : */
+      IOMUXC_GPIO_B0_05_LPI2C2_SDA,        /* GPIO_AD_B1_01 PAD functional properties : */
       0xD8B0u);                               /* Slew Rate Field: Slow Slew Rate
                                                  Drive Strength Field: R0/6
                                                  Speed Field: medium(100MHz)

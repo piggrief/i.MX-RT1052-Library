@@ -56,7 +56,8 @@ void OutPut_Data(void)
     databuf[8] = CRC16%256;
     databuf[9] = CRC16/256;
 
-    UART_Put_Buff(CRC_Uart_Port, databuf, 10);
+    Uart_SendString_DMA(databuf, 10);
+    //UART_Put_Buff(CRC_Uart_Port, databuf, 10);
 }
 /// <summary>
 ///给虚拟示波器发送a,b,c,d取整之后的值

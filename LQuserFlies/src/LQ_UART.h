@@ -32,4 +32,32 @@ extern void LQ_UART_PutBuff(LPUART_Type *base, uint8_t * buff, uint32_t length);
 extern void Test_UART(void);
 extern void Test_UART_DMA(void);
 extern void UART_DMA_Init(void);
+
+typedef enum
+{
+    SendEnd,
+    Sending,   
+}UART1SendStatus;
+
+typedef enum
+{
+    ReceiveEnd,
+    Receiving
+}UART1ReceiveStatus;
+
+typedef struct
+{
+    UART1SendStatus SendStatus;
+    UART1ReceiveStatus ReceiveStatus;
+}UART1DMAStatus;
+
+typedef enum
+{
+    Success,
+    Fail_SinceSending,
+}UARTDMASendResult;
+UARTDMASendResult Uart_SendString_DMA(uint8_t *dataToSend, uint8_t length);
+
+extern UART1DMAStatus UARTStatus;
+
 #endif

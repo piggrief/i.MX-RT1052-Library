@@ -9,7 +9,7 @@
 uint8_t MPU6050_Init(void)
 {
     uint8_t res;
-    LPI2C_Init(LPI2C1, 400000);    ////MPU6050 支持400K I2C
+    LPI2C_Init(LPI2C2, 400000);    ////MPU6050 支持400K I2C
     res=MPU_Read_Byte(MPU6050_ADDR,WHO_AM_I);           //读取MPU6050的ID
     if(res!=MPU6050_ID) //器件ID正确
     {
@@ -25,13 +25,28 @@ uint8_t MPU6050_Init(void)
     res += MPU_Set_Gyro_Fsr(3);					        	//陀螺仪传感器,±2000dps   
     res += MPU_Set_Accel_Fsr(1);					       	 	//加速度传感器,±4g
     res += MPU_Set_Rate(1000);						       	 	//设置采样率1000Hz
-    res += MPU_Write_Byte(MPU6050_ADDR,MPU_CFG_REG,0x02);      //设置数字低通滤波器   98hz
+    res += MPU_Write_Byte(MPU6050_ADDR,MPU_CFG_REG,0x04);      //设置数字低通滤波器   98hz
     res += MPU_Write_Byte(MPU6050_ADDR,MPU_INT_EN_REG,0X00);   //关闭所有中断
     res += MPU_Write_Byte(MPU6050_ADDR,MPU_USER_CTRL_REG,0X00);//I2C主模式关闭
 //    MPU_Write_Byte(MPU6050_ADDR,MPU_FIFO_EN_REG,0X00);	//关闭FIFO
 //    MPU_Write_Byte(MPU6050_ADDR,MPU_INTBP_CFG_REG,0X80);//INT引脚低电平有效
-    res += MPU_Write_Byte(MPU6050_ADDR,MPU_PWR_MGMT1_REG,0X01);  	//设置CLKSEL,PLL X轴为参考
-    res += MPU_Write_Byte(MPU6050_ADDR,MPU_PWR_MGMT2_REG,0X00);  	//加速度与陀螺仪都工作
+    res += MPU_Write_Byte(MPU6050_ADDR,MPU_PWR_MGMT1_REG,0X00);//0x01  	//设置CLKSEL,PLL X轴为参考
+    //res += MPU_Write_Byte(MPU6050_ADDR,MPU_PWR_MGMT2_REG,0X00);  	//加速度与陀螺仪都工作
+    
+    Accel_OriginData.X = 0;
+    Accel_OriginData.Y = 0;
+    Accel_OriginData.Z = 0;
+    Accel_OriginData.Offset_X = 0;
+    Accel_OriginData.Offset_Y = 0;
+    Accel_OriginData.Offset_Z = 0;
+    GYRO_OriginData.X = 0;
+    GYRO_OriginData.Y = 0;
+    GYRO_OriginData.Z = 0;
+    GYRO_OriginData.Offset_X = 0;
+    GYRO_OriginData.Offset_Y = 0;
+    GYRO_OriginData.Offset_Z = 0;
+
+    Get_Offset(&Accel_OriginData, &GYRO_OriginData);
     
     if(res == 0)  //上面寄存器都写入成功
     {
@@ -187,9 +202,15 @@ uint8_t MPU_Get_Raw_data(short *ax,short *ay,short *az,short *gx,short *gy,short
 		*ax=((uint16_t)buf[0]<<8)|buf[1];  
 		*ay=((uint16_t)buf[2]<<8)|buf[3];  
 		*az=((uint16_t)buf[4]<<8)|buf[5];
-        *gx=((uint16_t)buf[8]<<8)|buf[9];  
-		*gy=((uint16_t)buf[10]<<8)|buf[11];  
-		*gz=((uint16_t)buf[12]<<8)|buf[13];
+                *gx=(((uint16_t)buf[8]<<8)|buf[9] )* 0.0609756097560976;  
+		*gy=(((uint16_t)buf[10]<<8)|buf[11])* 0.0609756097560976;  
+		*gz=(((uint16_t)buf[12]<<8)|buf[13])* 0.0609756097560976;
+//        *ax=((uint16_t)buf[0]);  
+//        *ay=((uint16_t)buf[2]);  
+//        *az=((uint16_t)buf[4]);
+//        *gx=((uint16_t)buf[8]);  
+//        *gy=((uint16_t)buf[10]);  
+//        *gz=((uint16_t)buf[12]);
 	} 	
     return res;
 }
@@ -204,7 +225,7 @@ uint8_t MPU_Get_Raw_data(short *ax,short *ay,short *az,short *gx,short *gy,short
 //    其他,错误代码
 uint8_t MPU_Write_Len(uint8_t addr,uint8_t reg,uint8_t len,uint8_t *buf)
 {
-    return SCCB_WriteMultiRegs(LPI2C1, addr, kSCCB_RegAddr8Bit, reg, buf, len);
+    return SCCB_WriteMultiRegs(LPI2C2, addr, kSCCB_RegAddr8Bit, reg, buf, len);
 } 
 
 //IIC连续读
@@ -216,7 +237,7 @@ uint8_t MPU_Write_Len(uint8_t addr,uint8_t reg,uint8_t len,uint8_t *buf)
 //    其他,错误代码
 uint8_t MPU_Read_Len(uint8_t addr,uint8_t reg,uint8_t len,uint8_t *buf)
 { 
-    return SCCB_ReadMultiRegs(LPI2C1, addr, kSCCB_RegAddr8Bit, reg, buf, len);     
+    return SCCB_ReadMultiRegs(LPI2C2, addr, kSCCB_RegAddr8Bit, reg, buf, len);     
 }
 
 
@@ -241,6 +262,60 @@ uint8_t MPU_Read_Byte(uint8_t addr,uint8_t reg)
     g_fxosHandle.xfer.slaveAddress = addr;   //地址
     IIC_ReadReg(&g_fxosHandle, reg, &value, 1);  //读寄存器函数
     return value;
+}
+
+struct AccelData Accel_OriginData;
+void Get_AccData(struct AccelData * Accel_Data)
+{
+    MPU_Get_Accelerometer((short *)&Accel_Data->X,(short *)&Accel_Data->Y,(short *)&Accel_Data->Z);
+  
+    Accel_Data->X = (Accel_Data->X - Accel_Data->Offset_X) * 1.225189904435187e-4;
+    Accel_Data->Y = (Accel_Data->Y - Accel_Data->Offset_Y) * 1.225189904435187e-4;
+    Accel_Data->Z = (Accel_Data->Z - Accel_Data->Offset_Z) * 1.225189904435187e-4;
+}
+
+struct GYROData GYRO_OriginData;
+void Get_Gyro(struct GYROData * GYRO_Data)
+{
+    short gyrox,gyroy,gyroz;        //陀螺仪原始数据 
+    MPU_Get_Gyroscope(&gyrox,&gyroy,&gyroz);
+    GYRO_Data->X = (gyrox - GYRO_Data->Offset_X);//* 0.0609756097560976;
+    GYRO_Data->Y = (gyroy - GYRO_Data->Offset_Y);//* 0.0609756097560976;
+    GYRO_Data->Z = (gyroz - GYRO_Data->Offset_Z);//* 0.0609756097560976;
+}
+
+//初始化陀螺仪和加速度计的零偏值
+void Get_Offset(struct AccelData * Accel_Data, struct GYROData * GYRO_Data)
+{
+    int Count_Collect = 0;
+    float temp_X = 0, temp_Y = 0, temp_Z = 0;
+    while (Count_Collect<200)
+    {
+        Count_Collect++;
+        Get_AccData(Accel_Data);
+        temp_X += Accel_Data->X;
+        temp_Y += Accel_Data->Y;
+        temp_Z += Accel_Data->Z;
+    }
+    Accel_Data->Offset_X = temp_X / Count_Collect;
+    Accel_Data->Offset_Y = temp_Y / Count_Collect;
+    Accel_Data->Offset_Z = temp_Z / Count_Collect;
+
+    Count_Collect = 0;
+    temp_X = 0;
+    temp_Y = 0;
+    temp_Z = 0;
+    while (Count_Collect<200)
+    {
+        Count_Collect++;
+        Get_Gyro(GYRO_Data);
+        temp_X += GYRO_Data->X;
+        temp_Y += GYRO_Data->Y;
+        temp_Z += GYRO_Data->Z;
+    }
+    GYRO_Data->Offset_X = temp_X / Count_Collect;
+    GYRO_Data->Offset_Y = temp_Y / Count_Collect;
+    GYRO_Data->Offset_Z = temp_Z / Count_Collect;
 }
 
 

@@ -51,30 +51,45 @@ float Max_output = 9500;
 extern float ControlValue_Closeloop[4];
 extern long SpeedCount[4];
 
+
+
+short aacx,aacy,aacz;	        //加速度传感器原始数据
+short gyrox,gyroy,gyroz;        //陀螺仪原始数据 
+float GX = 0;
+
 void InitAll();
 uint64_t TimeTest_us = 0;
 void RunTimeTest()
 {
     //TFT_showint8(0, 0, 251, BLACK, WHITE);
     //dsp_single_colour(BLACK);
-
+  //Get_Gyro(&GYRO_OriginData);
+  //Uart_SendString_DMA("Hello!",6);
+  SEND(12,1321,2354,20.2321);
   //GetSpeed(0);
 }
 
+float Angle_Z = 0;
+float dt = 0.0551;
 int main(void)
 {         
     InitAll();
-    PID_Speedloop_init(P_Set, D_Set, I_Set, I_limit, Max_output, DeadBand_Set);
+    //PID_Speedloop_init(P_Set, D_Set, I_Set, I_limit, Max_output, DeadBand_Set);
     
     _systime.delay_ms(200);
 
     //TFTSPI_CLS(u16WHITE);
     while(1)
     {
-        SendRemoteCMDData();
+      	//得到加速度传感器数据
+      TimeTest_us = MeasureRunTime_us(&RunTimeTest);
+      if(GYRO_OriginData.Z >= 1 || GYRO_OriginData.Z <= -1)
+        Angle_Z += 0.07 * GYRO_OriginData.Z * dt;
+      
+      //SendRemoteCMDData();
         //LQ_PWMA_B_SetDuty(PWM1, PWMChannel_Use_W1, 0, (uint16_t)(ControlValue[i]));
         //TimeTest_us = MeasureRunTime_us(&RunTimeTest);
-        _systime.delay_ms(10);
+        _systime.delay_ms(5);
 //        LQ_PWMA_B_SetDuty(PWMType_Use1, Wheels_PWMChannel[0], 1000, 2600);
 //        LQ_PWMA_B_SetDuty(PWMType_Use2, Wheels_PWMChannel[1], 3000, 4600);
 //        LQ_PWMA_B_SetDuty(PWMType_Use3, Wheels_PWMChannel[2], 5000, 6600);
@@ -82,6 +97,7 @@ int main(void)
     }             
 }
 float adc_V = 0;
+
 void InitAll()
 {
     BOARD_ConfigMPU();                   /* 初始化内存保护单元 */
@@ -90,22 +106,23 @@ void InitAll()
     BOARD_InitDEBUG_UARTPins();          //UART调试口管脚复用初始化 
     BOARD_InitDebugConsole();            //UART调试口初始化 可以使用 PRINTF函数          
     //LED_Init();                          //初始化核心板和开发板上的LED接口
-    LQ_UART_Init(LPUART1, 115200);       //串口1初始化 可以使用 printf函数
+    //LQ_UART_Init(LPUART1, 115200);       //串口1初始化 可以使用 printf函数
+    UART_DMA_Init();
     _systime.init();                     //开启systick定时器
     NVIC_SetPriorityGrouping(2);/*设置中断优先级组  0: 0个抢占优先级16位个子优先级
                                 *1: 2个抢占优先级 8个子优先级 2: 4个抢占优先级 4个子优先级
                                 *3: 8个抢占优先级 2个子优先级 4: 16个抢占优先级 0个子优先级
                                 */
     //TFTSPI_Init();                 //TFT1.8初始化
-
-    Motor_init();
+    MPU6050_Init();
+    //Motor_init();
     //BatteryVoltageCollect_Init(1);
     //adc_V = GetBatteryVoltage(0);
-    EncoderMeasure_Init();
-    RemoteInit();
+    //EncoderMeasure_Init();
+    //RemoteInit();
     //camera_init_1();
     //Series_Receive_init();
-    LQ_PIT_Init(kPIT_Chnl_0, 3000);//3000us
+    //LQ_PIT_Init(kPIT_Chnl_0, 3000);//3000us
 }
 volatile int16_t PIT0_Flag = 0;
 long Speed_watch[4];

@@ -485,9 +485,7 @@ void LPUART8_IRQHandler(void)
 	__DSB();				//数据同步屏蔽指令
 }
 
-
-
-
+UART1DMAStatus UARTStatus;
 
 /* LPUART user callback */
 //串口DMA的回调函数，当DMA执行结束后，会自动调用该函数，可以在该函数内加入用户自己的代码，实现DMA传输完成后想要执行的操作
@@ -497,21 +495,21 @@ void LPUART_UserCallback(LPUART_Type *base, lpuart_edma_handle_t *handle, status
 
     if (kStatus_LPUART_TxIdle == status)     //如果发送空闲
     {
-        _status.txBufferFull = false;
-        _status.txOnGoing = false;
+        if (UARTStatus.SendStatus == Sending)
+            UARTStatus.SendStatus = SendEnd;
         return;
     }
 
     if (kStatus_LPUART_RxIdle == status)     //接收空闲
     {
-        _status.rxBufferEmpty = false;
-        _status.rxOnGoing = false;
+        if (UARTStatus.ReceiveStatus == Receiving)
+            UARTStatus.ReceiveStatus = ReceiveEnd;
     }
     else
     {
         while(kStatus_LPUART_RxIdle == status);
-         _status.rxBufferEmpty = false;
-        _status.rxOnGoing = false;
+        if (UARTStatus.ReceiveStatus == Receiving)
+            UARTStatus.ReceiveStatus = ReceiveEnd;
     }
 }
 
@@ -523,64 +521,7 @@ lpuart_transfer_t sendXfer;
 lpuart_edma_handle_t g_lpuartEdmaHandle;
 edma_handle_t g_lpuartTxEdmaHandle;
 edma_handle_t g_lpuartRxEdmaHandle;
-//void Test_UART_DMA(void)
-//{
-//    UART_DMA_Init();
-//
-////    /* Start to echo. */
-////    sendXfer.data = g_txBuffer;              //DMA传输的字符串首地址   在ANO_DT_Send_Data()函数内部赋值
-////    sendXfer.dataSize = ECHO_BUFFER_LENGTH;  //DMA传输的长度
-////    
-//    float data1 = 0.0f;
-//    float data2 = 45.0f; 
-//    float data3 = 90.0f;   
-//    float data4 = 135.0f;   
-//    float data5 = 60.0f;
-//    const float PI = 3.1415926;
-//
-//    while(1)
-//    {
-//        uint64_t now = _systime.get_time_us();         //计时功能  得到当前时间
-//        if(!_status.txOnGoing)           //不是正在发送过程
-//        {
-//            if(_status.get_pid_group1)   //收到上位机发送的 读取飞控 指令   单片机发送pid参数给上位机
-//            {
-//                _status.get_pid_group1 = 0;
-//                ANO_DT_Send_PID(1, Motor_pid._kp, Motor_pid._ki, Motor_pid._kd, Servo_pid._kp, Servo_pid._ki, Servo_pid._kd, 0,0,0);
-//            }
-//            else    //测试正玄波
-//            {
-//                ANO_DT_send_int16((short)(sin(data1/180.0f * PI) * 100),   //上报匿名上位机 画正玄波
-//                                  (short)(sin(data2/180.0f * PI) * 100), 
-//                                  (short)(sin(data3/180.0f * PI) * 100), 
-//                                  (short)(sin(data4/180.0f * PI) * 100), 
-//                                  (short)(sin(data5/180.0f * PI) * 100), 
-//                                  0, 
-//                                  0, 
-//                                  0);
-//            }
-//        }
-//        
-//        
-//        delayms(10);
-//        uint64_t time = _systime.get_time_us() - now;  //得到时差
-//        //        printf("time is %llu \r\n", time);
-//        
-//        
-//        if(data1 > 180) data1 = -180;
-//        if(data2 > 180) data2 = -180;
-//        if(data3 > 180) data3 = -180;
-//        if(data4 > 180) data4 = -180;
-//        if(data5 > 180) data5 = -180;
-//        
-//        data1 += 1;
-//        data2 += 2;
-//        data3 += 3;
-//        data4 += 4;
-//        data5 += 5;
-//    }
-//
-//}
+
 void UART_DMA_Init(void)
 {
     LQ_UART_Init(LPUART1, 115200);   //串口 + DMA 收发
@@ -609,3 +550,17 @@ void UART_DMA_Init(void)
 
 }
 
+UARTDMASendResult Uart_SendString_DMA(uint8_t *dataToSend, uint8_t length)
+{
+    /*使用DMA + 串口，无需占用CPU时间 */
+    sendXfer.data = dataToSend;
+    sendXfer.dataSize = length;
+    if (UARTStatus.SendStatus == SendEnd)
+    {
+        UARTStatus.SendStatus = Sending;
+        LPUART_SendEDMA(LPUART1, &g_lpuartEdmaHandle, &sendXfer);
+        return Success;
+    }
+    else
+        return Fail_SinceSending;  
+}
