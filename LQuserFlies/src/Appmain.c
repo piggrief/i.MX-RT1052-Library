@@ -66,12 +66,10 @@ void InitAll();
 uint64_t TimeTest_us = 0;
 void RunTimeTest()
 {
-    //TFT_showint8(0, 0, 251, BLACK, WHITE);
-    //dsp_single_colour(BLACK);
-
-  //GetSpeed(0);
+      TFT_showfloat(0,0,(float)TimeTest_us,7,0,BLACK,WHITE);
 }
 ///<summary>主函数</summary>
+float Battery_V = 0;
 int main(void)
 {         
     InitAll();
@@ -81,17 +79,44 @@ int main(void)
     //TFTSPI_CLS(u16WHITE);
     while(1)
     {
-      //TimeTest_us = MeasureRunTime_us(&RunTimeTest);
+      /*扫描按键标志位*/
+      for (int i = 0; i < 3; i++)
+      {
+          if (Button[i] == Press)
+          {
+              ButtonOnceBuffFlag[i] = 1;
+          }
+          if ((Button[i] == NotPress) && (ButtonOnceBuffFlag[i] == 1))
+          {
+              ButtonOnceFlag[i] = 1;
+              ButtonOnceBuffFlag[i] = 0;
+          }
+      }
+      /*按键切换是否TFT显示*/
+      if (ButtonOnceFlag[2] == 1)
+      {
+          ButtonOnceFlag[2] = 0;
+          /* 在此编写按下按键3的处理程序 */
+          if(Flag_TFTShow)
+            dsp_single_colour(WHITE);
+          Flag_TFTShow = !Flag_TFTShow;
+          if(Flag_TFTShow)
+            dsp_single_colour(WHITE);
+      }
+      
+      
+      TimeTest_us = MeasureRunTime_us(&RunTimeTest);
       Get_Gyro(&GYRO_OriginData);//z轴为地磁轴,逆时针为正方向，串级控制中D逆时针为负。
 #ifndef Remote_UseDigitalReceive
       if(flag==1)
-      SendRemoteCMDData();
+        SendRemoteCMDData();
+
 #endif
       //_systime.delay_ms(100);
     }             
 }
 
-float adc_V = 0;
+
 void InitAll()
 {
     BOARD_ConfigMPU();                   /* 初始化内存保护单元 */
@@ -106,14 +131,16 @@ void InitAll()
                                 *1: 2个抢占优先级 8个子优先级 2: 4个抢占优先级 4个子优先级
                                 *3: 8个抢占优先级 2个子优先级 4: 16个抢占优先级 0个子优先级
                                 */
-    //TFTSPI_Init();                 //TFT1.8初始化
     MPU6050_Init();
+    TFT_init();    
+    ButtonMenu();
+    
     Motor_init();
     RemoteData_init();
+
     PID_Speedloop_init(P_Set, D_Set, I_Set, I_limit, Max_output, DeadBand_Set);
     PID_locationloop_init(2.4, 0, 0, 0, 200, 0);//位置环参数   1.81   
-    //BatteryVoltageCollect_Init(1);
-    //adc_V = GetBatteryVoltage(0);
+
     EncoderMeasure_Init();
     RemoteInit();
     //camera_init_1();

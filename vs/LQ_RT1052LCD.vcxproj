@@ -63,6 +63,8 @@
     </ClCompile>
     <ClCompile Include="..\LQuserFlies\src\DebugFuction.c">
     </ClCompile>
+    <ClCompile Include="..\LQuserFlies\src\LQ_MPU6050.c">
+    </ClCompile>
     <ClCompile Include="..\LQuserFlies\src\MecanumWheelControl.c">
     </ClCompile>
     <ClCompile Include="..\Pig_DriverFiles\Pig_SPI.c">
@@ -103,6 +105,8 @@
     </ClCompile>
     <ClCompile Include="..\LQuserFlies\devices\drivers\fsl_lpspi.c">
     </ClCompile>
+    <ClCompile Include="..\LQuserFlies\devices\drivers\fsl_lpspi_edma.c">
+    </ClCompile>
     <ClCompile Include="..\LQuserFlies\devices\drivers\fsl_lpuart.c">
     </ClCompile>
     <ClCompile Include="..\LQuserFlies\devices\drivers\fsl_lpuart_edma.c">
@@ -112,6 +116,8 @@
     <ClCompile Include="..\LQuserFlies\devices\drivers\fsl_pwm.c">
     </ClCompile>
     <ClCompile Include="..\LQuserFlies\devices\drivers\fsl_qtmr.c">
+    </ClCompile>
+    <ClCompile Include="..\LQuserFlies\src\camera\fsl_sccb.c">
     </ClCompile>
     <ClCompile Include="..\LQuserFlies\devices\drivers\fsl_semc.c">
     </ClCompile>
@@ -199,6 +205,8 @@
     </ClInclude>
     <ClInclude Include="..\LQuserFlies\src\DebugFunction.h">
     </ClInclude>
+    <ClInclude Include="..\LQuserFlies\src\LQ_MPU6050.h">
+    </ClInclude>
     <ClInclude Include="..\LQuserFlies\src\MecanumWheelControl.h">
     </ClInclude>
     <ClInclude Include="..\Pig_DriverFiles\Pig_SPI.h">
@@ -238,6 +246,8 @@
     <ClInclude Include="..\LQuserFlies\devices\drivers\fsl_lpi2c.h">
     </ClInclude>
     <ClInclude Include="..\LQuserFlies\devices\drivers\fsl_lpspi.h">
+    </ClInclude>
+    <ClInclude Include="..\LQuserFlies\devices\drivers\fsl_lpspi_edma.h">
     </ClInclude>
     <ClInclude Include="..\LQuserFlies\devices\drivers\fsl_lpuart.h">
     </ClInclude>
@@ -281,7 +291,7 @@
     </None>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{F5D1515B-DCF4-408B-6EE1-02FD72660B0E}</ProjectGuid>
+    <ProjectGuid>{6979E794-B9BD-4F43-76E3-F348A43C20F6}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>LQ_RT1052LCD</RootNamespace>
   </PropertyGroup>

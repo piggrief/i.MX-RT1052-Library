@@ -12,7 +12,7 @@
 # define _DEBUGFUNCTION_H_
 //# define Remote_UseDigitalReceive
 # define CRC_Uart_Port LPUART1
-# define Series_Uart_Port LPUART2
+# define Series_Uart_Port LPUART5
 # define GY53_Uart_Port LPUART6
 # define Remote_Uart_Port LPUART3
 /// <summary>
@@ -94,7 +94,9 @@ typedef enum
     Press,
     NotPress
 }ButtonStatus;//按键的状态，Press为按下,NotPress为弹起
-
+extern ButtonStatus Button[3];
+extern int ButtonOnceFlag[3];
+extern int ButtonOnceBuffFlag[3];
 extern ButtonStatus Button1;//PTE12
 extern ButtonStatus Button2;//PTE11
 extern ButtonStatus Button3;//PTE10

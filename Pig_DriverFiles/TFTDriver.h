@@ -23,16 +23,17 @@
 #ifndef _TFTDRIVER_H
 #define _TFTDRIVER_H
 #include "include.h"
+extern unsigned char Flag_TFTShow;
 
 # define LPSPI_CLOCK_DIVIDER 7U //LPSPI分频因子,7U代表八分频
 
 /*管脚配置*/
-# define TFT_DC_Port GPIO3
-# define TFT_DC_Pin 3U       //M4
-# define TFT_RES_Port GPIO3 
-# define TFT_RES_Pin 4U      //P2
+# define TFT_DC_Port GPIO2
+# define TFT_DC_Pin 22U       //M4
+# define TFT_RES_Port GPIO2 
+# define TFT_RES_Pin 21U      //P2
 # define IOMUX_LPSPI_SCL IOMUXC_GPIO_AD_B0_00_LPSPI3_SCK
-# define IOMUX_LPSPI_PCS0 IOMUXC_GPIO_AD_B0_04_LPSPI3_PCS1
+# define IOMUX_LPSPI_PCS IOMUXC_GPIO_AD_B0_04_LPSPI3_PCS1
 # define IOMUX_LPSPI_SDO IOMUXC_GPIO_AD_B0_01_LPSPI3_SDO
 
 
@@ -45,8 +46,8 @@
 
 #define DC(x)   	GPIO_PinWrite(TFT_DC_Port, TFT_DC_Pin, x);
 #define REST(x) 	GPIO_PinWrite(TFT_RES_Port, TFT_RES_Pin, x);
-#define DC_Init     IOMUXC_SetPinMux(IOMUXC_GPIO_SD_B1_03_GPIO3_IO03 ,0U);
-#define RES_Init    IOMUXC_SetPinMux(IOMUXC_GPIO_SD_B1_04_GPIO3_IO04 ,0U);
+#define DC_Init     IOMUXC_SetPinMux(IOMUXC_GPIO_B1_06_GPIO2_IO22 ,0U);
+#define RES_Init    IOMUXC_SetPinMux(IOMUXC_GPIO_B1_05_GPIO2_IO21 ,0U);
 
 //-------常用颜色----------
 #define RED     	0XF800    //红色

@@ -1,11 +1,27 @@
 # include "include.h"
 
-# define TFTSPI LPSPI1
+# define TFTSPI LPSPI3
 #define MASTER_LPSPI_CLOCK_FREQUENCY (CLOCK_GetFreq(kCLOCK_Usb1PllPfd0Clk) / (LPSPI_CLOCK_DIVIDER + 1U))
+
+unsigned char Flag_TFTShow = 1;
 
 void TFT_PinInit()
 {
     CLOCK_EnableClock(kCLOCK_Iomuxc);           /* iomuxc clock (iomuxc_clk_enable): 0x03U */
+
+
+
+    IOMUXC_SetPinMux(
+        IOMUX_LPSPI_SCL,        /* GPIO_SD_B0_00 is configured as LPSPI1_SCK */
+        0U);                                    /* Software Input On Field: Input Path is determined by functionality */
+    IOMUXC_SetPinMux(
+        IOMUX_LPSPI_PCS,       /* GPIO_SD_B0_01 is configured as LPSPI1_PCS0 */
+        0U);                                    /* Software Input On Field: Input Path is determined by functionality */
+    IOMUXC_SetPinMux(
+        IOMUX_LPSPI_SDO,        /* GPIO_SD_B0_02 is configured as LPSPI1_SDO */
+        0U);                                    /* Software Input On Field: Input Path is determined by functionality */
+    DC_Init
+    RES_Init
 
     /* GPIO configuration of DC on GPIO_SD_B1_03 (pin M4) */
     gpio_pin_config_t DC_config = {
@@ -24,23 +40,11 @@ void TFT_PinInit()
     };
     /* Initialize GPIO functionality on GPIO_SD_B1_04 (pin P2) */
     GPIO_PinInit(TFT_RES_Port, TFT_RES_Pin, &RES_config);
-
-    IOMUXC_SetPinMux(
-        IOMUX_LPSPI_SCL,        /* GPIO_SD_B0_00 is configured as LPSPI1_SCK */
-        0U);                                    /* Software Input On Field: Input Path is determined by functionality */
-    IOMUXC_SetPinMux(
-        IOMUX_LPSPI_PCS0,       /* GPIO_SD_B0_01 is configured as LPSPI1_PCS0 */
-        0U);                                    /* Software Input On Field: Input Path is determined by functionality */
-    IOMUXC_SetPinMux(
-        IOMUX_LPSPI_SDO,        /* GPIO_SD_B0_02 is configured as LPSPI1_SDO */
-        0U);                                    /* Software Input On Field: Input Path is determined by functionality */
-    DC_Init
-    RES_Init
-
-
     /* 配置 LPSPI 时钟*/
     CLOCK_SetMux(kCLOCK_LpspiMux, 1U);  //选择USB1 PLL PFD0 (720 MHz) 作为LPSPI时钟源
     CLOCK_SetDiv(kCLOCK_LpspiDiv, LPSPI_CLOCK_DIVIDER); //720M / 8 = 90M
+    
+    SPI3_config = TFTSPI_config;
 }
 
 void tft_delay(long t)
@@ -50,26 +54,35 @@ void tft_delay(long t)
 
 void  Lcd_WriteIndex(uint8 dat)			//写命令
 {
-	DC(0);
-	spi_mosi(TFTSPI, &dat, &dat, 1);
+      if(Flag_TFTShow)
+      {
+        DC(0);
+        spi_mosi(TFTSPI, &dat, &dat, 1);
+      }
 
 }
 
 void Lcd_WriteData(uint8 dat)			//写数据
 {
+      if(Flag_TFTShow)
+      {
 	DC(1);
 	spi_mosi(TFTSPI, &dat, &dat, 1);
+      }
 }
 
 void  LCD_WriteData_16Bit(uint16 dat)	//向液晶屏写一个16位数据
 {
-	uint8 h, l;
+      uint8 h, l;
+      if(Flag_TFTShow)
+      {
 	h = dat >> 8;
 	l = (uint8)dat;
 
 	DC(1);
 	spi_mosi(TFTSPI, &h, &h, 1); 	//写入高8位数据
 	spi_mosi(TFTSPI, &l, &l, 1);	//写入低8位数据
+      }
 }
 
 //-------------------------------------------------------------------------------------------------------------------
@@ -124,7 +137,6 @@ void dsp_single_colour(int color)
 void TFT_init()
 {
     TFT_PinInit();
-    SPI1_config = TFTSPI_config;
     SPI_Init(TFTSPI, MASTER_LPSPI_CLOCK_FREQUENCY, 0);
 
 	REST(0);

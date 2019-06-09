@@ -338,15 +338,85 @@ void ReceiveCMD_Remote()
 }
 #endif
 
-/////<summary>按键初始化</summary>
-//void ButtonInit()
-//{
-//    EXTI_Init(PTE, 10, either);
-//    EXTI_Init(PTE, 11, either);
-//    EXTI_Init(PTE, 12, either);
-//    LCD_P6x8Str(0,0,"Please Press!");
-//}
-//ButtonStatus Button[3] = { NotPress, NotPress, NotPress };//PTE12,PTE11,PTE10
+///<summary>按键初始化</summary>
+void ButtonInit()
+{
+    CLOCK_EnableClock(kCLOCK_Iomuxc);           /* iomuxc clock (iomuxc_clk_enable): 0x03U */
+
+    /* GPIO configuration of k3 on GPIO_AD_B1_00 (pin J11) */
+    gpio_pin_config_t k3_config = {
+        .direction = kGPIO_DigitalInput,
+        .outputLogic = 0U,
+        .interruptMode = kGPIO_IntRisingOrFallingEdge
+    };
+    /* Initialize GPIO functionality on GPIO_AD_B1_00 (pin J11) */
+    GPIO_PinInit(GPIO1, 16U, &k3_config);
+    /* Enable GPIO pin interrupt on GPIO_AD_B1_00 (pin J11) */
+    GPIO_PortEnableInterrupts(GPIO1, 1U << 16U);
+
+    /* GPIO configuration of k1 on GPIO_B1_08 (pin A12) */
+    gpio_pin_config_t k1_config = {
+        .direction = kGPIO_DigitalInput,
+        .outputLogic = 0U,
+        .interruptMode = kGPIO_IntRisingOrFallingEdge
+    };
+    /* Initialize GPIO functionality on GPIO_B1_08 (pin A12) */
+    GPIO_PinInit(GPIO2, 24U, &k1_config);
+    /* Enable GPIO pin interrupt on GPIO_B1_08 (pin A12) */
+    GPIO_PortEnableInterrupts(GPIO2, 1U << 24U);
+
+    /* GPIO configuration of k2 on GPIO_B1_09 (pin A13) */
+    gpio_pin_config_t k2_config = {
+        .direction = kGPIO_DigitalInput,
+        .outputLogic = 0U,
+        .interruptMode = kGPIO_IntRisingOrFallingEdge
+    };
+    /* Initialize GPIO functionality on GPIO_B1_09 (pin A13) */
+    GPIO_PinInit(GPIO2, 25U, &k2_config);
+    /* Enable GPIO pin interrupt on GPIO_B1_09 (pin A13) */
+    GPIO_PortEnableInterrupts(GPIO2, 1U << 25U);
+
+    IOMUXC_SetPinMux(
+        IOMUXC_GPIO_AD_B1_00_GPIO1_IO16,        /* GPIO_AD_B1_00 is configured as GPIO1_IO16 */
+        0U);                                    /* Software Input On Field: Input Path is determined by functionality */
+    IOMUXC_SetPinMux(
+        IOMUXC_GPIO_B1_08_GPIO2_IO24,           /* GPIO_B1_08 is configured as GPIO2_IO24 */
+        0U);                                    /* Software Input On Field: Input Path is determined by functionality */
+    IOMUXC_SetPinMux(
+        IOMUXC_GPIO_B1_09_GPIO2_IO25,           /* GPIO_B1_09 is configured as GPIO2_IO25 */
+        0U);                                    /* Software Input On Field: Input Path is determined by functionality */
+    IOMUXC_SetPinConfig(
+        IOMUXC_GPIO_AD_B1_00_GPIO1_IO16,        /* GPIO_AD_B1_00 PAD functional properties : */
+        0x0110B0U);                             /* Slew Rate Field: Slow Slew Rate
+                                                Drive Strength Field: R0/6
+                                                Speed Field: medium(100MHz)
+                                                Open Drain Enable Field: Open Drain Disabled
+                                                Pull / Keep Enable Field: Pull/Keeper Enabled
+                                                Pull / Keep Select Field: Keeper
+                                                Pull Up / Down Config. Field: 100K Ohm Pull Down
+                                                Hyst. Enable Field: Hysteresis Enabled */
+    IOMUXC_SetPinConfig(
+        IOMUXC_GPIO_B1_08_GPIO2_IO24,           /* GPIO_B1_08 PAD functional properties : */
+        0x0110B0U);                             /* Slew Rate Field: Slow Slew Rate
+                                                Drive Strength Field: R0/6
+                                                Speed Field: medium(100MHz)
+                                                Open Drain Enable Field: Open Drain Disabled
+                                                Pull / Keep Enable Field: Pull/Keeper Enabled
+                                                Pull / Keep Select Field: Keeper
+                                                Pull Up / Down Config. Field: 100K Ohm Pull Down
+                                                Hyst. Enable Field: Hysteresis Enabled */
+    IOMUXC_SetPinConfig(
+        IOMUXC_GPIO_B1_09_GPIO2_IO25,           /* GPIO_B1_09 PAD functional properties : */
+        0x0110B0U);                             /* Slew Rate Field: Slow Slew Rate
+                                                Drive Strength Field: R0/6*/
+
+    EnableIRQ(GPIO2_Combined_16_31_IRQn);
+
+    EnableIRQ(GPIO1_Combined_16_31_IRQn);
+
+    TFT_showstr(0, 0, "Please Press!", BLACK, WHITE);
+}
+ButtonStatus Button[3] = { NotPress, NotPress, NotPress };//PTE12,PTE11,PTE10
 
 
 ///<summary>板间通信</summary>
@@ -395,158 +465,177 @@ void Series_Receive_init(void)
 }
 
 
-/////<summary>按键扫描中断</summary>
-//void ButtonScan_interrupt()
-//{
-//    //Key1
-//    int n = 10;
-//    u8 keybuff = 0;
-//    if ((PORTE_ISFR & (1 << n)))
-//    {
-//        PORTE_ISFR |= (1 << n);
-//        //用户自行添加中断内程序
-//        keybuff = GPIO_Get(PTE10);
-//        if (keybuff == 0)
-//        {
-//            Button[2] = Press;
-//        }
-//        else
-//        {
-//            Button[2] = NotPress;
-//        }
-//        TFT_showint8(0, 2, Button[2], BLACK, WHITE);
-//    }
-//    n = 11;
-//    if ((PORTE_ISFR & (1 << n)))
-//    {
-//        PORTE_ISFR |= (1 << n);
-//        //用户自行添加中断内程序
-//        keybuff = GPIO_Get(PTE11);
-//        if (keybuff == 0)
-//        {
-//            Button[1] = Press;
-//        }
-//        else
-//        {
-//            Button[1] = NotPress;
-//        }
-//        TFT_showint8(0, 1, Button[1], BLACK, WHITE);
-//    }
-//    n = 12;
-//    if ((PORTE_ISFR & (1 << n)))
-//    {
-//        PORTE_ISFR |= (1 << n);
-//        //用户自行添加中断内程序
-//        keybuff = GPIO_Get(PTE12);
-//        if (keybuff == 0)
-//        {
-//            Button[0] = Press;
-//        }
-//        else
-//        {
-//            Button[0] = NotPress;
-//        }
-//        TFT_showint8(0, 0, Button[0], BLACK, WHITE);
-//    }
-//}
-//
-//int ButtonOnceBuffFlag[3] = { 0 };//按键按下一次缓存标志
-//int ButtonOnceFlag[3] = { 0 };//按键按下一次的标志
-//int QuitSetFlag = 0;
+///<summary>按键扫描中断</summary>
+void GPIO2_Combined_16_31_IRQHandler(void)
+{
+    unsigned char keybuff = 0;
+    unsigned char n = 24;
+    /* clear the interrupt status */
+    if (GPIO_GetPinsInterruptFlags(GPIO2)&(1 << n))    //判断是否为GPIO5_0中断
+    {
+            keybuff = GPIO_PinRead(GPIO2, n);
+            if (keybuff == 0)
+            {
+                Button[0] = Press;
+            }
+            else
+            {
+                Button[0] = NotPress;
+            }
+    }
+    GPIO_PortClearInterruptFlags(GPIO2, 1U << n);   //清除标志位
+
+    n = 25;
+    /* clear the interrupt status */
+    if (GPIO_GetPinsInterruptFlags(GPIO2)&(1 << n))    //判断是否为GPIO5_0中断
+    {
+        keybuff = GPIO_PinRead(GPIO2, n);
+        if (keybuff == 0)
+        {
+            Button[1] = Press;
+        }
+        else
+        {
+            Button[1] = NotPress;
+        }
+    }
+    GPIO_PortClearInterruptFlags(GPIO2, 1U << n);   //清除标志位
+
+    /* Change state of switch. */
+    __DSB();				//数据同步屏蔽指令
+}
+
+void GPIO1_Combined_16_31_IRQHandler(void)
+{
+    unsigned char keybuff = 0;
+    unsigned char n = 16;
+    /* clear the interrupt status */
+    if (GPIO_GetPinsInterruptFlags(GPIO1)&(1 << n))    //判断是否为GPIO5_0中断
+    {
+        keybuff = GPIO_PinRead(GPIO1, n);
+        if (keybuff == 0)
+        {
+            Button[2] = Press;
+        }
+        else
+        {
+            Button[2] = NotPress;
+        }
+    }
+    GPIO_PortClearInterruptFlags(GPIO1, 1U << n);   //清除标志位
+
+    /* Change state of switch. */
+    __DSB();				//数据同步屏蔽指令
+}
+
+int ButtonOnceBuffFlag[3] = { 0 };//按键按下一次缓存标志
+int ButtonOnceFlag[3] = { 0 };//按键按下一次的标志
+int QuitSetFlag = 0;
 extern float Battery_V;
 ///// <summary>
 /////按键菜单程序，用于参数设定等功能，放于主函数的主要功能前
 /////<para>注：一定要放在TFT初始化后，另外其他有中断的模块初始化都必须放在这个函数后面</para>
 /////</summary>
-//void ButtonMenu()
-//{
-//    ButtonInit();
-//    
-//    EnableInterrupts;
-//    while (1)
-//    {
-//        for (int i = 0; i < 3; i++)
-//        {
-//            if (Button[i] == Press)
-//            {
-//                ButtonOnceBuffFlag[i] = 1;
-//            }
-//            if ((Button[i] == NotPress) && (ButtonOnceBuffFlag[i] == 1))
-//            {
-//                ButtonOnceFlag[i] = 1;
-//                ButtonOnceBuffFlag[i] = 0;
-//            }
-//        }
-//
-//        if (ButtonOnceFlag[0] == 1)
-//        {
-//            ButtonOnceFlag[0] = 0;
-//            /* 在此编写按下按键1的处理程序 */
-//
-//        }
-//        if (ButtonOnceFlag[1] == 1)
-//        {
-//            ButtonOnceFlag[0] = 0;
-//            /* 在此编写按下按键2的处理程序 */
-//
-//        }
-//        if (ButtonOnceFlag[2] == 1)
-//        {
-//            ButtonOnceFlag[0] = 0;
-//            /* 在此编写按下按键3的处理程序 */
-//            QuitSetFlag = 1;
-//        }
-//        if (QuitSetFlag == 1)
-//        {
-//            dsp_single_colour(WHITE);
-//            TFT_showstr(0, 0, "QuitButtonSet", RED, WHITE);
-//            DisableInterrupts;
-//            break;
-//        }
-//        Battery_V = GetBatteryVoltage(7.5);
-//        LCD_ShowBatteryVoltage(0,1,Battery_V);
-//    }
-//}
+void ButtonMenu()
+{
+    BatteryVoltageCollect_Init(1);
+    ButtonInit();
+    
+    while (1)
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            if (Button[i] == Press)
+            {
+                ButtonOnceBuffFlag[i] = 1;
+            }
+            if ((Button[i] == NotPress) && (ButtonOnceBuffFlag[i] == 1))
+            {
+                ButtonOnceFlag[i] = 1;
+                ButtonOnceBuffFlag[i] = 0;
+            }
+        }
 
+        if (ButtonOnceFlag[0] == 1)
+        {
+            ButtonOnceFlag[0] = 0;
+            /* 在此编写按下按键1的处理程序 */
+            TFT_showstr(0, 0, "Button1 Pressed", RED, WHITE);
+        }
+        if (ButtonOnceFlag[1] == 1)
+        {
+            ButtonOnceFlag[1] = 0;
+            /* 在此编写按下按键2的处理程序 */
+            TFT_showstr(0, 0, "Button2 Pressed", RED, WHITE);
+
+        }
+        if (ButtonOnceFlag[2] == 1)
+        {
+            ButtonOnceFlag[2] = 0;
+            /* 在此编写按下按键3的处理程序 */
+            TFT_showstr(0, 0, "Button3 Pressed", RED, WHITE);
+            QuitSetFlag = 1;
+        }
+        if (QuitSetFlag == 1)
+        {
+            dsp_single_colour(WHITE);
+            TFT_showstr(0, 0, "QuitButtonSet", RED, WHITE);
+            Flag_TFTShow = !Flag_TFTShow;
+            break;
+        }
+        Battery_V = GetBatteryVoltage(7.5);
+        LCD_ShowBatteryVoltage(0,1,Battery_V);
+    }
+}
+int UseBeepFlag = 0;
 ///<summary>电量采集</summary>
 void BatteryVoltageCollect_Init(int IfUseBeep)
 {
     LQADC_Init(BatteryCollectADC);
+    UseBeepFlag = IfUseBeep;
+    if(IfUseBeep)
+    {
+      IOMUXC_SetPinMux(
+        IOMUXC_GPIO_EMC_41_GPIO3_IO27,          /* GPIO_EMC_41 is configured as GPIO3_IO27 */
+        0U); 
+      /* GPIO configuration of DC on GPIO_SD_B1_03 (pin M4) */
+      gpio_pin_config_t Out_config = {
+          .direction = kGPIO_DigitalOutput,
+          .outputLogic = 0U,
+          .interruptMode = kGPIO_NoIntmode
+      };
+      /* Initialize GPIO functionality on GPIO_SD_B1_03 (pin M4) */
+      GPIO_PinInit(GPIO3, 27, &Out_config);
+    }
 }
 float GetBatteryVoltage(float HintVoltage)
 {
     uint16_t adc_value = 0;
     adc_value = ReadADC(BatteryCollectADC, BatteryCollectADCChn);
 
-    float result = adc_value*7.35 / 13490.0;
+    float result = adc_value*8.21 / 590.0;
+    
+    if(UseBeepFlag)
+    {
+      if(result < HintVoltage && result > 2)
+      {
+        GPIO_WritePinOutput(GPIO3, 27, 0);
+      }     
+      else
+      {
+        GPIO_WritePinOutput(GPIO3, 27, 1);        
+      }
+    }
+
 
     return result;
 }
-//void LCD_ShowBatteryVoltage(unsigned char x, unsigned char y, float num)
-//{
-//    unsigned char tmp[7], i;
-//    tmp[6] = 0;
-//    tmp[5] = 'V';
-//    num *= 100;
-//    if (num>0)
-//    {
-//        tmp[0] = '+';
-//        tmp[4] = (unsigned char)((int)num % 10 + 0x30);
-//        tmp[3] = (unsigned char)((int)num / 10 % 10 + 0x30);
-//        tmp[2] = '.';
-//        tmp[1] = (unsigned char)((int)num / 100 % 10 + 0x30);
-//    }
-//    else
-//    {
-//        tmp[0] = '-';
-//        num = -num;
-//        tmp[4] = (unsigned char)((int)num % 10 + 0x30);
-//        tmp[3] = (unsigned char)((int)num / 10 % 10 + 0x30);
-//        tmp[2] = '.';
-//        tmp[1] = (unsigned char)((int)num / 100 % 10 + 0x30);
-//    }
-//    LCD_P6x8Str(x, y, tmp);
-//}
+
+void LCD_ShowBatteryVoltage(unsigned char x, unsigned char y, float num)
+{
+    TFT_showUfloat(x, y, num, 1, 2, RED, WHITE);
+    TFT_showchar(x+32,y+15,'V',RED,WHITE);
+}
 
 ///<summary>FIFO</summary>
 void FIFO(uint8 *head, uint8 depth, uint8 num)

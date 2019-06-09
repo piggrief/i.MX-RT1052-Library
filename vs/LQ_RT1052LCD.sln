@@ -2,7 +2,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LQ_RT1052LCD", "LQ_RT1052LCD.vcxproj", "{F5D1515B-DCF4-408B-6EE1-02FD72660B0E}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LQ_RT1052LCD", "LQ_RT1052LCD.vcxproj", "{6979E794-B9BD-4F43-76E3-F348A43C20F6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -10,10 +10,10 @@ Global
 		Release|Win32 = Release|Win32
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{F5D1515B-DCF4-408B-6EE1-02FD72660B0E}.Debug|Win32.ActiveCfg = sdram_release|Win32
-		{F5D1515B-DCF4-408B-6EE1-02FD72660B0E}.Debug|Win32.Build.0 = sdram_release|Win32
-		{F5D1515B-DCF4-408B-6EE1-02FD72660B0E}.Release|Win32.ActiveCfg = sdram_release|Win32
-		{F5D1515B-DCF4-408B-6EE1-02FD72660B0E}.Release|Win32.Build.0 = sdram_release|Win32
+		{6979E794-B9BD-4F43-76E3-F348A43C20F6}.Debug|Win32.ActiveCfg = sdram_release|Win32
+		{6979E794-B9BD-4F43-76E3-F348A43C20F6}.Debug|Win32.Build.0 = sdram_release|Win32
+		{6979E794-B9BD-4F43-76E3-F348A43C20F6}.Release|Win32.ActiveCfg = sdram_release|Win32
+		{6979E794-B9BD-4F43-76E3-F348A43C20F6}.Release|Win32.Build.0 = sdram_release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -208,9 +208,9 @@ long Speed_get[4] = { 0 };
 //编码器测速用的ENC编号
 ENC_Type* Encoder_ENCIndex[4] = { ENC1, ENC2, ENC3, ENC4 };
 //编码器测速用的旋转方向Port总端口
-GPIO_Type* EncoderDirectionPort[4] = { GPIO3, GPIO2, GPIO2, GPIO2 };
+GPIO_Type* EncoderDirectionPort[4] = { GPIO3, GPIO3, GPIO2, GPIO2 };
 //编码器测速用的旋转方向Port端口索引
-uint32_t Encoder_PORTIndex_Direction[4] = { 15, 12, 27, 26 };
+uint32_t Encoder_PORTIndex_Direction[4] = { 15, 17, 27, 26 };
 
 ///<summary>四个编码器初始化</summary>
 void EncoderMeasure_Init(void)
@@ -222,7 +222,7 @@ void EncoderMeasure_Init(void)
         0U);
 
     IOMUXC_SetPinMux(
-        IOMUXC_GPIO_B0_12_GPIO2_IO12,          /* GPIO_EMC_39 is configured as GPIO3_IO25 */
+        IOMUXC_GPIO_SD_B0_05_GPIO3_IO17,          /* GPIO_EMC_39 is configured as GPIO3_IO25 */
         0U);
 
     IOMUXC_SetPinMux(

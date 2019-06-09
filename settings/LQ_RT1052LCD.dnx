@@ -28,7 +28,7 @@
         <EnableCache>1</EnableCache>
     </ArmDriver>
     <DebugChecksum>
-        <Checksum>3062993113</Checksum>
+        <Checksum>4209968276</Checksum>
     </DebugChecksum>
     <Exceptions>
         <StopOnUncaught>_ 0</StopOnUncaught>
@@ -215,12 +215,14 @@
         <Count>12</Count>
     </Breakpoints2>
     <Aliases>
-        <A0>_ "D:\智能车\麦轮信标\程序\RT1052\LQ_RT1052TFT1.8寸屏 母板综合测试例程\LQuserFlies\devices\drivers\fsl_gpio.c" ""</A0>
-        <A1>_ "D:\智能车\麦轮信标\程序\RT1052\LQ_RT1052TFT1.8寸屏 母板综合测试例程\LQuserFlies\devices\drivers\fsl_lpi2c.c" ""</A1>
-        <A2>_ "D:\智能车\麦轮信标\程序\RT1052\LQ_RT1052TFT1.8寸屏 母板综合测试例程\LQuserFlies\devices\startup\system_MIMXRT1052.c" ""</A2>
-        <A3>_ "D:\智能车\麦轮信标\程序\RT1052\LQ_RT1052TFT1.8寸屏 母板综合测试例程\LQuserFlies\devices\utilities\fsl_assert.c" ""</A3>
-        <A4>_ "D:\智能车\麦轮信标\程序\RT1052\LQ_RT1052TFT1.8寸屏 母板综合测试例程\LQuserFlies\devices\utilities\fsl_debug_console.c" ""</A4>
-        <Count>5</Count>
+        <A0>_ "D:\Smart Car\RT1052\i.MX-RT1052-Library-2.0.2\LQuserFlies\devices\drivers\fsl_flexspi.c" ""</A0>
+        <A1>_ "D:\Smart Car\RT1052\i.MX-RT1052-Library-2.0.2\LQuserFlies\devices\startup\system_MIMXRT1052.c" ""</A1>
+        <A2>_ "D:\智能车\麦轮信标\程序\RT1052\LQ_RT1052TFT1.8寸屏 母板综合测试例程\LQuserFlies\devices\drivers\fsl_gpio.c" ""</A2>
+        <A3>_ "D:\智能车\麦轮信标\程序\RT1052\LQ_RT1052TFT1.8寸屏 母板综合测试例程\LQuserFlies\devices\drivers\fsl_lpi2c.c" ""</A3>
+        <A4>_ "D:\智能车\麦轮信标\程序\RT1052\LQ_RT1052TFT1.8寸屏 母板综合测试例程\LQuserFlies\devices\startup\system_MIMXRT1052.c" ""</A4>
+        <A5>_ "D:\智能车\麦轮信标\程序\RT1052\LQ_RT1052TFT1.8寸屏 母板综合测试例程\LQuserFlies\devices\utilities\fsl_assert.c" ""</A5>
+        <A6>_ "D:\智能车\麦轮信标\程序\RT1052\LQ_RT1052TFT1.8寸屏 母板综合测试例程\LQuserFlies\devices\utilities\fsl_debug_console.c" ""</A6>
+        <Count>7</Count>
         <SuppressDialog>1</SuppressDialog>
     </Aliases>
 </settings>

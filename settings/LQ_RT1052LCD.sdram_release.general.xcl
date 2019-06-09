@@ -2,7 +2,7 @@
 
 "C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.1\arm\bin\armJET.dll" 
 
-"D:\Smart Car\RT1052\i.MX-RT1052-Library-2.0.2\sdram_release\LQ_RT1052LCD.bin" 
+"D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\sdram_release\LQ_RT1052LCD.bin" 
 
 --plugin="C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.1\arm\bin\armbat.dll" 
 
@@ -10,7 +10,7 @@
 
 --device_macro="C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.1\arm\config\debugger\NXP\iMXRT_Trace.dmac" 
 
---flash_loader="D:\Smart Car\RT1052\i.MX-RT1052-Library-2.0.2\LQ_RT1052SYS.board" 
+--flash_loader="D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQ_RT1052SYS.board" 
 
 
 
