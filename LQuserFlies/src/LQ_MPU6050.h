@@ -73,7 +73,7 @@ uint8_t MPU_Get_Accelerometer(short *ax,short *ay,short *az);
 uint8_t MPU_Get_Magnetometer(short *mx,short *my,short *mz);
 uint8_t MPU_Get_Raw_data(short *ax,short *ay,short *az,short *gx,short *gy,short *gz);
 
-//三轴角加速度
+//三轴角速度
 struct GYROData
 {
     float X;
@@ -84,7 +84,7 @@ struct GYROData
     float Offset_Z;
 };
 
-//三轴加速度
+//三轴速度
 struct AccelData
 {
     float X;

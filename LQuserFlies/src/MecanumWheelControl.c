@@ -15,7 +15,7 @@
 pwm_submodule_t Wheels_PWMChannel[4] = { PWMChannel_Use_W1,
                                          PWMChannel_Use_W2,
                                          PWMChannel_Use_W3,
-                                         PWMChannel_Use_W4};
+                                         PWMChannel_Use_W4};//1左前 A+ B- 2右前 A- B+ 3右后 A- B+ 4左后 A- B+
 
 //PWM_Type *PWM_Type[4] = { PWMType_Use1, PWMType_Use2, PWMType_Use3, PWMType_Use4 };
 
@@ -25,10 +25,10 @@ pwm_submodule_t Wheels_PWMChannel[4] = { PWMChannel_Use_W1,
 ///<summary>电机通道初始化</summary>
 void Motor_init(void)
 {
-    LQ_PWM_Init(PWMType_Use1, Wheels_PWMChannel[0], kPWM_PwmA_B, 20000);
-    LQ_PWM_Init(PWMType_Use2, Wheels_PWMChannel[1], kPWM_PwmA_B, 20000);
-    LQ_PWM_Init(PWMType_Use3, Wheels_PWMChannel[2], kPWM_PwmA_B, 20000);
-    LQ_PWM_Init(PWMType_Use4, Wheels_PWMChannel[3], kPWM_PwmA_B, 20000);
+    LQ_PWM_Init(PWMType_Use1, Wheels_PWMChannel[0], kPWM_PwmA_B, 10000);
+    LQ_PWM_Init(PWMType_Use2, Wheels_PWMChannel[1], kPWM_PwmA_B, 10000);
+    LQ_PWM_Init(PWMType_Use3, Wheels_PWMChannel[2], kPWM_PwmA_B, 10000);
+    LQ_PWM_Init(PWMType_Use4, Wheels_PWMChannel[3], kPWM_PwmA_B, 10000);
 }
 
 ///<summary>对应PIDControl结构体内的f_Constructor</summary>
@@ -152,8 +152,8 @@ void CalTargetSpeed_EachWheel(struct RunSpeed * TargetSpeed)
     ///用底盘运动状态解算四个轮子应有的速度
     WheelControl[0].TargetValue = TargetSpeed->YSpeed + TargetSpeed->XSpeed - TargetSpeed->YawSpeed;
     WheelControl[1].TargetValue = TargetSpeed->YSpeed - TargetSpeed->XSpeed + TargetSpeed->YawSpeed;
-    WheelControl[2].TargetValue = TargetSpeed->YSpeed - TargetSpeed->XSpeed - TargetSpeed->YawSpeed;
-    WheelControl[3].TargetValue = TargetSpeed->YSpeed + TargetSpeed->XSpeed + TargetSpeed->YawSpeed;
+    WheelControl[2].TargetValue = TargetSpeed->YSpeed + TargetSpeed->XSpeed + TargetSpeed->YawSpeed;
+    WheelControl[3].TargetValue = TargetSpeed->YSpeed - TargetSpeed->XSpeed - TargetSpeed->YawSpeed;
 }
 //PID结构体内缺乏一个范用的的设定目标的函数
 
@@ -185,7 +185,7 @@ void MotorOutput(float * ControlValue)
     }
     else
     {
-        LQ_PWMA_B_SetDuty(PWMType_Use3, Wheels_PWMChannel[i], (uint16_t)(-ControlValue[i]) , 0);
+        LQ_PWMA_B_SetDuty(PWMType_Use3, Wheels_PWMChannel[i], (uint16_t)(-ControlValue[i]), 0);
     }
     i = 3;
     if (ControlValue[i] >= 0)
@@ -313,7 +313,7 @@ int16_t temp_Speed_W4[MediumFilterSize];
 int16_t temp_Speed_buff[MediumFilterSize];
 
 //四个轮子反转时的旋转方向IO
-uint8_t Flag_Reverse[4] = { 0, 0, 0, 0 };
+uint8_t Flag_Reverse[4] = { 0, 0, 1, 1 };
 
 ///<summary>获得第index个轮子的转速</summary>
 void GetSpeed(int index)
@@ -416,11 +416,16 @@ void SetSpeed_FromRemote_Analog(void)
     }
     MotorOutput(ControlValue_Closeloop);
 }
-
 #endif
-//串级控制部分
+
+//串级控制部分//
+int direction_flag=0;
 float Rotate_sp = 0;
-float Series_Speed = 300;
+float Series_Speed = 0;
+extern uint8 Front_Distance_ReceiveBuff[6];
+extern uint8 Back_Distance_ReceiveBuff[6];
+extern struct GYROData GYRO_OriginData;
+int GYRO_Watch= 0;
 ///<summary>速度环初始化函数</summary>
 void PID_Speedloop_init( float *P_set, float *D_set, float *I_set, float I_Limit_Set, float MaxOutput_Set, float *DeadBand_Set)
 {
@@ -439,20 +444,20 @@ void PID_locationloop_init( float P_set, float D_set, float I_set, float I_Limit
     PIDControl_Constructor(&Car_Speed_Rotate, P_set, D_set, I_set, I_Limit_Set, MaxOutput_Set, DeadBand_Set);
     Car_Speed_Rotate.TargetValue = 94;//设定位置环目标值94
 }
-extern struct GYROData GYRO_OriginData;
 ///<summary>串级控制 输入量为位置环偏差 中值94 Y轴</summary>
 void Series_Control(float deviation)
 {
-    //Get_Gyro(&GYRO_OriginData);//z轴为地磁轴
-    //int a = (int)(GYRO_OriginData.Z*0.001);
+    GYRO_Watch = (int)(GYRO_OriginData.Z*0.014);
+#ifdef Remote_UseDigitalReceive
   if(RunMode == Start)
     SetTargetSpeed_Car(&RS_Now, 0, 0, 0);
   else
   {
     if(deviation == 0)
     {
-      SetTargetSpeed_Car(&RS_Now, 0, 0, 80);
-      FIFO_five_depth_Clean();
+      SetTargetSpeed_Car(&RS_Now, 0, 0, 50);
+      FIFO_Clean(Front_Distance_ReceiveBuff, 5);
+      FIFO_Clean(Back_Distance_ReceiveBuff, 5);
     }
     else
     {
@@ -460,6 +465,20 @@ void Series_Control(float deviation)
       SetTargetSpeed_Car(&RS_Now, 0, Series_Speed, Rotate_sp);
     }
   }
+#else
+  Series_Speed = direction_flag*3*(RemoteData.Left_Y-126);//遥控控制前进速度
+  if(deviation == 0)
+    {
+      SetTargetSpeed_Car(&RS_Now, 0, 0, 50);
+      FIFO_Clean(Front_Distance_ReceiveBuff, 5);
+      FIFO_Clean(Back_Distance_ReceiveBuff, 5);
+    }
+  else
+    {
+      Rotate_sp = GetPIDControlValue(&Car_Speed_Rotate, P_Control, deviation);
+      SetTargetSpeed_Car(&RS_Now, 0, Series_Speed, Rotate_sp-GYRO_Watch);
+    }
+#endif  
     CalTargetSpeed_EachWheel(&RS_Now);
     for (int i = 0; i < 4; i++)
     {

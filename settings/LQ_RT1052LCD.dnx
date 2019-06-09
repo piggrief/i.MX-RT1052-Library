@@ -18,7 +18,7 @@
     <Jet>
         <JetConnSerialNo>97969900</JetConnSerialNo>
         <JetConnFoundProbes />
-        <PrevWtdReset>Core</PrevWtdReset>
+        <PrevWtdReset>System</PrevWtdReset>
         <OnlineReset>Software</OnlineReset>
         <DisableInterrupts>0</DisableInterrupts>
         <LeaveRunning>0</LeaveRunning>
@@ -28,7 +28,7 @@
         <EnableCache>1</EnableCache>
     </ArmDriver>
     <DebugChecksum>
-        <Checksum>1137503983</Checksum>
+        <Checksum>3062993113</Checksum>
     </DebugChecksum>
     <Exceptions>
         <StopOnUncaught>_ 0</StopOnUncaught>
@@ -40,8 +40,8 @@
     <SWOManager>
         <SamplingDivider>8192</SamplingDivider>
         <OverrideClock>0</OverrideClock>
-        <CpuClock>65</CpuClock>
-        <SwoClock>2</SwoClock>
+        <CpuClock>1600416118</CpuClock>
+        <SwoClock>962868272</SwoClock>
         <DataLogMode>0</DataLogMode>
         <ItmPortsEnabled>63</ItmPortsEnabled>
         <ItmTermIOPorts>1</ItmTermIOPorts>
@@ -138,12 +138,25 @@
         <ProbeSetup0>2 1 1 2 0 0</ProbeSetup0>
     </PowerProbe>
     <struct_types>
-        <Fmt0>edma_transfer_config_t-destAddr	4	0</Fmt0>
-        <Fmt1>edma_transfer_config_t-srcAddr	4	0</Fmt1>
+        <Fmt0>ReceiveCMDData-Left_X	3	0</Fmt0>
+        <Fmt1>ReceiveCMDData-Left_Y	3	0</Fmt1>
+        <Fmt2>ReceiveCMDData-Right_X	3	0</Fmt2>
+        <Fmt3>ReceiveCMDData-Right_Y	3	0</Fmt3>
+        <Fmt4>edma_transfer_config_t-destAddr	4	0</Fmt4>
+        <Fmt5>edma_transfer_config_t-srcAddr	4	0</Fmt5>
     </struct_types>
     <array_types>
-        <Fmt0>unsigned char[188]	3	0</Fmt0>
+        <Fmt0>char[3]	3	0</Fmt0>
+        <Fmt1>unsigned char[10]	3	0</Fmt1>
+        <Fmt2>unsigned char[188]	3	0</Fmt2>
+        <Fmt3>unsigned char[4]	3	0</Fmt3>
+        <Fmt4>unsigned char[6]	3	0</Fmt4>
+        <Fmt5>unsigned char[8]	3	0</Fmt5>
     </array_types>
+    <watch_formats>
+        <Fmt0>{W}42:Series_deviation_received	3	0</Fmt0>
+        <Fmt1>{W}42:Series_distance_received	3	0</Fmt1>
+    </watch_formats>
     <Trace1>
         <Enabled>0</Enabled>
         <ShowSource>1</ShowSource>
@@ -192,13 +205,13 @@
         <Bp2>_ 0 "EMUL_CODE" "{$PROJ_DIR$\LQuserFlies\src\PigMT9V032.c}.340.21" 0 0 1 "" 0 "" 0</Bp2>
         <Bp3>_ 0 "EMUL_CODE" "{$PROJ_DIR$\LQuserFlies\src\LQ_SGP18Test.c}.35.5" 0 0 1 "" 0 "" 0</Bp3>
         <Bp4>_ 0 "EMUL_CODE" "{$PROJ_DIR$\LQuserFlies\src\LQ_SGP18Test.c}.52.9" 0 0 1 "" 0 "" 0</Bp4>
-        <Bp5>_ 0 "EMUL_CODE" "{$PROJ_DIR$\LQuserFlies\src\Appmain.c}.229.1" 0 0 1 "" 0 "" 0</Bp5>
-        <Bp6>_ 0 "EMUL_CODE" "{$PROJ_DIR$\LQuserFlies\src\Appmain.c}.229.1" 0 0 1 "" 0 "" 0</Bp6>
-        <Bp7>_ 0 "EMUL_CODE" "{$PROJ_DIR$\LQuserFlies\src\Appmain.c}.229.1" 0 0 1 "" 0 "" 0</Bp7>
-        <Bp8>_ 0 "EMUL_CODE" "{$PROJ_DIR$\LQuserFlies\src\Appmain.c}.229.1" 0 0 1 "" 0 "" 0</Bp8>
-        <Bp9>_ 1 "EMUL_CODE" "{$PROJ_DIR$\LQuserFlies\src\LQ_UART.c}.455.3" 0 0 1 "" 0 "" 0</Bp9>
-        <Bp10>_ 0 "EMUL_CODE" "{$PROJ_DIR$\LQuserFlies\src\Appmain.c}.1.1" 0 0 1 "" 0 "" 0</Bp10>
-        <Bp11>_ 0 "EMUL_CODE" "{$PROJ_DIR$\LQuserFlies\src\PigMT9V032.c}.514.5" 0 0 1 "" 0 "" 0</Bp11>
+        <Bp5>_ 0 "EMUL_CODE" "{$PROJ_DIR$\LQuserFlies\src\Appmain.c}.1.1" 0 0 1 "" 0 "" 0</Bp5>
+        <Bp6>_ 0 "EMUL_CODE" "{$PROJ_DIR$\LQuserFlies\src\PigMT9V032.c}.514.5" 0 0 1 "" 0 "" 0</Bp6>
+        <Bp7>_ 0 "EMUL_CODE" "{$PROJ_DIR$\LQuserFlies\src\LQ_MPU6050.c}.29.5" 0 0 1 "" 0 "" 0</Bp7>
+        <Bp8>_ 0 "EMUL_CODE" "{$PROJ_DIR$\LQuserFlies\src\LQ_MPU6050.c}.28.5" 0 0 1 "" 0 "" 0</Bp8>
+        <Bp9>_ 0 "EMUL_CODE" "{$PROJ_DIR$\LQuserFlies\src\LQ_MPU6050.c}.27.5" 0 0 1 "" 0 "" 0</Bp9>
+        <Bp10>_ 0 "EMUL_CODE" "{$PROJ_DIR$\LQuserFlies\src\LQ_MPU6050.c}.26.5" 0 0 1 "" 0 "" 0</Bp10>
+        <Bp11>_ 0 "EMUL_CODE" "{$PROJ_DIR$\LQuserFlies\src\LQ_MPU6050.c}.25.5" 0 0 1 "" 0 "" 0</Bp11>
         <Count>12</Count>
     </Breakpoints2>
     <Aliases>

@@ -149,8 +149,9 @@ void GetSpeed(int index);
 ///<summary>速度计数清零</summary>
 void SpeedClean(void);
 ///<summary>远程遥控程序</summary>
+#ifdef Remote_UseDigitalReceive
 void SetSpeed_FromRemote(RemoteCMDMode mode);
-#ifndef Remote_UseDigitalReceive
+#else 
 void SetSpeed_FromRemote_Analog(void);
 #endif
 

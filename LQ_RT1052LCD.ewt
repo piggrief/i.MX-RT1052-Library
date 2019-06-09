@@ -2483,12 +2483,6 @@
             <name>$PROJ_DIR$\LQuserFlies\src\LQ_LED.h</name>
         </file>
         <file>
-            <name>$PROJ_DIR$\LQuserFlies\src\LQ_MPU6050.c</name>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\LQuserFlies\src\LQ_MPU6050.h</name>
-        </file>
-        <file>
             <name>$PROJ_DIR$\LQuserFlies\src\LQ_PIT.c</name>
         </file>
         <file>
@@ -2586,6 +2580,12 @@
         </file>
         <file>
             <name>$PROJ_DIR$\LQuserFlies\src\DebugFunction.h</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\LQuserFlies\src\LQ_MPU6050.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\LQuserFlies\src\LQ_MPU6050.h</name>
         </file>
         <file>
             <name>$PROJ_DIR$\LQuserFlies\src\MecanumWheelControl.c</name>
@@ -2736,9 +2736,6 @@
         </file>
         <file>
             <name>$PROJ_DIR$\LQuserFlies\src\camera\fsl_sccb.c</name>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\LQuserFlies\src\camera\fsl_sccb.h</name>
         </file>
         <file>
             <name>$PROJ_DIR$\LQuserFlies\devices\drivers\fsl_semc.c</name>

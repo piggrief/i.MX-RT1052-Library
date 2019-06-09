@@ -246,43 +246,43 @@ void LQ_UART_Init(LPUART_Type *base, uint32_t bound)
     if(base == LPUART1)
     {
         //优先级配置 抢占优先级1  子优先级2   越小优先级越高  抢占优先级可打断别的中断
-       NVIC_SetPriority(LPUART1_IRQn,NVIC_EncodePriority(NVIC_GetPriorityGrouping(),1,3));
+       NVIC_SetPriority(LPUART1_IRQn,NVIC_EncodePriority(NVIC_GetPriorityGrouping(),1,1));
        EnableIRQ(LPUART1_IRQn);	                            //使能LPUART1中断      
     }
     else if(base == LPUART2)
     {
         //优先级配置 抢占优先级1  子优先级2   越小优先级越高  抢占优先级可打断别的中断
-        NVIC_SetPriority(LPUART2_IRQn,NVIC_EncodePriority(NVIC_GetPriorityGrouping(),1,2));
+        NVIC_SetPriority(LPUART2_IRQn,NVIC_EncodePriority(NVIC_GetPriorityGrouping(),1,3));
         EnableIRQ(LPUART2_IRQn);	                            //使能LPUART1中断      
     }
     else if(base == LPUART3)
     {
         //优先级配置 抢占优先级1  子优先级2   越小优先级越高  抢占优先级可打断别的中断
-        NVIC_SetPriority(LPUART3_IRQn,NVIC_EncodePriority(NVIC_GetPriorityGrouping(),1,8));
+        NVIC_SetPriority(LPUART3_IRQn,NVIC_EncodePriority(NVIC_GetPriorityGrouping(),1,2));
         EnableIRQ(LPUART3_IRQn);	                            //使能LPUART1中断    
     }
     else if(base == LPUART4)
     {
         //优先级配置 抢占优先级1  子优先级2   越小优先级越高  抢占优先级可打断别的中断
-        NVIC_SetPriority(LPUART4_IRQn,NVIC_EncodePriority(NVIC_GetPriorityGrouping(),1,8));
+        NVIC_SetPriority(LPUART4_IRQn,NVIC_EncodePriority(NVIC_GetPriorityGrouping(),1,1));
         EnableIRQ(LPUART4_IRQn);	                            //使能LPUART1中断     
     }
     else if(base == LPUART5)
     {
         //优先级配置 抢占优先级1  子优先级2   越小优先级越高  抢占优先级可打断别的中断
-        NVIC_SetPriority(LPUART5_IRQn,NVIC_EncodePriority(NVIC_GetPriorityGrouping(),1,4));
+        NVIC_SetPriority(LPUART5_IRQn,NVIC_EncodePriority(NVIC_GetPriorityGrouping(),1,1));
         EnableIRQ(LPUART5_IRQn);	                            //使能LPUART1中断     
     }
     else if(base == LPUART6)
     {
         //优先级配置 抢占优先级1  子优先级2   越小优先级越高  抢占优先级可打断别的中断
-        NVIC_SetPriority(LPUART6_IRQn,NVIC_EncodePriority(NVIC_GetPriorityGrouping(),1,8));
+        NVIC_SetPriority(LPUART6_IRQn,NVIC_EncodePriority(NVIC_GetPriorityGrouping(),1,1));
         EnableIRQ(LPUART6_IRQn);	                            //使能LPUART1中断    
     }
     else if(base == LPUART7)
     {
         //优先级配置 抢占优先级1  子优先级2   越小优先级越高  抢占优先级可打断别的中断
-        NVIC_SetPriority(LPUART7_IRQn,NVIC_EncodePriority(NVIC_GetPriorityGrouping(),1,8));
+        NVIC_SetPriority(LPUART7_IRQn,NVIC_EncodePriority(NVIC_GetPriorityGrouping(),1,1));
         EnableIRQ(LPUART7_IRQn);	                            //使能LPUART1中断       
     }
     else if(base == LPUART8)
@@ -394,8 +394,6 @@ void LPUART1_IRQHandler(void)
 {
 	if((LPUART1->STAT)&kLPUART_RxDataRegFullFlag) //接收中断
 	{
-		LPUART_RX_BUF[res] = LPUART_ReadByte(LPUART1);					//读取数据
-		res ++;
 	}
 	__DSB();				//数据同步屏蔽指令
 }
@@ -403,11 +401,10 @@ void LPUART2_IRQHandler(void)
 {	
 	if((LPUART2->STAT)&kLPUART_RxDataRegFullFlag) //接收中断
 	{
-        //ReceiveCMD_Remote();
-    }
+          Series_RX();
+        }
 	__DSB();				//数据同步屏蔽指令
 }
-extern void ReceiveCMD_Remote(void);
 
 void LPUART3_IRQHandler(void)
 {
@@ -415,7 +412,7 @@ void LPUART3_IRQHandler(void)
 	
 	if((LPUART3->STAT)&kLPUART_RxDataRegFullFlag) //接收中断
 	{
-		ReceiveCMD_Remote();
+          ReceiveCMD_Remote();
 	}
 	__DSB();				//数据同步屏蔽指令
 }
@@ -439,9 +436,6 @@ void LPUART5_IRQHandler(void)
 	
 	if((LPUART5->STAT)&kLPUART_RxDataRegFullFlag) //接收中断
 	{
-		LPUART_RX_BUF[res] = LPUART_ReadByte(LPUART5);				//读取数据
-		res ++;
-        if(res == 100) res = 0;                   //接受缓冲区满，直接覆盖
 	}
 	__DSB();				//数据同步屏蔽指令
 }
@@ -452,9 +446,6 @@ void LPUART6_IRQHandler(void)
 	
 	if((LPUART6->STAT)&kLPUART_RxDataRegFullFlag) //接收中断
 	{
-		LPUART_RX_BUF[res] = LPUART_ReadByte(LPUART6);					//读取数据
-		res ++;
-        if(res == 100) res = 0;                   //接受缓冲区满，直接覆盖
 	}
 	__DSB();				//数据同步屏蔽指令
 }
@@ -485,7 +476,9 @@ void LPUART8_IRQHandler(void)
 	__DSB();				//数据同步屏蔽指令
 }
 
-UART1DMAStatus UARTStatus;
+
+
+
 
 /* LPUART user callback */
 //串口DMA的回调函数，当DMA执行结束后，会自动调用该函数，可以在该函数内加入用户自己的代码，实现DMA传输完成后想要执行的操作
@@ -495,21 +488,21 @@ void LPUART_UserCallback(LPUART_Type *base, lpuart_edma_handle_t *handle, status
 
     if (kStatus_LPUART_TxIdle == status)     //如果发送空闲
     {
-        if (UARTStatus.SendStatus == Sending)
-            UARTStatus.SendStatus = SendEnd;
+        _status.txBufferFull = false;
+        _status.txOnGoing = false;
         return;
     }
 
     if (kStatus_LPUART_RxIdle == status)     //接收空闲
     {
-        if (UARTStatus.ReceiveStatus == Receiving)
-            UARTStatus.ReceiveStatus = ReceiveEnd;
+        _status.rxBufferEmpty = false;
+        _status.rxOnGoing = false;
     }
     else
     {
         while(kStatus_LPUART_RxIdle == status);
-        if (UARTStatus.ReceiveStatus == Receiving)
-            UARTStatus.ReceiveStatus = ReceiveEnd;
+         _status.rxBufferEmpty = false;
+        _status.rxOnGoing = false;
     }
 }
 
@@ -521,7 +514,64 @@ lpuart_transfer_t sendXfer;
 lpuart_edma_handle_t g_lpuartEdmaHandle;
 edma_handle_t g_lpuartTxEdmaHandle;
 edma_handle_t g_lpuartRxEdmaHandle;
-
+//void Test_UART_DMA(void)
+//{
+//    UART_DMA_Init();
+//
+////    /* Start to echo. */
+////    sendXfer.data = g_txBuffer;              //DMA传输的字符串首地址   在ANO_DT_Send_Data()函数内部赋值
+////    sendXfer.dataSize = ECHO_BUFFER_LENGTH;  //DMA传输的长度
+////    
+//    float data1 = 0.0f;
+//    float data2 = 45.0f; 
+//    float data3 = 90.0f;   
+//    float data4 = 135.0f;   
+//    float data5 = 60.0f;
+//    const float PI = 3.1415926;
+//
+//    while(1)
+//    {
+//        uint64_t now = _systime.get_time_us();         //计时功能  得到当前时间
+//        if(!_status.txOnGoing)           //不是正在发送过程
+//        {
+//            if(_status.get_pid_group1)   //收到上位机发送的 读取飞控 指令   单片机发送pid参数给上位机
+//            {
+//                _status.get_pid_group1 = 0;
+//                ANO_DT_Send_PID(1, Motor_pid._kp, Motor_pid._ki, Motor_pid._kd, Servo_pid._kp, Servo_pid._ki, Servo_pid._kd, 0,0,0);
+//            }
+//            else    //测试正玄波
+//            {
+//                ANO_DT_send_int16((short)(sin(data1/180.0f * PI) * 100),   //上报匿名上位机 画正玄波
+//                                  (short)(sin(data2/180.0f * PI) * 100), 
+//                                  (short)(sin(data3/180.0f * PI) * 100), 
+//                                  (short)(sin(data4/180.0f * PI) * 100), 
+//                                  (short)(sin(data5/180.0f * PI) * 100), 
+//                                  0, 
+//                                  0, 
+//                                  0);
+//            }
+//        }
+//        
+//        
+//        delayms(10);
+//        uint64_t time = _systime.get_time_us() - now;  //得到时差
+//        //        printf("time is %llu \r\n", time);
+//        
+//        
+//        if(data1 > 180) data1 = -180;
+//        if(data2 > 180) data2 = -180;
+//        if(data3 > 180) data3 = -180;
+//        if(data4 > 180) data4 = -180;
+//        if(data5 > 180) data5 = -180;
+//        
+//        data1 += 1;
+//        data2 += 2;
+//        data3 += 3;
+//        data4 += 4;
+//        data5 += 5;
+//    }
+//
+//}
 void UART_DMA_Init(void)
 {
     LQ_UART_Init(LPUART1, 115200);   //串口 + DMA 收发
@@ -550,17 +600,3 @@ void UART_DMA_Init(void)
 
 }
 
-UARTDMASendResult Uart_SendString_DMA(uint8_t *dataToSend, uint8_t length)
-{
-    /*使用DMA + 串口，无需占用CPU时间 */
-    sendXfer.data = dataToSend;
-    sendXfer.dataSize = length;
-    if (UARTStatus.SendStatus == SendEnd)
-    {
-        UARTStatus.SendStatus = Sending;
-        LPUART_SendEDMA(LPUART1, &g_lpuartEdmaHandle, &sendXfer);
-        return Success;
-    }
-    else
-        return Fail_SinceSending;  
-}

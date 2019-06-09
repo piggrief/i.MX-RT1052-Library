@@ -56,8 +56,7 @@ void OutPut_Data(void)
     databuf[8] = CRC16%256;
     databuf[9] = CRC16/256;
 
-    Uart_SendString_DMA(databuf, 10);
-    //UART_Put_Buff(CRC_Uart_Port, databuf, 10);
+    UART_Put_Buff(CRC_Uart_Port, databuf, 10);
 }
 /// <summary>
 ///给虚拟示波器发送a,b,c,d取整之后的值
@@ -126,6 +125,18 @@ void DATA_SEND(long num)
 void RemoteInit()
 {
     UART_Init(Remote_Uart_Port, 9600);
+}
+/// <summary>
+///初始化模拟遥控器的接收数据
+///</summary>
+ReceiveCMDData RemoteData;
+void RemoteData_init(void)
+{
+    RemoteData.Left_Y = 126;
+    RemoteData.Left_X = 126;
+    RemoteData.Right_Y = 126;
+    RemoteData.Right_X = 126;
+  
 }
 int ReceiveIndex = 0;
 char ReceiveBuff[3] = {0};
@@ -222,7 +233,6 @@ void ReceiveCMD_Remote(void)
 ///请求遥控指令程序，模拟用
 ///</summary>
 Remote_State Remote_CMD_ReceiveStatus = Sleep;
-ReceiveCMDData RemoteData;
 long count_error_left = 0;
 long count_error_right = 0;
 
@@ -250,7 +260,7 @@ void SendRemoteCMDData(void)
       count_error_right = 0;
     }
     
-    if(count_error_left >= 1000 || count_error_right >= 1000)
+    if(count_error_left >= 500 || count_error_right >= 500)
     {
       RemoteData.Left_Y = 127;
       RemoteData.Left_X = 127;
@@ -342,7 +352,9 @@ void ReceiveCMD_Remote()
 ///<summary>板间通信</summary>
 uint8 SeriesReceive = 0;
 uint8 SeriesIndex = 0;
-uint8 Series_ReceiveBuff[2] = { 0 };
+uint8 Series_ReceiveBuff[4] = { 0 };
+uint8 Front_Distance_ReceiveBuff[5] = { 0 };
+uint8 Back_Distance_ReceiveBuff[5] = { 0 };
 void Series_RX(void)
 {
     uint8 buff = 0;
@@ -359,7 +371,7 @@ void Series_RX(void)
     }
     if (SeriesReceive == 1)
     {
-        if (SeriesIndex < 2)
+        if (SeriesIndex < 4)
         {
           Series_ReceiveBuff[SeriesIndex] = buff;
           SeriesIndex++;
@@ -368,7 +380,8 @@ void Series_RX(void)
         {
             if (buff == 0xFF)
             {
-              FIFO_five_depth(Series_ReceiveBuff[1]);
+              FIFO(Front_Distance_ReceiveBuff, 5, Series_ReceiveBuff[1]);
+              FIFO(Back_Distance_ReceiveBuff, 5, Series_ReceiveBuff[3]);
               SeriesReceive = 0;
               SeriesIndex = 0;
             }
@@ -534,55 +547,45 @@ float GetBatteryVoltage(float HintVoltage)
 //    }
 //    LCD_P6x8Str(x, y, tmp);
 //}
+
 ///<summary>FIFO</summary>
-uint8 arrl_flag = 0;
-uint8 length[5] = { 0 };
-void FIFO_five_depth(uint8 dis)
+void FIFO(uint8 *head, uint8 depth, uint8 num)
 {
-	if (arrl_flag != 5)
-	{
-		length[arrl_flag] = dis;
-		arrl_flag++;
-		return;
-	}
-	else
-	{
-		int k = 0;
-		for( k = 0;k < 4;k++)
-		{
-			length[k] = length[k + 1];
-		}
-		length[k] = dis;
-	}
-        return;
+  int k;
+  for( k = 0;k < depth-1;k++)
+  {
+    *(head+k) = *(head+k+1);
+  }
+  *(head+k) = num;
+  return;
 }
 
-void FIFO_five_depth_Clean(void)
+void FIFO_Clean(uint8 *head, uint8 depth)
 {
     int i = 0;
-    for (i = 0; i < 5; i++)
-        length[i] = 0;
+    for (i = 0; i < depth; i++)
+        *(head+i) = 0;
 }
 
 
-uint8 One_loop_bubblesort(uint8 *lis)
+uint8 One_loop_bubblesort(uint8 *lis, uint8 depth)
 {
-  uint8 distance = 0;
-  uint8 arrl[5] = { 0 };
+  uint8 biggest = 0;
+  uint8 *const arry = (uint8 *)malloc(sizeof(uint8)*depth);//向系统申请内存，长度为传递进来的列表深度
   uint8 temp_exchange = 0;
-	for (int i = 0; i <= 4; i++)
+	for (int i = 0; i <= depth-1; i++)
 	{
-		arrl[i] = lis[i];
+		arry[i] = lis[i];
 	}
-	for (int i = 0; i < 4; i++)
+	for (int i = 0; i < depth-1; i++)
 	{
-                if (arrl[i] > arrl[i + 1])
+                if (arry[i] > arry[i + 1])
                 {
-                        temp_exchange = arrl[i + 1];
-                        arrl[i + 1] = arrl[i];
-                        arrl[i] = temp_exchange;
+                        temp_exchange = arry[i + 1];
+                        arry[i + 1] = arry[i];
+                        arry[i] = temp_exchange;
                 }
 	}
-                 distance = arrl[4];
-        return distance;
+                 biggest = arry[depth-1];
+        return biggest;
 }

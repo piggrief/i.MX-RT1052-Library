@@ -2,55 +2,55 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 	<ItemGroup>
 		<Filter Include="源文件\App_main">
-			<UniqueIdentifier>{f737d52f-c10c-4a03-6355-05c64dbb58c4}</UniqueIdentifier>
+			<UniqueIdentifier>{cede39cf-6a32-477d-5f12-66ce3988901e}</UniqueIdentifier>
 		</Filter>
 		<Filter Include="源文件\AppDriver">
-			<UniqueIdentifier>{c9fc1ffe-f597-46c1-56cf-85856050ec8a}</UniqueIdentifier>
+			<UniqueIdentifier>{41484da8-c43a-4f7f-6d9c-7c3ddd2374da}</UniqueIdentifier>
 		</Filter>
 		<Filter Include="源文件\AppDriver\AHRS">
-			<UniqueIdentifier>{91b5fef0-2b9b-40be-6497-18bd0eefd505}</UniqueIdentifier>
+			<UniqueIdentifier>{fe9a8ed6-ace3-4c36-7426-56bba06379c6}</UniqueIdentifier>
 		</Filter>
 		<Filter Include="源文件\AppDriver\car">
-			<UniqueIdentifier>{a4eb9bb7-3b03-4cd8-43af-cb52a341d829}</UniqueIdentifier>
+			<UniqueIdentifier>{f215cd0d-d853-42d0-7c5e-2191677c86a3}</UniqueIdentifier>
 		</Filter>
 		<Filter Include="源文件\AppDriver\LCD">
-			<UniqueIdentifier>{d42078c1-18bb-420e-4f41-dffc7fa6e965}</UniqueIdentifier>
+			<UniqueIdentifier>{8335b8a2-35f5-48d9-7d7e-8d2608a83cd5}</UniqueIdentifier>
 		</Filter>
 		<Filter Include="源文件\AppDriver\MT9V032">
-			<UniqueIdentifier>{2b3cdf68-10d3-4780-4903-c36f8522b8c9}</UniqueIdentifier>
+			<UniqueIdentifier>{19b9ecb0-5b56-40d6-5e12-252ec5a9eea0}</UniqueIdentifier>
 		</Filter>
 		<Filter Include="源文件\AppDriver\Pig_eDMA">
-			<UniqueIdentifier>{18d281b5-1e23-42da-65b3-3610756d024b}</UniqueIdentifier>
+			<UniqueIdentifier>{b6c5135f-1b9b-49f6-764b-8e3abad2936e}</UniqueIdentifier>
 		</Filter>
 		<Filter Include="源文件\AppDriver\SDCard">
-			<UniqueIdentifier>{d140983d-3f78-4173-58c0-3887a2779267}</UniqueIdentifier>
+			<UniqueIdentifier>{24b83b8c-84ac-4a5e-6ff7-1cad78032767}</UniqueIdentifier>
 		</Filter>
 		<Filter Include="源文件\AppDriver\Sys">
-			<UniqueIdentifier>{0b3bbbed-6530-4c6c-6a16-de323ef7f58e}</UniqueIdentifier>
+			<UniqueIdentifier>{d30d2bed-2717-423d-62d6-42a6a9096f92}</UniqueIdentifier>
 		</Filter>
 		<Filter Include="源文件\board">
-			<UniqueIdentifier>{9ca57ab3-90a8-45db-6f8d-31db2ee9699a}</UniqueIdentifier>
+			<UniqueIdentifier>{bf5a7d00-704d-44ac-713c-090b6b0f6c41}</UniqueIdentifier>
 		</Filter>
 		<Filter Include="源文件\BoardDriver">
-			<UniqueIdentifier>{998e19db-fc60-4a1b-7d8f-fe3258802f48}</UniqueIdentifier>
+			<UniqueIdentifier>{eb37205b-ee40-43b9-7c6f-3a5380b69be4}</UniqueIdentifier>
 		</Filter>
 		<Filter Include="源文件\BoardDriver\Pig_SPI">
-			<UniqueIdentifier>{a3f6918e-65c3-4518-6736-494c051fce02}</UniqueIdentifier>
+			<UniqueIdentifier>{2f182467-9142-4e12-76eb-e880d68118fa}</UniqueIdentifier>
 		</Filter>
 		<Filter Include="源文件\drivers">
-			<UniqueIdentifier>{af1780c4-031a-48aa-7135-dd0d9adc343d}</UniqueIdentifier>
+			<UniqueIdentifier>{6118fd69-fc4e-4f47-4f93-e3da7c180300}</UniqueIdentifier>
 		</Filter>
 		<Filter Include="源文件\startup">
-			<UniqueIdentifier>{39b3b50f-48ee-4278-6ed5-c89e842fd789}</UniqueIdentifier>
+			<UniqueIdentifier>{81b87de6-c899-4539-473a-38bdba36c679}</UniqueIdentifier>
 		</Filter>
 		<Filter Include="源文件\utilities">
-			<UniqueIdentifier>{02d304df-e79f-4add-553f-d8d33490e9c2}</UniqueIdentifier>
+			<UniqueIdentifier>{11c9016a-4a65-4bee-56be-0a87ffa1b3c7}</UniqueIdentifier>
 		</Filter>
 		<Filter Include="源文件\XIP">
-			<UniqueIdentifier>{418cc740-4835-4b77-6691-166f8794dc35}</UniqueIdentifier>
+			<UniqueIdentifier>{87fb2e9a-5ccc-44aa-5a37-d25665bbeffe}</UniqueIdentifier>
 		</Filter>
 		<Filter Include="源文件">
-			<UniqueIdentifier>{b44f6681-ff5c-4657-4fba-b23bf808f01c}</UniqueIdentifier>
+			<UniqueIdentifier>{2a866410-d151-409d-766c-a73fc016d33b}</UniqueIdentifier>
 		</Filter>
 	</ItemGroup>
 	<ItemGroup>
@@ -70,9 +70,6 @@
 			<Filter>源文件\AppDriver</Filter>
 		</ClCompile>
 		<ClCompile Include="..\LQuserFlies\src\LQ_LED.c">
-			<Filter>源文件\AppDriver</Filter>
-		</ClCompile>
-		<ClCompile Include="..\LQuserFlies\src\LQ_MPU6050.c">
 			<Filter>源文件\AppDriver</Filter>
 		</ClCompile>
 		<ClCompile Include="..\LQuserFlies\src\LQ_PIT.c">
@@ -195,9 +192,6 @@
 		<ClCompile Include="..\LQuserFlies\devices\drivers\fsl_lpspi.c">
 			<Filter>源文件\drivers</Filter>
 		</ClCompile>
-		<ClCompile Include="..\LQuserFlies\devices\drivers\fsl_lpspi_edma.c">
-			<Filter>源文件\drivers</Filter>
-		</ClCompile>
 		<ClCompile Include="..\LQuserFlies\devices\drivers\fsl_lpuart.c">
 			<Filter>源文件\drivers</Filter>
 		</ClCompile>
@@ -211,9 +205,6 @@
 			<Filter>源文件\drivers</Filter>
 		</ClCompile>
 		<ClCompile Include="..\LQuserFlies\devices\drivers\fsl_qtmr.c">
-			<Filter>源文件\drivers</Filter>
-		</ClCompile>
-		<ClCompile Include="..\LQuserFlies\src\camera\fsl_sccb.c">
 			<Filter>源文件\drivers</Filter>
 		</ClCompile>
 		<ClCompile Include="..\LQuserFlies\devices\drivers\fsl_semc.c">
@@ -276,9 +267,6 @@
 			<Filter>源文件\AppDriver</Filter>
 		</ClInclude>
 		<ClInclude Include="..\LQuserFlies\src\LQ_LED.h">
-			<Filter>源文件\AppDriver</Filter>
-		</ClInclude>
-		<ClInclude Include="..\LQuserFlies\src\LQ_MPU6050.h">
 			<Filter>源文件\AppDriver</Filter>
 		</ClInclude>
 		<ClInclude Include="..\LQuserFlies\src\LQ_PIT.h">
@@ -407,9 +395,6 @@
 		<ClInclude Include="..\LQuserFlies\devices\drivers\fsl_lpspi.h">
 			<Filter>源文件\drivers</Filter>
 		</ClInclude>
-		<ClInclude Include="..\LQuserFlies\devices\drivers\fsl_lpspi_edma.h">
-			<Filter>源文件\drivers</Filter>
-		</ClInclude>
 		<ClInclude Include="..\LQuserFlies\devices\drivers\fsl_lpuart.h">
 			<Filter>源文件\drivers</Filter>
 		</ClInclude>
@@ -423,9 +408,6 @@
 			<Filter>源文件\drivers</Filter>
 		</ClInclude>
 		<ClInclude Include="..\LQuserFlies\devices\drivers\fsl_qtmr.h">
-			<Filter>源文件\drivers</Filter>
-		</ClInclude>
-		<ClInclude Include="..\LQuserFlies\src\camera\fsl_sccb.h">
 			<Filter>源文件\drivers</Filter>
 		</ClInclude>
 		<ClInclude Include="..\LQuserFlies\devices\drivers\fsl_semc.h">

@@ -31,31 +31,36 @@ uint32_t fullCameraBufferAddr;
 unsigned char * image;
 uint64_t time;
 uint64_t now;
-
+uint8 flag;
 void Camera1PinInit();
 void Camera2PinInit();
-
-int16_t Speed[4] = { 0 };
-extern float ControlValue_Closeloop[4];
-extern long SpeedCount[4];
-extern long Speed_get[4];
-
 ///<summary>速度环参数</summary>
-float P_Set[4] = {22, 19, 10, 10};//{22, 19, 22, 21}{35, 39, 40, 39}
-float D_Set[4] = {0, 0, 0, 0};//{5, 5, 5, 4}{13, 19, 20, 19}
-float I_Set[4] = {0,0,0,0};//{5, 5, 5, 5}{5, 9, 9, 9}
+float P_Set[4] = {22, 19, 22, 21};//{22, 19, 22, 21}{35, 39, 40, 39}
+float D_Set[4] = {5, 5, 5, 4};//{5, 5, 5, 4}{13, 19, 20, 19}
+float I_Set[4] = {5, 5, 5, 5};//{5, 5, 5, 5}{5, 9, 9, 9}
 float DeadBand_Set[4] = {0,0,0,0};//{739-22, 659-20, 743-23, 720-21}
 float I_limit = 8000;
 float Max_output = 9500;
-
+///<summary>定时器参数部分</summary>
+volatile int16_t PIT0_Flag = 0;
+long Speed_watch[4];
+uint8 Series_deviation_received_front=0;
+uint8 Series_distance_received_front=0;
+uint8 Series_deviation_received_back=0;
+uint8 Series_distance_received_back=0;
+uint8 Series_deviation_received=0;
+uint8 Series_distance_received=0;
+uint8 distance_deviation_relevance_left[31]={94,100,100,100,100,100,100,100,110,110,110,110,110,110,110,110,110,120,123,125,128,130,133,135,138,140,143,145,148,140,132};
+uint8 distance_deviation_relevance_right[31]={94,94,94,94,94,94,94,93,92,91,90,89,88,85,83,78,68,64,60,57,55,51,49,46,42,39,38,36,32,32,32};
+extern int direction_flag;
+extern uint8 Front_Distance_ReceiveBuff[5];
+extern uint8 Back_Distance_ReceiveBuff[5];
+extern uint8 Series_ReceiveBuff[4];
 extern float ControlValue_Closeloop[4];
 extern long SpeedCount[4];
+extern long Speed_get[4];
+extern struct PIDControl Car_Speed_Rotate;//追灯转向闭环
 
-
-
-short aacx,aacy,aacz;	        //加速度传感器原始数据
-short gyrox,gyroy,gyroz;        //陀螺仪原始数据 
-float GX = 0;
 
 void InitAll();
 uint64_t TimeTest_us = 0;
@@ -63,41 +68,30 @@ void RunTimeTest()
 {
     //TFT_showint8(0, 0, 251, BLACK, WHITE);
     //dsp_single_colour(BLACK);
-  //Get_Gyro(&GYRO_OriginData);
-  //Uart_SendString_DMA("Hello!",6);
-  SEND(12,1321,2354,20.2321);
+
   //GetSpeed(0);
 }
-
-float Angle_Z = 0;
-float dt = 0.0551;
+///<summary>主函数</summary>
 int main(void)
 {         
     InitAll();
-    //PID_Speedloop_init(P_Set, D_Set, I_Set, I_limit, Max_output, DeadBand_Set);
     
     _systime.delay_ms(200);
 
     //TFTSPI_CLS(u16WHITE);
     while(1)
     {
-      	//得到加速度传感器数据
-      TimeTest_us = MeasureRunTime_us(&RunTimeTest);
-      if(GYRO_OriginData.Z >= 1 || GYRO_OriginData.Z <= -1)
-        Angle_Z += 0.07 * GYRO_OriginData.Z * dt;
-      
-      //SendRemoteCMDData();
-        //LQ_PWMA_B_SetDuty(PWM1, PWMChannel_Use_W1, 0, (uint16_t)(ControlValue[i]));
-        //TimeTest_us = MeasureRunTime_us(&RunTimeTest);
-        _systime.delay_ms(5);
-//        LQ_PWMA_B_SetDuty(PWMType_Use1, Wheels_PWMChannel[0], 1000, 2600);
-//        LQ_PWMA_B_SetDuty(PWMType_Use2, Wheels_PWMChannel[1], 3000, 4600);
-//        LQ_PWMA_B_SetDuty(PWMType_Use3, Wheels_PWMChannel[2], 5000, 6600);
-//        LQ_PWMA_B_SetDuty(PWMType_Use4, Wheels_PWMChannel[3], 7000, 8600);
+      //TimeTest_us = MeasureRunTime_us(&RunTimeTest);
+      Get_Gyro(&GYRO_OriginData);//z轴为地磁轴,逆时针为正方向，串级控制中D逆时针为负。
+#ifndef Remote_UseDigitalReceive
+      if(flag==1)
+      SendRemoteCMDData();
+#endif
+      //_systime.delay_ms(100);
     }             
 }
-float adc_V = 0;
 
+float adc_V = 0;
 void InitAll()
 {
     BOARD_ConfigMPU();                   /* 初始化内存保护单元 */
@@ -106,8 +100,7 @@ void InitAll()
     BOARD_InitDEBUG_UARTPins();          //UART调试口管脚复用初始化 
     BOARD_InitDebugConsole();            //UART调试口初始化 可以使用 PRINTF函数          
     //LED_Init();                          //初始化核心板和开发板上的LED接口
-    //LQ_UART_Init(LPUART1, 115200);       //串口1初始化 可以使用 printf函数
-    UART_DMA_Init();
+    LQ_UART_Init(CRC_Uart_Port, 115200);       //串口1初始化 可以使用 printf函数
     _systime.init();                     //开启systick定时器
     NVIC_SetPriorityGrouping(2);/*设置中断优先级组  0: 0个抢占优先级16位个子优先级
                                 *1: 2个抢占优先级 8个子优先级 2: 4个抢占优先级 4个子优先级
@@ -115,21 +108,19 @@ void InitAll()
                                 */
     //TFTSPI_Init();                 //TFT1.8初始化
     MPU6050_Init();
-    //Motor_init();
+    Motor_init();
+    RemoteData_init();
+    PID_Speedloop_init(P_Set, D_Set, I_Set, I_limit, Max_output, DeadBand_Set);
+    PID_locationloop_init(2.4, 0, 0, 0, 200, 0);//位置环参数   1.81   
     //BatteryVoltageCollect_Init(1);
     //adc_V = GetBatteryVoltage(0);
-    //EncoderMeasure_Init();
-    //RemoteInit();
+    EncoderMeasure_Init();
+    RemoteInit();
     //camera_init_1();
-    //Series_Receive_init();
-    //LQ_PIT_Init(kPIT_Chnl_0, 3000);//3000us
+    Series_Receive_init();
+    LQ_PIT_Init(kPIT_Chnl_0, 3000);//3000us
 }
-volatile int16_t PIT0_Flag = 0;
-long Speed_watch[4];
-extern struct PIDControl Car_Speed_Rotate;
-extern RemoteCMDMode RunMode;
-extern float Rotate_sp;
-extern uint8 length[5];
+///<summary>定时器部分</summary>
 void PIT_IRQHandler(void)
 {
     if ((PIT_GetStatusFlags(PIT, kPIT_Chnl_0)&kPIT_TimerFlag) == kPIT_TimerFlag)
@@ -146,33 +137,47 @@ void PIT_IRQHandler(void)
                 Speed_get[i] += SpeedCount[i];
             }
             PIT0_Flag += 1;
+            flag=0;
         }
         else
         {
-
+            
             //遥控测试程序
-            #ifdef Remote_UseDigitalReceive
-            SetSpeed_FromRemote(RunMode);//数字量
-            #else
-            SetSpeed_FromRemote_Analog();//模拟量
-            #endif
+//            #ifdef Remote_UseDigitalReceive
+//            SetSpeed_FromRemote(RunMode);//数字量
+//            #else
+//            SetSpeed_FromRemote_Analog();//模拟量
+//            #endif
             //SEND(ControlValue_Closeloop[0], ControlValue_Closeloop[1], ControlValue_Closeloop[2], ControlValue_Closeloop[3]);
-            ////串级通信//
-            //Series_deviation_received = Series_ReceiveBuff[0];
-            //Series_distance_received = One_loop_bubblesort(length);
+            //串级通信//
+            Series_deviation_received_front = Series_ReceiveBuff[0];
+            Series_distance_received_front = One_loop_bubblesort(Front_Distance_ReceiveBuff, 5);
+            Series_deviation_received_back= Series_ReceiveBuff[2];
+            Series_distance_received_back = One_loop_bubblesort(Back_Distance_ReceiveBuff, 5);
             //运动策略//
-            //if (Series_distance_received>18)
-            //    yaw_angel = 40;
-            //else
-            //    yaw_angel = 0;
-            //if (Series_deviation_received  < 94)
-            //    PID_SetTarget(&Car_Speed_Rotate, 94 - yaw_angel);
-            //else
-            //    PID_SetTarget(&Car_Speed_Rotate, 94 + yaw_angel);
-
-            //Series_Control(Series_deviation_received);
-
-            //编码器观测
+            if(Series_deviation_received_front != 0)
+            {
+              Series_deviation_received = Series_deviation_received_front;
+              Series_distance_received = Series_distance_received_front;
+              direction_flag = 1;
+            }
+            else
+            {
+              Series_deviation_received = Series_deviation_received_back;
+              Series_distance_received = Series_distance_received_back;
+              direction_flag = -1;
+            }       
+            if(Series_distance_received>30)
+              Series_distance_received=30;
+//            if(Series_deviation_received  < 94)
+//              PID_SetTarget(&Car_Speed_Rotate, distance_deviation_relevance_right[Series_distance_received]-11);
+//            else 
+              PID_SetTarget(&Car_Speed_Rotate,distance_deviation_relevance_left[Series_distance_received]);
+            //控制量输出//
+            Series_Control(Series_deviation_received);
+            //电机转向测试//
+//            LQ_PWMA_B_SetDuty(PWMType_Use4, Wheels_PWMChannel[3], 2000, 0);
+            //编码器观测//
             int j = 0;
             for (j = 0; j < 4; j++)
             {
@@ -181,8 +186,8 @@ void PIT_IRQHandler(void)
             }
             //SEND(Speed_watch[0],Speed_watch[1],Speed_watch[2],Speed_watch[3]);
             PIT0_Flag = 0;
+            flag=1;
         }
-        SendRemoteCMDData();
     }
 }
 void Camera1PinInit()

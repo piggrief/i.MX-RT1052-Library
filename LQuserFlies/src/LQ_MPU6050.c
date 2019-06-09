@@ -25,7 +25,7 @@ uint8_t MPU6050_Init(void)
     res += MPU_Set_Gyro_Fsr(3);					        	//陀螺仪传感器,±2000dps   
     res += MPU_Set_Accel_Fsr(1);					       	 	//加速度传感器,±4g
     res += MPU_Set_Rate(1000);						       	 	//设置采样率1000Hz
-    res += MPU_Write_Byte(MPU6050_ADDR,MPU_CFG_REG,0x04);      //设置数字低通滤波器   98hz
+    res += MPU_Write_Byte(MPU6050_ADDR,MPU_CFG_REG,0x02);      //设置数字低通滤波器   98hz
     res += MPU_Write_Byte(MPU6050_ADDR,MPU_INT_EN_REG,0X00);   //关闭所有中断
     res += MPU_Write_Byte(MPU6050_ADDR,MPU_USER_CTRL_REG,0X00);//I2C主模式关闭
 //    MPU_Write_Byte(MPU6050_ADDR,MPU_FIFO_EN_REG,0X00);	//关闭FIFO
@@ -33,19 +33,6 @@ uint8_t MPU6050_Init(void)
     res += MPU_Write_Byte(MPU6050_ADDR,MPU_PWR_MGMT1_REG,0X00);//0x01  	//设置CLKSEL,PLL X轴为参考
     //res += MPU_Write_Byte(MPU6050_ADDR,MPU_PWR_MGMT2_REG,0X00);  	//加速度与陀螺仪都工作
     
-    Accel_OriginData.X = 0;
-    Accel_OriginData.Y = 0;
-    Accel_OriginData.Z = 0;
-    Accel_OriginData.Offset_X = 0;
-    Accel_OriginData.Offset_Y = 0;
-    Accel_OriginData.Offset_Z = 0;
-    GYRO_OriginData.X = 0;
-    GYRO_OriginData.Y = 0;
-    GYRO_OriginData.Z = 0;
-    GYRO_OriginData.Offset_X = 0;
-    GYRO_OriginData.Offset_Y = 0;
-    GYRO_OriginData.Offset_Z = 0;
-
     Get_Offset(&Accel_OriginData, &GYRO_OriginData);
     
     if(res == 0)  //上面寄存器都写入成功

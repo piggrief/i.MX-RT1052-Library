@@ -46,7 +46,7 @@ QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ*/
     #include "fsl_edma.h"
     #include "fsl_dmamux.h"
     #include "fsl_lpspi.h"
-#include "fsl_sccb.h"
+    #include "fsl_sccb.h"
 
 #define delayms(x) _systime.delay_ms(x)
 #define delayus(x) _systime.delay_us(x)

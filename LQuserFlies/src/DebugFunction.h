@@ -12,7 +12,7 @@
 # define _DEBUGFUNCTION_H_
 //# define Remote_UseDigitalReceive
 # define CRC_Uart_Port LPUART1
-# define Series_Uart_Port LPUART5
+# define Series_Uart_Port LPUART2
 # define GY53_Uart_Port LPUART6
 # define Remote_Uart_Port LPUART3
 /// <summary>
@@ -77,13 +77,13 @@ typedef struct
 ///初始化遥控器的串口
 ///</summary>
 void RemoteInit();
-extern RemoteCMDMode RunMode;//临时这样写
-
+void RemoteData_init(void);
 /// <summary>
 ///接受遥控指令程序，应放入对应的串口中断内
 ///</summary>
+#ifdef Remote_UseDigitalReceive
 void ReceiveCMD_Remote(void);
-#ifndef Remote_UseDigitalReceive
+#else
 void SendRemoteCMDData(void);
 #endif
 
@@ -118,9 +118,9 @@ void Series_Receive_init(void);
 void BatteryVoltageCollect_Init(int IfUseBeep);
 float GetBatteryVoltage(float HintVoltage);
 void LCD_ShowBatteryVoltage(unsigned char x, unsigned char y, float num);
-void FIFO_five_depth(uint8 dis);
-void FIFO_five_depth_Clean(void);
-uint8 One_loop_bubblesort(uint8 *lis);
+void FIFO(uint8 *head, uint8 depth, uint8 num);
+void FIFO_Clean(uint8 *head, uint8 depth);
+uint8 One_loop_bubblesort(uint8 *lis, uint8 depth);
 void GY53_RX(void);
 void GY53_Receive_init(void);
 #endif

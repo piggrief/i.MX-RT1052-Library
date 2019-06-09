@@ -1036,6 +1036,7 @@ void BOARD_InitLPI2C1Pins(void) {
                                                  Hyst. Enable Field: Hysteresis Disabled */
 }
 
+
 /*
  * TEXT BELOW IS USED AS SETTING FOR TOOLS *************************************
 BOARD_InitLCDPins:
