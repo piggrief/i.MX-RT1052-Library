@@ -1,105 +1,105 @@
-"D:\Smart Car\RT1052\i.MX-RT1052-Library-2.0.2\LQuserFlies\devices\drivers\fsl_lpspi_edma.c"
+"D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQuserFlies\devices\drivers\fsl_lpspi_edma.c"
 -std=c11
 -ferror-limit=0
 -fbracket-depth=512
 -I
-D:\Smart Car\RT1052\i.MX-RT1052-Library-2.0.2\LQuserFlies\devices\drivers
+D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQuserFlies\devices\drivers
 -I
-D:\Smart Car\RT1052\i.MX-RT1052-Library-2.0.2\LQuserFlies\src
+D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQuserFlies\src
 -I
-D:\Smart Car\RT1052\i.MX-RT1052-Library-2.0.2\LQuserFlies\src\board
+D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQuserFlies\src\board
 -I
-D:\Smart Car\RT1052\i.MX-RT1052-Library-2.0.2\LQuserFlies\src\camera
+D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQuserFlies\src\camera
 -I
-D:\Smart Car\RT1052\i.MX-RT1052-Library-2.0.2\LQuserFlies\src\touch
+D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQuserFlies\src\touch
 -I
-D:\Smart Car\RT1052\i.MX-RT1052-Library-2.0.2\LQuserFlies\devices
+D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQuserFlies\devices
 -I
-D:\Smart Car\RT1052\i.MX-RT1052-Library-2.0.2\LQuserFlies\devices\drivers
+D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQuserFlies\devices\drivers
 -I
-D:\Smart Car\RT1052\i.MX-RT1052-Library-2.0.2\LQuserFlies\devices\utilities
+D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQuserFlies\devices\utilities
 -I
-D:\Smart Car\RT1052\i.MX-RT1052-Library-2.0.2\LQuserFlies\devices\startup
+D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQuserFlies\devices\startup
 -I
-D:\Smart Car\RT1052\i.MX-RT1052-Library-2.0.2\LQuserFlies\CMSIS
+D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQuserFlies\CMSIS
 -I
-D:\Smart Car\RT1052\i.MX-RT1052-Library-2.0.2\LQuserFlies\middleware\fatfs
+D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQuserFlies\middleware\fatfs
 -I
-D:\Smart Car\RT1052\i.MX-RT1052-Library-2.0.2\LQuserFlies\middleware\libjpeg
+D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQuserFlies\middleware\libjpeg
 -I
-D:\Smart Car\RT1052\i.MX-RT1052-Library-2.0.2\LQuserFlies\middleware\TF
+D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQuserFlies\middleware\TF
 -I
-D:\Smart Car\RT1052\i.MX-RT1052-Library-2.0.2\LQuserFlies\middleware\usb
+D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQuserFlies\middleware\usb
 -I
-D:\Smart Car\RT1052\i.MX-RT1052-Library-2.0.2\LQuserFlies\middleware\usb\device
+D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQuserFlies\middleware\usb\device
 -I
-D:\Smart Car\RT1052\i.MX-RT1052-Library-2.0.2\LQuserFlies\middleware\usb\host
+D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQuserFlies\middleware\usb\host
 -I
-D:\Smart Car\RT1052\i.MX-RT1052-Library-2.0.2\LQuserFlies\middleware\usb\host\class
+D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQuserFlies\middleware\usb\host\class
 -I
-D:\Smart Car\RT1052\i.MX-RT1052-Library-2.0.2\LQuserFlies\middleware\usb\include
+D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQuserFlies\middleware\usb\include
 -I
-D:\Smart Car\RT1052\i.MX-RT1052-Library-2.0.2\LQuserFlies\middleware\usb\osa
+D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQuserFlies\middleware\usb\osa
 -I
-D:\Smart Car\RT1052\i.MX-RT1052-Library-2.0.2\LQuserFlies\middleware\usb\phy
+D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQuserFlies\middleware\usb\phy
 -I
-D:\Smart Car\RT1052\i.MX-RT1052-Library-2.0.2\LQuserFlies\middleware\dma_manager
+D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQuserFlies\middleware\dma_manager
 -I
-D:\Smart Car\RT1052\i.MX-RT1052-Library-2.0.2\LQuserFlies\src\sys
+D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQuserFlies\src\sys
 -I
-D:\Smart Car\RT1052\i.MX-RT1052-Library-2.0.2\LQuserFlies\src\ANO_DT
+D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQuserFlies\src\ANO_DT
 -I
-D:\Smart Car\RT1052\i.MX-RT1052-Library-2.0.2\Pig_DriverFiles
+D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\Pig_DriverFiles
 -I
 C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.1\arm\inc
 -I
 C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.1\arm\inc\c
 -I
-D:\Smart Car\RT1052\i.MX-RT1052-Library-2.0.2\LQuserFlies\src
+D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQuserFlies\src
 -I
-D:\Smart Car\RT1052\i.MX-RT1052-Library-2.0.2\LQuserFlies\src\board
+D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQuserFlies\src\board
 -I
-D:\Smart Car\RT1052\i.MX-RT1052-Library-2.0.2\LQuserFlies\src\camera
+D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQuserFlies\src\camera
 -I
-D:\Smart Car\RT1052\i.MX-RT1052-Library-2.0.2\LQuserFlies\src\touch
+D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQuserFlies\src\touch
 -I
-D:\Smart Car\RT1052\i.MX-RT1052-Library-2.0.2\LQuserFlies\devices
+D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQuserFlies\devices
 -I
-D:\Smart Car\RT1052\i.MX-RT1052-Library-2.0.2\LQuserFlies\devices\drivers
+D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQuserFlies\devices\drivers
 -I
-D:\Smart Car\RT1052\i.MX-RT1052-Library-2.0.2\LQuserFlies\devices\utilities
+D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQuserFlies\devices\utilities
 -I
-D:\Smart Car\RT1052\i.MX-RT1052-Library-2.0.2\LQuserFlies\devices\startup
+D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQuserFlies\devices\startup
 -I
-D:\Smart Car\RT1052\i.MX-RT1052-Library-2.0.2\LQuserFlies\CMSIS
+D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQuserFlies\CMSIS
 -I
-D:\Smart Car\RT1052\i.MX-RT1052-Library-2.0.2\LQuserFlies\middleware\fatfs
+D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQuserFlies\middleware\fatfs
 -I
-D:\Smart Car\RT1052\i.MX-RT1052-Library-2.0.2\LQuserFlies\middleware\libjpeg
+D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQuserFlies\middleware\libjpeg
 -I
-D:\Smart Car\RT1052\i.MX-RT1052-Library-2.0.2\LQuserFlies\middleware\TF
+D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQuserFlies\middleware\TF
 -I
-D:\Smart Car\RT1052\i.MX-RT1052-Library-2.0.2\LQuserFlies\middleware\usb
+D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQuserFlies\middleware\usb
 -I
-D:\Smart Car\RT1052\i.MX-RT1052-Library-2.0.2\LQuserFlies\middleware\usb\device
+D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQuserFlies\middleware\usb\device
 -I
-D:\Smart Car\RT1052\i.MX-RT1052-Library-2.0.2\LQuserFlies\middleware\usb\host
+D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQuserFlies\middleware\usb\host
 -I
-D:\Smart Car\RT1052\i.MX-RT1052-Library-2.0.2\LQuserFlies\middleware\usb\host\class
+D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQuserFlies\middleware\usb\host\class
 -I
-D:\Smart Car\RT1052\i.MX-RT1052-Library-2.0.2\LQuserFlies\middleware\usb\include
+D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQuserFlies\middleware\usb\include
 -I
-D:\Smart Car\RT1052\i.MX-RT1052-Library-2.0.2\LQuserFlies\middleware\usb\osa
+D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQuserFlies\middleware\usb\osa
 -I
-D:\Smart Car\RT1052\i.MX-RT1052-Library-2.0.2\LQuserFlies\middleware\usb\phy
+D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQuserFlies\middleware\usb\phy
 -I
-D:\Smart Car\RT1052\i.MX-RT1052-Library-2.0.2\LQuserFlies\middleware\dma_manager
+D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQuserFlies\middleware\dma_manager
 -I
-D:\Smart Car\RT1052\i.MX-RT1052-Library-2.0.2\LQuserFlies\src\sys
+D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQuserFlies\src\sys
 -I
-D:\Smart Car\RT1052\i.MX-RT1052-Library-2.0.2\LQuserFlies\src\ANO_DT
+D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\LQuserFlies\src\ANO_DT
 -I
-D:\Smart Car\RT1052\i.MX-RT1052-Library-2.0.2\Pig_DriverFiles
+D:\智能车\麦轮信标\程序\RT1052\RT1052库\i.MX-RT1052-Library\Pig_DriverFiles
 -D__CHAR_BITS__=8
 -D__CHAR_MAX__=0xff
 -D__CHAR_MIN__=0

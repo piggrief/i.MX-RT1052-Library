@@ -2576,6 +2576,12 @@
             <name>$PROJ_DIR$\LQuserFlies\src\AttitudeCalculation.h</name>
         </file>
         <file>
+            <name>$PROJ_DIR$\LQuserFlies\src\AvoidObstacle.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\LQuserFlies\src\AvoidObstacle.h</name>
+        </file>
+        <file>
             <name>$PROJ_DIR$\LQuserFlies\src\DebugFuction.c</name>
         </file>
         <file>

@@ -2,55 +2,55 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 	<ItemGroup>
 		<Filter Include="源文件\App_main">
-			<UniqueIdentifier>{f7648a1e-083f-421b-6053-fc80a2ba1df1}</UniqueIdentifier>
+			<UniqueIdentifier>{fa155b02-7d84-43dc-4f19-537aed2bc273}</UniqueIdentifier>
 		</Filter>
 		<Filter Include="源文件\AppDriver">
-			<UniqueIdentifier>{feb95fee-c1a0-4784-7345-b09fb60588e5}</UniqueIdentifier>
+			<UniqueIdentifier>{7b365f07-02b3-4cea-6245-9f28124d96e0}</UniqueIdentifier>
 		</Filter>
 		<Filter Include="源文件\AppDriver\AHRS">
-			<UniqueIdentifier>{24b8e010-cf94-4e31-6748-aa5df0fcd47a}</UniqueIdentifier>
+			<UniqueIdentifier>{95d99758-bd09-4a92-4fa4-4fb199a0b0aa}</UniqueIdentifier>
 		</Filter>
 		<Filter Include="源文件\AppDriver\car">
-			<UniqueIdentifier>{8a088f2d-eee8-4d14-663b-6368badb7f1c}</UniqueIdentifier>
+			<UniqueIdentifier>{09e2d8d7-21af-4cbe-4950-a0b61a024ef1}</UniqueIdentifier>
 		</Filter>
 		<Filter Include="源文件\AppDriver\LCD">
-			<UniqueIdentifier>{bfe8711d-5e26-4cf3-5721-59368030adc6}</UniqueIdentifier>
+			<UniqueIdentifier>{544ab663-f395-44d2-7432-2414f9d518a4}</UniqueIdentifier>
 		</Filter>
 		<Filter Include="源文件\AppDriver\MT9V032">
-			<UniqueIdentifier>{d5ee8c46-a054-4ccf-5ac2-b8fa041b3983}</UniqueIdentifier>
+			<UniqueIdentifier>{a928f14f-cea8-4a4c-4ed1-24fe93f5d237}</UniqueIdentifier>
 		</Filter>
 		<Filter Include="源文件\AppDriver\Pig_eDMA">
-			<UniqueIdentifier>{f62e0f67-c450-4300-4016-7ff85df27915}</UniqueIdentifier>
+			<UniqueIdentifier>{eafe622f-ef38-4710-4b23-aee6ec6e22de}</UniqueIdentifier>
 		</Filter>
 		<Filter Include="源文件\AppDriver\SDCard">
-			<UniqueIdentifier>{687d1b93-63a4-420e-70db-eceffdb5b262}</UniqueIdentifier>
+			<UniqueIdentifier>{d0fbfc37-1e32-4f93-790f-54459620ca66}</UniqueIdentifier>
 		</Filter>
 		<Filter Include="源文件\AppDriver\Sys">
-			<UniqueIdentifier>{ebad600c-15f1-43cc-5c67-39c4d659e535}</UniqueIdentifier>
+			<UniqueIdentifier>{e0fc641b-471c-43b5-4bd2-86d172d5a903}</UniqueIdentifier>
 		</Filter>
 		<Filter Include="源文件\board">
-			<UniqueIdentifier>{d500d24f-0071-469d-4aa5-79a8995e69ec}</UniqueIdentifier>
+			<UniqueIdentifier>{ce611d73-e2c6-4207-51c5-399f7537d39b}</UniqueIdentifier>
 		</Filter>
 		<Filter Include="源文件\BoardDriver">
-			<UniqueIdentifier>{b3d5cbac-fdff-48c3-72bc-c7b317d56d40}</UniqueIdentifier>
+			<UniqueIdentifier>{978631cd-d350-460b-5825-437368fd6d75}</UniqueIdentifier>
 		</Filter>
 		<Filter Include="源文件\BoardDriver\Pig_SPI">
-			<UniqueIdentifier>{0454e645-b0de-46e4-7103-37f6f0235a58}</UniqueIdentifier>
+			<UniqueIdentifier>{8a8b6ac6-bf3d-4e84-506a-8abf84150a7e}</UniqueIdentifier>
 		</Filter>
 		<Filter Include="源文件\drivers">
-			<UniqueIdentifier>{7e9b3d7d-583e-4f16-7760-1f30ccbd84fb}</UniqueIdentifier>
+			<UniqueIdentifier>{e2cbea0b-2a62-42d3-4d3c-bb79c74d4237}</UniqueIdentifier>
 		</Filter>
 		<Filter Include="源文件\startup">
-			<UniqueIdentifier>{8118fe4a-8d37-43bb-427a-3e7ec5efb2a0}</UniqueIdentifier>
+			<UniqueIdentifier>{9d792a14-6b08-47d5-42f4-e50815fc19b7}</UniqueIdentifier>
 		</Filter>
 		<Filter Include="源文件\utilities">
-			<UniqueIdentifier>{1842cbb1-2fd9-411b-4fbe-b71b472d7958}</UniqueIdentifier>
+			<UniqueIdentifier>{87e371aa-4781-46ef-589f-f4c3a33d4d0e}</UniqueIdentifier>
 		</Filter>
 		<Filter Include="源文件\XIP">
-			<UniqueIdentifier>{b5ea2901-5b81-400d-7a8a-02c54809610d}</UniqueIdentifier>
+			<UniqueIdentifier>{f76f175e-cc71-4f1c-4e30-7f06fe4f99be}</UniqueIdentifier>
 		</Filter>
 		<Filter Include="源文件">
-			<UniqueIdentifier>{4736b4a4-4858-4121-4a4b-8efdb199a7ed}</UniqueIdentifier>
+			<UniqueIdentifier>{170d5779-2972-4963-6148-98bfa294e64e}</UniqueIdentifier>
 		</Filter>
 	</ItemGroup>
 	<ItemGroup>
@@ -127,6 +127,9 @@
 			<Filter>源文件\board</Filter>
 		</ClCompile>
 		<ClCompile Include="..\LQuserFlies\src\AttitudeCalculation.c">
+			<Filter>源文件\BoardDriver</Filter>
+		</ClCompile>
+		<ClCompile Include="..\LQuserFlies\src\AvoidObstacle.c">
 			<Filter>源文件\BoardDriver</Filter>
 		</ClCompile>
 		<ClCompile Include="..\LQuserFlies\src\DebugFuction.c">
@@ -339,6 +342,9 @@
 			<Filter>源文件\board</Filter>
 		</ClInclude>
 		<ClInclude Include="..\LQuserFlies\src\AttitudeCalculation.h">
+			<Filter>源文件\BoardDriver</Filter>
+		</ClInclude>
+		<ClInclude Include="..\LQuserFlies\src\AvoidObstacle.h">
 			<Filter>源文件\BoardDriver</Filter>
 		</ClInclude>
 		<ClInclude Include="..\LQuserFlies\src\DebugFunction.h">

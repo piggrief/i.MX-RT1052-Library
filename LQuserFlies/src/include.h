@@ -81,6 +81,7 @@ QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ*/
     #include "Pig_SPI.h"
     #include "TFTDriver.h"
     #include "LQ_MPU6050.h"
+    #include "AvoidObstacle.h"
 //    void LQ_Get_CameraBuff(void);//得到摄像头数据 
 //    void LQ_Camera_0_1_Handle(void);  //二值化并显示
 //    void Seek_Road(void);

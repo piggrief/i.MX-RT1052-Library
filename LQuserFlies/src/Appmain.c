@@ -31,7 +31,6 @@ uint32_t fullCameraBufferAddr;
 unsigned char * image;
 uint64_t time;
 uint64_t now;
-uint8 flag;
 void Camera1PinInit();
 void Camera2PinInit();
 ///<summary>速度环参数</summary>
@@ -41,6 +40,10 @@ float I_Set[4] = {5, 5, 5, 5};//{5, 5, 5, 5}{5, 9, 9, 9}
 float DeadBand_Set[4] = {0,0,0,0};//{739-22, 659-20, 743-23, 720-21}
 float I_limit = 8000;
 float Max_output = 9500;
+///<summary>方向环参数</summary>
+float P_Direction_Set_init= 3.6;
+float D_Direction_Set_init= 0.020;
+float Max_output_Direction= 250;
 ///<summary>定时器参数部分</summary>
 volatile int16_t PIT0_Flag = 0;
 long Speed_watch[4];
@@ -50,11 +53,11 @@ uint8 Series_deviation_received_back=0;
 uint8 Series_distance_received_back=0;
 uint8 Series_deviation_received=0;
 uint8 Series_distance_received=0;
-uint8 distance_deviation_relevance_left[31]={94,100,100,100,100,100,100,100,110,110,110,110,110,110,110,110,110,120,123,125,128,130,133,135,138,140,143,145,148,140,132};
+uint8 distance_deviation_relevance_left[31]={94,94,94,94,100,100,105,108,111,114,118,122,126,126,126,126,126,126,126,126,126,126,126,126,126,126,126,126,126,126,126};
 uint8 distance_deviation_relevance_right[31]={94,94,94,94,94,94,94,93,92,91,90,89,88,85,83,78,68,64,60,57,55,51,49,46,42,39,38,36,32,32,32};
 extern int direction_flag;
-extern uint8 Front_Distance_ReceiveBuff[5];
-extern uint8 Back_Distance_ReceiveBuff[5];
+extern uint8 Front_Distance_ReceiveBuff[3];
+extern uint8 Back_Distance_ReceiveBuff[3];
 extern uint8 Series_ReceiveBuff[4];
 extern float ControlValue_Closeloop[4];
 extern long SpeedCount[4];
@@ -103,15 +106,11 @@ int main(void)
           if(Flag_TFTShow)
             dsp_single_colour(WHITE);
       }
-      
-      
-      TimeTest_us = MeasureRunTime_us(&RunTimeTest);
-      Get_Gyro(&GYRO_OriginData);//z轴为地磁轴,逆时针为正方向，串级控制中D逆时针为负。
-#ifndef Remote_UseDigitalReceive
-      if(flag==1)
-        SendRemoteCMDData();
+      SEND(Speed_watch[0],Speed_watch[1],Speed_watch[2],Speed_watch[3]);
 
-#endif
+      TFT_showfloat(1,0,Distance_Meassured, 3,2,BLACK,WHITE);
+      //TimeTest_us = MeasureRunTime_us(&RunTimeTest);
+      Get_Gyro(&GYRO_OriginData);//z轴为地磁轴,逆时针为正方向，串级控制中D逆时针为负。
       //_systime.delay_ms(100);
     }             
 }
@@ -131,20 +130,20 @@ void InitAll()
                                 *1: 2个抢占优先级 8个子优先级 2: 4个抢占优先级 4个子优先级
                                 *3: 8个抢占优先级 2个子优先级 4: 16个抢占优先级 0个子优先级
                                 */
-    MPU6050_Init();
-    TFT_init();    
-    ButtonMenu();
-    
     Motor_init();
-    RemoteData_init();
-
+    MPU6050_Init();
+    TFT_init();
+    RemoteData_init();   
+    ButtonMenu();
+    UltrasoundInit();
+    
     PID_Speedloop_init(P_Set, D_Set, I_Set, I_limit, Max_output, DeadBand_Set);
-    PID_locationloop_init(2.4, 0, 0, 0, 200, 0);//位置环参数   1.81   
+    PID_locationloop_init(P_Direction_Set_init, 0, 0, 0, Max_output_Direction, 0);//位置环参数     
 
     EncoderMeasure_Init();
     RemoteInit();
     //camera_init_1();
-    Series_Receive_init();
+    //Series_Receive_init();
     LQ_PIT_Init(kPIT_Chnl_0, 3000);//3000us
 }
 ///<summary>定时器部分</summary>
@@ -164,36 +163,62 @@ void PIT_IRQHandler(void)
                 Speed_get[i] += SpeedCount[i];
             }
             PIT0_Flag += 1;
-            flag=0;
         }
         else
         {
-            
+            SpeedClean();
+            int i = 0;
+            for (i = 0; i < 4; i++)
+            {
+                GetSpeed(i);
+                Speed_get[i] += SpeedCount[i];
+            }
+            SendCMDToUltrasound();//超声波测距请求
             //遥控测试程序
-//            #ifdef Remote_UseDigitalReceive
-//            SetSpeed_FromRemote(RunMode);//数字量
-//            #else
-//            SetSpeed_FromRemote_Analog();//模拟量
-//            #endif
+            #ifdef Remote_UseDigitalReceive
+            SetSpeed_FromRemote(RunMode);//数字量
+            #else
+            SetSpeed_FromRemote_Analog();//模拟量
+            #endif
             //SEND(ControlValue_Closeloop[0], ControlValue_Closeloop[1], ControlValue_Closeloop[2], ControlValue_Closeloop[3]);
             //串级通信//
             Series_deviation_received_front = Series_ReceiveBuff[0];
-            Series_distance_received_front = One_loop_bubblesort(Front_Distance_ReceiveBuff, 5);
+            Series_distance_received_front = One_loop_bubblesort(Front_Distance_ReceiveBuff, 3);
             Series_deviation_received_back= Series_ReceiveBuff[2];
-            Series_distance_received_back = One_loop_bubblesort(Back_Distance_ReceiveBuff, 5);
-            //运动策略//
-            if(Series_deviation_received_front != 0)
-            {
-              Series_deviation_received = Series_deviation_received_front;
-              Series_distance_received = Series_distance_received_front;
-              direction_flag = 1;
-            }
-            else
-            {
-              Series_deviation_received = Series_deviation_received_back;
-              Series_distance_received = Series_distance_received_back;
-              direction_flag = -1;
-            }       
+            Series_distance_received_back = One_loop_bubblesort(Back_Distance_ReceiveBuff, 3);
+            //转向运动策略//
+//            if(direction_flag == 1)
+//            {
+//            
+//              if(Series_deviation_received_front != 0)
+//              {
+//                Series_deviation_received = Series_deviation_received_front;
+//                Series_distance_received = Series_distance_received_front;
+//                direction_flag = 1;
+//              }
+//              else
+//              {
+//                Series_deviation_received = Series_deviation_received_back;
+//                Series_distance_received = Series_distance_received_back;
+//                direction_flag = -1;
+//              }
+//            }
+//            else if(direction_flag == -1)
+//            {            
+//              if(Series_deviation_received_back != 0)
+//              {
+//                Series_deviation_received = Series_deviation_received_back;
+//                Series_distance_received = Series_distance_received_back;
+//                direction_flag = -1;
+//              }
+//              else
+//              {
+//                Series_deviation_received = Series_deviation_received_front;
+//                Series_distance_received = Series_distance_received_front;
+//                direction_flag = 1;
+//              } 
+//            }
+            //前进路线//
             if(Series_distance_received>30)
               Series_distance_received=30;
 //            if(Series_deviation_received  < 94)
@@ -201,7 +226,7 @@ void PIT_IRQHandler(void)
 //            else 
               PID_SetTarget(&Car_Speed_Rotate,distance_deviation_relevance_left[Series_distance_received]);
             //控制量输出//
-            Series_Control(Series_deviation_received);
+            //Series_Control(Series_deviation_received);
             //电机转向测试//
 //            LQ_PWMA_B_SetDuty(PWMType_Use4, Wheels_PWMChannel[3], 2000, 0);
             //编码器观测//
@@ -211,9 +236,11 @@ void PIT_IRQHandler(void)
                 Speed_watch[j] = Speed_get[j];
                 Speed_get[j] = 0;//速度计清零
             }
-            //SEND(Speed_watch[0],Speed_watch[1],Speed_watch[2],Speed_watch[3]);
+#ifndef Remote_UseDigitalReceive
+            SendRemoteCMDData();
+
+#endif
             PIT0_Flag = 0;
-            flag=1;
         }
     }
 }

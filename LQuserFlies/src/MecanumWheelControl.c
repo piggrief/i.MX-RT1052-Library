@@ -408,7 +408,13 @@ void SetSpeed_FromRemote(RemoteCMDMode mode)
 #else 
 void SetSpeed_FromRemote_Analog(void)
 {
-    SetTargetSpeed_Car(&RS_Now,2*(RemoteData.Left_X-127), 2.8*(RemoteData.Left_Y-127), 0.4*(127-RemoteData.Right_X));
+  float XSpeedBuff = 0;
+  if(Distance_Meassured <= 90)
+    XSpeedBuff = 220;
+  else
+    XSpeedBuff = 2*(RemoteData.Left_X-127);
+    
+    SetTargetSpeed_Car(&RS_Now,XSpeedBuff, 2.8*(RemoteData.Left_Y-127), 0.4*(127-RemoteData.Right_X));
     CalTargetSpeed_EachWheel(&RS_Now);
     for (int i = 0; i < 4; i++)
     {
@@ -419,13 +425,19 @@ void SetSpeed_FromRemote_Analog(void)
 #endif
 
 //串级控制部分//
-int direction_flag=0;
+int direction_flag=1;
 float Rotate_sp = 0;
 float Series_Speed = 0;
-extern uint8 Front_Distance_ReceiveBuff[6];
-extern uint8 Back_Distance_ReceiveBuff[6];
+extern uint8 Front_Distance_ReceiveBuff[3];
+extern uint8 Back_Distance_ReceiveBuff[3];
 extern struct GYROData GYRO_OriginData;
-int GYRO_Watch= 0;
+extern uint8 Series_distance_received;
+extern float P_Direction_Set_init;
+extern float D_Direction_Set_init;
+float P_Direction_Set= 0;
+float D_Direction_Set= 0;
+float GYRO_Watch= 0;
+float Input_Control= 0;
 ///<summary>速度环初始化函数</summary>
 void PID_Speedloop_init( float *P_set, float *D_set, float *I_set, float I_Limit_Set, float MaxOutput_Set, float *DeadBand_Set)
 {
@@ -447,7 +459,7 @@ void PID_locationloop_init( float P_set, float D_set, float I_set, float I_Limit
 ///<summary>串级控制 输入量为位置环偏差 中值94 Y轴</summary>
 void Series_Control(float deviation)
 {
-    GYRO_Watch = (int)(GYRO_OriginData.Z*0.014);
+    GYRO_Watch = (int)(GYRO_OriginData.Z*D_Direction_Set_init);
 #ifdef Remote_UseDigitalReceive
   if(RunMode == Start)
     SetTargetSpeed_Car(&RS_Now, 0, 0, 0);
@@ -455,23 +467,36 @@ void Series_Control(float deviation)
   {
     if(deviation == 0)
     {
-      SetTargetSpeed_Car(&RS_Now, 0, 0, 50);
+      SetTargetSpeed_Car(&RS_Now, 0, 0, 75);
       FIFO_Clean(Front_Distance_ReceiveBuff, 5);
       FIFO_Clean(Back_Distance_ReceiveBuff, 5);
     }
     else
     {
-      Rotate_sp = GetPIDControlValue(&Car_Speed_Rotate, PD_Control, deviation);
-      SetTargetSpeed_Car(&RS_Now, 0, Series_Speed, Rotate_sp);
+      Rotate_sp = GetPIDControlValue(&Car_Speed_Rotate, P_Control, deviation);
+      if(Series_distance_received>23)
+        Series_Speed=direction_flag*100;
+      else if(Series_distance_received>16)
+        Series_Speed=direction_flag*180;
+      else if(Series_distance_received>10)
+        Series_Speed=direction_flag*280;
+      else
+        Series_Speed=direction_flag*330;
+//      D_Direction_Set=(1+Series_Speed*direction_flag*0.003)*D_Direction_Set_init;
+//      P_Direction_Set=(1+Series_Speed*direction_flag*0.001)*P_Direction_Set_init;
+//      Para_Refresh(&Car_Speed_Rotate,P_Direction_Set,0,0);
+//      Series_Speed=0;
+      Input_Control=Rotate_sp-GYRO_Watch;
+      SetTargetSpeed_Car(&RS_Now, 0, Series_Speed, Input_Control);
     }
   }
 #else
   Series_Speed = direction_flag*3*(RemoteData.Left_Y-126);//遥控控制前进速度
   if(deviation == 0)
     {
-      SetTargetSpeed_Car(&RS_Now, 0, 0, 50);
-      FIFO_Clean(Front_Distance_ReceiveBuff, 5);
-      FIFO_Clean(Back_Distance_ReceiveBuff, 5);
+      SetTargetSpeed_Car(&RS_Now, 0, 0, 75);
+      FIFO_Clean(Front_Distance_ReceiveBuff, 3);
+      FIFO_Clean(Back_Distance_ReceiveBuff, 3);
     }
   else
     {

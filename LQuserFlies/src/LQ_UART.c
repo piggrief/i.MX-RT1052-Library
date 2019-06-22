@@ -246,13 +246,13 @@ void LQ_UART_Init(LPUART_Type *base, uint32_t bound)
     if(base == LPUART1)
     {
         //优先级配置 抢占优先级1  子优先级2   越小优先级越高  抢占优先级可打断别的中断
-       NVIC_SetPriority(LPUART1_IRQn,NVIC_EncodePriority(NVIC_GetPriorityGrouping(),1,1));
+       NVIC_SetPriority(LPUART1_IRQn,NVIC_EncodePriority(NVIC_GetPriorityGrouping(),1,5));
        EnableIRQ(LPUART1_IRQn);	                            //使能LPUART1中断      
     }
     else if(base == LPUART2)
     {
         //优先级配置 抢占优先级1  子优先级2   越小优先级越高  抢占优先级可打断别的中断
-        NVIC_SetPriority(LPUART2_IRQn,NVIC_EncodePriority(NVIC_GetPriorityGrouping(),1,3));
+        NVIC_SetPriority(LPUART2_IRQn,NVIC_EncodePriority(NVIC_GetPriorityGrouping(),1,4));
         EnableIRQ(LPUART2_IRQn);	                            //使能LPUART1中断      
     }
     else if(base == LPUART3)
@@ -264,7 +264,7 @@ void LQ_UART_Init(LPUART_Type *base, uint32_t bound)
     else if(base == LPUART4)
     {
         //优先级配置 抢占优先级1  子优先级2   越小优先级越高  抢占优先级可打断别的中断
-        NVIC_SetPriority(LPUART4_IRQn,NVIC_EncodePriority(NVIC_GetPriorityGrouping(),1,1));
+        NVIC_SetPriority(LPUART4_IRQn,NVIC_EncodePriority(NVIC_GetPriorityGrouping(),1,6));
         EnableIRQ(LPUART4_IRQn);	                            //使能LPUART1中断     
     }
     else if(base == LPUART5)
@@ -276,19 +276,19 @@ void LQ_UART_Init(LPUART_Type *base, uint32_t bound)
     else if(base == LPUART6)
     {
         //优先级配置 抢占优先级1  子优先级2   越小优先级越高  抢占优先级可打断别的中断
-        NVIC_SetPriority(LPUART6_IRQn,NVIC_EncodePriority(NVIC_GetPriorityGrouping(),1,1));
+        NVIC_SetPriority(LPUART6_IRQn,NVIC_EncodePriority(NVIC_GetPriorityGrouping(),1,3));
         EnableIRQ(LPUART6_IRQn);	                            //使能LPUART1中断    
     }
     else if(base == LPUART7)
     {
         //优先级配置 抢占优先级1  子优先级2   越小优先级越高  抢占优先级可打断别的中断
-        NVIC_SetPriority(LPUART7_IRQn,NVIC_EncodePriority(NVIC_GetPriorityGrouping(),1,1));
+        NVIC_SetPriority(LPUART7_IRQn,NVIC_EncodePriority(NVIC_GetPriorityGrouping(),1,7));
         EnableIRQ(LPUART7_IRQn);	                            //使能LPUART1中断       
     }
     else if(base == LPUART8)
     {
         //优先级配置 抢占优先级1  子优先级2   越小优先级越高  抢占优先级可打断别的中断
-        NVIC_SetPriority(LPUART8_IRQn,NVIC_EncodePriority(NVIC_GetPriorityGrouping(),1,1));
+        NVIC_SetPriority(LPUART8_IRQn,NVIC_EncodePriority(NVIC_GetPriorityGrouping(),1,8));
         EnableIRQ(LPUART8_IRQn);	                            //使能LPUART1中断       
     }   
 
@@ -412,7 +412,7 @@ void LPUART3_IRQHandler(void)
 	
 	if((LPUART3->STAT)&kLPUART_RxDataRegFullFlag) //接收中断
 	{
-          ReceiveCMD_Remote();
+             ReceiveCMD_Remote();
 	}
 	__DSB();				//数据同步屏蔽指令
 }
@@ -447,6 +447,7 @@ void LPUART6_IRQHandler(void)
 	
 	if((LPUART6->STAT)&kLPUART_RxDataRegFullFlag) //接收中断
 	{
+          ReceiveDistance();
 	}
 	__DSB();				//数据同步屏蔽指令
 }

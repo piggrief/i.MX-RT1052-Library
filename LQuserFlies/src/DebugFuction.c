@@ -423,8 +423,8 @@ ButtonStatus Button[3] = { NotPress, NotPress, NotPress };//PTE12,PTE11,PTE10
 uint8 SeriesReceive = 0;
 uint8 SeriesIndex = 0;
 uint8 Series_ReceiveBuff[4] = { 0 };
-uint8 Front_Distance_ReceiveBuff[5] = { 0 };
-uint8 Back_Distance_ReceiveBuff[5] = { 0 };
+uint8 Front_Distance_ReceiveBuff[3] = { 0 };
+uint8 Back_Distance_ReceiveBuff[3] = { 0 };
 void Series_RX(void)
 {
     uint8 buff = 0;
@@ -450,8 +450,8 @@ void Series_RX(void)
         {
             if (buff == 0xFF)
             {
-              FIFO(Front_Distance_ReceiveBuff, 5, Series_ReceiveBuff[1]);
-              FIFO(Back_Distance_ReceiveBuff, 5, Series_ReceiveBuff[3]);
+              FIFO(Front_Distance_ReceiveBuff, 3, Series_ReceiveBuff[1]);
+              FIFO(Back_Distance_ReceiveBuff, 3, Series_ReceiveBuff[3]);
               SeriesReceive = 0;
               SeriesIndex = 0;
             }
@@ -608,12 +608,12 @@ void BatteryVoltageCollect_Init(int IfUseBeep)
       GPIO_PinInit(GPIO3, 27, &Out_config);
     }
 }
+uint16_t adc_value = 0;
 float GetBatteryVoltage(float HintVoltage)
 {
-    uint16_t adc_value = 0;
     adc_value = ReadADC(BatteryCollectADC, BatteryCollectADCChn);
 
-    float result = adc_value*8.21 / 590.0;
+    float result = adc_value*0.01;
     
     if(UseBeepFlag)
     {
@@ -626,8 +626,6 @@ float GetBatteryVoltage(float HintVoltage)
         GPIO_WritePinOutput(GPIO3, 27, 1);        
       }
     }
-
-
     return result;
 }
 
@@ -654,27 +652,42 @@ void FIFO_Clean(uint8 *head, uint8 depth)
     int i = 0;
     for (i = 0; i < depth; i++)
         *(head+i) = 0;
+    return;
 }
 
-
+///<summary>单层最值检索</summary>
 uint8 One_loop_bubblesort(uint8 *lis, uint8 depth)
 {
-  uint8 biggest = 0;
+//  uint8 biggest = 0;
+  uint8 smallest = 0;
   uint8 *const arry = (uint8 *)malloc(sizeof(uint8)*depth);//向系统申请内存，长度为传递进来的列表深度
   uint8 temp_exchange = 0;
 	for (int i = 0; i <= depth-1; i++)
 	{
 		arry[i] = lis[i];
 	}
-	for (int i = 0; i < depth-1; i++)
+        ///<summary>单层最大值检索</summary>
+//	for (int i = 0; i < depth-1; i++)
+//	{
+//                if (arry[i] > arry[i + 1])
+//                {
+//                        temp_exchange = arry[i + 1];
+//                        arry[i + 1] = arry[i];
+//                        arry[i] = temp_exchange;
+//                }
+//	}
+//        biggest = arry[depth-1];
+//        return biggest;
+        ///<summary>单层最小值检索</summary>
+        for (int i = 0; i < depth-1; i++)
 	{
-                if (arry[i] > arry[i + 1])
+                if (arry[i] < arry[i + 1])
                 {
                         temp_exchange = arry[i + 1];
                         arry[i + 1] = arry[i];
                         arry[i] = temp_exchange;
                 }
 	}
-                 biggest = arry[depth-1];
-        return biggest;
+        smallest = arry[depth-1];
+        return smallest;
 }
