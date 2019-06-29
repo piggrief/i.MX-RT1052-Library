@@ -81,7 +81,7 @@ float Battery_V = 0;
 int main(void)
 {         
     InitAll();
-    
+    BeepAlarm();
     _systime.delay_ms(200);
 
     //TFTSPI_CLS(u16WHITE);
@@ -112,11 +112,11 @@ int main(void)
             dsp_single_colour(WHITE);
       }
       //SEND(Speed_watch[0],Speed_watch[1],Speed_watch[2],Speed_watch[3]);
-
       TFT_showfloat(1,0,Distance_Meassured, 3,2,BLACK,WHITE);
       Get_Gyro(&GYRO_OriginData);//z轴为地磁轴,逆时针为正方向，串级控制中D逆时针为负。
       //_systime.delay_ms(100);
-    }             
+    }
+    
 }
 
 
@@ -150,6 +150,7 @@ void InitAll()
     //camera_init_1();
     
     LQ_PIT_Init(kPIT_Chnl_0, 3000);//3000us
+    LQ_PIT_Init(kPIT_Chnl_1, BeepTimeSet*1000);// 
 }
 ///<summary>定时器部分</summary>
 void PIT_IRQHandler(void)
@@ -251,6 +252,12 @@ void PIT_IRQHandler(void)
             TimeTest_us = TestEndTime_us-TestStartTime_us;
             PIT0_Flag = 0;
         }
+    }
+    if ((PIT_GetStatusFlags(PIT, kPIT_Chnl_1)&kPIT_TimerFlag) == kPIT_TimerFlag)
+    {
+        PIT_ClearStatusFlags(PIT, kPIT_Chnl_1, kPIT_TimerFlag);    /* Clear interrupt flag.*/
+        /*可自行添加代码*/
+        BeepTimerInter();
     }
 }
 void Camera1PinInit()

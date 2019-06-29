@@ -624,6 +624,46 @@ void BatteryVoltageCollect_Init(int IfUseBeep)
       GPIO_PinInit(GPIO3, 27, &Out_config);
     }
 }
+
+///<summary>·äÃùÆ÷</summary>
+BeepAlarmStatus AlarmStatus;
+void BeepAlarm()
+{
+    if (AlarmStatus == Off)
+    {
+        AlarmStatus = Alarming;
+    }
+}
+
+uint8_t Flag_BeepOn = 0;
+long BeepOnCount_1ms = 0;
+uint8_t AlarmNumCount = 0;
+void BeepTimerInter()
+{
+    if (AlarmStatus == Alarming)
+    {
+        if (Flag_BeepOn)
+        {
+            Flag_BeepOn = 0;
+            GPIO_WritePinOutput(GPIO3, 27, 1);
+            AlarmNumCount++;
+        }
+        else
+        {
+            Flag_BeepOn = 1;
+            GPIO_WritePinOutput(GPIO3, 27, 0);        
+        }
+        if (AlarmNumCount >= AlarmLenght)
+        {
+            AlarmNumCount = 0;
+            BeepOnCount_1ms = 0;
+            AlarmStatus = Off;
+        }
+    }
+
+
+}
+
 uint16_t adc_value = 0;
 float GetBatteryVoltage(float HintVoltage)
 {

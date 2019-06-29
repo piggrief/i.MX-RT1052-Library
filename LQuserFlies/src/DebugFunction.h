@@ -121,6 +121,17 @@ void Series_Receive_init(void);
 
 # define BeepIOPortType PTB
 # define BeepIOPortIndex 19
+# define BeepTimeSet 100
+# define AlarmLenght 4
+typedef enum
+{
+    Off,
+    Alarming,
+    AlarmFinish
+}BeepAlarmStatus;
+extern BeepAlarmStatus AlarmStatus;
+void BeepTimerInter();
+void BeepAlarm();
 
 # define BatteryCollectADCChn ADC1_CH3
 # define BatteryCollectADC ADC1

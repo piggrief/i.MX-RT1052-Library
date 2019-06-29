@@ -137,7 +137,7 @@ status_t IIC_ReadReg(fxos_handle_t *handle, uint8_t reg, uint8_t *val, uint8_t b
         return kStatus_Fail;
     }
     /*  wait for transfer completed. */
-    while ((!g_nakFlag) && (!g_completionFlag))//等待传输完成  相当于异步堵塞   可以不等传输完成
+                   while ((!g_nakFlag) && (!g_completionFlag))//等待传输完成  相当于异步堵塞   可以不等传输完成
     {
     }
 

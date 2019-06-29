@@ -402,7 +402,7 @@ void LPUART2_IRQHandler(void)
 	if((LPUART2->STAT)&kLPUART_RxDataRegFullFlag) //接收中断
 	{
         Series_RX();
-        }
+    }
 	__DSB();				//数据同步屏蔽指令
 }
 
