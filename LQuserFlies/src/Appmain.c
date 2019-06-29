@@ -65,11 +65,16 @@ extern long Speed_get[4];
 extern struct PIDControl Car_Speed_Rotate;//追灯转向闭环
 
 
+uint64_t TestStartTime_us = 0;
+uint64_t TestEndTime_us = 0;
+
 void InitAll();
 uint64_t TimeTest_us = 0;
 void RunTimeTest()
 {
-      TFT_showfloat(0,0,(float)TimeTest_us,7,0,BLACK,WHITE);
+      SEND(ControlValue_Closeloop[0], ControlValue_Closeloop[1], ControlValue_Closeloop[2], ControlValue_Closeloop[3]);
+
+      //TFT_showfloat(0,0,(float)TimeTest_us,7,0,BLACK,WHITE);
 }
 ///<summary>主函数</summary>
 float Battery_V = 0;
@@ -106,10 +111,9 @@ int main(void)
           if(Flag_TFTShow)
             dsp_single_colour(WHITE);
       }
-      SEND(Speed_watch[0],Speed_watch[1],Speed_watch[2],Speed_watch[3]);
+      //SEND(Speed_watch[0],Speed_watch[1],Speed_watch[2],Speed_watch[3]);
 
       TFT_showfloat(1,0,Distance_Meassured, 3,2,BLACK,WHITE);
-      //TimeTest_us = MeasureRunTime_us(&RunTimeTest);
       Get_Gyro(&GYRO_OriginData);//z轴为地磁轴,逆时针为正方向，串级控制中D逆时针为负。
       //_systime.delay_ms(100);
     }             
@@ -124,12 +128,13 @@ void InitAll()
     BOARD_InitDEBUG_UARTPins();          //UART调试口管脚复用初始化 
     BOARD_InitDebugConsole();            //UART调试口初始化 可以使用 PRINTF函数          
     //LED_Init();                          //初始化核心板和开发板上的LED接口
-    LQ_UART_Init(CRC_Uart_Port, 115200);       //串口1初始化 可以使用 printf函数
+    UART_DMA_Init();       //串口1初始化 可以使用 printf函数
     _systime.init();                     //开启systick定时器
     NVIC_SetPriorityGrouping(2);/*设置中断优先级组  0: 0个抢占优先级16位个子优先级
                                 *1: 2个抢占优先级 8个子优先级 2: 4个抢占优先级 4个子优先级
                                 *3: 8个抢占优先级 2个子优先级 4: 16个抢占优先级 0个子优先级
                                 */
+    Series_Receive_init();
     Motor_init();
     MPU6050_Init();
     TFT_init();
@@ -143,7 +148,7 @@ void InitAll()
     EncoderMeasure_Init();
     RemoteInit();
     //camera_init_1();
-    //Series_Receive_init();
+    
     LQ_PIT_Init(kPIT_Chnl_0, 3000);//3000us
 }
 ///<summary>定时器部分</summary>
@@ -166,6 +171,8 @@ void PIT_IRQHandler(void)
         }
         else
         {
+            TestStartTime_us = _systime.get_time_us();
+    
             SpeedClean();
             int i = 0;
             for (i = 0; i < 4; i++)
@@ -240,6 +247,8 @@ void PIT_IRQHandler(void)
             SendRemoteCMDData();
 
 #endif
+            TestEndTime_us = _systime.get_time_us();
+            TimeTest_us = TestEndTime_us-TestStartTime_us;
             PIT0_Flag = 0;
         }
     }

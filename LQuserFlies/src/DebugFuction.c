@@ -9,6 +9,22 @@
 *             
 */
 # include "include.h"
+DebugSeriesDMAStatus DMASendStatus;
+extern lpuart_transfer_t sendXfer;
+extern lpuart_edma_handle_t g_lpuartEdmaHandle;
+void UART_Put_Buff_DMA(uint8_t *dataToSend, uint8_t length)
+{
+    /* If TX is idle and g_txBuffer is full, start to send data. */
+    /*使用DMA + 串口，无需占用CPU时间 */
+    sendXfer.data = dataToSend;
+    sendXfer.dataSize = length;
+    if (DMASendStatus == SendFinish)
+    {
+        DMASendStatus = Sending;
+        LPUART_SendEDMA(LPUART1, &g_lpuartEdmaHandle, &sendXfer);
+    }
+
+}
 /*************************************************************/
 /*****************虚拟示波器部分************/
 /*************************************************************/
@@ -56,7 +72,7 @@ void OutPut_Data(void)
     databuf[8] = CRC16%256;
     databuf[9] = CRC16/256;
 
-    UART_Put_Buff(CRC_Uart_Port, databuf, 10);
+    UART_Put_Buff_DMA(databuf, 10);
 }
 /// <summary>
 ///给虚拟示波器发送a,b,c,d取整之后的值

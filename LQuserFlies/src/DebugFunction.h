@@ -12,9 +12,17 @@
 # define _DEBUGFUNCTION_H_
 //# define Remote_UseDigitalReceive
 # define CRC_Uart_Port LPUART1
-# define Series_Uart_Port LPUART5
+# define Series_Uart_Port LPUART2
 # define GY53_Uart_Port LPUART6
 # define Remote_Uart_Port LPUART3
+typedef enum
+{
+    SendFinish,
+    Sending
+    
+}DebugSeriesDMAStatus;
+
+extern DebugSeriesDMAStatus DMASendStatus;
 /// <summary>
 ///给虚拟示波器发送a,b,c,d取整之后的值
 ///<para>example:  SEND(a,b,c,d);</para>

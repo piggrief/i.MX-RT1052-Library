@@ -401,7 +401,7 @@ void LPUART2_IRQHandler(void)
 {	
 	if((LPUART2->STAT)&kLPUART_RxDataRegFullFlag) //接收中断
 	{
-          
+        Series_RX();
         }
 	__DSB();				//数据同步屏蔽指令
 }
@@ -436,7 +436,7 @@ void LPUART5_IRQHandler(void)
 	
 	if((LPUART5->STAT)&kLPUART_RxDataRegFullFlag) //接收中断
 	{
-          Series_RX();
+          
 	}
 	__DSB();				//数据同步屏蔽指令
 }
@@ -488,23 +488,9 @@ void LPUART_UserCallback(LPUART_Type *base, lpuart_edma_handle_t *handle, status
 {
     userData = userData;
 
-    if (kStatus_LPUART_TxIdle == status)     //如果发送空闲
+    if (DMASendStatus == Sending)
     {
-        _status.txBufferFull = false;
-        _status.txOnGoing = false;
-        return;
-    }
-
-    if (kStatus_LPUART_RxIdle == status)     //接收空闲
-    {
-        _status.rxBufferEmpty = false;
-        _status.rxOnGoing = false;
-    }
-    else
-    {
-        while(kStatus_LPUART_RxIdle == status);
-         _status.rxBufferEmpty = false;
-        _status.rxOnGoing = false;
+        DMASendStatus = SendFinish;
     }
 }
 
